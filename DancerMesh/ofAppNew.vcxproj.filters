@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxLabel.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxPanel.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFBX\src\GetPosition.cxx">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFBX\src\ofxFBXAnimation.cpp">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFBX\src\ofxFBXBone.cpp">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFBX\src\ofxFBXCluster.cpp">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFBX\src\ofxFBXManager.cpp">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFBX\src\ofxFBXMesh.cpp">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFBX\src\ofxFBXMeshMaterial.cpp">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFBX\src\ofxFBXNode.cpp">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFBX\src\ofxFBXPose.cpp">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFBX\src\ofxFBXScene.cpp">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFBX\src\ofxFBXSkeleton.cpp">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\ofxRay\src\Base.cpp">
+      <Filter>src\Math\ofxRay\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\ofxRay\src\Camera.cpp">
+      <Filter>src\Math\ofxRay\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\ofxRay\src\Plane.cpp">
+      <Filter>src\Math\ofxRay\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\ofxRay\src\Plane_fitToPoints.cpp">
+      <Filter>src\Math\ofxRay\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\ofxRay\src\Projector.cpp">
+      <Filter>src\Math\ofxRay\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\ofxRay\src\Ray.cpp">
+      <Filter>src\Math\ofxRay\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils\FboPingPong.cpp">
+      <Filter>src\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils\ofEasyCamExt.cpp">
+      <Filter>src\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils\ofxInterpolator\EasingEquations.cpp">
+      <Filter>src\Utils\ofxInterpolator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DancerMesh\DancerMesh.cpp">
+      <Filter>src\DancerMesh</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{71834F65-F3A9-211E-73B8-DC85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGui">
+      <UniqueIdentifier>{4F2A59AF-5F4E-704B-D067-EC13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGui\src">
+      <UniqueIdentifier>{645E9533-4DCD-6179-1CDF-CB65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFBX">
+      <UniqueIdentifier>{03250378-fe39-4a91-bee8-787876215b8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFBX\src">
+      <UniqueIdentifier>{30fe85f6-911a-4c13-8bd0-9bf2c5e68276}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Math">
+      <UniqueIdentifier>{b3ac5e9c-2bcc-44b7-9c65-94df8cc837e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Utils">
+      <UniqueIdentifier>{95584998-fecf-4cb5-900b-42e8a491be43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Utils\ofxInterpolator">
+      <UniqueIdentifier>{663f57c0-abc0-413a-b581-a691934eb87b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Math\ofxRay">
+      <UniqueIdentifier>{5865dc67-eacb-43d5-b01e-7fa5ae81c139}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Math\ofxRay\src">
+      <UniqueIdentifier>{ff275c2e-6852-4e44-8d4b-0658392cc056}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\DancerMesh">
+      <UniqueIdentifier>{60569a8e-4411-4132-a4b3-21815e96f2f5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGui.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxLabel.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxPanel.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFBX\src\GetPosition.h">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFBX\src\ofxFBX.h">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFBX\src\ofxFBXAnimation.h">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFBX\src\ofxFBXBone.h">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFBX\src\ofxFBXCluster.h">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFBX\src\ofxFBXManager.h">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFBX\src\ofxFBXMesh.h">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFBX\src\ofxFBXMeshMaterial.h">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFBX\src\ofxFBXNode.h">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFBX\src\ofxFBXPose.h">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFBX\src\ofxFBXScene.h">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFBX\src\ofxFBXSkeleton.h">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFBX\src\ofxFBXUtils.h">
+      <Filter>addons\ofxFBX\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\MathUtils.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\ofVecExt.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\ofxRay\src\Base.h">
+      <Filter>src\Math\ofxRay\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\ofxRay\src\Camera.h">
+      <Filter>src\Math\ofxRay\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\ofxRay\src\ofxRay.h">
+      <Filter>src\Math\ofxRay\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\ofxRay\src\Plane.h">
+      <Filter>src\Math\ofxRay\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\ofxRay\src\Projector.h">
+      <Filter>src\Math\ofxRay\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\ofxRay\src\Ray.h">
+      <Filter>src\Math\ofxRay\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\DrawingHelpers.h">
+      <Filter>src\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\FboPingPong.h">
+      <Filter>src\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\FileUtils.h">
+      <Filter>src\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\ofEasyCamExt.h">
+      <Filter>src\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\ofTrueTypeFontExt.h">
+      <Filter>src\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\PlacementUtils.h">
+      <Filter>src\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\SizeLimitedDeque.h">
+      <Filter>src\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\ofxInterpolator\EasingEquations.h">
+      <Filter>src\Utils\ofxInterpolator</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\ofxInterpolator\ofxInterpolator.h">
+      <Filter>src\Utils\ofxInterpolator</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DancerMesh\DancerMesh.h">
+      <Filter>src\DancerMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DancerMesh\DancerMeshFBX.h">
+      <Filter>src\DancerMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DancerMesh\StickyPoint.h">
+      <Filter>src\DancerMesh</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+</Project>
