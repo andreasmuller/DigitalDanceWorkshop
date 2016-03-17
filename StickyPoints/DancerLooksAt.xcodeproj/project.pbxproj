@@ -134,6 +134,7 @@
 		CB8D45E11C26F1CC0068E4F9 /* Projector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Projector.h; path = Math/ofxRay/src/Projector.h; sourceTree = "<group>"; };
 		CB8D45E21C26F1CC0068E4F9 /* Ray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ray.cpp; path = Math/ofxRay/src/Ray.cpp; sourceTree = "<group>"; };
 		CB8D45E31C26F1CC0068E4F9 /* Ray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ray.h; path = Math/ofxRay/src/Ray.h; sourceTree = "<group>"; };
+		CB93D9851C9A94B400E21BAC /* Lathe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Lathe.h; path = Utils/Lathe.h; sourceTree = "<group>"; };
 		CBC931951C26C793005DD6F7 /* GetPosition.cxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GetPosition.cxx; path = ../../../addons/ofxFBX/src/GetPosition.cxx; sourceTree = "<group>"; };
 		CBC931961C26C793005DD6F7 /* GetPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetPosition.h; path = ../../../addons/ofxFBX/src/GetPosition.h; sourceTree = "<group>"; };
 		CBC931971C26C793005DD6F7 /* ofxFBX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxFBX.h; path = ../../../addons/ofxFBX/src/ofxFBX.h; sourceTree = "<group>"; };
@@ -328,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				CB8D45CF1C26F19B0068E4F9 /* ofxInterpolator */,
+				CB93D9851C9A94B400E21BAC /* Lathe.h */,
 				CB8D45BE1C26F1970068E4F9 /* DrawingHelpers.h */,
 				CB8D45BF1C26F1970068E4F9 /* FboPingPong.cpp */,
 				CB8D45C01C26F1970068E4F9 /* FboPingPong.h */,

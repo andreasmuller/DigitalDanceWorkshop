@@ -37,7 +37,8 @@ void ofApp::setup()
 	lathedMeshes.resize(stickyPoints.size() );
 	for (int i = 0; i < lathedMeshes.size(); i++)
 	{
-		lathedMeshes[i].circumferencePoints = Lathe::getCirclePoints( 30, ofVec2f(0.05, 0.05) );
+		lathedMeshes[i].circumferencePoints = Lathe::getCirclePoints( 20, ofVec2f(0.05, 0.05) );
+		lathedMeshes[i].heightPoints		= Lathe::getCircularInOutHeightPoints( 200, 5, 1, 	0, 0.01, 0.99, 1.0 );
 	}
 
 	float tmpHeight = 1.93;
@@ -81,7 +82,7 @@ void ofApp::update()
 	dancerMesh.update( ofGetElapsedTimef() );
 	dancerMesh.updateStickyPoints(stickyPoints);
 
-	int latheResolution = 400;
+	int latheResolution = 200;
 	int maxHistoryLength = latheResolution / 3;
 	float minDistance = 0.1;
 
@@ -140,14 +141,20 @@ void ofApp::draw()
 
 				dancerMesh.triangleMesh.draw();
 
-				for (auto& m : lathedMeshes)
-				{
-					m.mesh.draw();
-				}
-
-
 			dancerMaterial.end();
 
+	
+			for ( int i = 0; i < lathedMeshes.size(); i++ )
+			{
+				streamerMaterial.setDiffuseColor( ofFloatColor::fromHsb( ofMap( i, 0, lathedMeshes.size(), 0, 1), 1.0, 1.0 ) );
+				streamerMaterial.begin();
+					lathedMeshes[i].mesh.draw();
+				streamerMaterial.end();
+			}
+	
+	
+	
+			/*
 			for (int i = 0; i < stickyPointPosHistory.size(); i++)
 			{
 				deque<ofVec3f>& positions = stickyPointPosHistory.at(i);
@@ -159,6 +166,7 @@ void ofApp::draw()
 				}
 				tmpMesh.draw();
 			}
+			 */
 
 			/*
 			for(auto& p : stickyPoints)
@@ -180,7 +188,7 @@ void ofApp::draw()
 	ofDisableDepthTest();
 
 
-	ofRectangle tmpRect(50, 50, 200, 80);
+	ofRectangle tmpRect(50, 50, 200, 30);
 	ofSetColor( ofColor::black, 90 );
 	ofDrawRectangle( tmpRect );
 	ofSetColor(ofColor::lightCyan);
@@ -192,7 +200,9 @@ void ofApp::draw()
 	{
 		float frac = ofMap( i, 0, res-1, 0, 1 );
 		float x = ofMap( frac, 0, 1, tmpRect.x, tmpRect.x + tmpRect.width );
-		float y = tmpRect.y + ((1-MathUtils::smoothStepInOut( 0, 0.1, 0.9, 1.0, frac )) * tmpRect.height);
+		//float y = tmpRect.y + ((1-MathUtils::smoothStepInOut( 0, 0.1, 0.9, 1.0, frac )) * tmpRect.height);
+		//float y = tmpRect.y + ((1-MathUtils::sineStep( 0.1, 0.5, frac )) * tmpRect.height);
+		float y = tmpRect.y + ((1-MathUtils::circularStepInOut( 0, 0.2, 0.8, 1.0, frac )) * tmpRect.height);
 		ofVec2f p( x, y );
 		tmpMesh.addVertex(p);
 	}

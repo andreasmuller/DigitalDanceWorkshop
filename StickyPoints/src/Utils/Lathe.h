@@ -259,6 +259,20 @@ class Lathe
 
 		return tmp;
 	}
+
+	// ------------------------------------------
+	static vector<ofVec2f> getCircularInOutHeightPoints(int _res, float _length, float _height, float _low0 = 0.0f, float _high0 = 0.25f, float _high1 = 0.75f, float _low1 = 1.0f )
+	{
+		vector<ofVec2f> tmp;
+		for (int i = 0; i < _res; i++)
+		{
+			float frac = ofMap( i, 0, _res-1, 0, 1 );
+			float height = MathUtils::circularStepInOut(_low0, _high0, _high1, _low1, frac) * _height;
+			tmp.push_back( ofVec2f( _length * frac, height ) );
+		}
+		
+		return tmp;
+	}
 	
 	// ------------------------------------------
 	template< typename T>

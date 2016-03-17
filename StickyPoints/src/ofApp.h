@@ -27,6 +27,8 @@ class ofApp : public ofBaseApp
 
 		ofPlanePrimitive floor;
 		ofMaterial floorMaterial;
+	
+		ofMaterial streamerMaterial;
 		ofMaterial dancerMaterial;
 
 		vector<StickyPoint> stickyPoints;
