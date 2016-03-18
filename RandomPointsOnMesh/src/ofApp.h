@@ -24,15 +24,11 @@ class ofApp : public ofBaseApp
 		ofEasyCam camera;
 
 		DancerMeshFBX dancerMesh;
+		ofMesh randomPointsMesh;
 
 		ofPlanePrimitive floor;
 		ofMaterial floorMaterial;
 		ofMaterial dancerMaterial;
-
-		vector<StickyPoint> stickyPoints;
-
-		vector<deque<ofVec3f>> stickyPointPosHistory;
-		vector<LatheMesh> lathedMeshes;
 
 		ofLight light0;
 		ofLight light1;

@@ -34,7 +34,12 @@ class DancerMesh
 		virtual void			debugDrawInfo( ofTrueTypeFontExt& _font, ofVec2f _pos ) = 0;
 
 		virtual	void			updateTriangleMesh( ofMesh& _mesh ) = 0;
-		void					updateRandomPointMesh( int _numPoints, ofMesh& _sourceTriangleMesh, ofMesh& _randomPointMesh, piecewise_constant_distribution<>& _dist, ofImage& _emissionMask, int _randomSeed );
+
+		void					updateRandomPointMesh(int _numPoints, ofMesh& _randomPointTargetMesh, int _seed = -1 );
+		void					updateRandomPointMesh(int _numPoints, ofMesh& _randomPointTargetMesh, ofImage& _emissionMask, int _seed = -1 );
+		void					updateRandomPointMesh( int _numPoints, ofMesh& _randomPointTargetMesh, ofMesh& _sourceTriangleMesh,
+													   piecewise_constant_distribution<>& _dist, ofImage& _emissionMask, int _randomSeed = -1);
+
 		void					initWeightedDistribution( piecewise_constant_distribution<>& _dist, ofMesh& _emissionMesh );
 
 		static vector<ofVec2f>	getRandomUVPointsWithinMaskedArea(int _numPoints, ofImage& _mask, ofColor _searchColor, float _maxColorDist);
@@ -83,5 +88,8 @@ class DancerMesh
 
 	protected:
 
+		piecewise_constant_distribution<> triangleAreaWeightedDistribution;
+
 		ofMatrix4x4				meshBaseTransform;
+		ofImage					emptyMask;
 };
