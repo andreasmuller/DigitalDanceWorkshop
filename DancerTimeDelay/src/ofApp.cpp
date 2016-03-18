@@ -56,8 +56,10 @@ void ofApp::setup()
 	dancerMaterial.setShininess(15);
 
 	lastTimeCopied = 0;
-	timeBetweenCopies = 0.4;
-	maxCopies = 6;
+	timeBetweenCopies = 1.0 / 30;
+	maxCopies = 40;
+	
+	meshes.resize( maxCopies ); // allocate empty meshes, this way our logic for which ones to draw is super easy
 
 	drawGui = false;
 }
@@ -69,6 +71,7 @@ void ofApp::update()
 
 	dancerMesh.update( ofGetElapsedTimef() );
 
+	// Copy meshes
 	if (abs(t - lastTimeCopied) > timeBetweenCopies)
 	{
 		ofMesh tmpMesh = dancerMesh.triangleMesh;
@@ -77,67 +80,6 @@ void ofApp::update()
 		lastTimeCopied = t;
 	}
 
-	float meshMaxAge = meshes.size()*timeBetweenCopies;
-
-	for (int meshIndex = 0; meshIndex < meshes.size(); meshIndex++ )
-	{
-		ofSeedRandom(meshIndex * 16777216); // seed the rng with the mesh index, made into a much bigger number
-
-		ofMesh& mesh = meshes.at(meshIndex);
-		//cout << mesh.getNumVertices() << "	" << mesh.getNumNormals() << "	" << mesh.getNumIndices() << endl;
-
-		//float meshIndexFrac = (meshIndex / (float)meshes.size());
-		float meshTime = fmodf(t, timeBetweenCopies) + (meshIndex * timeBetweenCopies);
-		float ageFrac = (meshTime / meshMaxAge);
-
-		float forcesStrength = MathUtils::linearStep(meshMaxAge * 0.25, meshMaxAge * 0.6, meshTime );
-		float triangleScale = (1.0f - MathUtils::linearStep(meshMaxAge * 0.6, meshMaxAge, meshTime)); //(1.0f - MathUtils::linearStep(_high1, _low1, _t)
-		triangleScale = ofMap(triangleScale, 0, 1, 0.95, 1.0);
-
-//triangleScale = 0.99;
-//triangleScale = ageFrac
-
-		//cout << "triangleScale" << meshIndex << ": " << triangleScale << endl;
-
-		// We are just going to assume we're dealing with triangles
-		int numTriangles = mesh.getNumVertices() / 3;
-		for (int triangleIndex = 0; triangleIndex < numTriangles; triangleIndex++)
-		{
-			int i0 = (triangleIndex * 3);
-			int i1 = (triangleIndex * 3) + 1;
-			int i2 = (triangleIndex * 3) + 2;
-
-			ofVec3f p0 = mesh.getVertex(i0);
-			ofVec3f p1 = mesh.getVertex(i1);
-			ofVec3f p2 = mesh.getVertex(i2);
-
-			ofVec3f normal = -MathUtils::getTriangleNormal(p0, p1, p2);
-			ofVec3f pos = (p0 + p1 + p2) / 3.0;
-
-			ofVec3f v0 = (p0 - pos) * triangleScale;
-			ofVec3f v1 = (p1 - pos) * triangleScale;
-			ofVec3f v2 = (p2 - pos) * triangleScale;
-
-			pos += normal * ofRandom(0.01, 0.02) * forcesStrength; // move in the direction of the triangle normal
-			pos += ofVec3f(0, 0, 0.02); // Wind
-
-			ofMatrix4x4 transform;
-			transform.glRotate(ofRandom(-15, 15) * forcesStrength, 0, 1, 0);
-			transform.glRotate(ofRandom(-15, 15) * forcesStrength, 0, 0, 1);
-
-			p0 = pos + (v0 * transform);
-			p1 = pos + (v1 * transform);
-			p2 = pos + (v2 * transform);
-
-			mesh.getVerticesPointer()[i0] = p0;
-			mesh.getVerticesPointer()[i1] = p1;
-			mesh.getVerticesPointer()[i2] = p2;
-
-			mesh.getNormalsPointer()[i0] = normal;
-			mesh.getNormalsPointer()[i1] = normal;
-			mesh.getNormalsPointer()[i2] = normal;
-		}
-	}
 
 	ofSetWindowTitle(ofToString(ofGetFrameRate(), 1));
 }
@@ -145,6 +87,10 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
+	float t = ofGetElapsedTimef();
+	float mx = ofNormalize( ofGetMouseX(), 0, ofGetWidth() );
+	float my = ofNormalize( ofGetMouseY(), 0, ofGetHeight() );
+	
 	ofBackgroundGradient(ofColor(40), ofColor(0), OF_GRADIENT_CIRCULAR);
 
 	ofEnableDepthTest();
@@ -157,13 +103,32 @@ void ofApp::draw()
 				floor.draw();
 			floorMaterial.end();
 
-			dancerMaterial.begin();
-				dancerMesh.triangleMesh.draw();
-				for (auto &mesh : meshes)
+	
+				//dancerMesh.triangleMesh.draw();
+
+				//int numMeshesToDraw = ofMap( ofGetMouseX(), 0, ofGetWidth(), 1, 50 );
+				int numMeshesToDraw = meshes.size();
+				ofVec3f offset(0,0, mx * -10 );
+				ofColor startColor = ofColor::red;
+				ofColor endColor = ofColor::blue;
+				for( int i = 0; i < numMeshesToDraw; i++ )
 				{
-					mesh.draw();
+					int meshIndex = ofMap( i, 0, numMeshesToDraw-1, 0, meshes.size()-1 );
+					
+					dancerMaterial.begin();
+			
+						dancerMaterial.setDiffuseColor( startColor.getLerped( endColor, ofNormalize( meshIndex, 0,  numMeshesToDraw-1) ) );
+										
+						ofPushMatrix();
+							ofTranslate( ofVec3f(0).getInterpolated( offset, ofNormalize( meshIndex, 0, meshes.size()-1)) );
+							meshes.at( meshIndex ).draw();
+						ofPopMatrix();
+					
+					dancerMaterial.end();
 				}
-			dancerMaterial.end();
+	
+	
+	
 
 		ofDisableLighting();
     

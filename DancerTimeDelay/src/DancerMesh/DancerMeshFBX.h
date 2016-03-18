@@ -61,7 +61,7 @@ class DancerMeshFBX : public DancerMesh
 			initTexture(_texture);
 
 			ofDisableArbTex();
-			eyeTexture.loadImage("Textures/Dancer/blue_eye_small.png");
+			eyeTexture.load("Textures/Dancer/blue_eye_small.png");
 
 			ofLogNotice() << "DancerMeshFBX speeds up the animation on update as a hack";
 
@@ -85,8 +85,8 @@ class DancerMeshFBX : public DancerMesh
 			if (!loaded) return;
 
 	// TEMP		
-			ofxFBXAnimation& currentAnimation = fbx.getCurrentAnimation();
-			currentAnimation.setFramerate(120.0f);
+//			ofxFBXAnimation& currentAnimation = fbx.getCurrentAnimation();
+//			currentAnimation.setFramerate(120.0f);
 			
 		/*	
 			currentAnimation.stop();
@@ -128,8 +128,8 @@ class DancerMeshFBX : public DancerMesh
 
 			//cout << currentAnimation.isFrameNew() << " ";
 
-			if (currentAnimation.isFrameNew() )
-			{
+//			if (currentAnimation.isFrameNew() )
+//			{
 				updateTriangleMesh(triangleMesh);
 				updateStickyPoints(midPointStickyPoints, triangleMesh);
 
@@ -138,7 +138,7 @@ class DancerMeshFBX : public DancerMesh
 				{
 					modelMiddle = midPointStickyPoints.at(0).currentPos;
 				}
-			}
+//			}
 
 		}
 
@@ -189,7 +189,7 @@ class DancerMeshFBX : public DancerMesh
 			if (!loaded) return;
 
 			vector<ofMesh>& fbxMeshes = fbx.getMeshes();
-			bool randomTriangleColor = true;
+			bool randomTriangleColor = false;
 
 			ofVec3f normalFlip(1,1,1); 
 
