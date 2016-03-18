@@ -35,9 +35,23 @@ void DancerMesh::initTexture( string _texture )
 
 //----------------------------------------------------------------------------------------------------------
 //
+void DancerMesh::updateRandomPointMesh(int _numPoints, ofMesh& _randomPointTargetMesh, int _seed)
+{
+	updateRandomPointMesh(_numPoints, _randomPointTargetMesh, emptyMask, _seed );
+}
+
+//----------------------------------------------------------------------------------------------------------
+//
+void DancerMesh::updateRandomPointMesh(int _numPoints, ofMesh& _randomPointTargetMesh, ofImage& _emissionMask, int _seed )
+{
+	updateRandomPointMesh( _numPoints, _randomPointTargetMesh, triangleMesh, triangleAreaWeightedDistribution, _emissionMask, _seed );
+}
+
+//----------------------------------------------------------------------------------------------------------
+//
 void DancerMesh::updateRandomPointMesh( int _numPoints,
-										ofMesh& _sourceTriangleMesh, 
 										ofMesh& _randomPointMesh, 
+										ofMesh& _sourceTriangleMesh,
 										piecewise_constant_distribution<>& _dist,
 										ofImage& _emissionMask,
 										int _seed )
@@ -49,6 +63,7 @@ void DancerMesh::updateRandomPointMesh( int _numPoints,
 		return;
 	}
 
+	if (_seed == -1) _seed = ofGetFrameNum();
 	std::mt19937 gen; 
 	gen.seed( _seed );
 

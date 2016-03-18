@@ -344,7 +344,6 @@ class DancerMeshFBX : public DancerMesh
 		void debugDraw()
 		{
 			if (!loaded) return;
-
 		}
 
 		float animationTime;
