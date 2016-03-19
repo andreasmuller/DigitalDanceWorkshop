@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "AE91B73BABCE2DB04DDDC9124E323E4A890F2687",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "AE91B73BABCE2DB04DDDC9124E323E4A890F2687" : 0,
+    "2DE9C8846D9375EAACFABA8963120E8E7719BAF5" : 0,
+    "15AFBEBEE0254D0F12821435C644072DF4B7DB55" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A3199B1B-3DF5-4348-A2C7-094C0A2E46C2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "AE91B73BABCE2DB04DDDC9124E323E4A890F2687" : "DanceExploration\/",
+    "2DE9C8846D9375EAACFABA8963120E8E7719BAF5" : "..",
+    "15AFBEBEE0254D0F12821435C644072DF4B7DB55" : "..\/addons\/ofxFBX"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DancerLooksAt",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DancerLooksAt\/DancerLooksAt.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/NickHardeman\/ofxFBX.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "15AFBEBEE0254D0F12821435C644072DF4B7DB55"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/openframeworks\/openFrameworks.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2DE9C8846D9375EAACFABA8963120E8E7719BAF5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/andreasmuller\/danceexploration.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AE91B73BABCE2DB04DDDC9124E323E4A890F2687"
+    }
+  ]
+}
