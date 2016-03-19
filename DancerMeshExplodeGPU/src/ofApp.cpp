@@ -56,7 +56,7 @@ void ofApp::setup()
 	dancerMaterial.setShininess(15);
 
 	lastTimeCopied = 0;
-	timeBetweenCopies = 0.4;
+	timeBetweenCopies = 1.0;
 	maxCopies = 6;
 
 	for (int i = 0; i < maxCopies; i++)
@@ -80,9 +80,7 @@ void ofApp::update()
 	
 		MeshShaderData* nextMesh = meshes.back();
 		meshes.pop_back();
-
 		nextMesh->newMesh( tmpMesh );
-
 		meshes.push_front(nextMesh);
 
 		lastTimeCopied = t;
@@ -123,11 +121,11 @@ void ofApp::draw()
     
 		ofEnableLighting();
 		
-			floorMaterial.begin();
-				floor.draw();
-			floorMaterial.end();
+			//floorMaterial.begin();
+//				floor.draw();
+			//floorMaterial.end();
 
-			dancerMaterial.begin();
+			//dancerMaterial.begin();
 
 				dancerMesh.triangleMesh.draw();
 
@@ -136,7 +134,7 @@ void ofApp::draw()
 					meshes.at(i)->draw();
 				}
 
-			dancerMaterial.end();
+			//dancerMaterial.end();
 			
 		ofDisableLighting();
     

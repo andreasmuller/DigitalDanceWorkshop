@@ -240,6 +240,8 @@
     <ClInclude Include="src\Math\ofxRay\src\Ray.h" />
     <ClInclude Include="src\MeshShaderData.h" />
     <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="src\ofLightExt.h" />
+    <ClInclude Include="src\ofMaterialExt.h" />
     <ClInclude Include="src\Utils\DrawingHelpers.h" />
     <ClInclude Include="src\Utils\FboPingPong.h" />
     <ClInclude Include="src\Utils\FileUtils.h" />

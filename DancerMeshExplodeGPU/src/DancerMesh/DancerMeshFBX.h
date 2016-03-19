@@ -189,7 +189,7 @@ class DancerMeshFBX : public DancerMesh
 			if (!loaded) return;
 
 			vector<ofMesh>& fbxMeshes = fbx.getMeshes();
-			bool randomTriangleColor = true;
+			bool randomTriangleColor = false;
 
 			ofVec3f normalFlip(1,1,1); 
 

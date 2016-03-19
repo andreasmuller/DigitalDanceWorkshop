@@ -26,6 +26,7 @@ class MeshShaderData
 			triangleV2.clear();
 
 			int numTriangles = _triangleMesh.getNumVertices() / 3;
+			int textureSize = ceil(sqrtf(numTriangles));
 
 			pointsMesh.clear();
 			pointsMesh.setMode( OF_PRIMITIVE_POINTS ); 
@@ -46,7 +47,12 @@ class MeshShaderData
 				ofVec3f localV1 = v1 - midPoint;
 				ofVec3f localV2 = v2 - midPoint;
 
-				pointsMesh.addVertex(midPoint); // this vertex position could really be anything as we will later read it from our data FBO
+				ofVec2f uv;
+				uv.x = fmodf(i, textureSize) / textureSize;
+				uv.y = floor(i / textureSize) / textureSize;
+
+				pointsMesh.addVertex(midPoint); // This vertex position could really be anything as we will later read it from our data FBO
+				pointsMesh.addTexCoord( uv );	// We'll use this though when sampling from the data textures
 
 				trianglePos.push_back(midPoint);
 
@@ -56,7 +62,6 @@ class MeshShaderData
 			}
 
 			// Upload the data to textures
-			int textureSize = ceil(sqrtf(trianglePos.size()));
 
 			// Add some padding 
 			while (trianglePos.size() < (textureSize*textureSize)) { trianglePos.push_back(ofVec3f(0)); }
@@ -65,12 +70,12 @@ class MeshShaderData
 			while (triangleV2.size()  < (textureSize*textureSize)) { triangleV2.push_back(ofVec3f(0)); }
 
 			// Allocate data textures and FBO if needed
-			bool allocate = !pos.isAllocated();
-			if( pos.isAllocated() ) {  if ((int)pos.source()->getWidth() != textureSize) { allocate = true; } }
+			bool allocate = !posAndAngles.isAllocated();
+			if( pos.isAllocated() ) { if ((int)pos.source()->getWidth() != textureSize) { allocate = true; } }
 
 			if ( allocate )
 			{
-				pos.allocateAsData(textureSize, textureSize, GL_RGBA32F, 1); // We could allocate more buffers here if we wanted to store vel or other data
+				pos.allocateAsData(textureSize, textureSize, GL_RGBA32F, 2); // We could allocate more buffers here if we wanted to store vel or other data
 
 				v0.allocate(textureSize, textureSize, GL_RGBA32F, false);
 				v1.allocate(textureSize, textureSize, GL_RGBA32F, false);
@@ -79,39 +84,100 @@ class MeshShaderData
 				v0.setTextureMinMagFilter( GL_NEAREST, GL_NEAREST );
 				v1.setTextureMinMagFilter( GL_NEAREST, GL_NEAREST );
 				v2.setTextureMinMagFilter( GL_NEAREST, GL_NEAREST );
+
+				// Some random values for each 'particle' to use, never leave home without them 
+				randomValues.clear();
+				for (int i = 0; i < (textureSize*textureSize); i++) { randomValues.push_back( ofVec4f(ofRandom(1.0f), ofRandom(1.0f), ofRandom(1.0f), ofRandom(1.0f)) );  }
+
+				startAngles.clear();
+				for (int i = 0; i < (textureSize*textureSize); i++) { startAngles.push_back(ofVec4f(0)); }
+
+				random.allocate(textureSize, textureSize, GL_RGBA32F, false);
+				random.setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+				random.loadData(&randomValues.at(0).x, textureSize, textureSize, GL_RGBA);
+
+				//cout << "Allocated to " << textureSize << endl;
 			}
 
 			// Upload
 			pos.source()->getTexture(0).loadData( &trianglePos.at(0).x, textureSize, textureSize, GL_RGB);
+			pos.source()->getTexture(1).loadData( &startAngles.at(0).x, textureSize, textureSize, GL_RGBA);
 
 			v0.loadData( &triangleV0.at(0).x, textureSize, textureSize, GL_RGB );
 			v1.loadData( &triangleV1.at(0).x, textureSize, textureSize, GL_RGB );
 			v2.loadData( &triangleV2.at(0).x, textureSize, textureSize, GL_RGB );
 
-			if ( !shader.isLoaded() )
-			{
+			//ofLogLevel tmpLevel = ofGetLogLevel();
+			//ofSetLogLevel( OF_LOG_VERBOSE );
 
+			// TODO: This shader should really be shared among all MeshShaderData instances
+			if ( !drawShader.isLoaded() )
+			{
+				drawShader.load("Shaders/MeshExplode/GL3/Draw.vert", "Shaders/MeshExplode/GL3/Draw.frag", "Shaders/MeshExplode/GL3/Draw.geom");
+				//updateShader.load("Shaders/MeshExplode/GL3/Update");
 			}
+			//ofSetLogLevel(tmpLevel);
+		}
+
+		// ------------------------------------------------
+		void update()
+		{
+			posAndAngles.dest()->begin();
+				posAndAngles.dest()->activateAllDrawBuffers(); // if we have multiple color buffers in our FBO we need this to activate all of them
+				updateShader.begin();
+					posAndAngles.source()->draw(0, 0);
+				updateShader.end();
+			posAndAngles.dest()->end();
+
+			posAndAngles.swap(); // posAndAngles.source() has the new data now
 		}
 
 		// ------------------------------------------------
 		void draw()
 		{
-			pointsMesh.draw();
+			if (!posAndAngles.isAllocated())
+			{
+				return;
+			}
+
+			//cout << shader.getShaderSource( GL_FRAGMENT_SHADER ) << endl;
+			//cout << endl;
+
+			drawShader.begin();
+
+				drawShader.setUniformTexture("posTex", posAndAngles.source()->getTexture(0), 0);
+				drawShader.setUniformTexture("angTex", posAndAngles.source()->getTexture(1), 1);
+
+				drawShader.setUniformTexture("vertex0Tex", v0, 2);
+				drawShader.setUniformTexture("vertex1Tex", v1, 3);
+				drawShader.setUniformTexture("vertex2Tex", v2, 4);
+
+				drawShader.setUniformTexture("randomTex", random, 5);
+		
+				pointsMesh.draw();
+
+			drawShader.end();
 		}
 
 		ofMesh pointsMesh;
 
-		ofShader shader;
+		ofShader drawShader;
+		ofShader updateShader;
 
-		FboPingPong pos;
+		FboPingPong posAndAngles;
 
 		ofTexture v0;
 		ofTexture v1;
 		ofTexture v2;
 
+		ofTexture random;
+
 		vector<ofVec3f> trianglePos;
 		vector<ofVec3f> triangleV0;
 		vector<ofVec3f> triangleV1;
 		vector<ofVec3f> triangleV2;
+
+		vector<ofVec4f> randomValues;
+
+		vector<ofVec4f> startAngles;
 };

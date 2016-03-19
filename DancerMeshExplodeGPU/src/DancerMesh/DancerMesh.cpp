@@ -92,7 +92,7 @@ void DancerMesh::updateRandomPointMesh( int _numPoints,
 
 		while( !found && tmpSearchBail > 0 )
 		{
-			// Ideally I would have a list here that let me pick a random triangle but weighted by triangle size
+			// Ideally I would have a list here that would let me pick a random triangle but weighted by triangle size
 			int randTriangle = static_cast<unsigned>(_dist(gen)) - 1;
 			if( randTriangle < 0 ) randTriangle = 0;
 

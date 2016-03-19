@@ -9,6 +9,8 @@
 
 #include "DancerMesh/DancerMeshFBX.h"
 
+#include "ofLightExt.h"
+#include "ofMaterialExt.h"
 #include "MeshShaderData.h"
 
 class ofApp : public ofBaseApp 
@@ -26,8 +28,9 @@ class ofApp : public ofBaseApp
 		DancerMeshFBX dancerMesh;
 
 		ofPlanePrimitive floor;
-		ofMaterial floorMaterial;
-		ofMaterial dancerMaterial;
+
+		ofMaterialExt floorMaterial;
+		ofMaterialExt dancerMaterial;
 
 		deque<MeshShaderData*> meshes;
 
@@ -35,8 +38,8 @@ class ofApp : public ofBaseApp
 		float lastTimeCopied;
 		int maxCopies;
 
-		ofLight light0;
-		ofLight light1;
+		ofLightExt light0;
+		ofLightExt light1;
 
 		ofxPanel gui;
 		bool drawGui;
