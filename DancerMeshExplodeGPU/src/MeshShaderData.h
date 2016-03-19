@@ -64,15 +64,21 @@ class MeshShaderData
 			while (triangleV1.size()  < (textureSize*textureSize)) { triangleV1.push_back(ofVec3f(0)); }
 			while (triangleV2.size()  < (textureSize*textureSize)) { triangleV2.push_back(ofVec3f(0)); }
 
-			int currTexSize = pos.source()->getWidth();
+			// Allocate data textures and FBO if needed
+			bool allocate = !pos.isAllocated();
+			if( pos.isAllocated() ) {  if ((int)pos.source()->getWidth() != textureSize) { allocate = true; } }
 
-			if ((int)pos.source()->getWidth() == textureSize)
+			if ( allocate )
 			{
 				pos.allocateAsData(textureSize, textureSize, GL_RGBA32F, 1); // We could allocate more buffers here if we wanted to store vel or other data
 
 				v0.allocate(textureSize, textureSize, GL_RGBA32F, false);
 				v1.allocate(textureSize, textureSize, GL_RGBA32F, false);
 				v2.allocate(textureSize, textureSize, GL_RGBA32F, false);
+				
+				v0.setTextureMinMagFilter( GL_NEAREST, GL_NEAREST );
+				v1.setTextureMinMagFilter( GL_NEAREST, GL_NEAREST );
+				v2.setTextureMinMagFilter( GL_NEAREST, GL_NEAREST );
 			}
 
 			// Upload
