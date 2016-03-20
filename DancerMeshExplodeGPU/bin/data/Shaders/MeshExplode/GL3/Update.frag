@@ -57,7 +57,9 @@ void main (void)
 
 	//newPos = spawnPosition.xyz;
 
-	fragOutPosAndAge = vec4( newPos, age );
+	vec3 newPos = pos + vec3(0,0,0.001);
+
+	fragOutPosAndAge = vec4( newPos, 1 );
 	fragOutVel = vec4( newVel, 1.0 );
 	//fragOutVel = vec4( 1.0, 1.0, 1.0, 1.0 );	
 }

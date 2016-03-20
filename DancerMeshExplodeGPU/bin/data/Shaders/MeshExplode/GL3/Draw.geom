@@ -43,6 +43,17 @@ uniform float lightRadius[MAX_LIGHTS];
 uniform vec3  lightPositionWorld[MAX_LIGHTS];
 uniform vec3  lightPositionCamera[MAX_LIGHTS];
 
+struct TriangleData
+{
+  vec3 pos;
+  vec3 normal;  
+  vec3 vec0World;
+  vec3 vec0World;
+  vec3 vec0World;
+};
+
+
+
 // ----------------------------------------------
 void setVertexOutLightParamsForModelSpaceVertex( vec3 _v )
 {
