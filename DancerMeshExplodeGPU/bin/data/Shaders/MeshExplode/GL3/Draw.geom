@@ -43,19 +43,12 @@ uniform float lightRadius[MAX_LIGHTS];
 uniform vec3  lightPositionWorld[MAX_LIGHTS];
 uniform vec3  lightPositionCamera[MAX_LIGHTS];
 
-struct TriangleData
-{
-  vec3 pos;
-  vec3 normal;  
-  vec3 vec0World;
-  vec3 vec0World;
-  vec3 vec0World;
-};
-
+// Includes our TriangleData and the getTriangleData function
+#pragma include "Triangle.glslinc"
 
 
 // ----------------------------------------------
-void setVertexOutLightParamsForModelSpaceVertex( vec3 _v )
+void setVertexOutLightParamsForWorldSpaceVertex( vec3 _v, vec3 _n )
 {
 	vec4 v = vec4( _v, 1 );
 
@@ -66,6 +59,9 @@ void setVertexOutLightParamsForModelSpaceVertex( vec3 _v )
 	{
 		vertexOut.lightDir[i] = vec3(lightPositionCamera[i] - vertexCameraPos.xyz) / lightRadius[i];
 	}	
+
+	vertexOut.normal = _n;
+	gl_Position = modelViewProjectionMatrix * v;
 }
 
 // ----------------------------------------------
@@ -73,53 +69,31 @@ void main()
 {
 	vec2 texCoord = vertex[0].texcoord;
 
-	// TEMP, gotta recompute light stuff
-	vertexOut.normal = vertex[0].normal;
-	vertexOut.texcoord = vertex[0].texcoord;
-	vertexOut.viewDir = vertex[0].viewDir;
-	for ( int i = 0; i < MAX_LIGHTS; i++ )
-	{
-		vertexOut.lightDir[i] = vertex[0].lightDir[i];
-	}
-
 	//vec3 pos = gl_in[0].gl_Position.xyz;
 	vec3 pos = texture( posTex, texCoord ).xyz;
-	vec3 angles = texture( angTex, texCoord ).xyz;
+	vec4 angles = texture( angTex, texCoord );
 	vec4 random = texture( randomTex, texCoord );	
 
 	vec3 v0 = texture( vertex0Tex, texCoord ).xyz;
 	vec3 v1 = texture( vertex1Tex, texCoord ).xyz;
 	vec3 v2 = texture( vertex2Tex, texCoord ).xyz;	
 
-	mat4 rotMat = rotationMatrix(vec3(0,0,1), angles.x ) * 
-				  rotationMatrix(vec3(0,1,0), angles.y );
+	TriangleData triangleData = getTriangleData( pos, v0, v1, v2, angles );
 
-	v0 = (rotMat * vec4(v0,1)).xyz;
-	v1 = (rotMat * vec4(v1,1)).xyz;
-	v2 = (rotMat * vec4(v2,1)).xyz;
-
-	vec3 v0World = pos + v0.xyz;
-	vec3 v1World = pos + v1.xyz;
-	vec3 v2World = pos + v2.xyz;
-
-	vec3 triangleNormal	= getTriangleNormal( v0World, v1World, v2World );
+	// Shared out params
+	vertexOut.texcoord = vertex[0].texcoord;
+	vertexOut.viewDir = vertex[0].viewDir;
 
 	// v0
-	vertexOut.normal = triangleNormal;
-	setVertexOutLightParamsForModelSpaceVertex( v0World );
-	gl_Position = modelViewProjectionMatrix * vec4(v0World, 1.0 );
+	setVertexOutLightParamsForWorldSpaceVertex( triangleData.v0World, triangleData.normal );
 	EmitVertex();
 
 	// v1
-	vertexOut.normal = triangleNormal;
-	setVertexOutLightParamsForModelSpaceVertex( v1World );	
-	gl_Position = modelViewProjectionMatrix * vec4(v1World, 1.0 );
+	setVertexOutLightParamsForWorldSpaceVertex( triangleData.v1World, triangleData.normal );	
 	EmitVertex();
 
 	// v2
-	vertexOut.normal = triangleNormal;
-	setVertexOutLightParamsForModelSpaceVertex( v2World );	
-	gl_Position = modelViewProjectionMatrix * vec4(v2World, 1.0 );
+	setVertexOutLightParamsForWorldSpaceVertex( triangleData.v2World, triangleData.normal );	
 	EmitVertex();		
 
 	EndPrimitive();

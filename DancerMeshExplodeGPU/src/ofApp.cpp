@@ -85,6 +85,11 @@ void ofApp::update()
 
 		lastTimeCopied = t;
 	}
+
+	for (int i = 0; i < meshes.size(); i++)
+	{
+		meshes.at(i)->update();
+	}
 	
 
 	/*

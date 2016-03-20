@@ -71,11 +71,13 @@ class MeshShaderData
 
 			// Allocate data textures and FBO if needed
 			bool allocate = !posAndAngles.isAllocated();
-			if( pos.isAllocated() ) { if ((int)pos.source()->getWidth() != textureSize) { allocate = true; } }
+			if(posAndAngles.isAllocated() ) 
+			{ if ((int)posAndAngles.source()->getWidth() != textureSize) { allocate = true; } 
+			}
 
 			if ( allocate )
 			{
-				pos.allocateAsData(textureSize, textureSize, GL_RGBA32F, 2); // We could allocate more buffers here if we wanted to store vel or other data
+				posAndAngles.allocateAsData(textureSize, textureSize, GL_RGBA32F, 2); // We could allocate more buffers here if we wanted to store vel or other data
 
 				v0.allocate(textureSize, textureSize, GL_RGBA32F, false);
 				v1.allocate(textureSize, textureSize, GL_RGBA32F, false);
@@ -100,8 +102,8 @@ class MeshShaderData
 			}
 
 			// Upload
-			pos.source()->getTexture(0).loadData( &trianglePos.at(0).x, textureSize, textureSize, GL_RGB);
-			pos.source()->getTexture(1).loadData( &startAngles.at(0).x, textureSize, textureSize, GL_RGBA);
+			posAndAngles.source()->getTexture(0).loadData( &trianglePos.at(0).x, textureSize, textureSize, GL_RGB);
+			posAndAngles.source()->getTexture(1).loadData( &startAngles.at(0).x, textureSize, textureSize, GL_RGBA);
 
 			v0.loadData( &triangleV0.at(0).x, textureSize, textureSize, GL_RGB );
 			v1.loadData( &triangleV1.at(0).x, textureSize, textureSize, GL_RGB );
@@ -122,6 +124,14 @@ class MeshShaderData
 		// ------------------------------------------------
 		void update()
 		{
+			if (!posAndAngles.isAllocated())
+			{
+				return;
+			}
+
+			ofDisableTextureEdgeHack(); // Important on devices that don't support NPOT textures!
+			ofSetColor(ofColor::white);
+			ofEnableBlendMode( OF_BLENDMODE_DISABLED );
 			posAndAngles.dest()->begin();
 				posAndAngles.dest()->activateAllDrawBuffers(); // if we have multiple color buffers in our FBO we need this to activate all of them
 				updateShader.begin();
