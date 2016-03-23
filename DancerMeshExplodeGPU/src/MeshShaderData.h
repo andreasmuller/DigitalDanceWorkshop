@@ -129,17 +129,34 @@ class MeshShaderData
 				return;
 			}
 
+			/*
 			ofDisableTextureEdgeHack(); // Important on devices that don't support NPOT textures!
 			ofSetColor(ofColor::white);
 			ofEnableBlendMode( OF_BLENDMODE_DISABLED );
+
 			posAndAngles.dest()->begin();
+
 				posAndAngles.dest()->activateAllDrawBuffers(); // if we have multiple color buffers in our FBO we need this to activate all of them
+
 				updateShader.begin();
+				
+					updateShader.setUniformTexture("posTex", posAndAngles.source()->getTexture(0), 0);
+					updateShader.setUniformTexture("angTex", posAndAngles.source()->getTexture(1), 1);
+
+					updateShader.setUniformTexture("vertex0Tex", v0, 2);
+					updateShader.setUniformTexture("vertex1Tex", v1, 3);
+					updateShader.setUniformTexture("vertex2Tex", v2, 4);
+
+					updateShader.setUniformTexture("randomTex", random, 5);
+
 					posAndAngles.source()->draw(0, 0);
+				
 				updateShader.end();
+
 			posAndAngles.dest()->end();
 
 			posAndAngles.swap(); // posAndAngles.source() has the new data now
+			*/
 		}
 
 		// ------------------------------------------------

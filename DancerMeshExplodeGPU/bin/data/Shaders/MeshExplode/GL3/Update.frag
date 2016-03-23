@@ -90,7 +90,7 @@ void main (void)
 	//newPos = spawnPosition.xyz;
 
 	//triangleData.normal *
-	vec3 newPos = pos +  vec3(0,0,0.001);
+	vec3 newPos = pos + vec3(0,0,0.001);
 
 	fragOutPosAndAge = vec4( newPos, 1 );
 	fragOutVel = vec4( 0.0f,0.0,0.0,0.0 );

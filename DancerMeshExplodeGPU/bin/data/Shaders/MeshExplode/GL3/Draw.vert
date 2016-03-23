@@ -13,8 +13,6 @@ layout(location = 3) in vec2  texcoord;
 out VertexAttrib {
 	vec3 normal;
 	vec2 texcoord;
-	vec3 viewDir;
-	vec3 lightDir[MAX_LIGHTS];
 } vertex;
 
 uniform mat4 projectionMatrix;
@@ -40,15 +38,6 @@ void main()
 	//vertex.normal = (normalMatrix * vec4(normal,0.0)).xyz;
 	
 	vertex.texcoord = texcoord;
-	
-	vec4 vertexCameraPos = modelViewMatrix * position;
-	vertex.viewDir = -vertexCameraPos.xyz;
-	
-	for ( int i = 0; i < numActiveLights; i++ )
-	{
-		vertex.lightDir[i] = vec3(lightPositionCamera[i] - vertexCameraPos.xyz) / lightRadius[i];
-	}
 
-	//gl_Position = modelViewProjectionMatrix * position;
 	gl_Position = position;	
 }

@@ -12,8 +12,6 @@ precision highp float;
 in VertexAttrib {
 	vec3 normal;
 	vec2 texcoord;
-	vec3 viewDir;
-	vec3 lightDir[MAX_LIGHTS];
 } vertex[];
 
 
@@ -45,7 +43,6 @@ uniform vec3  lightPositionCamera[MAX_LIGHTS];
 
 // Includes our TriangleData and the getTriangleData function
 #pragma include "Triangle.glslinc"
-
 
 // ----------------------------------------------
 void setVertexOutLightParamsForWorldSpaceVertex( vec3 _v, vec3 _n )
@@ -79,10 +76,6 @@ void main()
 	vec3 v2 = texture( vertex2Tex, texCoord ).xyz;	
 
 	TriangleData triangleData = getTriangleData( pos, v0, v1, v2, angles );
-
-	// Shared out params
-	vertexOut.texcoord = vertex[0].texcoord;
-	vertexOut.viewDir = vertex[0].viewDir;
 
 	// v0
 	setVertexOutLightParamsForWorldSpaceVertex( triangleData.v0World, triangleData.normal );
