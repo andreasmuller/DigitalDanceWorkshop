@@ -12,9 +12,12 @@ void ofApp::setup()
 	string mainSettingsPath = "Settings/Main.xml";
 	gui.setup("Main", mainSettingsPath);
 
-//	maxRotation;
-//	triangleNormalVel;
-
+	gui.add( maxRotation.set("Max Rotation", 3, 0, 20));
+	gui.add( triangleNormalVel.set("Triangle Normal Vel", 0.001, 0, 0.1));
+	gui.add( triangleNormalDrag.set("Triangle Normal Drag", 1, 0, 1) );
+	gui.add( wind.set("Wind", ofVec3f(0,0,-0.001), ofVec3f(-0.01), ofVec3f(0.01)));
+	
+	
 	gui.loadFromFile(mainSettingsPath);
 	gui.minimizeAll();
 	gui.setPosition( ofGetWidth() - gui.getWidth() - 10, 10 );
@@ -93,6 +96,11 @@ void ofApp::update()
 
 	for (int i = 0; i < meshes.size(); i++)
 	{
+		meshes.at(i)->maxRotation		 = maxRotation;
+		meshes.at(i)->wind				 = wind;
+		meshes.at(i)->triangleNormalVel  = triangleNormalVel;
+		meshes.at(i)->triangleNormalDrag = triangleNormalDrag;
+		
 		meshes.at(i)->update();
 	}
 	

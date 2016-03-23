@@ -16,7 +16,10 @@ class MeshShaderData
 			meshMaxAge = 1;
 			timeReceivedMesh = 0;
 
-			maxRotation.set("Max Rotation", 2, 0, 180);
+			maxRotation.set("Max Rotation", 3, 0, 20);
+			triangleNormalVel.set("Triangle Normal Vel", 0.001, 0, 0.1);
+			triangleNormalDrag.set("Triangle Normal Drag", 1, 0, 1) ;
+			wind.set("Wind", ofVec3f(0,0,-0.01), ofVec3f(-1), ofVec3f(1));
 		}
 		
 		// ------------------------------------------------
@@ -176,7 +179,15 @@ class MeshShaderData
 					updateShader.setUniform1f("meshMaxAge", meshMaxAge);
 
 					updateShader.setUniform1f("maxRotation", ofDegToRad(maxRotation) );
-					
+			
+					updateShader.setUniform1f("triangleNormalVel", triangleNormalVel);
+					updateShader.setUniform1f("triangleNormalDrag", triangleNormalDrag);
+			
+//			triangleNormalVel.set("Triangle Normal Vel", 0.1, 0, 2);
+//			triangleNormalDrag.set("Triangle Normal Drag", 1, 0, 1) ;
+
+					updateShader.setUniform3fv("wind", wind.get().getPtr() );
+			
 					posAndAngles.source()->draw(0, 0);
 				
 				updateShader.end();
@@ -232,6 +243,9 @@ class MeshShaderData
 		float timeReceivedMesh;
 
 		ofParameter<float> maxRotation;
+		ofParameter<float> triangleNormalVel;
+		ofParameter<float> triangleNormalDrag;
+		ofParameter<ofVec3f> wind;
 
 		vector<ofVec3f> trianglePos;
 		vector<ofVec3f> triangleV0;

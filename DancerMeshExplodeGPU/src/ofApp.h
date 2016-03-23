@@ -36,6 +36,9 @@ class ofApp : public ofBaseApp
 
 		ofParameter<float> maxRotation;
 		ofParameter<float> triangleNormalVel;
+		ofParameter<float> triangleNormalDrag;
+	
+		ofParameter<ofVec3f> wind;
 
 		float timeBetweenCopies;
 		float lastTimeCopied;

@@ -38,7 +38,12 @@ uniform sampler2D randomTex;
 uniform float meshAge = 0.0;
 uniform float meshMaxAge = 1.0;
 
+uniform vec3 wind = vec3(0.0,0.0,0.0);
+
 uniform float maxRotation = 0.1;
+
+uniform float triangleNormalVel = 0.0;
+uniform float triangleNormalDrag = 1.0;
 
 #define OCTAVES 3
 
@@ -68,7 +73,7 @@ void main (void)
 
 	float triangleScale = linearStepOut( meshMaxAge * 0.9, meshMaxAge, meshAge );
 
-	float forceMagnitude = linearStep( meshMaxAge * 0.1, meshMaxAge * 0.2, meshAge );
+	float forceMagnitude = linearStep( meshMaxAge * 0.01, meshMaxAge * 0.1, meshAge );
 
 	angles.x += map( random.y, 0, 1, -maxRotation, maxRotation ) * forceMagnitude;  
 	angles.y += map( random.z, 0, 1, -maxRotation, maxRotation ) * forceMagnitude;	
@@ -96,16 +101,17 @@ void main (void)
 	vec3 newPos = pos + newVel;
 	*/
 
-	//newPos = spawnPosition.xyz;
+	vec3 frameVel = vec3(0.0);
+	frameVel += wind;
+	frameVel += triangleData.normal * triangleNormalVel;
 
-	//triangleData.normal *
-	vec3 newPos = pos + (triangleData.normal * 0.001 * forceMagnitude);
+	// Fake some drag by slowing the frameVel the more we are facing the triangle normal  
+	float amountTriangleNormalFacesTravelDir = dot( triangleData.normal, normalize(frameVel) ); // 1 pointing the same way, -1 pointing opposite
+	amountTriangleNormalFacesTravelDir = abs(amountTriangleNormalFacesTravelDir); // both sides have drag
+	frameVel *= map( amountTriangleNormalFacesTravelDir, 0.0, 1.0,   1.0, triangleNormalDrag );
 
-//float amountTriangleNormalFacesTravelDir = dot( rotatedTriangleNormal.xyz, normalize(frameVel) ); // 1 pointing the same way, -1 pointing opposite
-//amountTriangleNormalFacesTravelDir = abs(amountTriangleNormalFacesTravelDir);
-//frameVel *= map( amountTriangleNormalFacesTravelDir, 0, 1,   1, u_triangleNormalDrag );
+	vec3 newPos = pos + frameVel;
 
 	fragOutPos = vec4( newPos, 1.0 );
 	fragOutAng = angles;
-	//fragOutVel = vec4( 1.0, 1.0, 1.0, 1.0 );	
 }

@@ -86,7 +86,8 @@ class DancerMeshFBX : public DancerMesh
 
 	// TEMP		
 			ofxFBXAnimation& currentAnimation = fbx.getCurrentAnimation();
-			currentAnimation.setFramerate(120.0f);
+			//currentAnimation.setFramerate(120.0f);
+			//currentAnimation.setFramerate(60.0f);
 			
 		/*	
 			currentAnimation.stop();
@@ -139,7 +140,6 @@ class DancerMeshFBX : public DancerMesh
 					modelMiddle = midPointStickyPoints.at(0).currentPos;
 				}
 			}
-
 		}
 
 	
