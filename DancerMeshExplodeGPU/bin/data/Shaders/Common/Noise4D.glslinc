@@ -119,7 +119,7 @@ vec3 getNoiseOffset( vec4 _pos )
 
 // -------------------------------------------------------------------------------------
 // Returns the FBM in the range -1..1
-// Standard is _lacunarity = 2.0 and _persistence = 0.5
+// Standard is _lacunarity = 2.021 and _persistence = 0.5087
 //
 float fbm(vec4 _p, int _octaves, float _lacunarity, float _persistence )
 {
@@ -141,7 +141,7 @@ float fbm(vec4 _p, int _octaves, float _lacunarity, float _persistence )
 
 // -------------------------------------------------------------------------------------
 // Returns the FBM in the range 0..1
-// Standard is _lacunarity = 2.0 and _persistence = 0.5
+// Standard is _lacunarity = 2.021 and _persistence = 0.5087
 //
 float fbmu(vec4 _p, int _octaves, float _lacunarity, float _persistence )
 {
@@ -149,7 +149,7 @@ float fbmu(vec4 _p, int _octaves, float _lacunarity, float _persistence )
 }
 
 // -------------------------------------------------------------------------------------
-// Standard is _lacunarity = 2.0 and _persistence = 0.5
+// Standard is _lacunarity = 2.021 and _persistence = 0.5087
 //
 vec3 fbmvec3(vec4 _p, int _octaves, float _lacunarity, float _persistence )
 {

@@ -24,7 +24,13 @@ class MathUtils
 			// Scale, and clamp x to 0..1 range
 			return ofClamp( (_t - _edge0)/(_edge1 - _edge0), 0.0f, 1.0f);
 		}
-	
+
+		// ------------------------------------------------------------
+		static float linearStepOut( float _high1, float _low1, float _t)
+		{
+			return  (1.0f - linearStep(_high1, _low1, _t));
+		}
+
 		// ------------------------------------------------------------
 		static float linearStepInOut( float _low0, float _high0, float _high1, float _low1, float _t )
 		{
@@ -39,7 +45,13 @@ class MathUtils
 			// Evaluate polynomial
 			return x*x*x*(x*(x*6 - 15) + 10);
 		}
-	
+
+		// ------------------------------------------------------------
+		static float smoothStepOut( float _high1, float _low1, float _t)
+		{
+			return (1.0f - smoothStep(_high1, _low1, _t));
+		}
+
 		// ------------------------------------------------------------
 		static float smoothStepInOut( float _low0, float _high0, float _high1, float _low1, float _t )
 		{

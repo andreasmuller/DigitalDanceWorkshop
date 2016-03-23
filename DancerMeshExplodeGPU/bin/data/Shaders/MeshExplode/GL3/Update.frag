@@ -35,6 +35,11 @@ uniform sampler2D vertex2Tex;
 
 uniform sampler2D randomTex;
 
+uniform float meshAge = 0.0;
+uniform float meshMaxAge = 1.0;
+
+uniform float maxRotation = 0.1;
+
 #define OCTAVES 3
 
 in vec4 colorVarying;
@@ -46,16 +51,14 @@ layout(location = 1) out vec4 fragOutAng;
 // Includes our TriangleData and the getTriangleData function
 #pragma include "Triangle.glslinc"
 
-
 // -----------------------------------------------------------
 void main (void)
 {
 	vec2 texCoord = texCoordVarying;
 
-	vec2 texCoord = vertex[0].texcoord;
-
 	//vec3 pos = gl_in[0].gl_Position.xyz;
 	vec3 pos = texture( posTex, texCoord ).xyz;
+	//float age
 	vec4 angles = texture( angTex, texCoord );
 	vec4 random = texture( randomTex, texCoord );	
 
@@ -63,8 +66,14 @@ void main (void)
 	vec3 v1 = texture( vertex1Tex, texCoord ).xyz;
 	vec3 v2 = texture( vertex2Tex, texCoord ).xyz;	
 
-	TriangleData triangleData = getTriangleData( pos, v0, v1, v2, angles );
+	float triangleScale = linearStepOut( meshMaxAge * 0.9, meshMaxAge, meshAge );
 
+	float forceMagnitude = linearStep( meshMaxAge * 0.1, meshMaxAge * 0.2, meshAge );
+
+	angles.x += map( random.y, 0, 1, -maxRotation, maxRotation ) * forceMagnitude;  
+	angles.y += map( random.z, 0, 1, -maxRotation, maxRotation ) * forceMagnitude;	
+
+	TriangleData triangleData = getTriangleData( pos, v0, v1, v2, angles );
 
 /*
 	vec3 noisePosition = pos  * noisePositionScale;
@@ -90,9 +99,13 @@ void main (void)
 	//newPos = spawnPosition.xyz;
 
 	//triangleData.normal *
-	vec3 newPos = pos + vec3(0,0,0.001);
+	vec3 newPos = pos + (triangleData.normal * 0.001 * forceMagnitude);
 
-	fragOutPosAndAge = vec4( newPos, 1 );
-	fragOutVel = vec4( 0.0f,0.0,0.0,0.0 );
+//float amountTriangleNormalFacesTravelDir = dot( rotatedTriangleNormal.xyz, normalize(frameVel) ); // 1 pointing the same way, -1 pointing opposite
+//amountTriangleNormalFacesTravelDir = abs(amountTriangleNormalFacesTravelDir);
+//frameVel *= map( amountTriangleNormalFacesTravelDir, 0, 1,   1, u_triangleNormalDrag );
+
+	fragOutPos = vec4( newPos, 1.0 );
+	fragOutAng = angles;
 	//fragOutVel = vec4( 1.0, 1.0, 1.0, 1.0 );	
 }

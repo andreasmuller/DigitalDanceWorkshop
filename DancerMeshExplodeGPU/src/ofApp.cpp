@@ -12,6 +12,9 @@ void ofApp::setup()
 	string mainSettingsPath = "Settings/Main.xml";
 	gui.setup("Main", mainSettingsPath);
 
+//	maxRotation;
+//	triangleNormalVel;
+
 	gui.loadFromFile(mainSettingsPath);
 	gui.minimizeAll();
 	gui.setPosition( ofGetWidth() - gui.getWidth() - 10, 10 );
@@ -74,13 +77,15 @@ void ofApp::update()
 
 	dancerMesh.update( ofGetElapsedTimef() );
 
+
 	if (abs(t - lastTimeCopied) > timeBetweenCopies)
 	{
+		float meshMaxAge = meshes.size() * timeBetweenCopies;
 		ofMesh tmpMesh = dancerMesh.triangleMesh;
 	
 		MeshShaderData* nextMesh = meshes.back();
 		meshes.pop_back();
-		nextMesh->newMesh( tmpMesh );
+		nextMesh->newMesh( tmpMesh, meshMaxAge);
 		meshes.push_front(nextMesh);
 
 		lastTimeCopied = t;
@@ -152,6 +157,28 @@ void ofApp::draw()
     camera.end();
     
 	ofDisableDepthTest();
+
+	/*
+	ofRectangle tmpRect(10, 10, 300, 100);
+	
+	ofSetColor( ofColor::darkSlateGrey );
+	ofDrawRectangle(tmpRect );
+
+	ofMesh tmpMesh;
+	tmpMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
+	int res = 90;
+	for (int i = 0; i < res; i++)
+	{
+		float frac = ofNormalize(i, 0, res - 1 );
+		ofVec2f p;
+		p.x = ofMap(frac, 0, 1, tmpRect.x, tmpRect.x + tmpRect.width);
+		p.y = ofMap( MathUtils::linearStepOut(0.9, 1.0, frac), 0, 1,  tmpRect.y + tmpRect.height, tmpRect.y );
+		tmpMesh.addVertex(p);
+	}
+	ofSetColor(ofColor::white);
+	tmpMesh.draw();
+	*/
+
 
 	if (drawGui)
 	{

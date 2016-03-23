@@ -36,6 +36,9 @@ uniform sampler2D vertex2Tex;
 
 uniform sampler2D randomTex;
 
+uniform float meshAge = 0.0;
+uniform float meshMaxAge = 1.0;
+
 uniform int	numActiveLights;
 uniform float lightRadius[MAX_LIGHTS];
 uniform vec3  lightPositionWorld[MAX_LIGHTS];
@@ -71,11 +74,14 @@ void main()
 	vec4 angles = texture( angTex, texCoord );
 	vec4 random = texture( randomTex, texCoord );	
 
-	vec3 v0 = texture( vertex0Tex, texCoord ).xyz;
-	vec3 v1 = texture( vertex1Tex, texCoord ).xyz;
-	vec3 v2 = texture( vertex2Tex, texCoord ).xyz;	
+	float triangleScale = smoothStepOut( meshMaxAge * 0.95, meshMaxAge, meshAge );
 
-	TriangleData triangleData = getTriangleData( pos, v0, v1, v2, angles );
+	vec3 v0Model = texture( vertex0Tex, texCoord ).xyz * triangleScale;
+	vec3 v1Model = texture( vertex1Tex, texCoord ).xyz * triangleScale;
+	vec3 v2Model = texture( vertex2Tex, texCoord ).xyz * triangleScale; 	
+
+	TriangleData triangleData = getTriangleData( pos, v0Model, v1Model, v2Model, angles );
+
 
 	// v0
 	setVertexOutLightParamsForWorldSpaceVertex( triangleData.v0World, triangleData.normal );

@@ -10,8 +10,26 @@ class MeshShaderData
 	public:
 
 		// ------------------------------------------------
-		void newMesh( ofMesh& _triangleMesh )
+		MeshShaderData()
 		{
+			meshAge = 0;
+			meshMaxAge = 1;
+			timeReceivedMesh = 0;
+
+			maxRotation.set("Max Rotation", 2, 0, 180);
+		}
+		
+		// ------------------------------------------------
+		void addToUI( ofxPanel& _panel )
+		{
+			_panel.add( maxRotation );
+		}
+
+		// ------------------------------------------------
+		void newMesh(ofMesh& _triangleMesh, float _meshMaxAge = 1.0f )
+		{
+			meshMaxAge = _meshMaxAge;
+
 			// We are blindly assuming that we're getting a triangle mesh, we should really be 
 			// checking mesh primitive type and go by indices if they exist
 			if (_triangleMesh.getNumVertices() % 3 != 0)
@@ -48,8 +66,8 @@ class MeshShaderData
 				ofVec3f localV2 = v2 - midPoint;
 
 				ofVec2f uv;
-				uv.x = fmodf(i, textureSize) / textureSize;
-				uv.y = floor(i / textureSize) / textureSize;
+				uv.x = (i % textureSize) / (float)textureSize;
+				uv.y = floor(i / textureSize) / (float)textureSize;
 
 				pointsMesh.addVertex(midPoint); // This vertex position could really be anything as we will later read it from our data FBO
 				pointsMesh.addTexCoord( uv );	// We'll use this though when sampling from the data textures
@@ -72,7 +90,8 @@ class MeshShaderData
 			// Allocate data textures and FBO if needed
 			bool allocate = !posAndAngles.isAllocated();
 			if(posAndAngles.isAllocated() ) 
-			{ if ((int)posAndAngles.source()->getWidth() != textureSize) { allocate = true; } 
+			{ 
+				if ((int)posAndAngles.source()->getWidth() != textureSize) { allocate = true; } 
 			}
 
 			if ( allocate )
@@ -109,16 +128,18 @@ class MeshShaderData
 			v1.loadData( &triangleV1.at(0).x, textureSize, textureSize, GL_RGB );
 			v2.loadData( &triangleV2.at(0).x, textureSize, textureSize, GL_RGB );
 
-			//ofLogLevel tmpLevel = ofGetLogLevel();
-			//ofSetLogLevel( OF_LOG_VERBOSE );
+			ofLogLevel tmpLevel = ofGetLogLevel();
+			ofSetLogLevel( OF_LOG_VERBOSE );
 
 			// TODO: This shader should really be shared among all MeshShaderData instances
 			if ( !drawShader.isLoaded() )
 			{
 				drawShader.load("Shaders/MeshExplode/GL3/Draw.vert", "Shaders/MeshExplode/GL3/Draw.frag", "Shaders/MeshExplode/GL3/Draw.geom");
-				//updateShader.load("Shaders/MeshExplode/GL3/Update");
+				updateShader.load("Shaders/MeshExplode/GL3/Update");
 			}
-			//ofSetLogLevel(tmpLevel);
+			ofSetLogLevel(tmpLevel);
+
+			timeReceivedMesh = ofGetElapsedTimef();
 		}
 
 		// ------------------------------------------------
@@ -129,7 +150,9 @@ class MeshShaderData
 				return;
 			}
 
-			/*
+			float t = ofGetElapsedTimef();
+			meshAge = t - timeReceivedMesh;
+
 			ofDisableTextureEdgeHack(); // Important on devices that don't support NPOT textures!
 			ofSetColor(ofColor::white);
 			ofEnableBlendMode( OF_BLENDMODE_DISABLED );
@@ -149,6 +172,11 @@ class MeshShaderData
 
 					updateShader.setUniformTexture("randomTex", random, 5);
 
+					updateShader.setUniform1f( "meshAge", meshAge );
+					updateShader.setUniform1f("meshMaxAge", meshMaxAge);
+
+					updateShader.setUniform1f("maxRotation", ofDegToRad(maxRotation) );
+					
 					posAndAngles.source()->draw(0, 0);
 				
 				updateShader.end();
@@ -156,7 +184,7 @@ class MeshShaderData
 			posAndAngles.dest()->end();
 
 			posAndAngles.swap(); // posAndAngles.source() has the new data now
-			*/
+			
 		}
 
 		// ------------------------------------------------
@@ -166,9 +194,6 @@ class MeshShaderData
 			{
 				return;
 			}
-
-			//cout << shader.getShaderSource( GL_FRAGMENT_SHADER ) << endl;
-			//cout << endl;
 
 			drawShader.begin();
 
@@ -180,7 +205,10 @@ class MeshShaderData
 				drawShader.setUniformTexture("vertex2Tex", v2, 4);
 
 				drawShader.setUniformTexture("randomTex", random, 5);
-		
+
+				drawShader.setUniform1f("meshAge", meshAge);
+				drawShader.setUniform1f("meshMaxAge", meshMaxAge);
+
 				pointsMesh.draw();
 
 			drawShader.end();
@@ -198,6 +226,12 @@ class MeshShaderData
 		ofTexture v2;
 
 		ofTexture random;
+
+		float meshAge;
+		float meshMaxAge;
+		float timeReceivedMesh;
+
+		ofParameter<float> maxRotation;
 
 		vector<ofVec3f> trianglePos;
 		vector<ofVec3f> triangleV0;

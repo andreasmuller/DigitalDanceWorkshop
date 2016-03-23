@@ -34,6 +34,9 @@ class ofApp : public ofBaseApp
 
 		deque<MeshShaderData*> meshes;
 
+		ofParameter<float> maxRotation;
+		ofParameter<float> triangleNormalVel;
+
 		float timeBetweenCopies;
 		float lastTimeCopied;
 		int maxCopies;
