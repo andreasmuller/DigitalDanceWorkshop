@@ -15,8 +15,13 @@ void ofApp::setup()
 	gui.add( maxRotation.set("Max Rotation", 3, 0, 20));
 	gui.add( triangleNormalVel.set("Triangle Normal Vel", 0.001, 0, 0.1));
 	gui.add( triangleNormalDrag.set("Triangle Normal Drag", 1, 0, 1) );
-	gui.add( wind.set("Wind", ofVec3f(0,0,-0.001), ofVec3f(-0.01), ofVec3f(0.01)));
+
+	gui.add( noisePositionFrequency.set("Noise Pos Freq", 0.1, 0, 1) );
+	gui.add( noiseMagnitude.set("Noise Magnitude", 0.001, 0, 0.1) );
+	gui.add( noiseTimeFrequency.set("Noise Time Freq", 1, 0, 5) );
+	gui.add( noisePersistence.set("Noise Persistence", 0.35, 0, 1) );
 	
+	gui.add( wind.set("Wind", ofVec3f(0,0,-0.001), ofVec3f(-0.01), ofVec3f(0.01)));
 	
 	gui.loadFromFile(mainSettingsPath);
 	gui.minimizeAll();
@@ -35,7 +40,6 @@ void ofApp::setup()
 	camera.setNearClip(0.01f);
 	camera.setPosition(0, tmpHeight, 3);
 	camera.lookAt(ofVec3f(0, tmpHeight*0.8, 0));
-
 
 	light0.setPointLight();
 	light0.setPosition( 6, 9, -5);
@@ -100,6 +104,11 @@ void ofApp::update()
 		meshes.at(i)->wind				 = wind;
 		meshes.at(i)->triangleNormalVel  = triangleNormalVel;
 		meshes.at(i)->triangleNormalDrag = triangleNormalDrag;
+		
+		meshes.at(i)->noisePositionFrequency = noisePositionFrequency;
+		meshes.at(i)->noiseMagnitude		 = noiseMagnitude;
+		meshes.at(i)->noiseTimeFrequency	 = noiseTimeFrequency;
+		meshes.at(i)->noisePersistence		 = noisePersistence;
 		
 		meshes.at(i)->update();
 	}

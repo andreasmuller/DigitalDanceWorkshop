@@ -19,6 +19,12 @@ class MeshShaderData
 			maxRotation.set("Max Rotation", 3, 0, 20);
 			triangleNormalVel.set("Triangle Normal Vel", 0.001, 0, 0.1);
 			triangleNormalDrag.set("Triangle Normal Drag", 1, 0, 1) ;
+			
+			noisePositionFrequency.set("Noise Pos Freq", 0.1, 0, 1);
+			noiseMagnitude.set("Noise Magnitude", 0.001, 0, 0.1);
+			noiseTimeFrequency.set("Noise Time Freq", 1, 0, 5);
+			noisePersistence.set("Noise Persistence", 0.3, 0, 1);
+			
 			wind.set("Wind", ofVec3f(0,0,-0.01), ofVec3f(-1), ofVec3f(1));
 		}
 		
@@ -175,6 +181,8 @@ class MeshShaderData
 
 					updateShader.setUniformTexture("randomTex", random, 5);
 
+					updateShader.setUniform1f( "time", t );
+			
 					updateShader.setUniform1f( "meshAge", meshAge );
 					updateShader.setUniform1f("meshMaxAge", meshMaxAge);
 
@@ -183,9 +191,11 @@ class MeshShaderData
 					updateShader.setUniform1f("triangleNormalVel", triangleNormalVel);
 					updateShader.setUniform1f("triangleNormalDrag", triangleNormalDrag);
 			
-//			triangleNormalVel.set("Triangle Normal Vel", 0.1, 0, 2);
-//			triangleNormalDrag.set("Triangle Normal Drag", 1, 0, 1) ;
-
+					updateShader.setUniform1f("noisePositionFrequency", noisePositionFrequency);
+					updateShader.setUniform1f("noiseMagnitude", noiseMagnitude);
+					updateShader.setUniform1f("noiseTimeFrequency", noiseTimeFrequency);
+					updateShader.setUniform1f("noisePersistence", noisePersistence);
+			
 					updateShader.setUniform3fv("wind", wind.get().getPtr() );
 			
 					posAndAngles.source()->draw(0, 0);
@@ -245,6 +255,12 @@ class MeshShaderData
 		ofParameter<float> maxRotation;
 		ofParameter<float> triangleNormalVel;
 		ofParameter<float> triangleNormalDrag;
+
+		ofParameter<float> noisePositionFrequency;
+		ofParameter<float> noiseMagnitude;
+		ofParameter<float> noiseTimeFrequency;
+		ofParameter<float> noisePersistence;
+	
 		ofParameter<ofVec3f> wind;
 
 		vector<ofVec3f> trianglePos;

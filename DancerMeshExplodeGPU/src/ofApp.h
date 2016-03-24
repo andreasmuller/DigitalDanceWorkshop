@@ -38,6 +38,11 @@ class ofApp : public ofBaseApp
 		ofParameter<float> triangleNormalVel;
 		ofParameter<float> triangleNormalDrag;
 	
+		ofParameter<float> noisePositionFrequency;
+		ofParameter<float> noiseMagnitude;
+		ofParameter<float> noiseTimeFrequency;
+		ofParameter<float> noisePersistence;
+	
 		ofParameter<ofVec3f> wind;
 
 		float timeBetweenCopies;

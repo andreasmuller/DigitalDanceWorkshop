@@ -12,8 +12,8 @@ struct TriangleData
 
 // ----------------------------------------------
 TriangleData getTriangleData( vec3 _worldPos, 
-	 						  vec3 _v0Model, vec3 _v1Model, vec3 _v2Model,
-	 						  vec4 _angles )
+              	 						  vec3 _v0Model, vec3 _v1Model, vec3 _v2Model,
+              	 						  vec4 _angles )
 {
 	mat4 rotMat = rotationMatrix(vec3(0,0,1), _angles.x ) * 
 				        rotationMatrix(vec3(0,1,0), _angles.y );

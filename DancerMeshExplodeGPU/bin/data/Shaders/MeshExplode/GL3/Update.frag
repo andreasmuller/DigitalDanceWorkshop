@@ -6,6 +6,7 @@ precision highp float;
 #pragma include "../../Common/SimplexNoiseDerivatives4D.glslinc"
 //#pragma include "../../Common/Noise4D.glslinc"
 
+
 /*
 uniform float time;
 uniform float timeStep;
@@ -21,6 +22,8 @@ uniform float noiseTimeScale;// = 1.0 / 4000.0;
 uniform float noisePersistence;// = 0.2;
 uniform vec3 wind;// = vec3( 0.5, 0.0, 0.0 );
 */
+
+uniform float time;
 
 uniform mat4 projectionMatrix;
 uniform mat4 modelViewMatrix;
@@ -45,6 +48,11 @@ uniform float maxRotation = 0.1;
 uniform float triangleNormalVel = 0.0;
 uniform float triangleNormalDrag = 1.0;
 
+uniform float noisePositionFrequency = 0.1; 
+uniform float noiseMagnitude = 0.075;
+uniform float noiseTimeFrequency = 1.0;
+uniform float noisePersistence = 0.2;
+
 #define OCTAVES 3
 
 in vec4 colorVarying;
@@ -63,7 +71,7 @@ void main (void)
 
 	//vec3 pos = gl_in[0].gl_Position.xyz;
 	vec3 pos = texture( posTex, texCoord ).xyz;
-	//float age
+
 	vec4 angles = texture( angTex, texCoord );
 	vec4 random = texture( randomTex, texCoord );	
 
@@ -73,7 +81,9 @@ void main (void)
 
 	float triangleScale = linearStepOut( meshMaxAge * 0.9, meshMaxAge, meshAge );
 
-	float forceMagnitude = linearStep( meshMaxAge * 0.01, meshMaxAge * 0.1, meshAge );
+	float restEnd = 0.1;		// vary these to make the mesh hold it's shape longer
+	float rampupLength = 0.1;	// unit is age normalized
+	float forceMagnitude = linearStep( meshMaxAge * restEnd, meshMaxAge * (restEnd+rampupLength), meshAge );
 
 	angles.x += map( random.y, 0, 1, -maxRotation, maxRotation ) * forceMagnitude;  
 	angles.y += map( random.z, 0, 1, -maxRotation, maxRotation ) * forceMagnitude;	
@@ -104,11 +114,14 @@ void main (void)
 	vec3 frameVel = vec3(0.0);
 	frameVel += wind;
 	frameVel += triangleData.normal * triangleNormalVel;
+	frameVel += curlNoise( triangleData.pos * noisePositionFrequency, time * noiseTimeFrequency, OCTAVES, noisePersistence ) * noiseMagnitude;
 
 	// Fake some drag by slowing the frameVel the more we are facing the triangle normal  
 	float amountTriangleNormalFacesTravelDir = dot( triangleData.normal, normalize(frameVel) ); // 1 pointing the same way, -1 pointing opposite
 	amountTriangleNormalFacesTravelDir = abs(amountTriangleNormalFacesTravelDir); // both sides have drag
 	frameVel *= map( amountTriangleNormalFacesTravelDir, 0.0, 1.0,   1.0, triangleNormalDrag );
+
+	frameVel *= forceMagnitude; // we ramp the forces up as the mesh ages
 
 	vec3 newPos = pos + frameVel;
 
