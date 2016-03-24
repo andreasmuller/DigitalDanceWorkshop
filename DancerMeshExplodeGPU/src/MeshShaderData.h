@@ -3,6 +3,9 @@
 #include "ofMain.h"
 #include "Utils/FboPingPong.h"
 
+#include "ofMaterialExt.h"
+#include "ofLightExt.h"
+
 // -------------------------------------------------------------------------------------------------------------
 //
 class MeshShaderData

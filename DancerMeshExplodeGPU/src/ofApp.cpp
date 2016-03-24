@@ -21,7 +21,7 @@ void ofApp::setup()
 	gui.add( noiseTimeFrequency.set("Noise Time Freq", 1, 0, 5) );
 	gui.add( noisePersistence.set("Noise Persistence", 0.35, 0, 1) );
 	
-	gui.add( wind.set("Wind", ofVec3f(0,0,-0.001), ofVec3f(-0.01), ofVec3f(0.01)));
+	gui.add( wind.set("Wind", ofVec3f(0,0,-0.001), ofVec3f(-0.1), ofVec3f(0.1)));
 	
 	gui.loadFromFile(mainSettingsPath);
 	gui.minimizeAll();
@@ -84,7 +84,6 @@ void ofApp::update()
 
 	dancerMesh.update( ofGetElapsedTimef() );
 
-
 	if (abs(t - lastTimeCopied) > timeBetweenCopies)
 	{
 		float meshMaxAge = meshes.size() * timeBetweenCopies;
@@ -113,27 +112,6 @@ void ofApp::update()
 		meshes.at(i)->update();
 	}
 	
-
-	/*
-	float meshMaxAge = meshes.size()*timeBetweenCopies;
-
-	for (int meshIndex = 0; meshIndex < meshes.size(); meshIndex++ )
-	{
-		ofSeedRandom(meshIndex * 16777216); // seed the rng with the mesh index, made into a much bigger number first
-
-		ofMesh& mesh = meshes.at(meshIndex);
-		//cout << mesh.getNumVertices() << "	" << mesh.getNumNormals() << "	" << mesh.getNumIndices() << endl;
-
-		//float meshIndexFrac = (meshIndex / (float)meshes.size());
-		float meshTime = fmodf(t, timeBetweenCopies) + (meshIndex * timeBetweenCopies);
-		float ageFrac = (meshTime / meshMaxAge);
-
-		float forcesStrength = MathUtils::linearStep(meshMaxAge * 0.25, meshMaxAge * 0.6, meshTime );
-		float triangleScale = (1.0f - MathUtils::linearStep(meshMaxAge * 0.6, meshMaxAge, meshTime)); //(1.0f - MathUtils::linearStep(_high1, _low1, _t)
-		triangleScale = ofMap(triangleScale, 0, 1, 0.95, 1.0);
-	}
-	*/
-
 	ofSetWindowTitle(ofToString(ofGetFrameRate(), 1));
 }
 
@@ -148,9 +126,9 @@ void ofApp::draw()
     
 		ofEnableLighting();
 		
-			//floorMaterial.begin();
-//				floor.draw();
-			//floorMaterial.end();
+			floorMaterial.begin();
+				floor.draw();
+			floorMaterial.end();
 
 			//dancerMaterial.begin();
 
