@@ -18,6 +18,7 @@ in VertexAttrib {
 out VertexAttrib {
 	vec3 normal;
 	vec2 texcoord;
+	vec4 color;	
 	vec3 viewDir;
 	vec3 lightDir[MAX_LIGHTS];
 } vertexOut;
@@ -39,6 +40,9 @@ uniform sampler2D randomTex;
 uniform float meshAge = 0.0;
 uniform float meshMaxAge = 1.0;
 
+uniform vec4 startColor;
+uniform vec4 endColor;	
+
 uniform int	numActiveLights;
 uniform float lightRadius[MAX_LIGHTS];
 uniform vec3  lightPositionWorld[MAX_LIGHTS];
@@ -47,6 +51,8 @@ uniform vec3  lightPositionCamera[MAX_LIGHTS];
 // Includes our TriangleData and the getTriangleData function
 #pragma include "Triangle.glslinc"
 
+vec4 currentColor = vec4(1.0,1.0,1.0,1.0);	
+
 // ----------------------------------------------
 void setVertexOutLightParamsForWorldSpaceVertex( vec3 _v, vec3 _n )
 {
@@ -54,7 +60,8 @@ void setVertexOutLightParamsForWorldSpaceVertex( vec3 _v, vec3 _n )
 
 	vec4 vertexCameraPos = modelViewMatrix * v;
 	vertexOut.viewDir = -vertexCameraPos.xyz;
-	
+	vertexOut.color = currentColor;
+
 	for ( int i = 0; i < numActiveLights; i++ )
 	{
 		vertexOut.lightDir[i] = vec3(lightPositionCamera[i] - vertexCameraPos.xyz) / lightRadius[i];
@@ -74,7 +81,7 @@ void main()
 	vec4 angles = texture( angTex, texCoord );
 	vec4 random = texture( randomTex, texCoord );	
 
-	float triangleScale = smoothStepOut( meshMaxAge * 0.95, meshMaxAge, meshAge );
+	float triangleScale = 1.0; //smoothStepOut( meshMaxAge * 0.95, meshMaxAge, meshAge );
 
 	vec3 v0Model = texture( vertex0Tex, texCoord ).xyz * triangleScale;
 	vec3 v1Model = texture( vertex1Tex, texCoord ).xyz * triangleScale;
@@ -82,6 +89,7 @@ void main()
 
 	TriangleData triangleData = getTriangleData( pos, v0Model, v1Model, v2Model, angles );
 
+	currentColor = mix( startColor, endColor, map( meshAge, 0.0, meshMaxAge, 0.0, 1.0) );
 
 	// v0
 	setVertexOutLightParamsForWorldSpaceVertex( triangleData.v0World, triangleData.normal );

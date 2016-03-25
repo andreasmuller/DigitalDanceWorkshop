@@ -8,6 +8,7 @@ precision highp float;
 in VertexAttrib {
 	vec3 normal;
 	vec2 texcoord;
+	vec4 color;		
 	vec3 viewDir;
 	vec3 lightDir[MAX_LIGHTS];
 } vertex;
@@ -28,7 +29,7 @@ uniform float lightRadius[MAX_LIGHTS];
 uniform vec3  lightPositionWorld[MAX_LIGHTS];
 uniform vec3  lightPositionCamera[MAX_LIGHTS];
 
-uniform vec4  materialDiffuse;
+//uniform vec4  materialDiffuse; // We'll be using vertex.color
 uniform vec4  materialSpecular;
 uniform float materialShininess;
 
@@ -74,7 +75,7 @@ vec4 computeLighting()
 		float atten = max(0.0, 1.0 - dot(l, l));
 		l = normalize(l);
 		
-		vec3 diffuse  = diffuseLighting(  n, l, materialDiffuse.xyz, lightDiffuse[i].xyz );
+		vec3 diffuse  = diffuseLighting(  n, l, vertex.color.xyz, lightDiffuse[i].xyz );
 		vec3 specular = specularLighting( n, l, v, materialShininess, materialSpecular.xyz, lightSpecular[i].xyz );
 		
 		diffuse *= atten;
@@ -83,7 +84,7 @@ vec4 computeLighting()
 		finalColor += (diffuse + specular);
 	}
 	
-	return vec4(finalColor.xyz, materialDiffuse.a);
+	return vec4(finalColor.xyz, vertex.color.a);
 	
 }
 
@@ -93,7 +94,8 @@ void main (void)
 {
 	vec4 materialAndLight = computeLighting();
 	
-//	fragColor = materialAndLight;
+	fragColor = materialAndLight;
+	//fragColor = vertex.color;
 	//fragColor = vec4(1.0,0.0,1.0,1.0);
-	fragColor = vec4( (vertex.normal.xyz + vec3(1,1,1)) * 0.5, 1 );
+	//fragColor = vec4( (vertex.normal.xyz + vec3(1,1,1)) * 0.5, 1 );
 }

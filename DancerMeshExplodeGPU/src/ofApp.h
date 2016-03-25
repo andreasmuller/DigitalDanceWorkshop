@@ -22,6 +22,8 @@ class ofApp : public ofBaseApp
 		void draw();
 
 		void keyPressed(int key);
+	
+		void nuMeshesChanged( int& _amount );
 
 		ofEasyCam camera;
 
@@ -34,6 +36,9 @@ class ofApp : public ofBaseApp
 
 		deque<MeshShaderData*> meshes;
 
+		ofParameter<int> maxCopies;
+		ofParameter<float> timeBetweenCopies;
+
 		ofParameter<float> maxRotation;
 		ofParameter<float> triangleNormalVel;
 		ofParameter<float> triangleNormalDrag;
@@ -43,14 +48,14 @@ class ofApp : public ofBaseApp
 		ofParameter<float> noiseTimeFrequency;
 		ofParameter<float> noisePersistence;
 	
+		ofParameter<ofColor> startColor;
+		ofParameter<ofColor> endColor;
+	
 		ofParameter<ofVec3f> wind;
-
-		float timeBetweenCopies;
+	
 		float lastTimeCopied;
-		int maxCopies;
 
-		ofLightExt light0;
-		ofLightExt light1;
+		vector<ofLightExt*> lights;
 
 		ofxPanel gui;
 		bool drawGui;

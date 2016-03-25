@@ -2,10 +2,14 @@
 	<Max_Rotation>6.6</Max_Rotation>
 	<Triangle_Normal_Vel>0.009</Triangle_Normal_Vel>
 	<Triangle_Normal_Drag>0.94</Triangle_Normal_Drag>
-	<Wind>0, 0.00408163, -0.00918368</Wind>
+	<Wind>0, 0.00306122, -0.0142857</Wind>
 <Main/>
-<Noise_Pos_Freq>0.195</Noise_Pos_Freq>
+<Noise_Pos_Freq>0.25</Noise_Pos_Freq>
 	<Noise_Magnitude>0.0065</Noise_Magnitude>
 	<Noise_Time_Freq>0.075</Noise_Time_Freq>
 	<Noise_Persistence>0.29</Noise_Persistence>
+<Copies>61</Copies>
+	<Time_between_Copies>0.22</Time_between_Copies>
+<Start_Color>0, 0, 0, 255</Start_Color>
+	<End_Color>255, 255, 255, 255</End_Color>
 </Main>

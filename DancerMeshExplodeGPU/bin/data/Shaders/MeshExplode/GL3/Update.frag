@@ -79,37 +79,16 @@ void main (void)
 	vec3 v1 = texture( vertex1Tex, texCoord ).xyz;
 	vec3 v2 = texture( vertex2Tex, texCoord ).xyz;	
 
-	float triangleScale = linearStepOut( meshMaxAge * 0.9, meshMaxAge, meshAge );
+	float triangleScale = linearStepOut( meshMaxAge * 0.8, meshMaxAge, meshAge );
 
-	float restEnd = 0.1;		// vary these to make the mesh hold it's shape longer
-	float rampupLength = 0.1;	// unit is age normalized
+	float restEnd = 0.02;		// vary these to make the mesh hold it's shape longer
+	float rampupLength = 0.05;	// unit is age normalized
 	float forceMagnitude = linearStep( meshMaxAge * restEnd, meshMaxAge * (restEnd+rampupLength), meshAge );
 
 	angles.x += map( random.y, 0, 1, -maxRotation, maxRotation ) * forceMagnitude;  
 	angles.y += map( random.z, 0, 1, -maxRotation, maxRotation ) * forceMagnitude;	
 
 	TriangleData triangleData = getTriangleData( pos, v0, v1, v2, angles );
-
-/*
-	vec3 noisePosition = pos  * noisePositionScale;
-	float noiseTime    = time * noiseTimeScale;
-	
-	vec3 noiseVelocity = curlNoise( noisePosition, noiseTime, OCTAVES, noisePersistence ) * noiseMagnitude;
-	//vec3 noiseVelocity = fbmvec3( vec4(noisePosition, noiseTime), OCTAVES, 2.023, noisePersistence ) * noiseMagnitude;	
-	vec3 totalVelocity = wind + noiseVelocity;// + (oldVel * oldVelToUse);
-
-	newVel += totalVelocity;
-	newVel = mix( newVel, oldVel, oldVelToUse );
-
-	// Limit vel
-	float tmpVelLength = length( newVel );
-	if( tmpVelLength > particleMaxVel )
-	{
-		newVel = (newVel / tmpVelLength) * particleMaxVel;
-	}
-
-	vec3 newPos = pos + newVel;
-	*/
 
 	vec3 frameVel = vec3(0.0);
 	frameVel += wind;

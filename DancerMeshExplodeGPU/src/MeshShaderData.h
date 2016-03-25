@@ -38,10 +38,8 @@ class MeshShaderData
 		}
 
 		// ------------------------------------------------
-		void newMesh(ofMesh& _triangleMesh, float _meshMaxAge = 1.0f )
+		void newMesh(ofMesh& _triangleMesh )
 		{
-			meshMaxAge = _meshMaxAge;
-
 			// We are blindly assuming that we're getting a triangle mesh, we should really be 
 			// checking mesh primitive type and go by indices if they exist
 			if (_triangleMesh.getNumVertices() % 3 != 0)
@@ -212,7 +210,7 @@ class MeshShaderData
 		}
 
 		// ------------------------------------------------
-		void draw()
+		void draw( vector<ofLightExt*> _lights )
 		{
 			if (!posAndAngles.isAllocated())
 			{
@@ -221,6 +219,9 @@ class MeshShaderData
 
 			drawShader.begin();
 
+				ofLightExt::setParams( &drawShader, _lights, ofGetCurrentMatrix( OF_MATRIX_MODELVIEW ), false );
+				material.setParams( &drawShader, false );
+			
 				drawShader.setUniformTexture("posTex", posAndAngles.source()->getTexture(0), 0);
 				drawShader.setUniformTexture("angTex", posAndAngles.source()->getTexture(1), 1);
 
@@ -229,7 +230,15 @@ class MeshShaderData
 				drawShader.setUniformTexture("vertex2Tex", v2, 4);
 
 				drawShader.setUniformTexture("randomTex", random, 5);
-
+			
+				//ofParameter<ofColor> startColor;
+				//ofParameter<ofColor> endColor;
+				ofFloatColor startColorFloat = startColor.get();
+				ofFloatColor endColorFloat = endColor.get();
+			
+				drawShader.setUniform4fv("startColor", &startColorFloat.v[0] );
+				drawShader.setUniform4fv("endColor", &endColorFloat.v[0] );
+			
 				drawShader.setUniform1f("meshAge", meshAge);
 				drawShader.setUniform1f("meshMaxAge", meshMaxAge);
 
@@ -255,6 +264,8 @@ class MeshShaderData
 		float meshMaxAge;
 		float timeReceivedMesh;
 
+		ofMaterialExt material;
+	
 		ofParameter<float> maxRotation;
 		ofParameter<float> triangleNormalVel;
 		ofParameter<float> triangleNormalDrag;
@@ -265,6 +276,9 @@ class MeshShaderData
 		ofParameter<float> noisePersistence;
 	
 		ofParameter<ofVec3f> wind;
+	
+		ofParameter<ofColor> startColor;
+		ofParameter<ofColor> endColor;
 
 		vector<ofVec3f> trianglePos;
 		vector<ofVec3f> triangleV0;

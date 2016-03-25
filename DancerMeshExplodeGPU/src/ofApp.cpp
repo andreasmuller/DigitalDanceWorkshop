@@ -12,6 +12,9 @@ void ofApp::setup()
 	string mainSettingsPath = "Settings/Main.xml";
 	gui.setup("Main", mainSettingsPath);
 
+	gui.add( maxCopies.set("Copies", 10, 1, 100));
+	gui.add( timeBetweenCopies.set("Time between Copies", 1, 0, 4));
+	
 	gui.add( maxRotation.set("Max Rotation", 3, 0, 20));
 	gui.add( triangleNormalVel.set("Triangle Normal Vel", 0.001, 0, 0.1));
 	gui.add( triangleNormalDrag.set("Triangle Normal Drag", 1, 0, 1) );
@@ -22,6 +25,12 @@ void ofApp::setup()
 	gui.add( noisePersistence.set("Noise Persistence", 0.35, 0, 1) );
 	
 	gui.add( wind.set("Wind", ofVec3f(0,0,-0.001), ofVec3f(-0.1), ofVec3f(0.1)));
+
+	gui.add( startColor.set("Start Color", ofColor::black, ofColor(0,0,0,0), ofColor::white) );
+	gui.add( endColor.set("End Color", ofColor::white, ofColor(0,0,0,0), ofColor::white) );
+
+	ofParameter<ofColor> endColor;
+	
 	
 	gui.loadFromFile(mainSettingsPath);
 	gui.minimizeAll();
@@ -41,15 +50,20 @@ void ofApp::setup()
 	camera.setPosition(0, tmpHeight, 3);
 	camera.lookAt(ofVec3f(0, tmpHeight*0.8, 0));
 
-	light0.setPointLight();
-	light0.setPosition( 6, 9, -5);
-	light0.setAttenuation(1, 0.085, 0);
-	light0.enable();
+	lights.push_back( new ofLightExt() );
+	lights.push_back( new ofLightExt() );
+	
+	lights.at(0)->setPointLight();
+	lights.at(0)->setPosition( 6, 9, -5);
+	lights.at(0)->setAttenuation(1, 0.085, 0);
+	lights.at(0)->setRadius( 20 );
+	lights.at(0)->enable();
 
-	light1.setPointLight();
-	light1.setPosition(-6, 10, 4);
-	light1.setAttenuation(1, 0.085, 0);
-	light1.enable();
+	lights.at(1)->setPointLight();
+	lights.at(1)->setPosition(-6, 10, 4);
+	lights.at(1)->setAttenuation(1, 0.085, 0);
+	lights.at(1)->setRadius( 20 );
+	lights.at(1)->enable();
 
 	floor.set(200, 200, 2, 2);
 	floor.rotate(-90, ofVec3f(1, 0, 0));
@@ -66,16 +80,29 @@ void ofApp::setup()
 	dancerMaterial.setShininess(15);
 
 	lastTimeCopied = 0;
-	timeBetweenCopies = 1.0;
-	maxCopies = 6;
 
+	int tmp = maxCopies;
+	nuMeshesChanged( tmp );
+
+	drawGui = false;
+}
+
+//--------------------------------------------------------------
+void ofApp::nuMeshesChanged( int& _amount )
+{
+	for( int i = 0; i < meshes.size(); i++ )
+	{
+		delete meshes[i];
+	}
+	
+	meshes.clear();
 	for (int i = 0; i < maxCopies; i++)
 	{
 		meshes.push_back( new MeshShaderData() );
 	}
-
-	drawGui = false;
+	
 }
+
 
 //--------------------------------------------------------------
 void ofApp::update() 
@@ -84,21 +111,23 @@ void ofApp::update()
 
 	dancerMesh.update( ofGetElapsedTimef() );
 
-	if (abs(t - lastTimeCopied) > timeBetweenCopies)
+	if (abs(t - lastTimeCopied) > timeBetweenCopies && meshes.size() > 0 )
 	{
-		float meshMaxAge = meshes.size() * timeBetweenCopies;
 		ofMesh tmpMesh = dancerMesh.triangleMesh;
 	
 		MeshShaderData* nextMesh = meshes.back();
 		meshes.pop_back();
-		nextMesh->newMesh( tmpMesh, meshMaxAge);
+		nextMesh->newMesh( tmpMesh );
 		meshes.push_front(nextMesh);
 
 		lastTimeCopied = t;
 	}
 
+	float meshMaxAge = meshes.size() * timeBetweenCopies;
+	
 	for (int i = 0; i < meshes.size(); i++)
 	{
+		meshes.at(i)->meshMaxAge		 = meshMaxAge;
 		meshes.at(i)->maxRotation		 = maxRotation;
 		meshes.at(i)->wind				 = wind;
 		meshes.at(i)->triangleNormalVel  = triangleNormalVel;
@@ -108,6 +137,9 @@ void ofApp::update()
 		meshes.at(i)->noiseMagnitude		 = noiseMagnitude;
 		meshes.at(i)->noiseTimeFrequency	 = noiseTimeFrequency;
 		meshes.at(i)->noisePersistence		 = noisePersistence;
+		
+		meshes.at(i)->startColor			= startColor;
+		meshes.at(i)->endColor				= endColor;
 		
 		meshes.at(i)->update();
 	}
@@ -130,50 +162,31 @@ void ofApp::draw()
 				floor.draw();
 			floorMaterial.end();
 
-			//dancerMaterial.begin();
+			// TEMP, everything should use the custom phong shader
+			dancerMaterial.begin();
 
 				dancerMesh.triangleMesh.draw();
 
-				for ( int i = 0; i < meshes.size(); i++ )
-				{
-					meshes.at(i)->draw();
-				}
+			dancerMaterial.end();
 
-			//dancerMaterial.end();
-			
+			for ( int i = 0; i < meshes.size(); i++ )
+			{
+				meshes.at(i)->draw( lights );
+			}
+
+	
 		ofDisableLighting();
-    
-		ofSetColor( light0.getDiffuseColor() );
-		if(light0.getIsEnabled()) ofDrawSphere( light0.getPosition(), 0.1 );
+	
+	
+		ofSetColor( lights.at(0)->getDiffuseColor() );
+		if(lights.at(0)->getIsEnabled()) ofDrawSphere( lights.at(0)->getPosition(), 0.1 );
 
-		ofSetColor(light1.getDiffuseColor());
-		if (light1.getIsEnabled()) ofDrawSphere(light1.getPosition(), 0.1);
+		ofSetColor(lights.at(1)->getDiffuseColor());
+		if (lights.at(1)->getIsEnabled()) ofDrawSphere(lights.at(1)->getPosition(), 0.1);
     
     camera.end();
-    
-	ofDisableDepthTest();
-
-	/*
-	ofRectangle tmpRect(10, 10, 300, 100);
 	
-	ofSetColor( ofColor::darkSlateGrey );
-	ofDrawRectangle(tmpRect );
-
-	ofMesh tmpMesh;
-	tmpMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
-	int res = 90;
-	for (int i = 0; i < res; i++)
-	{
-		float frac = ofNormalize(i, 0, res - 1 );
-		ofVec2f p;
-		p.x = ofMap(frac, 0, 1, tmpRect.x, tmpRect.x + tmpRect.width);
-		p.y = ofMap( MathUtils::linearStepOut(0.9, 1.0, frac), 0, 1,  tmpRect.y + tmpRect.height, tmpRect.y );
-		tmpMesh.addVertex(p);
-	}
-	ofSetColor(ofColor::white);
-	tmpMesh.draw();
-	*/
-
+	ofDisableDepthTest();
 
 	if (drawGui)
 	{
@@ -193,13 +206,6 @@ void ofApp::keyPressed(int key)
 	{
 	}
 }
-
-
-
-
-
-
-
 
 
 
