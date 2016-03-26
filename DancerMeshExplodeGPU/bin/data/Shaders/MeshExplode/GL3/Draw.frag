@@ -3,7 +3,7 @@
 precision highp float;
 
 // This could be anything, no need to stick to max 8
-#define MAX_LIGHTS 4
+#define MAX_LIGHTS 2
 
 in VertexAttrib {
 	vec3 normal;

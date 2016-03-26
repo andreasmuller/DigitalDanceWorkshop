@@ -1,0 +1,26 @@
+<Particles>
+	<Particle_Density>111</Particle_Density>
+	<Particle_Max_Age>0.35</Particle_Max_Age>
+	<Particle_Max_Vel>0.048</Particle_Max_Vel>
+	<Old_Vel_To_Use>0.95</Old_Vel_To_Use>
+	<Emission_Vertex_Vel>0.306</Emission_Vertex_Vel>
+	<Emission_Vertex_Normal>0</Emission_Vertex_Normal>
+	<Noise_Magnitude>0.009</Noise_Magnitude>
+	<Noise_Position_Scale>0.8119</Noise_Position_Scale>
+	<Noise_Time_Scale>0.850575</Noise_Time_Scale>
+	<Noise_Persistence>0.395605</Noise_Persistence>
+	<Wind>0, 0, 0</Wind>
+	<Particle_Mesh_Size>0.03, 0.03, 0.505102</Particle_Mesh_Size>
+	<Particle_Size_Randomness>0.1</Particle_Size_Randomness>
+	<Particle_Mesh_Type>1</Particle_Mesh_Type>
+	<Start_Scale>0.52</Start_Scale>
+	<End_Scale>0</End_Scale>
+	<Start_Color>255, 0, 0, 255</Start_Color>
+	<End_Color>0, 0, 255, 255</End_Color>
+	<Age_Color_Palette>0</Age_Color_Palette>
+	<Material_Ambient>0, 0, 0, 255</Material_Ambient>
+	<Material_Specular>255, 255, 255, 255</Material_Specular>
+	<Material_Emmissive>0, 0, 0, 255</Material_Emmissive>
+	<Material_Shininess>31.75</Material_Shininess>
+<Particles/>
+</Particles>

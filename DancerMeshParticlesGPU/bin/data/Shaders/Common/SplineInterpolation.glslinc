@@ -1,0 +1,226 @@
+
+
+// Nicked and converted from the openFrameworks source
+// All from http://paulbourke.net/miscellaneous/interpolation/
+
+// ---------------------------------------------------------------------------------------
+// float versions -------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------
+
+//--------------------------------------------------
+float ofInterpolateCosine( float y1, float y2, float pct){
+	float pct2;
+	
+	pct2 = (1.0-cos(pct*PI))/2.0;
+	return(y1*(1.0-pct2)+y2*pct2);
+}
+
+//--------------------------------------------------
+float ofInterpolateCubic( float y0, float y1, float y2, float y3, float pct)
+{
+	float a0,a1,a2,a3;
+	float pct2;
+	
+	pct2 = pct*pct;
+	a0 = y3 - y2 - y0 + y1;
+	a1 = y0 - y1 - a0;
+	a2 = y2 - y0;
+	a3 = y1;
+	
+	return(a0*pct*pct2+a1*pct2+a2*pct+a3);
+}
+
+//--------------------------------------------------
+float ofInterpolateCatmullRom(float y0, float y1, float y2, float y3, float pct)
+{
+	float a0,a1,a2,a3;
+	float pct2 = pct*pct;
+	a0 = -0.5*y0 + 1.5*y1 - 1.5*y2 + 0.5*y3;
+	a1 = y0 - 2.5*y1 + 2*y2 - 0.5*y3;
+	a2 = -0.5*y0 + 0.5*y2;
+	a3 = y1;
+	return(a0*pct*pct2 + a1*pct2 + a2*pct +a3);
+}
+
+// from http://musicdsp.org/showArchiveComment.php?ArchiveID=93
+// laurent de soras
+//--------------------------------------------------
+float ofInterpolateHermite(float y0, float y1, float y2, float y3, float pct)
+{
+	float c = (y2 - y0) * 0.5f;
+	float v = y1 - y2;
+	float w = c + v;
+	float a = w + v + (y3 - y1) * 0.5f;
+	float b_neg = w + a;
+	
+	return ((((a * pct) - b_neg) * pct + c) * pct + y1);
+}
+
+//--------------------------------------------------
+float ofInterpolateHermite( float y0, float y1, float y2, float y3, float pct, float tension, float bias)
+{
+	float pct2,pct3;
+	float m0,m1;
+	float a0,a1,a2,a3;
+	
+	pct2 = pct * pct;
+	pct3 = pct2 * pct;
+	m0  = (y1-y0)*(1+bias)*(1-tension)/2;
+	m0 += (y2-y1)*(1-bias)*(1-tension)/2;
+	m1  = (y2-y1)*(1+bias)*(1-tension)/2;
+	m1 += (y3-y2)*(1-bias)*(1-tension)/2;
+	a0 =  (2*pct3 - 3*pct2 + 1);
+	a1 =  (pct3 - 2*pct2 + pct);
+	a2 =  (pct3 -   pct2);
+	a3 =  (-2*pct3 + 3*pct2);
+	
+	return(a0*y1+a1*m0+a2*m1+a3*y2);
+}
+
+// ---------------------------------------------------------------------------------------
+// vec2 versions -------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------
+
+//--------------------------------------------------
+vec2 ofInterpolateCosine( vec2 y1, vec2 y2, float pct){
+	float pct2;
+	
+	pct2 = (1.0-cos(pct*PI))/2.0;
+	return(y1*(1.0-pct2)+y2*pct2);
+}
+
+//--------------------------------------------------
+vec2 ofInterpolateCubic( vec2 y0, vec2 y1, vec2 y2, vec2 y3, float pct)
+{
+	vec2 a0,a1,a2,a3;
+	float pct2;
+	
+	pct2 = pct*pct;
+	a0 = y3 - y2 - y0 + y1;
+	a1 = y0 - y1 - a0;
+	a2 = y2 - y0;
+	a3 = y1;
+	
+	return(a0*pct*pct2+a1*pct2+a2*pct+a3);
+}
+
+//--------------------------------------------------
+vec2 ofInterpolateCatmullRom(vec2 y0, vec2 y1, vec2 y2, vec2 y3, float pct)
+{
+	vec2 a0,a1,a2,a3;
+	float pct2 = pct*pct;
+	a0 = -0.5*y0 + 1.5*y1 - 1.5*y2 + 0.5*y3;
+	a1 = y0 - 2.5*y1 + 2*y2 - 0.5*y3;
+	a2 = -0.5*y0 + 0.5*y2;
+	a3 = y1;
+	return(a0*pct*pct2 + a1*pct2 + a2*pct +a3);
+}
+
+// from http://musicdsp.org/showArchiveComment.php?ArchiveID=93
+// laurent de soras
+//--------------------------------------------------
+vec2 ofInterpolateHermite(vec2 y0, vec2 y1, vec2 y2, vec2 y3, float pct)
+{
+	vec2 c = (y2 - y0) * 0.5f;
+	vec2 v = y1 - y2;
+	vec2 w = c + v;
+	vec2 a = w + v + (y3 - y1) * 0.5f;
+	vec2 b_neg = w + a;
+	
+	return ((((a * pct) - b_neg) * pct + c) * pct + y1);
+}
+
+//--------------------------------------------------
+vec2 ofInterpolateHermite( vec2 y0, vec2 y1, vec2 y2, vec2 y3, float pct, float tension, float bias)
+{
+	float pct2,pct3;
+	vec2 m0,m1;
+	vec2 a0,a1,a2,a3;
+	
+	pct2 = pct * pct;
+	pct3 = pct2 * pct;
+	m0  = (y1-y0)*(1+bias)*(1-tension)/2;
+	m0 += (y2-y1)*(1-bias)*(1-tension)/2;
+	m1  = (y2-y1)*(1+bias)*(1-tension)/2;
+	m1 += (y3-y2)*(1-bias)*(1-tension)/2;
+	a0 =  vec2(2*pct3 - 3*pct2 + 1);
+	a1 =  vec2(pct3 - 2*pct2 + pct);
+	a2 =  vec2(pct3 -   pct2);
+	a3 =  vec2(-2*pct3 + 3*pct2);
+	
+	return(a0*y1+a1*m0+a2*m1+a3*y2);
+}
+
+// ---------------------------------------------------------------------------------------
+// vec3 versions -------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------
+
+//--------------------------------------------------
+vec3 ofInterpolateCosine( vec3 y1, vec3 y2, float pct){
+	float pct2;
+	
+	pct2 = (1.0-cos(pct*PI))/2.0;
+	return(y1*(1.0-pct2)+y2*pct2);
+}
+
+//--------------------------------------------------
+vec3 ofInterpolateCubic( vec3 y0, vec3 y1, vec3 y2, vec3 y3, float pct)
+{
+	vec3 a0,a1,a2,a3;
+	float pct2;
+	
+	pct2 = pct*pct;
+	a0 = y3 - y2 - y0 + y1;
+	a1 = y0 - y1 - a0;
+	a2 = y2 - y0;
+	a3 = y1;
+	
+	return(a0*pct*pct2+a1*pct2+a2*pct+a3);
+}
+
+//--------------------------------------------------
+vec3 ofInterpolateCatmullRom(vec3 y0, vec3 y1, vec3 y2, vec3 y3, float pct)
+{
+	vec3 a0,a1,a2,a3;
+	float pct2 = pct*pct;
+	a0 = -0.5*y0 + 1.5*y1 - 1.5*y2 + 0.5*y3;
+	a1 = y0 - 2.5*y1 + 2*y2 - 0.5*y3;
+	a2 = -0.5*y0 + 0.5*y2;
+	a3 = y1;
+	return(a0*pct*pct2 + a1*pct2 + a2*pct +a3);
+}
+
+// from http://musicdsp.org/showArchiveComment.php?ArchiveID=93
+// laurent de soras
+//--------------------------------------------------
+vec3 ofInterpolateHermite(vec3 y0, vec3 y1, vec3 y2, vec3 y3, float pct)
+{
+	vec3 c = (y2 - y0) * 0.5f;
+	vec3 v = y1 - y2;
+	vec3 w = c + v;
+	vec3 a = w + v + (y3 - y1) * 0.5f;
+	vec3 b_neg = w + a;
+	
+	return ((((a * pct) - b_neg) * pct + c) * pct + y1);
+}
+
+//--------------------------------------------------
+vec3 ofInterpolateHermite( vec3 y0, vec3 y1, vec3 y2, vec3 y3, float pct, float tension, float bias)
+{
+	float pct2,pct3;
+	vec3 m0,m1;
+	vec3 a0,a1,a2,a3;
+	
+	pct2 = pct * pct;
+	pct3 = pct2 * pct;
+	m0  = (y1-y0)*(1+bias)*(1-tension)/2;
+	m0 += (y2-y1)*(1-bias)*(1-tension)/2;
+	m1  = (y2-y1)*(1+bias)*(1-tension)/2;
+	m1 += (y3-y2)*(1-bias)*(1-tension)/2;
+	a0 =  vec3(2*pct3 - 3*pct2 + 1);
+	a1 =  vec3(pct3 - 2*pct2 + pct);
+	a2 =  vec3(pct3 -   pct2);
+	a3 =  vec3(-2*pct3 + 3*pct2);
+	
+	return(a0*y1+a1*m0+a2*m1+a3*y2);
+}
