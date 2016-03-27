@@ -8,7 +8,7 @@
 #include "../Math/MathUtils.h"
 #include "../Utils/ofTrueTypeFontExt.h"
 
-#include "StickyPoint.h"
+#include "MeshPoint.h"
 
 
 // ----------------------------------------------------
@@ -34,24 +34,41 @@ class DancerMesh
 		virtual void			debugDrawInfo( ofTrueTypeFontExt& _font, ofVec2f _pos ) = 0;
 
 		virtual	void			updateTriangleMesh( ofMesh& _mesh ) = 0;
-		void					updateRandomPointMesh( int _numPoints, ofMesh& _sourceTriangleMesh, ofMesh& _randomPointMesh, piecewise_constant_distribution<>& _dist, ofImage& _emissionMask, int _randomSeed );
+	
+		void					updateRandomPoints(int _numPoints, vector<MeshPoint>& _newRandomPoints, int _seed = -1 );
+		void					updateRandomPoints(int _numPoints, vector<MeshPoint>& _newRandomPoints, ofImage& _emissionMask, int _seed = -1 );
+		void					updateRandomPoints( int _numPoints, vector<MeshPoint>& _newRandomPoints, ofMesh& _sourceTriangleMesh,
+													   piecewise_constant_distribution<>& _dist, ofImage& _emissionMask, int _randomSeed = -1);
+
 		void					initWeightedDistribution( piecewise_constant_distribution<>& _dist, ofMesh& _emissionMesh );
 
-		void					findTriangleParamsForStickyPoints( vector<StickyPoint>& _stickyPoints, ofMesh& _triangleMesh );
-		void					updateStickyPoints( vector<StickyPoint>& _stickyPoints, ofMesh& _triangleMesh );
+		static vector<ofVec2f>	getRandomUVPointsWithinMaskedArea(int _numPoints, ofImage& _mask, ofColor _searchColor, float _maxColorDist);
+		static vector<ofVec2f>	getRandomUVPointsWithinMaskedArea(int _numPoints, string _maskPath, ofColor _searchColor, float _maxColorDist);
+
+		void					findTriangleParamsForStickyPoints(vector<MeshPoint>& _stickyPoints);
+		void					findTriangleParamsForStickyPoints( vector<MeshPoint>& _stickyPoints, ofMesh& _triangleMesh );
+		void					updateStickyPoints(vector<MeshPoint>& _stickyPoints);
+		void					updateStickyPoints( vector<MeshPoint>& _stickyPoints, ofMesh& _triangleMesh, ofMesh& _prevTriangleMesh );
 
 		void					setBaseTransform(ofMatrix4x4 _meshBaseTransform)	{ meshBaseTransform = _meshBaseTransform; }
 		ofMatrix4x4				getBaseTransform()									{ return meshBaseTransform; }
-
+	
+		static void				drawNormals( vector<MeshPoint>& _meshPoints, float _normalScale  = 1.0f );
+		static void				drawVelocities( vector<MeshPoint>& _meshPoints, float _velScale  = 1.0f );
+	
 		// Properties ---------------------------------------------
 		string					name;
 		bool					loaded;
 
 		ofVideoPlayer			meshTextureVideoPlayer;
 		ofImage					meshTexture;
+
 		ofMesh					triangleMesh;
+		ofMesh					prevTriangleMesh;
+		vector<ofVec3f>			currVertexVelocities;
 	
-		vector<StickyPoint>		midPointStickyPoints;
+		//vector<ofVec3f>			currVertexVelocities;
+		//vector<StickyPoint>		midPointStickyPoints;
 
 		float					normalDebugScale;
 
@@ -76,8 +93,10 @@ class DancerMesh
 		ofParameter<ofVec3f>	modelLookAtTargetPos;
 		ofParameter<float>		maxLookAtFrac;
 
-		
 	protected:
 
+		piecewise_constant_distribution<> triangleAreaWeightedDistribution;
+
 		ofMatrix4x4				meshBaseTransform;
+		ofImage					emptyMask;
 };

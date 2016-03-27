@@ -12,6 +12,10 @@ class DancerMeshFBX : public DancerMesh
 		{
 			eyeMeshName = "Eyes";
 			meshSkipList.push_back( eyeMeshName );
+			
+			headBoneNameList.push_back("Head");
+			headBoneNameList.push_back("DEF-head");
+			
 			animationTime = 0;
 
 			lookAt.set(false);
@@ -20,12 +24,21 @@ class DancerMeshFBX : public DancerMesh
 		}
 
 		// ---------------------------------------------
+		~DancerMeshFBX()
+		{
+		
+		}
+
+		// ---------------------------------------------
 		bool load(string _inputFilePath, string _texture = "white" )
 		{
 			ofxFBXSceneSettings settings;
 
+			scene = new ofxFBXScene();
+			fbx = new ofxFBXManager();
+			
 			loaded = false;
-			loaded = scene.load(_inputFilePath, settings);
+			loaded = scene->load(_inputFilePath, settings);
 	
 			if( loaded ) 	{ /*cout << "DancerMeshFBX::load Loaded the scene OK" << endl;*/ }
 			else 			{ cout << "DancerMeshFBX::load Error loading the scene" << endl; }
@@ -35,33 +48,19 @@ class DancerMeshFBX : public DancerMesh
 				return false;
 			}
 
-			fbx.setup( &scene );
-			fbx.setAnimation(0);
-			fbx.update();
-			fbx.lateUpdate();
+			fbx->setup( scene );
+			fbx->setAnimation(0);
+			fbx->update();
+			fbx->lateUpdate();
 
 			//cout << fbx.getSkeletonInfo() << endl;
 
 			updateTriangleMesh(triangleMesh);
 
-			// Adding a sticky point that defines the model middle, but this only works with the Perfume data set
-			ofVec2f srcPixelTexSize(512, 512);
-			vector<ofVec2f> midPointStickyPointsPixelCoord;
-			midPointStickyPointsPixelCoord.push_back(ofVec2f(194, 358));
-			for (int i = 0; i < midPointStickyPointsPixelCoord.size(); i++)
-			{
-				StickyPoint point;
-				point.uv = midPointStickyPointsPixelCoord.at(i) / srcPixelTexSize;
-				midPointStickyPoints.push_back(point);
-			}
-
-			findTriangleParamsForStickyPoints(midPointStickyPoints, triangleMesh);
-			//ofLogNotice() << "DancerMeshFBX::load adding a sticky point that defines the model middle, but this only works with the Perfume data set";
-
 			initTexture(_texture);
 
 			ofDisableArbTex();
-			eyeTexture.loadImage("Textures/Dancer/blue_eye_small.png");
+			//eyeTexture.load("Textures/Dancer/blue_eye_small.png");
 
 			ofLogNotice() << "DancerMeshFBX speeds up the animation on update as a hack";
 
@@ -83,38 +82,19 @@ class DancerMeshFBX : public DancerMesh
 		void update( float _time )
 		{
 			if (!loaded) return;
-
-	// TEMP		
-			ofxFBXAnimation& currentAnimation = fbx.getCurrentAnimation();
-			currentAnimation.setFramerate(120.0f);
 			
-		/*	
-			currentAnimation.stop();
-			float animationLength = currentAnimation.getDurationSeconds();
-
-			animationTime += ofGetLastFrameTime() * 1.0;
-			animationTime = fmodf(animationTime, animationLength);
-
-			float animationTimeFrac = animationTime / animationLength;
-			int desiredAnimationFrame = animationTimeFrac * currentAnimation.getTotalNumFrames();
-
-			currentAnimation.setFrame(desiredAnimationFrame);
-			*/
-
+			ofxFBXAnimation& currentAnimation = fbx->getCurrentAnimation();
 			ofxFBXBone* bone = NULL;
 
-			vector<string> headBoneNameList;// = {"Head", "DEF-head"}; // Change back when I can use C++11
-			headBoneNameList.push_back("Head");
-			headBoneNameList.push_back("DEF-head");
 
-			for (auto tmpName : headBoneNameList) { if( bone == NULL ) bone = fbx.getBone(tmpName); }
+			for (auto tmpName : headBoneNameList) { if( bone == NULL ) bone = fbx->getBone(tmpName); }
 
 			if (bone != NULL)
 			{
 				bone->enableAnimation();
 			}
 					
-			fbx.update();
+			fbx->update();
 
 				// Perform any bone manipulation here
 				if( bone != NULL && lookAt )
@@ -124,25 +104,20 @@ class DancerMeshFBX : public DancerMesh
 					bone->setOrientation( interpolatedLookAtNode.getOrientationQuat() );
 				}
 
-			fbx.lateUpdate();
+			fbx->lateUpdate();
 
 			//cout << currentAnimation.isFrameNew() << " ";
-
 			if (currentAnimation.isFrameNew() )
 			{
+				
+				prevTriangleMesh.clear();
+				prevTriangleMesh.append( triangleMesh );
+				prevTriangleMesh.setMode( triangleMesh.getMode() );
+				
 				updateTriangleMesh(triangleMesh);
-				updateStickyPoints(midPointStickyPoints, triangleMesh);
-
-				// Update the model middle
-				if (midPointStickyPoints.size() > 0)
-				{
-					modelMiddle = midPointStickyPoints.at(0).currentPos;
-				}
 			}
-
 		}
 
-	
 		//--------------------------------------------------------------
 		void updateLookAt( ofxFBXBone* _bone )
 		{
@@ -186,42 +161,49 @@ class DancerMeshFBX : public DancerMesh
 		// ---------------------------------------------
 		void updateTriangleMesh( ofMesh& _mesh )
 		{
+			gatherCurrentMeshesInto( _mesh );
+			ofSeedRandom();
+		}
+
+		// ---------------------------------------------
+		void gatherCurrentMeshesInto( ofMesh& _mesh )
+		{
 			if (!loaded) return;
-
-			vector<ofMesh>& fbxMeshes = fbx.getMeshes();
+			
+			vector<ofMesh>& fbxMeshes = fbx->getMeshes();
 			bool randomTriangleColor = true;
-
-			ofVec3f normalFlip(1,1,1); 
-
+			
+			ofVec3f normalFlip(1,1,1);
+			
 			// Go through the meshes in the FBX and combine them
 			_mesh.clear();
 			_mesh.setMode( OF_PRIMITIVE_TRIANGLES );
-
+			
 			int triangleCounter = 0;
-			for(int meshIndex = 0; meshIndex < fbxMeshes.size(); meshIndex++ ) 
-			{ 
-				string meshName = fbx.getMeshName(meshIndex);
+			for(int meshIndex = 0; meshIndex < fbxMeshes.size(); meshIndex++ )
+			{
+				string meshName = fbx->getMeshName(meshIndex);
 				bool skipMesh = ofContains( meshSkipList, meshName );
-
+				
 				if( !skipMesh )
 				{
 					ofMesh& sourceMesh = fbxMeshes.at(meshIndex);
-
+					
 					ofMatrix4x4 meshTransform = meshBaseTransform;
-					if (fbx.meshTransforms.size() > meshIndex)
+					if (fbx->meshTransforms.size() > meshIndex)
 					{
-						meshTransform = fbx.meshTransforms.at(meshIndex).getGlobalTransformMatrix() * meshTransform;
+						meshTransform = fbx->meshTransforms.at(meshIndex).getGlobalTransformMatrix() * meshTransform;
 					}
-
+					
 					if( sourceMesh.getMode() == OF_PRIMITIVE_TRIANGLES )
 					{
 						bool meshIsValid = true;
-
+						
 						// TODO: we can't expect the mesh to be set up this way, so we need need a more general way to read the meshes
 						if( (sourceMesh.getNumIndices() % 3) != 0 )							meshIsValid = false;
 						if( sourceMesh.getNumIndices() != sourceMesh.getNumVertices() )		meshIsValid = false;
-						if( sourceMesh.getNumVertices() != sourceMesh.getNumTexCoords() )	meshIsValid = false;		
-
+						if( sourceMesh.getNumVertices() != sourceMesh.getNumTexCoords() )	meshIsValid = false;
+						
 						if( meshIsValid )
 						{
 							for( int i = 0; i < sourceMesh.getNumIndices() / 3; i++ )
@@ -230,57 +212,55 @@ class DancerMeshFBX : public DancerMesh
 								int index0 = (i * 3) + 2;
 								int index1 = (i * 3) + 1;
 								int index2 = (i * 3) + 0;
-
+								
 								ofVec3f vertex0 = sourceMesh.getVertex(index0) * meshTransform;
 								ofVec3f vertex1 = sourceMesh.getVertex(index1) * meshTransform;
 								ofVec3f vertex2 = sourceMesh.getVertex(index2) * meshTransform;
-
+								
 								ofVec3f normal0 = ofMatrix4x4::transform3x3((sourceMesh.getNormal(index0) * normalFlip), meshTransform );
 								ofVec3f normal1 = ofMatrix4x4::transform3x3((sourceMesh.getNormal(index1) * normalFlip), meshTransform );
 								ofVec3f normal2 = ofMatrix4x4::transform3x3((sourceMesh.getNormal(index2) * normalFlip), meshTransform );
-
+								
 								ofSeedRandom( triangleCounter << 24 );
 								ofFloatColor tmpCol = ofFloatColor::white;
 								if( randomTriangleColor ) tmpCol = ofFloatColor::fromHsb(ofRandom(1.0), 0.8, 0.8);
-
+								
 								_mesh.addVertex( vertex0 );
 								_mesh.addTexCoord( sourceMesh.getTexCoord( index0 ) );
 								_mesh.addNormal( normal0.getNormalized() );
 								_mesh.addColor( tmpCol );
-
+								
 								_mesh.addVertex( vertex1 );
 								_mesh.addTexCoord( sourceMesh.getTexCoord( index1 ) );
 								_mesh.addNormal( normal1.getNormalized());
 								_mesh.addColor( tmpCol );
-
+								
 								_mesh.addVertex( vertex2 );
 								_mesh.addTexCoord( sourceMesh.getTexCoord( index2 ) );
 								_mesh.addNormal( normal2.getNormalized());
 								_mesh.addColor( tmpCol );
-
+								
 								triangleCounter++;
 							}
 						}
 					}
 				}
 			}
-
-			ofSeedRandom();
 		}
-
+	
 		// ---------------------------------------------
 		ofMesh* getMesh( string _name, ofMatrix4x4* _meshTransform = NULL )
 		{
-			vector<ofMesh>& fbxMeshes = fbx.getMeshes();
+			vector<ofMesh>& fbxMeshes = fbx->getMeshes();
 			for( int i = 0; i < fbxMeshes.size(); i++ )
 			{
-				if( fbx.getMeshName(i) == eyeMeshName )
+				if( fbx->getMeshName(i) == eyeMeshName )
 				{
 					if (_meshTransform != NULL)
 					{
-						if (i < fbx.meshTransforms.size())
+						if (i < fbx->meshTransforms.size())
 						{
-							_meshTransform->set( fbx.meshTransforms.at(i).getGlobalTransformMatrix() * meshBaseTransform );
+							_meshTransform->set( fbx->meshTransforms.at(i).getGlobalTransformMatrix() * meshBaseTransform );
 						}
 					}
 
@@ -302,24 +282,22 @@ class DancerMeshFBX : public DancerMesh
 			int numBones = 0;
 			int numVertices = 0;
 
-			vector<ofMesh>& fbxMeshes = fbx.getMeshes();
+			vector<ofMesh>& fbxMeshes = fbx->getMeshes();
 
-			vector< shared_ptr<ofxFBXSkeleton> >& skeletons = fbx.getSkeletons();
+			vector< shared_ptr<ofxFBXSkeleton> >& skeletons = fbx->getSkeletons();
 			for( int i = 0; i < skeletons.size(); i++ ) { numBones += skeletons[i]->getNumBones(); }
 			for (int i = 0; i < fbxMeshes.size(); i++ ) { numVertices += fbxMeshes.at(i).getNumVertices(); }
-
-	//		fontSmall.drawStringShadowed( fbx.getFbxScene()->getFbxFilePath().getFileName(),		pos ); pos += nextLine;
 
 			_font.drawStringShadowed( "Vertices: "	+ ofToString(numVertices),		pos ); pos += nextLine;
 			_font.drawStringShadowed( "Bones: "		+ ofToString(numBones),			pos ); pos += nextLine;
 			_font.drawStringShadowed( "Skeletons: "	+ ofToString(skeletons.size()),	pos ); pos += nextLine;
 			pos += nextLine;
 
-			for(int i = 0; i < fbx.getNumAnimations(); i++ )
+			for(int i = 0; i < fbx->getNumAnimations(); i++ )
 			{
 				string tmpName = "";
-				ofxFBXAnimation& anim = fbx.getAnimation( i );
-				if( i == fbx.getCurrentAnimationIndex() )  { tmpName += "- "; }
+				ofxFBXAnimation& anim = fbx->getAnimation( i );
+				if( i == fbx->getCurrentAnimationIndex() )  { tmpName += "- "; }
 				tmpName += "name: " + anim.name + " " + ofToString(anim.getPositionSeconds(), 3) + " | " + ofToString(anim.getDurationSeconds(), 3) + " frame: " + ofToString(anim.getFrameNum()) + " / " + ofToString(anim.getTotalNumFrames());
 
 				_font.drawStringShadowed( tmpName, pos ); 
@@ -328,47 +306,20 @@ class DancerMeshFBX : public DancerMesh
 
 			pos += nextLine;
 			pos += nextLine;
-
-			/*
-			int numBones = 0;
-			vector< shared_ptr<ofxFBXSkeleton> >& skeletons = fbx.getSkeletons();
-			for (int i = 0; i < skeletons.size(); i++) { numBones += skeletons[i]->getNumBones(); }
-
-			ofSetColor(60, 60, 60);
-			stringstream ds;
-
-			ds << "Scale is " << fbx.getScale() << endl;
-			if (fbx.getNumPoses() > 0)
-			{
-				ds << "Pose: " << fbx.getCurrentPose()->getName() << " num poses: " << fbx.getNumPoses() << " enabled (p): " << fbx.arePosesEnabled() << endl;
-			}
-			ofDrawBitmapString(ds.str(), 10, 20);
-
-			for (int i = 0; i < fbx.getNumAnimations(); i++)
-			{
-				stringstream ss;
-				ofxFBXAnimation& anim = fbx.getAnimation(i);
-				if (i == fbx.getCurrentAnimationIndex())
-				{
-					ss << "- ";
-				}
-				ss << "name: " << anim.name << " " << ofToString(anim.getPositionSeconds(), 3) << " | " << ofToString(anim.getDurationSeconds(), 3) << " frame: " << anim.getFrameNum() << " / " << anim.getTotalNumFrames() << endl;
-				ofDrawBitmapString(ss.str(), 10, i * 30 + 300);
-			}
-			*/
 		}
 
 		// ---------------------------------------------
 		void debugDraw()
 		{
 			if (!loaded) return;
-
 		}
 
 		float animationTime;
 
 		ofImage eyeTexture;
 
-		ofxFBXScene scene;
-		ofxFBXManager fbx;	
+		ofxFBXScene* scene;
+		ofxFBXManager* fbx;
+	
+		vector<string> headBoneNameList;
 };
