@@ -9,6 +9,9 @@
 
 #include "DancerMesh/DancerMeshFBX.h"
 
+#include "ofLightExt.h"
+#include "ofMaterialExt.h"
+
 class ofApp : public ofBaseApp 
 {
 	public:
@@ -22,22 +25,28 @@ class ofApp : public ofBaseApp
 		ofEasyCam camera;
 
 		DancerMeshFBX dancerMesh;
+		ofShader phongShader;
 
 		ofPlanePrimitive floor;
-		ofMaterial floorMaterial;
-		ofMaterial dancerMaterial;
+	
+		ofParameter<ofColor> globalAmbient;
+		ofMaterialExt floorMaterial;
+		ofMaterialExt dancerMaterial;
 
 		deque<ofMesh> meshes;
-		float timeBetweenCopies;
-		float lastTimeCopied;
-		int maxCopies;
-
-		ofLight light0;
-		ofLight light1;
+		ofParameter<float> timeBetweenCopies;
+		ofParameter<int> maxCopies;
+		ofParameter<int> numMeshesToDraw;
+		ofParameter<ofVec3f> offset;
+		ofParameter<ofColor> startColor;
+		ofParameter<ofColor> endColor;
+	
+		vector<ofLightExt*> lights;
 
 		ofxPanel gui;
 		bool drawGui;
 
+		float lastTimeCopied;
+	
 		ofTrueTypeFontExt fontSmall;
-    
 };

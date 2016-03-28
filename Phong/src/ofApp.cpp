@@ -29,13 +29,10 @@ void ofApp::setup()
 	}
 	ofSeedRandom();
 	
-
-
 	material.setAmbientColor( ofFloatColor::black );
 	material.setDiffuseColor( ofFloatColor::grey );
 	material.setSpecularColor( ofFloatColor::white );
 	material.setShininess( 50 );
-	
 	
 	ofxGuiSetDefaultWidth( 300 );
 	

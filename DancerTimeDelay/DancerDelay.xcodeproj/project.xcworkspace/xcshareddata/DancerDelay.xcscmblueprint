@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "9720AD8AA38D5AAE795400BAB477039006FBC989",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9720AD8AA38D5AAE795400BAB477039006FBC989" : 0,
+    "15AFBEBEE0254D0F12821435C644072DF4B7DB55" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3EA31C23-A97A-44D1-BAEB-D49A9D15184C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9720AD8AA38D5AAE795400BAB477039006FBC989" : "DigitalDanceWorkshop\/",
+    "15AFBEBEE0254D0F12821435C644072DF4B7DB55" : "..\/addons\/ofxFBX"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DancerDelay",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DancerTimeDelay\/DancerDelay.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/NickHardeman\/ofxFBX.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "15AFBEBEE0254D0F12821435C644072DF4B7DB55"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/andreasmuller\/digitaldanceworkshop.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9720AD8AA38D5AAE795400BAB477039006FBC989"
+    }
+  ]
+}

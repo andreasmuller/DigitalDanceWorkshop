@@ -1,0 +1,56 @@
+<Main>
+	<Global_Ambient>0, 0, 0, 255</Global_Ambient>
+	<Light_0>
+		<Light_0_Position>0.001, 3.13619, 0.001</Light_0_Position>
+		<Light_0_Look_At>0, 0, 0</Light_0_Look_At>
+		<Light_0_Diffuse>255, 255, 255, 255</Light_0_Diffuse>
+		<Light_0_Specular>81, 82, 83, 255</Light_0_Specular>
+		<Light_0_Radius>10</Light_0_Radius>
+	<Position>-6.54727, 4.38567, -4.67305</Position>
+		<Look_At>0, 0, 0</Look_At>
+		<Diffuse>255, 237, 223, 255</Diffuse>
+		<Specular>255, 255, 255, 255</Specular>
+		<Radius>20</Radius>
+	</Light_0>
+	<Light_1>
+		<Light_1_Position>0.001, 10, 0.001</Light_1_Position>
+		<Light_1_Look_At>0, 0, 0</Light_1_Look_At>
+		<Light_1_Diffuse>255, 255, 255, 255</Light_1_Diffuse>
+		<Light_1_Specular>255, 255, 255, 255</Light_1_Specular>
+		<Light_1_Radius>10</Light_1_Radius>
+	<Position>4.38567, 6.25989, 0.001</Position>
+		<Look_At>0, 0, 0</Look_At>
+		<Diffuse>255, 239, 233, 255</Diffuse>
+		<Specular>255, 255, 255, 255</Specular>
+		<Radius>14.3878</Radius>
+	</Light_1>
+	<Floor_Material_Diffuse>255, 255, 255, 255</Floor_Material_Diffuse>
+	<Floor_Material_Specular>255, 255, 255, 255</Floor_Material_Specular>
+	<Floor_Material_Emissive>0, 0, 0, 255</Floor_Material_Emissive>
+	<Floor_Material_Shininess>68.58</Floor_Material_Shininess>
+	<Dancer_Material_Diffuse>0, 0, 255, 255</Dancer_Material_Diffuse>
+	<Dancer_Material_Specular>255, 255, 255, 255</Dancer_Material_Specular>
+	<Dancer_Material_Emissive>0, 0, 0, 255</Dancer_Material_Emissive>
+	<Dancer_Material_Shininess>10</Dancer_Material_Shininess>
+<Main/>
+	<Floor_Material>
+		<Diffuse>241, 227, 203, 255</Diffuse>
+		<Specular>37, 35, 38, 255</Specular>
+		<Emissive>0, 0, 0, 255</Emissive>
+		<Shininess>9.07143</Shininess>
+	</Floor_Material>
+	<Dancer_Material>
+		<Diffuse>5, 0, 0, 255</Diffuse>
+		<Specular>255, 255, 255, 255</Specular>
+		<Emissive>0, 0, 0, 255</Emissive>
+		<Shininess>90.0663</Shininess>
+	</Dancer_Material>
+<Max_Copies>50</Max_Copies>
+	<Time_Between_Copies>0.0333333</Time_Between_Copies>
+	<Start_Color>255, 0, 0, 255</Start_Color>
+	<End_Color>0, 255, 0, 255</End_Color>
+	<Offset>0, 0, 5.5102</Offset>
+<Num_Meshes_To_Draw>51</Num_Meshes_To_Draw>
+<Dancer_Start_Color>255, 0, 0, 255</Dancer_Start_Color>
+	<Dancer_End_Color>0, 0, 0, 255</Dancer_End_Color>
+</Main>
