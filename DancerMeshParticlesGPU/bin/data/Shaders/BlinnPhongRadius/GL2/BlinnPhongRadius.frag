@@ -1,27 +1,8 @@
-#version 330
+#version 120
 
-precision highp float;
-
-// This could be anything, no need to stick to max 8
 #define MAX_LIGHTS 4
 
-in VertexAttrib {
-	vec3 normal;
-	vec2 texcoord;
-	vec4 color;	
-	vec3 viewDir;
-	vec3 lightDir[MAX_LIGHTS];
-} vertex;
-
-out vec4 fragColor;
-
-uniform mat4 projectionMatrix;
-uniform mat4 modelViewMatrix;
-uniform mat4 modelViewProjectionMatrix;
-uniform mat4 normalMatrix;
-
-uniform int	numActiveLights = 0;
-uniform float frontFraceNormalSign = -1.0;
+uniform int	numActiveLights;
 
 uniform vec4  lightSceneAmbient;
 uniform vec4  lightDiffuse[MAX_LIGHTS];
@@ -33,6 +14,14 @@ uniform vec3  lightPositionCamera[MAX_LIGHTS];
 uniform vec4  materialDiffuse;
 uniform vec4  materialSpecular;
 uniform float materialShininess;
+
+varying vec3 normal;
+varying vec3 viewDir;
+
+varying vec3 lightDir[MAX_LIGHTS];
+
+varying vec3 debugVec3;
+
 
 //-------------------------------------------------------------------------------------------------------------------------------------
 // returns intensity of diffuse reflection
@@ -66,26 +55,17 @@ vec4 computeLighting()
 {
 	vec3 finalColor = lightSceneAmbient.xyz;
 	
-	vec3 n = normalize(vertex.normal);
-	vec3 v = normalize(vertex.viewDir);
-
-	if( gl_FrontFacing ) 
-	{
-		n = n *  frontFraceNormalSign;
-	}
-	else
-	{
-		n = n * -frontFraceNormalSign;
-	}
+	vec3 n = normalize(normal);
+	vec3 v = normalize(viewDir);
 	
 	for ( int i = 0; i < numActiveLights; i++ )
 	{
-		vec3 l = vertex.lightDir[i];
+		vec3 l = lightDir[i];
 		
 		float atten = max(0.0, 1.0 - dot(l, l));
 		l = normalize(l);
 		
-		vec3 diffuse  = diffuseLighting(  n, l, vertex.color.xyz, lightDiffuse[i].xyz );
+		vec3 diffuse  = diffuseLighting(  n, l, materialDiffuse.xyz, lightDiffuse[i].xyz );
 		vec3 specular = specularLighting( n, l, v, materialShininess, materialSpecular.xyz, lightSpecular[i].xyz );
 		
 		diffuse *= atten;
@@ -94,7 +74,7 @@ vec4 computeLighting()
 		finalColor += (diffuse + specular);
 	}
 	
-	return vec4(finalColor.xyz, vertex.color.a);
+	return vec4(finalColor.xyz, materialDiffuse.a);
 	
 }
 
@@ -103,9 +83,7 @@ vec4 computeLighting()
 void main (void)
 {
 	vec4 materialAndLight = computeLighting();
-	
-	fragColor = materialAndLight;
-	//fragColor = vec4(1.0,0.0,1.0,1.0);
+	gl_FragColor = materialAndLight;
 }
 
 

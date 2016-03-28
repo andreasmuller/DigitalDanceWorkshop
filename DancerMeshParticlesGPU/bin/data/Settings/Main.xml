@@ -22,4 +22,31 @@
 	<Light_1_Diffuse>255, 255, 255, 255</Light_1_Diffuse>
 	<Light_1_Specular>255, 255, 255, 255</Light_1_Specular>
 	<Light_1_Radius>54</Light_1_Radius>
+<Global_Ambient>0, 0, 0, 255</Global_Ambient>
+	<Light_0>
+		<Position>0.001, 7.197, -2.17409</Position>
+		<Look_At>0, 0, 0</Look_At>
+		<Diffuse>255, 255, 255, 255</Diffuse>
+		<Specular>255, 255, 255, 255</Specular>
+		<Radius>20.8163</Radius>
+	</Light_0>
+	<Light_1>
+		<Position>-6.85964, 4.0733, -8.73386</Position>
+		<Look_At>0, 0, 0</Look_At>
+		<Diffuse>130, 110, 90, 255</Diffuse>
+		<Specular>67, 67, 74, 255</Specular>
+		<Radius>17.1429</Radius>
+	</Light_1>
+	<Floor_Material>
+		<Diffuse>248, 236, 221, 255</Diffuse>
+		<Specular>74, 74, 67, 255</Specular>
+		<Emissive>0, 0, 0, 255</Emissive>
+		<Shininess>19.4388</Shininess>
+	</Floor_Material>
+	<Dancer_Material>
+		<Diffuse>0, 0, 0, 255</Diffuse>
+		<Specular>255, 255, 255, 255</Specular>
+		<Emissive>0, 0, 0, 255</Emissive>
+		<Shininess>44.0612</Shininess>
+	</Dancer_Material>
 </Main>

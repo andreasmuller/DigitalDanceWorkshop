@@ -30,6 +30,7 @@ class ofApp : public ofBaseApp
 		vector<MeshPoint> uniqueSpawnPoints;
 		ofImage emissionMask;
 		ParticleSystemInstancedGeometryGPU particles;
+		ofShader lightingShader;
 
 		ofPlanePrimitive floor;
 
@@ -38,6 +39,7 @@ class ofApp : public ofBaseApp
 
 		float lastTimeCopied;
 
+		ofParameter<ofColor> globalAmbient;
 		vector<ofLightExt*> lights;
 
 		ofxPanel gui;

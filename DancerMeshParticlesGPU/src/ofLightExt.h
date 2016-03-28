@@ -31,14 +31,19 @@ public:
 
 #ifdef LIGHT_EXT_SUPPORT_GUI
 	// --------------------------------------------
-	void addToPanel( ofxPanel* _panel, string _lightName, float _maxRadius = 20, bool _addPosition = false, ofVec3f _posMin = ofVec3f(-30), ofVec3f _posMax = ofVec3f(30) )
+	void addToPanel( ofxPanel* _panel, string _lightName, float _maxRadius = 20, bool _addPosition = true, ofVec3f _posMin = ofVec3f(-30), ofVec3f _posMax = ofVec3f(30) )
 	{
-		if( _addPosition ) _panel->add( position.set( _lightName  + " Position", ofVec3f(0.001,10,0.001), _posMin, _posMax ) ); // If we look straight down, we just get black, check up on this
-		if( _addPosition ) _panel->add( lookAtPos.set( _lightName  + " Look At", ofVec3f(0,0,0), _posMin, _posMax ) );
+		lightParamGroup.setName( _lightName );
 		
-		_panel->add( diffuse.set( _lightName   + " Diffuse",  ofColor::white, ofColor(0,0,0,0), ofColor(255)) );
-		_panel->add( specular.set( _lightName  + " Specular", ofColor::white, ofColor(0,0,0,0), ofColor(255)) );
-		_panel->add( radius.set( _lightName + " Radius", _maxRadius * 0.5, 0, _maxRadius) );
+		if( _addPosition ) lightParamGroup.add( position.set( "Position", ofVec3f(0.001,10,0.001), _posMin, _posMax ) ); // If we look straight down, we just get black, check up on this
+		if( _addPosition ) lightParamGroup.add( lookAtPos.set( "Look At", ofVec3f(0,0,0), _posMin, _posMax ) );
+		
+		lightParamGroup.add( diffuse.set( "Diffuse",  ofColor::white, ofColor(0,0,0,0), ofColor(255)) );
+		lightParamGroup.add( specular.set( "Specular", ofColor::white, ofColor(0,0,0,0), ofColor(255)) );
+		lightParamGroup.add( radius.set( "Radius", _maxRadius * 0.5, 0, _maxRadius) );
+		
+		_panel->add( lightParamGroup );
+		_panel->minimizeAll();
 	}
 #endif //LIGHT_EXT_SUPPORT_GUI
 	
@@ -128,8 +133,6 @@ public:
 	{
 		int numActiveLights = _lightPositionWorld.size();
 		
-		//cout << "numActiveLights " << numActiveLights << endl;
-		
 		if( _bindShader ) _shader->begin();
 
 			_shader->setUniform1i("numActiveLights", numActiveLights );
@@ -186,13 +189,6 @@ public:
 		ofDrawSphere( getGlobalPosition(), _size );
 	}
 
-
-	// --------------------------------------------
-	void setPosition(const float x, const float y, const float z )
-	{
-		setPosition(ofVec3f(x,y,z));
-	}
-
 	// --------------------------------------------
 	void setPosition(const ofVec3f& p)
 	{
@@ -245,4 +241,6 @@ public:
 	ofParameter<ofVec3f>	lookAtPos;
 
 	ofParameter<float>		radius;
+	
+	ofParameterGroup		lightParamGroup;
 };

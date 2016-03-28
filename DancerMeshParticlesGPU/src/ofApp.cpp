@@ -16,10 +16,14 @@ void ofApp::setup()
 	string mainSettingsPath = "Settings/Main.xml";
 	gui.setup("Main", mainSettingsPath);
 	
+	gui.add( globalAmbient.set("Global Ambient", ofColor::black, ofColor(0,0,0,0), ofColor(255)));
 	for( int i = 0; i < lights.size(); i++ )
 	{
 		lights.at(i)->addToPanel( &gui, "Light " + ofToString(i), 60, true );
 	}
+	
+	floorMaterial.addToPanel( &gui, "Floor Material" );
+	dancerMaterial.addToPanel( &gui, "Dancer Material" );
 	
 	gui.loadFromFile(mainSettingsPath);
 	gui.minimizeAll();
@@ -28,15 +32,14 @@ void ofApp::setup()
 	particles.init( 32 );
 	
 	string filename = "Models/TallWomanLowPoly_Aachan.fbx";
-
 	ofMatrix4x4 meshBaseTransform = ofMatrix4x4::newScaleMatrix(0.01, 0.01, 0.01);
 	meshBaseTransform.translate(0, 0.1, 0);
-
 	dancerMesh.load( filename );
 	dancerMesh.setBaseTransform( meshBaseTransform );
-
 	// Mask out areas to emit particles by loading something in here, needs to match the UVs of your model
 	emissionMask.load( "EmissionMasks/EmissionMaskBackAndArms.png");
+	
+	lightingShader.load( "Shaders/BlinnPhongRadius/GL3/BlinnPhongRadius" );
 	
 	float tmpHeight = 1.93;
 	camera.setAutoDistance(false);
@@ -48,15 +51,6 @@ void ofApp::setup()
 	floor.rotate(-90, ofVec3f(1, 0, 0));
 	floor.move(ofVec3f(0, 0, 0));
 
-	floorMaterial.setAmbientColor(ofFloatColor::black );
-	floorMaterial.setDiffuseColor(ofFloatColor(0.8, 0.8, 0.8, 1.0));
-	floorMaterial.setSpecularColor(ofFloatColor(0.8, 0.8, 0.8, 1.0));
-	floorMaterial.setShininess(5);
-
-	dancerMaterial.setAmbientColor(ofFloatColor(0.1));
-	dancerMaterial.setDiffuseColor(ofFloatColor(1, 1, 1));
-	dancerMaterial.setSpecularColor(ofFloatColor(1,1,1));
-	dancerMaterial.setShininess(15);
 
 	lastTimeCopied = 0;
 
@@ -68,6 +62,7 @@ void ofApp::update()
 {    
 	float t = ofGetElapsedTimef();
 
+	ofSetGlobalAmbientColor( globalAmbient.get() );
 	dancerMesh.update( ofGetElapsedTimef() );
 	
 	int numUniquePoints = dancerMesh.triangleMesh.getNumVertices() / 10;
@@ -80,25 +75,26 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-	ofBackgroundGradient(ofColor(40), ofColor(0), OF_GRADIENT_CIRCULAR);
+	//ofBackgroundGradient(ofColor(40), ofColor(0), OF_GRADIENT_CIRCULAR);
 
 	ofEnableDepthTest();
 
     camera.begin();
     
 		ofEnableLighting();
+	
+			lightingShader.begin();
+	
+				ofLightExt::setParams( &lightingShader, lights, ofGetCurrentMatrix( OF_MATRIX_MODELVIEW), false );
 		
-			floorMaterial.begin();
+				floorMaterial.setParams( &lightingShader, false );
 				floor.draw();
-			floorMaterial.end();
 
-			// TEMP, everything should use the custom phong shader
-			dancerMaterial.begin();
-
+				dancerMaterial.setParams( &lightingShader, false );
 				dancerMesh.triangleMesh.draw();
 
-			dancerMaterial.end();
-
+			lightingShader.end();
+	
 			//DancerMesh::drawVelocities( uniqueSpawnPoints, 1.0 );
 	
 			particles.draw( lights );
@@ -106,12 +102,14 @@ void ofApp::draw()
 		ofDisableLighting();
 	
 	
-		ofSetColor( lights.at(0)->getDiffuseColor() );
-		if(lights.at(0)->getIsEnabled()) ofDrawSphere( lights.at(0)->getPosition(), 0.1 );
-
-		ofSetColor(lights.at(1)->getDiffuseColor());
-		if (lights.at(1)->getIsEnabled()) ofDrawSphere(lights.at(1)->getPosition(), 0.1);
-    
+		if( drawGui )
+		{
+			for( unsigned int i = 0; i < lights.size(); i++ )
+			{
+				lights.at(i)->draw( 0.2 );
+			}
+		}
+	
     camera.end();
 	
 	ofDisableDepthTest();
