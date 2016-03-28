@@ -35,14 +35,15 @@ public:
 	{
 		lightParamGroup.setName( _lightName );
 		
-		if( _addPosition ) lightParamGroup.add( position.set( _lightName  + " Position", ofVec3f(0.001,10,0.001), _posMin, _posMax ) ); // If we look straight down, we just get black, check up on this
-		if( _addPosition ) lightParamGroup.add( lookAtPos.set( _lightName  + " Look At", ofVec3f(0,0,0), _posMin, _posMax ) );
+		if( _addPosition ) lightParamGroup.add( position.set( "Position", ofVec3f(0.001,10,0.001), _posMin, _posMax ) ); // If we look straight down, we just get black, check up on this
+		if( _addPosition ) lightParamGroup.add( lookAtPos.set( "Look At", ofVec3f(0,0,0), _posMin, _posMax ) );
 		
-		lightParamGroup.add( diffuse.set( _lightName   + " Diffuse",  ofColor::white, ofColor(0,0,0,0), ofColor(255)) );
-		lightParamGroup.add( specular.set( _lightName  + " Specular", ofColor::white, ofColor(0,0,0,0), ofColor(255)) );
-		lightParamGroup.add( radius.set( _lightName + " Radius", _maxRadius * 0.5, 0, _maxRadius) );
+		lightParamGroup.add( diffuse.set( "Diffuse",  ofColor::white, ofColor(0,0,0,0), ofColor(255)) );
+		lightParamGroup.add( specular.set( "Specular", ofColor::white, ofColor(0,0,0,0), ofColor(255)) );
+		lightParamGroup.add( radius.set( "Radius", _maxRadius * 0.5, 0, _maxRadius) );
 		
 		_panel->add( lightParamGroup );
+		_panel->minimizeAll();
 	}
 #endif //LIGHT_EXT_SUPPORT_GUI
 	

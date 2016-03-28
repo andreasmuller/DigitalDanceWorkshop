@@ -179,8 +179,8 @@ void ofApp::drawScene( float _time, ofShader* _shader, ofMatrix4x4 _modelView )
 		{
 			ofSeedRandom( triangleIndex << 24 );
 			
-			float angY = ofRandom(360) + _time * 0.41;
-			float angZ = ofRandom(360) + _time * 0.35;
+			float angY = ofRandom(360) + _time * 2.61;
+			float angZ = ofRandom(360) + _time * 2.55;
 			
 			ofMatrix4x4 tmpRot;
 			tmpRot.glRotateRad( angY, 	0, 1, 0 );

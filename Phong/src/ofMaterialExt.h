@@ -56,11 +56,15 @@ class ofMaterialExt : public ofMaterial
 		// --------------------------------------------
 		void addToPanel( ofxPanel* _panel, string _materialName )
 		{
-			_panel->add( diffuse.set( _materialName   + " Diffuse",  ofColor::white, ofColor(0,0,0,0), ofColor(255)) );
+			materialParamGroup.setName( _materialName );
+			
+			materialParamGroup.add( diffuse.set( "Diffuse",  ofColor::white, ofColor(0,0,0,0), ofColor(255)) );
 			//_panel->add( ambient.set( _materialName   + " Ambient",  ofColor::black, ofColor(0,0,0,0), ofColor(255)) );
-			_panel->add( specular.set( _materialName  + " Specular", ofColor::white, ofColor(0,0,0,0), ofColor(255)) );
-			_panel->add( emissive.set( _materialName  + " Emissive", ofColor::black, ofColor(0,0,0,0), ofColor(255)) );
-			_panel->add( shininess.set( _materialName + " Shininess", 10, 0, 127) );
+			materialParamGroup.add( specular.set( "Specular", ofColor::white, ofColor(0,0,0,0), ofColor(255)) );
+			materialParamGroup.add( emissive.set( "Emissive", ofColor::black, ofColor(0,0,0,0), ofColor(255)) );
+			materialParamGroup.add( shininess.set( "Shininess", 10, 0, 127) );
+			
+			_panel->add( materialParamGroup );
 		}
 #endif // MATERIAL_EXT_SUPPORT_GUI
 
@@ -105,4 +109,7 @@ class ofMaterialExt : public ofMaterial
 		ofParameter<ofColor>	diffuse;
 		ofParameter<ofColor>	specular;
 		ofParameter<float>		shininess;
+	
+		ofParameterGroup		materialParamGroup;
+	
 };
