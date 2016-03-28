@@ -33,6 +33,8 @@ uniform vec3  lightPositionCamera[MAX_LIGHTS];
 uniform vec4  materialSpecular;
 uniform float materialShininess;
 
+uniform float frontFraceNormalSign = -1.0;
+
 //-------------------------------------------------------------------------------------------------------------------------------------
 // returns intensity of diffuse reflection
 vec3 diffuseLighting(in vec3 _N, in vec3 _L, in vec3 _materialDiffuse, in vec3 _lightDiffuse )
@@ -68,6 +70,15 @@ vec4 computeLighting()
 	vec3 n = normalize(vertex.normal);
 	vec3 v = normalize(vertex.viewDir);
 	
+	if( gl_FrontFacing ) 
+	{
+		n = n *  frontFraceNormalSign;
+	}
+	else
+	{
+		n = n * -frontFraceNormalSign;
+	}
+
 	for ( int i = 0; i < numActiveLights; i++ )
 	{
 		vec3 l = vertex.lightDir[i];

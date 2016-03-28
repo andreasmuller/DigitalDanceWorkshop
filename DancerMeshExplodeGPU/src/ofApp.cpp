@@ -9,6 +9,9 @@ void ofApp::setup()
 
 	ofBackground(ofColor::black);
 
+	lights.push_back( new ofLightExt() );
+	lights.push_back( new ofLightExt() );
+	
 	string mainSettingsPath = "Settings/Main.xml";
 	gui.setup("Main", mainSettingsPath);
 
@@ -29,18 +32,24 @@ void ofApp::setup()
 	gui.add( startColor.set("Start Color", ofColor::black, ofColor(0,0,0,0), ofColor::white) );
 	gui.add( endColor.set("End Color", ofColor::white, ofColor(0,0,0,0), ofColor::white) );
 
-	ofParameter<ofColor> endColor;
+	gui.add( globalAmbient.set("Global Ambient", ofColor::black, ofColor(0,0,0,0), ofColor(255)));
+	for( int i = 0; i < lights.size(); i++ )
+	{
+		lights.at(i)->addToPanel( &gui, "Light " + ofToString(i), 60, true );
+	}
 	
+	floorMaterial.addToPanel( &gui, "Floor Material" );
+	dancerMaterial.addToPanel( &gui, "Dancer Material" );
 	
 	gui.loadFromFile(mainSettingsPath);
 	gui.minimizeAll();
 	gui.setPosition( ofGetWidth() - gui.getWidth() - 10, 10 );
 
+	lightingShader.load("Shaders/BlinnPhongRadius/GL3/BlinnPhongRadius");
+	
 	string filename = "Models/TallWomanLowPoly_Aachan.fbx";
-
 	ofMatrix4x4 meshBaseTransform = ofMatrix4x4::newScaleMatrix(0.01, 0.01, 0.01);
 	meshBaseTransform.translate(0, 0.1, 0);
-
 	dancerMesh.load( filename );
 	dancerMesh.setBaseTransform( meshBaseTransform );
 
@@ -50,34 +59,9 @@ void ofApp::setup()
 	camera.setPosition(0, tmpHeight, 3);
 	camera.lookAt(ofVec3f(0, tmpHeight*0.8, 0));
 
-	lights.push_back( new ofLightExt() );
-	lights.push_back( new ofLightExt() );
-	
-	lights.at(0)->setPointLight();
-	lights.at(0)->setPosition( 6, 9, -5);
-	lights.at(0)->setAttenuation(1, 0.085, 0);
-	lights.at(0)->setRadius( 20 );
-	lights.at(0)->enable();
-
-	lights.at(1)->setPointLight();
-	lights.at(1)->setPosition(-6, 10, 4);
-	lights.at(1)->setAttenuation(1, 0.085, 0);
-	lights.at(1)->setRadius( 20 );
-	lights.at(1)->enable();
-
 	floor.set(200, 200, 2, 2);
 	floor.rotate(-90, ofVec3f(1, 0, 0));
 	floor.move(ofVec3f(0, 0, 0));
-
-	floorMaterial.setAmbientColor(ofFloatColor::black );
-	floorMaterial.setDiffuseColor(ofFloatColor(0.8, 0.8, 0.8, 1.0));
-	floorMaterial.setSpecularColor(ofFloatColor(0.8, 0.8, 0.8, 1.0));
-	floorMaterial.setShininess(5);
-
-	dancerMaterial.setAmbientColor(ofFloatColor(0.1));
-	dancerMaterial.setDiffuseColor(ofFloatColor(1, 1, 1));
-	dancerMaterial.setSpecularColor(ofFloatColor(1,1,1));
-	dancerMaterial.setShininess(15);
 
 	lastTimeCopied = 0;
 
@@ -100,7 +84,6 @@ void ofApp::nuMeshesChanged( int& _amount )
 	{
 		meshes.push_back( new MeshShaderData() );
 	}
-	
 }
 
 
@@ -109,6 +92,8 @@ void ofApp::update()
 {    
 	float t = ofGetElapsedTimef();
 
+	ofSetGlobalAmbientColor( globalAmbient.get() );
+	
 	dancerMesh.update( ofGetElapsedTimef() );
 
 	if (abs(t - lastTimeCopied) > timeBetweenCopies && meshes.size() > 0 )
@@ -141,6 +126,8 @@ void ofApp::update()
 		meshes.at(i)->startColor			= startColor;
 		meshes.at(i)->endColor				= endColor;
 		
+		meshes.at(i)->material				= dancerMaterial;
+		
 		meshes.at(i)->update();
 	}
 	
@@ -155,35 +142,31 @@ void ofApp::draw()
 	ofEnableDepthTest();
 
     camera.begin();
-    
-		ofEnableLighting();
-		
-			floorMaterial.begin();
-				floor.draw();
-			floorMaterial.end();
 
-			// TEMP, everything should use the custom phong shader
-			dancerMaterial.begin();
+		lightingShader.begin();
+	
+			ofLightExt::setParams( &lightingShader, lights, ofGetCurrentMatrix(OF_MATRIX_MODELVIEW) );
+			floorMaterial.setParams( &lightingShader );
+			floor.draw();
 
-				dancerMesh.triangleMesh.draw();
+			dancerMaterial.setParams( &lightingShader );
+			dancerMesh.triangleMesh.draw();
 
-			dancerMaterial.end();
+		lightingShader.end();
+	
+		for ( int i = 0; i < meshes.size(); i++ )
+		{
+			meshes.at(i)->draw( lights );
+		}
 
-			for ( int i = 0; i < meshes.size(); i++ )
+		if( drawGui )
+		{
+			for( unsigned int i = 0; i < lights.size(); i++ )
 			{
-				meshes.at(i)->draw( lights );
+				lights.at(i)->draw( 0.2 );
 			}
-
+		}
 	
-		ofDisableLighting();
-	
-	
-		ofSetColor( lights.at(0)->getDiffuseColor() );
-		if(lights.at(0)->getIsEnabled()) ofDrawSphere( lights.at(0)->getPosition(), 0.1 );
-
-		ofSetColor(lights.at(1)->getDiffuseColor());
-		if (lights.at(1)->getIsEnabled()) ofDrawSphere(lights.at(1)->getPosition(), 0.1);
-    
     camera.end();
 	
 	ofDisableDepthTest();
@@ -202,8 +185,9 @@ void ofApp::keyPressed(int key)
 	{
 		drawGui = !drawGui;
 	}
-	if (key == ' ')
+	if (key == 'f')
 	{
+		ofToggleFullscreen();
 	}
 }
 

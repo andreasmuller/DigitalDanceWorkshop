@@ -231,13 +231,8 @@ class MeshShaderData
 
 				drawShader.setUniformTexture("randomTex", random, 5);
 			
-				//ofParameter<ofColor> startColor;
-				//ofParameter<ofColor> endColor;
-				ofFloatColor startColorFloat = startColor.get();
-				ofFloatColor endColorFloat = endColor.get();
-			
-				drawShader.setUniform4fv("startColor", &startColorFloat.v[0] );
-				drawShader.setUniform4fv("endColor", &endColorFloat.v[0] );
+				drawShader.setUniform4fv("startColor", &ofFloatColor(startColor.get()).v[0] );
+				drawShader.setUniform4fv("endColor", &ofFloatColor(endColor.get()).v[0] );
 			
 				drawShader.setUniform1f("meshAge", meshAge);
 				drawShader.setUniform1f("meshMaxAge", meshMaxAge);

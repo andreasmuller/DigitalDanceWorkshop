@@ -33,6 +33,8 @@ class ofApp : public ofBaseApp
 
 		ofMaterialExt floorMaterial;
 		ofMaterialExt dancerMaterial;
+	
+		ofShader lightingShader;
 
 		deque<MeshShaderData*> meshes;
 
@@ -52,6 +54,8 @@ class ofApp : public ofBaseApp
 		ofParameter<ofColor> endColor;
 	
 		ofParameter<ofVec3f> wind;
+	
+		ofParameter<ofColor> globalAmbient;
 	
 		float lastTimeCopied;
 
