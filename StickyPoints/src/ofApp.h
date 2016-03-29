@@ -31,7 +31,7 @@ class ofApp : public ofBaseApp
 		ofMaterial streamerMaterial;
 		ofMaterial dancerMaterial;
 
-		vector<StickyPoint> stickyPoints;
+		vector<MeshPoint> stickyPoints;
 
 		vector<deque<ofVec3f>> stickyPointPosHistory;
 		vector<LatheMesh> lathedMeshes;

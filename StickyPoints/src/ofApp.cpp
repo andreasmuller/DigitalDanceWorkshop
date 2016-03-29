@@ -26,8 +26,8 @@ void ofApp::setup()
 
 
 	ofVec2f srcPixelTexSize(512, 512);
-	stickyPoints.push_back(StickyPoint(ofVec2f(336, 45) / srcPixelTexSize));
-	stickyPoints.push_back(StickyPoint(ofVec2f(243, 45) / srcPixelTexSize));
+	stickyPoints.push_back(MeshPoint(ofVec2f(336, 45) / srcPixelTexSize));
+	stickyPoints.push_back(MeshPoint(ofVec2f(243, 45) / srcPixelTexSize));
 	//vector<ofVec2f> randomUVs = DancerMesh::getRandomUVPointsWithinMaskedArea( 10, "Masks/EmissionMaskBackAndArms.png", ofColor::white, 50);
 	//for (int i = 0; i < randomUVs.size(); i++) { stickyPoints.push_back( StickyPoint(randomUVs.at(i)) ); }
 	
@@ -84,15 +84,7 @@ void ofApp::update()
 
 	int latheResolution = 200;
 	int maxHistoryLength = latheResolution / 3;
-	float minDistance = 0.1;
-
-	/*
-	ofVec3f wind(0,0,-0.01);
-	for (int i = 0; i < stickyPoints.size(); i++)
-	{
-		deque<ofVec3f>& positions = stickyPointPosHistory.at(i);
-		for (int j = 0; j < positions.size(); j++) { positions[j] += wind; }
-	}*/
+	float minDistance = 0.01;
 
 	for (int i = 0; i < stickyPoints.size(); i++)
 	{
@@ -110,12 +102,12 @@ void ofApp::update()
 
 		ofVec3f lastPoint(9999); 
 		if (positions.size() > 0) lastPoint = positions.back();
-		if(stickyPoints.at(i).currentPos.distance(lastPoint) > minDistance) positions.push_front( stickyPoints.at(i).currentPos );
+		if(stickyPoints.at(i).pos.distance(lastPoint) > minDistance) positions.push_front( stickyPoints.at(i).pos );
 		while (positions.size() > maxHistoryLength) { positions.pop_back();  }
 
 		if (positions.size() > 1)
 		{
-			lathedMeshes.at(i).updateMesh( positions, latheResolution );
+			lathedMeshes.at(i).updateMesh( positions, latheResolution, stickyPoints.at(i).normal );
 		}
 	}
 
@@ -138,12 +130,9 @@ void ofApp::draw()
 			floorMaterial.end();
 
 			dancerMaterial.begin();
-
 				dancerMesh.triangleMesh.draw();
-
 			dancerMaterial.end();
 
-	
 			for ( int i = 0; i < lathedMeshes.size(); i++ )
 			{
 				streamerMaterial.setDiffuseColor( ofFloatColor::fromHsb( ofMap( i, 0, lathedMeshes.size(), 0, 1), 1.0, 1.0 ) );
@@ -151,29 +140,6 @@ void ofApp::draw()
 					lathedMeshes[i].mesh.draw();
 				streamerMaterial.end();
 			}
-	
-	
-	
-			/*
-			for (int i = 0; i < stickyPointPosHistory.size(); i++)
-			{
-				deque<ofVec3f>& positions = stickyPointPosHistory.at(i);
-				ofMesh tmpMesh;
-				tmpMesh.setMode( OF_PRIMITIVE_LINE_STRIP );
-				for (int j = 0; j < positions.size(); j++)
-				{
-					tmpMesh.addVertex(positions.at(j));
-				}
-				tmpMesh.draw();
-			}
-			 */
-
-			/*
-			for(auto& p : stickyPoints)
-			{
-				ofDrawLine( p.currentPos, p.currentPos + p.currentNormal );
-			}
-			*/
 
 		ofDisableLighting();
     
@@ -186,27 +152,6 @@ void ofApp::draw()
     camera.end();
     
 	ofDisableDepthTest();
-
-
-	ofRectangle tmpRect(50, 50, 200, 30);
-	ofSetColor( ofColor::black, 90 );
-	ofDrawRectangle( tmpRect );
-	ofSetColor(ofColor::lightCyan);
-
-	int res = 50;
-	ofMesh tmpMesh;
-	tmpMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
-	for (int i = 0; i < res; i++)
-	{
-		float frac = ofMap( i, 0, res-1, 0, 1 );
-		float x = ofMap( frac, 0, 1, tmpRect.x, tmpRect.x + tmpRect.width );
-		//float y = tmpRect.y + ((1-MathUtils::smoothStepInOut( 0, 0.1, 0.9, 1.0, frac )) * tmpRect.height);
-		//float y = tmpRect.y + ((1-MathUtils::sineStep( 0.1, 0.5, frac )) * tmpRect.height);
-		float y = tmpRect.y + ((1-MathUtils::circularStepInOut( 0, 0.2, 0.8, 1.0, frac )) * tmpRect.height);
-		ofVec2f p( x, y );
-		tmpMesh.addVertex(p);
-	}
-	tmpMesh.draw();
 
 	if (drawGui)
 	{

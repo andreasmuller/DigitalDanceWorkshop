@@ -340,23 +340,27 @@ class LatheMesh
 		}
 
 		// ------------------------------------------
-		void updateMesh( deque<ofVec3f>& _spineControlPoints, int _lengthRes )
+		void updateMesh( deque<ofVec3f>& _spineControlPoints, int _lengthRes, ofVec3f _firstUp = ofVec3f(0,1,0) )
 		{
-			updateMesh(heightPoints, circumferencePoints, _spineControlPoints, _lengthRes );
+			updateMesh(heightPoints, circumferencePoints, _spineControlPoints, _lengthRes, _firstUp );
 		}
 
 		// ------------------------------------------
-		void updateMesh(vector<ofVec2f>& _heightPoints, vector<ofVec2f>& _radiusPoints, deque<ofVec3f>& _spineControlPoints, int _lengthRes)
+		void updateMesh(vector<ofVec2f>& _heightPoints, vector<ofVec2f>& _radiusPoints, deque<ofVec3f>& _spineControlPoints, int _lengthRes, ofVec3f _firstUp = ofVec3f(0,1,0) )
 		{
 			vector<ofVec3f> tmpSpineControlPoints;
 			for (int i = 0; i < _spineControlPoints.size(); i++) { tmpSpineControlPoints.push_back(_spineControlPoints.at(i) ); }
-			updateMesh(_heightPoints, _radiusPoints, tmpSpineControlPoints, _lengthRes );
+			updateMesh(_heightPoints, _radiusPoints, tmpSpineControlPoints, _lengthRes, _firstUp );
 		}
 
 		// ------------------------------------------
-		void updateMesh( vector<ofVec2f>& _heightPoints, vector<ofVec2f>& _radiusPoints, vector<ofVec3f>& _spineControlPoints, int _lengthRes )
+		void updateMesh( vector<ofVec2f>& _heightPoints,
+						 vector<ofVec2f>& _radiusPoints,
+						 vector<ofVec3f>& _spineControlPoints,
+						 int _lengthRes,
+						 ofVec3f _firstUp = ofVec3f(0,1,0) )
 		{
-			Lathe::getTransforms( spineTransforms, _spineControlPoints, _lengthRes );
+			Lathe::getTransforms( spineTransforms, _spineControlPoints, _lengthRes, _firstUp );
 			Lathe::lathe( mesh, _heightPoints, _radiusPoints, spineTransforms, faceNormals );
 		}
 	
