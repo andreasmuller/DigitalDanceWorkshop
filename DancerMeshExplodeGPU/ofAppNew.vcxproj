@@ -199,6 +199,7 @@
     <ClCompile Include="src\Math\ofxRay\src\Plane_fitToPoints.cpp" />
     <ClCompile Include="src\Math\ofxRay\src\Projector.cpp" />
     <ClCompile Include="src\Math\ofxRay\src\Ray.cpp" />
+    <ClCompile Include="src\MeshShaderData.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\Utils\FboPingPong.cpp" />
     <ClCompile Include="src\Utils\ofEasyCamExt.cpp" />
