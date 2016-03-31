@@ -94,6 +94,9 @@
     <ClCompile Include="src\DancerMesh\DancerMesh.cpp">
       <Filter>src\DancerMesh</Filter>
     </ClCompile>
+    <ClCompile Include="src\ParticleSystemInstancedGeometryGPU.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -270,6 +273,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\ofMaterialExt.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ParticleSystemInstancedGeometryGPU.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

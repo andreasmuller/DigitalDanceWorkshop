@@ -85,7 +85,7 @@ void ofApp::draw()
 	
 			lightingShader.begin();
 	
-				ofLightExt::setParams( &lightingShader, lights, ofGetCurrentMatrix( OF_MATRIX_MODELVIEW), false );
+				ofLightExt::setParams( &lightingShader, lights, ofGetCurrentMatrix(OF_MATRIX_MODELVIEW), false );
 		
 				floorMaterial.setParams( &lightingShader, false );
 				floor.draw();

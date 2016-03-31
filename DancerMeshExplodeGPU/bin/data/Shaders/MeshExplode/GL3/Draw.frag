@@ -30,6 +30,8 @@ uniform vec3  lightPositionWorld[MAX_LIGHTS];
 uniform vec3  lightPositionCamera[MAX_LIGHTS];
 
 //uniform vec4  materialDiffuse; // We'll be using vertex.color
+//uniform vec4  materialAmbient;
+uniform vec4  materialEmissive;
 uniform vec4  materialSpecular;
 uniform float materialShininess;
 
@@ -65,7 +67,7 @@ vec3 specularLighting(in vec3 _N, in vec3 _L, in vec3 _V, in float _materialShin
 //
 vec4 computeLighting()
 {
-	vec3 finalColor = lightSceneAmbient.xyz;
+	vec3 finalColor = lightSceneAmbient.xyz + materialEmissive.xyz;// + materialAmbient.xyz;
 	
 	vec3 n = normalize(vertex.normal);
 	vec3 v = normalize(vertex.viewDir);

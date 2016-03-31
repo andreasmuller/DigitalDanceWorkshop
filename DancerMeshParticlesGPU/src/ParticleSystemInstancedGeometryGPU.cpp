@@ -158,48 +158,16 @@ void ParticleSystemInstancedGeometryGPU::draw( vector<ofLightExt*>& _lights )
 //
 void ParticleSystemInstancedGeometryGPU::reAllocate( int _textureSize )
 {
-	
-ofLogLevel prevLogLevel = ofGetLogLevel();
-ofSetLogLevel( OF_LOG_NOTICE );
+	ofLogLevel prevLogLevel = ofGetLogLevel();
+	ofSetLogLevel( OF_LOG_NOTICE );
 	
 	textureSize = _textureSize;
 	numParticles = textureSize * textureSize;
 	
-	// Allocate buffers
-	ofFbo::Settings fboSettings;
-	fboSettings.width  = textureSize;
-	fboSettings.height = textureSize;
-	
-	fboSettings.numColorbuffers = 2;
-	
-	fboSettings.useDepth = false;
-	
-#ifdef TARGET_OPENGLES
-	fboSettings.internalformat = GL_RGBA16F;
-	fboSettings.colorFormats.push_back(GL_RGBA16F);
-	fboSettings.colorFormats.push_back(GL_RGBA16F);
-#else
-	fboSettings.internalformat = GL_RGBA32F;
-	//fboSettings.internalformat = GL_RGBA16F;
-#endif
-	
-	fboSettings.textureTarget = GL_TEXTURE_2D;
-	fboSettings.wrapModeHorizontal	= GL_CLAMP_TO_EDGE;
-	fboSettings.wrapModeVertical	= GL_CLAMP_TO_EDGE;
-	fboSettings.minFilter = GL_NEAREST; // No interpolation, that would mess up data reads later!
-	fboSettings.maxFilter = GL_NEAREST;
-	
-	//cout << endl;
-	ofLogNotice() << "*** ParticleSystemInstancedGeometryGPU::init 	Allocating FBO ****";
 	ofDisableTextureEdgeHack();
-	particleDataFbo.allocate( fboSettings );
+	particleDataFbo.allocateAsData(textureSize, textureSize, GL_RGBA32F, 2);
 	ofEnableTextureEdgeHack();
-	ofLogNotice() << "*** ParticleSystemInstancedGeometryGPU::init 	Done allocating FBO ***";
-	//cout << endl;
-	
-	cout << "ofFbo::maxDrawBuffers() " << ofFbo::maxDrawBuffers() << " particleDataFbo.getNumTextures(): " << particleDataFbo.source()->getNumTextures() << endl;
-	
-	ofLogNotice() << "*** ParticleSystemInstancedGeometryGPU::init 	Allocating Random data texture ****";
+
 	ofDisableTextureEdgeHack();
 #ifdef TARGET_OPENGLES
 	randomTexture.allocate(   textureSize, textureSize, GL_RGBA32F, false, GL_RGBA, GL_FLOAT );
@@ -207,13 +175,12 @@ ofSetLogLevel( OF_LOG_NOTICE );
 	spawnVelTexture.allocate( textureSize, textureSize, GL_RGBA32F, false, GL_RGBA, GL_FLOAT );
 #else
 	ofDisableArbTex();
-	randomTexture.allocate(   textureSize, textureSize, GL_RGBA, GL_RGBA, GL_FLOAT );
-	spawnPosTexture.allocate( textureSize, textureSize, GL_RGBA, GL_RGBA, GL_FLOAT );
-	spawnVelTexture.allocate( textureSize, textureSize, GL_RGBA, GL_RGBA, GL_FLOAT );
+	randomTexture.allocate(   textureSize, textureSize, GL_RGBA32F, GL_RGBA, GL_FLOAT );
+	spawnPosTexture.allocate( textureSize, textureSize, GL_RGBA32F, GL_RGBA, GL_FLOAT );
+	spawnVelTexture.allocate( textureSize, textureSize, GL_RGBA32F, GL_RGBA, GL_FLOAT );
 #endif
 	ofEnableTextureEdgeHack();
-	ofLogNotice() << "*** ParticleSystemInstancedGeometryGPU::init 	Done allocating Random data texture ***";
-	
+
 	// If we do any interpolaton we can't use these as data arrays
 	randomTexture.setTextureMinMagFilter( GL_NEAREST, GL_NEAREST );
 	spawnPosTexture.setTextureMinMagFilter( GL_NEAREST, GL_NEAREST );
