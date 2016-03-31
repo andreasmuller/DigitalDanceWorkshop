@@ -104,6 +104,8 @@ void main (void)
 
 	vec3 newPos = pos + frameVel;
 
+	newPos.y = clamp( newPos.y, 0.0, 9999999.0 ); // don't go below the 'floor'
+
 	fragOutPos = vec4( newPos, 1.0 );
 	fragOutAng = angles;
 }

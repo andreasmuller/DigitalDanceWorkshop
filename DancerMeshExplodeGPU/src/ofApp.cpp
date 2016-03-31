@@ -11,6 +11,7 @@ void ofApp::setup()
 
 	lights.push_back( new ofLightExt() );
 	lights.push_back( new ofLightExt() );
+	lights.push_back(new ofLightExt());
 	
 	string mainSettingsPath = "Settings/Main.xml";
 	gui.setup("Main", mainSettingsPath);

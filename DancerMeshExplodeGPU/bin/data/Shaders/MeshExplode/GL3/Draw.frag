@@ -3,7 +3,7 @@
 precision highp float;
 
 // This could be anything, no need to stick to max 8
-#define MAX_LIGHTS 2
+#define MAX_LIGHTS 3
 
 in VertexAttrib {
 	vec3 normal;
@@ -97,6 +97,12 @@ vec4 computeLighting()
 		finalColor += (diffuse + specular);
 	}
 	
+
+	if( !gl_FrontFacing ) 
+	{
+		finalColor.xyz = mix( finalColor.xyz, vec3(1.0, 0.0, 0.0), 0.5 );
+	}
+
 	return vec4(finalColor.xyz, vertex.color.a);
 	
 }

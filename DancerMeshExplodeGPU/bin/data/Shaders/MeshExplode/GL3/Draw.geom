@@ -7,7 +7,7 @@ layout(triangle_strip, max_vertices=6) out;
 
 precision highp float;
 
-#define MAX_LIGHTS 2
+#define MAX_LIGHTS 3
 
 in VertexAttrib {
 	vec3 normal;
