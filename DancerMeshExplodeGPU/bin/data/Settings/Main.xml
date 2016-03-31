@@ -21,7 +21,7 @@
 		<Radius>14.3878</Radius>
 	</Light_0>
 	<Light_1>
-		<Position>0.001, 3.1362, -10.9204</Position>
+		<Position>-4.67305, 3.1362, -5.29779</Position>
 		<Look_At>0, 0, 0</Look_At>
 		<Diffuse>255, 255, 255, 255</Diffuse>
 		<Specular>255, 255, 255, 255</Specular>

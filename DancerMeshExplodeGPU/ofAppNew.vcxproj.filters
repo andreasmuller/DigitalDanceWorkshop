@@ -94,6 +94,9 @@
     <ClCompile Include="src\DancerMesh\DancerMesh.cpp">
       <Filter>src\DancerMesh</Filter>
     </ClCompile>
+    <ClCompile Include="src\MeshShaderData.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">

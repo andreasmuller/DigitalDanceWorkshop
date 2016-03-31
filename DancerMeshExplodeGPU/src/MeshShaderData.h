@@ -38,6 +38,21 @@ class MeshShaderData
 		}
 
 		// ------------------------------------------------
+		void initIfNeeded()
+		{
+			ofLogLevel tmpLevel = ofGetLogLevel();
+			ofSetLogLevel(OF_LOG_VERBOSE);
+
+			if (!drawShader.isLoaded())
+			{
+				drawShader.load("Shaders/MeshExplode/GL3/Draw.vert", "Shaders/MeshExplode/GL3/Draw.frag", "Shaders/MeshExplode/GL3/Draw.geom");
+				updateShader.load("Shaders/MeshExplode/GL3/Update");
+			}
+			ofSetLogLevel(tmpLevel);
+
+		}
+
+		// ------------------------------------------------
 		void newMesh(ofMesh& _triangleMesh )
 		{
 			// We are blindly assuming that we're getting a triangle mesh, we should really be 
@@ -138,16 +153,7 @@ class MeshShaderData
 			v1.loadData( &triangleV1.at(0).x, textureSize, textureSize, GL_RGB );
 			v2.loadData( &triangleV2.at(0).x, textureSize, textureSize, GL_RGB );
 
-			ofLogLevel tmpLevel = ofGetLogLevel();
-			ofSetLogLevel( OF_LOG_VERBOSE );
-
-			// TODO: This shader should really be shared among all MeshShaderData instances
-			if ( !drawShader.isLoaded() )
-			{
-				drawShader.load("Shaders/MeshExplode/GL3/Draw.vert", "Shaders/MeshExplode/GL3/Draw.frag", "Shaders/MeshExplode/GL3/Draw.geom");
-				updateShader.load("Shaders/MeshExplode/GL3/Update");
-			}
-			ofSetLogLevel(tmpLevel);
+			initIfNeeded();
 
 			timeReceivedMesh = ofGetElapsedTimef();
 		}
@@ -244,8 +250,8 @@ class MeshShaderData
 
 		ofMesh pointsMesh;
 
-		ofShader drawShader;
-		ofShader updateShader;
+		static ofShader drawShader;
+		static ofShader updateShader;
 
 		FboPingPong posAndAngles;
 
