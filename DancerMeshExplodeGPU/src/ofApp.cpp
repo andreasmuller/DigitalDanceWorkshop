@@ -100,7 +100,7 @@ void ofApp::update()
 
 		ofSetGlobalAmbientColor(globalAmbient.get());
 
-		dancerMesh.update(ofGetElapsedTimef());
+		dancerMesh.update( t );
 
 		if (abs(t - lastTimeCopied) > timeBetweenCopies && meshes.size() > 0)
 		{
