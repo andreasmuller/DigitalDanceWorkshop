@@ -34,11 +34,7 @@ uniform vec3  lightPositionCameraDebug;
 
 void main()
 {
-	//vertex.normal = (transpose(inverse(modelViewMatrix)) * vec4(normal,0.0)).xyz; // has to be done like this for now as the normalMatrix is not updated when we transform an object to draw from OF
-	//vertex.normal = (normalMatrix * vec4(normal,0.0)).xyz;
-	
-vertex.normal = normal;
-
+	vertex.normal = normal;
 	vertex.texcoord = texcoord;
 
 	gl_Position = position;	

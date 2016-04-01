@@ -67,7 +67,7 @@ void setVertexOutLightParamsForWorldSpaceVertex( vec3 _v, vec3 _n )
 		vertexOut.lightDir[i] = vec3(lightPositionCamera[i] - vertexCameraPos.xyz) / lightRadius[i];
 	}	
 
-	vertexOut.normal = (normalMatrix * vec4(_n,0.0)).xyz;
+	vertexOut.normal = (normalMatrix * vec4(_n,0.0)).xyz; // for some reason doing this in the vertex shader seems to mess it up 
 	gl_Position = modelViewProjectionMatrix * v;
 }
 
