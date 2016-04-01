@@ -38,7 +38,9 @@ void ofApp::setup()
 	{
 		lights.at(i)->addToPanel( &gui, "Light " + ofToString(i), 60, true );
 	}
-	
+
+	maxCopies.addListener(this, &ofApp::nuMeshesChanged);
+
 	floorMaterial.addToPanel( &gui, "Floor Material" );
 	dancerMaterial.addToPanel( &gui, "Dancer Material" );
 	
@@ -86,7 +88,6 @@ void ofApp::nuMeshesChanged( int& _amount )
 		meshes.push_back( new MeshShaderData() );
 	}
 }
-
 
 //--------------------------------------------------------------
 void ofApp::update() 
