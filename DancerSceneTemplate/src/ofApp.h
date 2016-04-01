@@ -22,8 +22,6 @@ class ofApp : public ofBaseApp
 
 		void keyPressed(int key);
 	
-		void nuMeshesChanged( int& _amount );
-
 		float time;
 
 		ofEasyCam camera;
