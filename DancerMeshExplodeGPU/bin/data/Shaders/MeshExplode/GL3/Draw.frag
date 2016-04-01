@@ -97,12 +97,12 @@ vec4 computeLighting()
 		finalColor += (diffuse + specular);
 	}
 	
-
+/*
 	if( !gl_FrontFacing ) 
 	{
 		finalColor.xyz = mix( finalColor.xyz, vec3(1.0, 0.0, 0.0), 0.5 );
 	}
-
+*/
 	return vec4(finalColor.xyz, vertex.color.a);
 	
 }
@@ -117,4 +117,17 @@ void main (void)
 	//fragColor = vertex.color;
 	//fragColor = vec4(1.0,0.0,1.0,1.0);
 	//fragColor = vec4( (vertex.normal.xyz + vec3(1,1,1)) * 0.5, 1 );
+
+	vec3 n = normalize(vertex.normal);	
+	if( gl_FrontFacing ) 
+	{
+		n = n *  frontFraceNormalSign;
+	}
+	else
+	{
+		n = n * -frontFraceNormalSign;
+	}
+
+	fragColor = vec4( (n + vec3(1,1,1)) * 0.5, 1 );
+
 }

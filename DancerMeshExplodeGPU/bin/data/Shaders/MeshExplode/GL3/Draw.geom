@@ -81,7 +81,7 @@ void main()
 	vec4 angles = texture( angTex, texCoord );
 	vec4 random = texture( randomTex, texCoord );	
 
-	float triangleScale = 1.0; //smoothStepOut( meshMaxAge * 0.95, meshMaxAge, meshAge );
+	float triangleScale = smoothStepOut( meshMaxAge * 0.95, meshMaxAge, meshAge );
 
 	vec3 v0Model = texture( vertex0Tex, texCoord ).xyz * triangleScale;
 	vec3 v1Model = texture( vertex1Tex, texCoord ).xyz * triangleScale;
