@@ -67,7 +67,7 @@ void setVertexOutLightParamsForWorldSpaceVertex( vec3 _v, vec3 _n )
 		vertexOut.lightDir[i] = vec3(lightPositionCamera[i] - vertexCameraPos.xyz) / lightRadius[i];
 	}	
 
-	vertexOut.normal = _n;
+	vertexOut.normal = (normalMatrix * vec4(_n,0.0)).xyz;
 	gl_Position = modelViewProjectionMatrix * v;
 }
 
@@ -81,7 +81,7 @@ void main()
 	vec4 angles = texture( angTex, texCoord );
 	vec4 random = texture( randomTex, texCoord );	
 
-	float triangleScale = smoothStepOut( meshMaxAge * 0.95, meshMaxAge, meshAge );
+	float triangleScale = smoothStepOut( meshMaxAge * 0.95, meshMaxAge, meshAge ); // make triangle smaller towards the end of it's life
 
 	vec3 v0Model = texture( vertex0Tex, texCoord ).xyz * triangleScale;
 	vec3 v1Model = texture( vertex1Tex, texCoord ).xyz * triangleScale;

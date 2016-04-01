@@ -98,8 +98,7 @@ vec4 computeLighting()
 		finalColor += (diffuse + specular);
 	}
 	
-	return vec4(finalColor.xyz, materialDiffuse.a);
-	
+	return vec4(finalColor.xyz, materialDiffuse.a);	
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------
@@ -111,6 +110,7 @@ void main (void)
 	fragColor = materialAndLight;
 	//fragColor = vec4(1.0,0.0,1.0,1.0);
 
+/*
 	vec3 n = normalize(vertex.normal);	
 	if( gl_FrontFacing ) 
 	{
@@ -122,6 +122,7 @@ void main (void)
 	}
 
 	fragColor = vec4( (n + vec3(1,1,1)) * 0.5, 1 );	
+	*/
 }
 
 

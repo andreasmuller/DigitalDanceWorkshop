@@ -54,7 +54,7 @@ vec3 specularLighting(in vec3 _N, in vec3 _L, in vec3 _V, in float _materialShin
 	
 	// calculate specular reflection only if
 	// the surface is oriented to the light source
-	if(dot(_N, _L) > 0)
+	if( dot(_N, _L) > 0 )
 	{
 		// half vector
 		vec3 H = normalize(_L + _V);
@@ -97,13 +97,14 @@ vec4 computeLighting()
 		finalColor += (diffuse + specular);
 	}
 	
-/*
-	if( !gl_FrontFacing ) 
+	/*
+	if( gl_FrontFacing ) 
 	{
-		finalColor.xyz = mix( finalColor.xyz, vec3(1.0, 0.0, 0.0), 0.5 );
+		finalColor = vec3(0,0,1);
 	}
-*/
-	return vec4(finalColor.xyz, vertex.color.a);
+	*/
+
+	return vec4(finalColor, vertex.color.a);
 	
 }
 
@@ -118,6 +119,7 @@ void main (void)
 	//fragColor = vec4(1.0,0.0,1.0,1.0);
 	//fragColor = vec4( (vertex.normal.xyz + vec3(1,1,1)) * 0.5, 1 );
 
+	/*
 	vec3 n = normalize(vertex.normal);	
 	if( gl_FrontFacing ) 
 	{
@@ -129,5 +131,6 @@ void main (void)
 	}
 
 	fragColor = vec4( (n + vec3(1,1,1)) * 0.5, 1 );
+	*/
 
 }

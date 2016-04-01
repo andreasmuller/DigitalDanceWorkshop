@@ -25,6 +25,8 @@ class ofApp : public ofBaseApp
 	
 		void nuMeshesChanged( int& _amount );
 
+		float time;
+
 		ofEasyCam camera;
 
 		DancerMeshFBX dancerMesh;

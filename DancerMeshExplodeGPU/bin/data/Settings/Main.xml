@@ -8,22 +8,22 @@
 	<Noise_Magnitude>0.007</Noise_Magnitude>
 	<Noise_Time_Freq>0.075</Noise_Time_Freq>
 	<Noise_Persistence>0.29</Noise_Persistence>
-<Copies>61</Copies>
-	<Time_between_Copies>0.08</Time_between_Copies>
+<Copies>100</Copies>
+	<Time_between_Copies>0.06</Time_between_Copies>
 <Start_Color>255, 0, 255, 255</Start_Color>
 	<End_Color>0, 255, 255, 255</End_Color>
 <Global_Ambient>0, 0, 0, 255</Global_Ambient>
 	<Light_0>
 		<Position>0.637236, 5.63515, 4.69805</Position>
 		<Look_At>0, 0, 0</Look_At>
-		<Diffuse>255, 255, 255, 255</Diffuse>
+		<Diffuse>255, 231, 223, 255</Diffuse>
 		<Specular>255, 255, 255, 255</Specular>
 		<Radius>14.3878</Radius>
 	</Light_0>
 	<Light_1>
 		<Position>-4.67305, 3.1362, -5.29779</Position>
 		<Look_At>0, 0, 0</Look_At>
-		<Diffuse>255, 255, 255, 255</Diffuse>
+		<Diffuse>255, 236, 220, 255</Diffuse>
 		<Specular>255, 255, 255, 255</Specular>
 		<Radius>19.5918</Radius>
 	</Light_1>
@@ -39,4 +39,11 @@
 		<Emissive>0, 0, 0, 255</Emissive>
 		<Shininess>69.9796</Shininess>
 	</Dancer_Material>
+<Light_2>
+		<Position>0.001, -2.17409, 0.001</Position>
+		<Look_At>0, 0, 0</Look_At>
+		<Diffuse>69, 51, 50, 255</Diffuse>
+		<Specular>255, 255, 255, 255</Specular>
+		<Radius>1.53061</Radius>
+	</Light_2>
 </Main>

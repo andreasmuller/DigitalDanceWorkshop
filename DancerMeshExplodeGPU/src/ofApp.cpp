@@ -17,7 +17,7 @@ void ofApp::setup()
 	gui.setup("Main", mainSettingsPath);
 
 	gui.add( maxCopies.set("Copies", 10, 1, 100));
-	gui.add( timeBetweenCopies.set("Time between Copies", 1, 0, 4));
+	gui.add( timeBetweenCopies.set("Time between Copies", 1, 0, 2));
 	
 	gui.add( maxRotation.set("Max Rotation", 3, 0, 20));
 	gui.add( triangleNormalVel.set("Triangle Normal Vel", 0.001, 0, 0.1));
@@ -66,6 +66,7 @@ void ofApp::setup()
 	floor.rotate(-90, ofVec3f(1, 0, 0));
 	floor.move(ofVec3f(0, 0, 0));
 
+	time = 0;
 	lastTimeCopied = 0;
 
 	int tmp = maxCopies;
@@ -91,55 +92,58 @@ void ofApp::nuMeshesChanged( int& _amount )
 
 //--------------------------------------------------------------
 void ofApp::update() 
-{    
-	float t = ofGetElapsedTimef();
-
-	ofSetGlobalAmbientColor( globalAmbient.get() );
-	
-	dancerMesh.update( ofGetElapsedTimef() );
-
-	if (abs(t - lastTimeCopied) > timeBetweenCopies && meshes.size() > 0 )
+{   
+	if (! ofGetKeyPressed(' '))
 	{
-		ofMesh tmpMesh = dancerMesh.triangleMesh;
-	
-		MeshShaderData* nextMesh = meshes.back();
-		meshes.pop_back();
-		nextMesh->newMesh( tmpMesh );
-		meshes.push_front(nextMesh);
+		time += ofGetLastFrameTime();//ofGetElapsedTimef();
+		float t = time;// ofGetElapsedTimef();
 
-		lastTimeCopied = t;
-	}
+		ofSetGlobalAmbientColor(globalAmbient.get());
 
-	float meshMaxAge = meshes.size() * timeBetweenCopies;
-	
-	for (int i = 0; i < meshes.size(); i++)
-	{
-		meshes.at(i)->meshMaxAge		 = meshMaxAge;
-		meshes.at(i)->maxRotation		 = maxRotation;
-		meshes.at(i)->wind				 = wind;
-		meshes.at(i)->triangleNormalVel  = triangleNormalVel;
-		meshes.at(i)->triangleNormalDrag = triangleNormalDrag;
-		
-		meshes.at(i)->noisePositionFrequency = noisePositionFrequency;
-		meshes.at(i)->noiseMagnitude		 = noiseMagnitude;
-		meshes.at(i)->noiseTimeFrequency	 = noiseTimeFrequency;
-		meshes.at(i)->noisePersistence		 = noisePersistence;
-		
-		meshes.at(i)->startColor			= startColor;
-		meshes.at(i)->endColor				= endColor;
-		
-		meshes.at(i)->material				= dancerMaterial;
-		
-		meshes.at(i)->update();
+		dancerMesh.update(ofGetElapsedTimef());
+
+		if (abs(t - lastTimeCopied) > timeBetweenCopies && meshes.size() > 0)
+		{
+			ofMesh tmpMesh = dancerMesh.triangleMesh;
+
+			MeshShaderData* nextMesh = meshes.back();
+			meshes.pop_back();
+			nextMesh->newMesh( tmpMesh, time );
+			meshes.push_front(nextMesh);
+
+			lastTimeCopied = t;
+		}
+
+		float meshMaxAge = meshes.size() * timeBetweenCopies;
+
+		for (int i = 0; i < meshes.size(); i++)
+		{
+			meshes.at(i)->meshMaxAge = meshMaxAge;
+			meshes.at(i)->maxRotation = maxRotation;
+			meshes.at(i)->wind = wind;
+			meshes.at(i)->triangleNormalVel = triangleNormalVel;
+			meshes.at(i)->triangleNormalDrag = triangleNormalDrag;
+
+			meshes.at(i)->noisePositionFrequency = noisePositionFrequency;
+			meshes.at(i)->noiseMagnitude = noiseMagnitude;
+			meshes.at(i)->noiseTimeFrequency = noiseTimeFrequency;
+			meshes.at(i)->noisePersistence = noisePersistence;
+
+			meshes.at(i)->startColor = startColor;
+			meshes.at(i)->endColor = endColor;
+
+			meshes.at(i)->material = dancerMaterial;
+
+			meshes.at(i)->update( time );
+		}
 	}
-	
 	ofSetWindowTitle(ofToString(ofGetFrameRate(), 1));
 }
 
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-	ofBackgroundGradient(ofColor(40), ofColor(0), OF_GRADIENT_CIRCULAR);
+	//ofBackgroundGradient(ofColor(40), ofColor(0), OF_GRADIENT_CIRCULAR);
 
 	ofEnableDepthTest();
 

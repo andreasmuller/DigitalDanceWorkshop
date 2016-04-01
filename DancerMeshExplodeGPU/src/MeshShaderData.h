@@ -53,7 +53,7 @@ class MeshShaderData
 		}
 
 		// ------------------------------------------------
-		void newMesh(ofMesh& _triangleMesh )
+		void newMesh(ofMesh& _triangleMesh, float _time )
 		{
 			// We are blindly assuming that we're getting a triangle mesh, we should really be 
 			// checking mesh primitive type and go by indices if they exist
@@ -155,18 +155,18 @@ class MeshShaderData
 
 			initIfNeeded();
 
-			timeReceivedMesh = ofGetElapsedTimef();
+			timeReceivedMesh = _time; //ofGetElapsedTimef();
 		}
 
 		// ------------------------------------------------
-		void update()
+		void update( float _time )
 		{
 			if (!posAndAngles.isAllocated())
 			{
 				return;
 			}
 
-			float t = ofGetElapsedTimef();
+			float t = _time; //ofGetElapsedTimef();
 			meshAge = t - timeReceivedMesh;
 
 			ofDisableTextureEdgeHack(); // Important on devices that don't support NPOT textures!
@@ -227,7 +227,9 @@ class MeshShaderData
 
 				ofLightExt::setParams( &drawShader, _lights, ofGetCurrentMatrix( OF_MATRIX_MODELVIEW ), false );
 				material.setParams( &drawShader, false );
-			
+				
+				drawShader.setUniformMatrix4f("normalMatrix", ofGetCurrentNormalMatrix() );
+
 				drawShader.setUniformTexture("posTex", posAndAngles.source()->getTexture(0), 0);
 				drawShader.setUniformTexture("angTex", posAndAngles.source()->getTexture(1), 1);
 
