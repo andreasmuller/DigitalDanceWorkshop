@@ -1,0 +1,1426 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1BEE448D5236FF7A3D1136A0 /* ofxFBXScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95EB7C733541F64E2C4F7115 /* ofxFBXScene.cpp */; };
+		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
+		1DA45EA5BB643049B1931024 /* EasingEquations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C772DBC30AD976241B35A65F /* EasingEquations.cpp */; };
+		22FAD71C4C85BA2A59638F67 /* ofxFBXSkeleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E43F5FD5CB7F1965F1A06E7 /* ofxFBXSkeleton.cpp */; };
+		315FB5B8D7DAEAD4824CBA28 /* Ray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B23D69BDAD892455CD432521 /* Ray.cpp */; };
+		3AE5742C2657FC46ABF744B3 /* Projector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91687E50B2FDAECE326ED511 /* Projector.cpp */; };
+		44807B91E3486E1AD3EDD36E /* FboPingPong.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5E4A8831A84DA8B78A2833C /* FboPingPong.cpp */; };
+		483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D67A00EB899FAC09430597 /* ofxLabel.cpp */; };
+		5A92C4A66173EC0F0095E0AF /* Plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE64ABFF9205418415A12B90 /* Plane.cpp */; };
+		5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C88333E71C9457E441C33474 /* ofxButton.cpp */; };
+		65CF1066220B6EAF92170D24 /* ofxFBXAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39380BD5970FE92C8FDEC5D2 /* ofxFBXAnimation.cpp */; };
+		76932F2BDEBF5975C7B78E8F /* ofxFBXBone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22CDCA220E183DD55BC133AD /* ofxFBXBone.cpp */; };
+		7BDDF68BE87865AB3CBDA43A /* DancerMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4987BAAF93697C673F2F2 /* DancerMesh.cpp */; };
+		7D001F1365B7FA85A22C5A60 /* GeometryUtility.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 5B3F049E55F4009A56C0E671 /* GeometryUtility.cxx */; };
+		837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15F2C6477A769C03A56D1401 /* ofxSlider.cpp */; };
+		856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9604B925D32EE39065747725 /* ofxBaseGui.cpp */; };
+		8DF9F2D080D5A7F3F5B6AC1C /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9233072B406293EF1FB893AB /* Base.cpp */; };
+		914AF1870F96A0A63B4E36D8 /* AnimationUtility.cxx in Sources */ = {isa = PBXBuildFile; fileRef = F974CED35D2D786D237B0A54 /* AnimationUtility.cxx */; };
+		955F5DACFFF26CD0C0B868C9 /* ofxFBXMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0170CD9A77207D4D9D94F05A /* ofxFBXMesh.cpp */; };
+		9B5EAD6903CBD88ED1D4627A /* ofxFBXNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACC32795AF3AA319EA8B0C2 /* ofxFBXNode.cpp */; };
+		A2A7A70CD07257390F024C45 /* ofxFBXCluster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FBDA72A456BF63584BD85275 /* ofxFBXCluster.cpp */; };
+		AAE7D54A50810641535459E5 /* ofxFBXPose.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B907B0A3B8E1804C5297F55E /* ofxFBXPose.cpp */; };
+		ABF64A542ED7F53E05D88B36 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FFAF5456D7983DD1197E330 /* Camera.cpp */; };
+		B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF8674C7975F1063C5E30CA /* ofxGuiGroup.cpp */; };
+		B40BD814627F0AA32FFE6247 /* ofEasyCamExt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E14E144B5ED7BBFB2F07205 /* ofEasyCamExt.cpp */; };
+		B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 802251BAF1B35B1D67B32FD0 /* ofxSliderGroup.cpp */; };
+		BC66EC6C15B019AAA2FB08B7 /* GetPosition.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 39DC113633C83CC3597AE35E /* GetPosition.cxx */; };
+		C9F2D96F8DE3B1F1603ACC2C /* ofxFBXManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DEF49BDD6034E5F416E2DC9C /* ofxFBXManager.cpp */; };
+		D3B67B1855C441DAEFF34461 /* ofxFBXMeshMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13D73946A1538106D9BE5877 /* ofxFBXMeshMaterial.cpp */; };
+		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
+		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
+		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
+		F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E112B3AEBEA2C091BF2B40AE /* ofxPanel.cpp */; };
+		F3F9A7E558A0C88C88A8291A /* Plane_fitToPoints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F0F7D04AFB83D2FA9AD11 /* Plane_fitToPoints.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E4328147138ABC890047C5CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4B27C1510CBEB8E00536013;
+			remoteInfo = openFrameworks;
+		};
+		E4EEB9AB138B136A00A80321 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E4B27C1410CBEB8E00536013;
+			remoteInfo = openFrameworks;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E4C2427710CC5ABF004149E2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0170CD9A77207D4D9D94F05A /* ofxFBXMesh.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxFBXMesh.cpp; path = ../../../addons/ofxFBX/src/ofxFBXMesh.cpp; sourceTree = SOURCE_ROOT; };
+		02EF452624824477DFFC8B43 /* fbxanimcurve.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxanimcurve.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/animation/fbxanimcurve.h; sourceTree = SOURCE_ROOT; };
+		039082802B1576E27B849422 /* fbxoperatorentryview.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxoperatorentryview.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxoperatorentryview.h; sourceTree = SOURCE_ROOT; };
+		03A62C7D237F368C62B1C1CC /* fbxobjectscontainer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxobjectscontainer.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxobjectscontainer.h; sourceTree = SOURCE_ROOT; };
+		03BF07E9870149605B47D31E /* fbxcluster.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcluster.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxcluster.h; sourceTree = SOURCE_ROOT; };
+		06274A3A519F4DF9FF93FF8A /* fbxqueryevent.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxqueryevent.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxqueryevent.h; sourceTree = SOURCE_ROOT; };
+		06A711CCB2BE3D064DB718D0 /* fbxlayercontainer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxlayercontainer.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxlayercontainer.h; sourceTree = SOURCE_ROOT; };
+		06E41DD00B25018B612ED6E8 /* fbxtypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxtypes.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/arch/fbxtypes.h; sourceTree = SOURCE_ROOT; };
+		07EA53EA76ABCDF9AB93804B /* ofxInterpolator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxInterpolator.h; path = src/Utils/ofxInterpolator/ofxInterpolator.h; sourceTree = SOURCE_ROOT; };
+		0812389566DCCE6EB6860444 /* fbxconstantentryview.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxconstantentryview.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxconstantentryview.h; sourceTree = SOURCE_ROOT; };
+		0817EEA994B0268E0B031D13 /* fbxproperty.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxproperty.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxproperty.h; sourceTree = SOURCE_ROOT; };
+		0918A48FB78CA6EE47ABF9B7 /* fbxrenamingstrategyfbx6.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxrenamingstrategyfbx6.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxrenamingstrategyfbx6.h; sourceTree = SOURCE_ROOT; };
+		0A1DAC09F322AE313A40706D /* ofxToggle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxToggle.h; path = ../../../addons/ofxGui/src/ofxToggle.h; sourceTree = SOURCE_ROOT; };
+		0A4270FF6906DAD501938C2E /* fbxvector4.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxvector4.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/math/fbxvector4.h; sourceTree = SOURCE_ROOT; };
+		0BCF68CFC95A98F4FBDB64FE /* fbxproceduraltexture.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxproceduraltexture.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxproceduraltexture.h; sourceTree = SOURCE_ROOT; };
+		0DC70B0E0C1DC58996AB2BE5 /* fbxembeddedfilesaccumulator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxembeddedfilesaccumulator.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxembeddedfilesaccumulator.h; sourceTree = SOURCE_ROOT; };
+		105F0095563ABB06A435AAA0 /* fbxstring.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxstring.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxstring.h; sourceTree = SOURCE_ROOT; };
+		119E91D3FCB3E62DB8BE3036 /* fbxconstraintscale.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxconstraintscale.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/constraint/fbxconstraintscale.h; sourceTree = SOURCE_ROOT; };
+		11C9A03E862B21D49EF60687 /* fbxnamehandler.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxnamehandler.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxnamehandler.h; sourceTree = SOURCE_ROOT; };
+		136F97856F8309BC48738DCC /* fbxanimcurvefilters.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxanimcurvefilters.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/animation/fbxanimcurvefilters.h; sourceTree = SOURCE_ROOT; };
+		13D73946A1538106D9BE5877 /* ofxFBXMeshMaterial.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxFBXMeshMaterial.cpp; path = ../../../addons/ofxFBX/src/ofxFBXMeshMaterial.cpp; sourceTree = SOURCE_ROOT; };
+		14A0DEC0FD5BCDCA5789E196 /* fbxredblacktree.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxredblacktree.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxredblacktree.h; sourceTree = SOURCE_ROOT; };
+		15C9D59193BE78D6C9381039 /* fbxgeometryconverter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxgeometryconverter.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxgeometryconverter.h; sourceTree = SOURCE_ROOT; };
+		15D30B2076AADAC089713CD2 /* fbxarch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxarch.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/arch/fbxarch.h; sourceTree = SOURCE_ROOT; };
+		15F2C6477A769C03A56D1401 /* ofxSlider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSlider.cpp; path = ../../../addons/ofxGui/src/ofxSlider.cpp; sourceTree = SOURCE_ROOT; };
+		15FCC10CDDEB7180934610C7 /* fbxcache.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcache.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxcache.h; sourceTree = SOURCE_ROOT; };
+		169E15BBAB785B634906C150 /* fbxanimlayer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxanimlayer.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/animation/fbxanimlayer.h; sourceTree = SOURCE_ROOT; };
+		17E01B30EB739E71734D16FA /* ofxFBXMeshMaterial.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFBXMeshMaterial.h; path = ../../../addons/ofxFBX/src/ofxFBXMeshMaterial.h; sourceTree = SOURCE_ROOT; };
+		17E65988300FBD9AAA2CD0CA /* ofxGui.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGui.h; path = ../../../addons/ofxGui/src/ofxGui.h; sourceTree = SOURCE_ROOT; };
+		18A1BDA2D31C530A67155363 /* fbxfile.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxfile.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxfile.h; sourceTree = SOURCE_ROOT; };
+		192B2F70E41189CCB5A164F6 /* fbxbitset.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxbitset.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxbitset.h; sourceTree = SOURCE_ROOT; };
+		198ACAE10444C839DCDB4286 /* MathUtils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = MathUtils.h; path = src/Math/MathUtils.h; sourceTree = SOURCE_ROOT; };
+		1C0DA2561397A7DE0246858B /* ofxGuiGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGuiGroup.h; path = ../../../addons/ofxGui/src/ofxGuiGroup.h; sourceTree = SOURCE_ROOT; };
+		1D467FFF3894D6268E7590DA /* ofxFBXUtils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFBXUtils.h; path = ../../../addons/ofxFBX/src/ofxFBXUtils.h; sourceTree = SOURCE_ROOT; };
+		1F990454C4809D12450971C2 /* fbxutils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxutils.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxutils.h; sourceTree = SOURCE_ROOT; };
+		1FA4987BAAF93697C673F2F2 /* DancerMesh.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = DancerMesh.cpp; path = src/DancerMesh/DancerMesh.cpp; sourceTree = SOURCE_ROOT; };
+		20923D060CA411018B2F2FE5 /* fbxemitter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxemitter.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxemitter.h; sourceTree = SOURCE_ROOT; };
+		22C8E3863F770AF0590BE61D /* fbxmesh.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxmesh.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxmesh.h; sourceTree = SOURCE_ROOT; };
+		22CDCA220E183DD55BC133AD /* ofxFBXBone.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxFBXBone.cpp; path = ../../../addons/ofxFBX/src/ofxFBXBone.cpp; sourceTree = SOURCE_ROOT; };
+		23BDE498B8F8ECC4F997D259 /* fbxtimecode.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxtimecode.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxtimecode.h; sourceTree = SOURCE_ROOT; };
+		25934E62B8A9ACB569667003 /* fbxconstraintsinglechainik.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxconstraintsinglechainik.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/constraint/fbxconstraintsinglechainik.h; sourceTree = SOURCE_ROOT; };
+		25AE65ACDF27608DDECD2642 /* fbxdocumentinfo.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxdocumentinfo.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxdocumentinfo.h; sourceTree = SOURCE_ROOT; };
+		260511FA6A5A5A0D0DAA38EE /* fbxpropertyhandle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxpropertyhandle.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxpropertyhandle.h; sourceTree = SOURCE_ROOT; };
+		272B8A5E4B1A1614D077839C /* fbxpropertydef.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxpropertydef.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxpropertydef.h; sourceTree = SOURCE_ROOT; };
+		27F47698BD8E6B000EB662AD /* fbxgroupname.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxgroupname.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxgroupname.h; sourceTree = SOURCE_ROOT; };
+		280FE3CADDA48C87068EF090 /* fbxbindingsentryview.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxbindingsentryview.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxbindingsentryview.h; sourceTree = SOURCE_ROOT; };
+		2834D88A62CD23F3DE2C47D1 /* ofxButton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxButton.h; path = ../../../addons/ofxGui/src/ofxButton.h; sourceTree = SOURCE_ROOT; };
+		287A44686AC3B4A73F0D5536 /* fbxgobo.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxgobo.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbxgobo.h; sourceTree = SOURCE_ROOT; };
+		2C9833166493C5F75D051E17 /* fbxloadingstrategy.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxloadingstrategy.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxloadingstrategy.h; sourceTree = SOURCE_ROOT; };
+		2D7ADBC701449C89F8AACEE9 /* fbxmanager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxmanager.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxmanager.h; sourceTree = SOURCE_ROOT; };
+		2D893C20B26B92A11BFCE418 /* fbxobjectmetadata.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxobjectmetadata.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxobjectmetadata.h; sourceTree = SOURCE_ROOT; };
+		2D8A279D42FC9395D402F615 /* fbxnurbssurface.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxnurbssurface.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxnurbssurface.h; sourceTree = SOURCE_ROOT; };
+		2DA7332B4D8B46D1BCF453DD /* fbxnull.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxnull.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxnull.h; sourceTree = SOURCE_ROOT; };
+		2DE7FCC6E043A7CB7ED51B2D /* Common.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Common.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/Common/Common.h; sourceTree = SOURCE_ROOT; };
+		2E19B2FF6208DB7E4F613C0E /* fbxconstraintcustom.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxconstraintcustom.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/constraint/fbxconstraintcustom.h; sourceTree = SOURCE_ROOT; };
+		2E97E34B68A351EEAAB1ED48 /* fbxobject.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxobject.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxobject.h; sourceTree = SOURCE_ROOT; };
+		2FD2C41450C0AFAEA2069A6E /* Plane.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Plane.h; path = src/Math/ofxRay/src/Plane.h; sourceTree = SOURCE_ROOT; };
+		31967FF85F35CAF3BCEEAA50 /* fbxpair.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxpair.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxpair.h; sourceTree = SOURCE_ROOT; };
+		320EB30ED1AA7C0422AACC70 /* Ray.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Ray.h; path = src/Math/ofxRay/src/Ray.h; sourceTree = SOURCE_ROOT; };
+		32A124CD91A4815B854DC93D /* fbxmaterialconverter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxmaterialconverter.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxmaterialconverter.h; sourceTree = SOURCE_ROOT; };
+		32FDD27A20DA19628C2B2552 /* fbxtrimnurbssurface.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxtrimnurbssurface.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxtrimnurbssurface.h; sourceTree = SOURCE_ROOT; };
+		340012355BB4AE82E3CC19B5 /* ofxFBXManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFBXManager.h; path = ../../../addons/ofxFBX/src/ofxFBXManager.h; sourceTree = SOURCE_ROOT; };
+		3525F38E65F16D53A53223DF /* Camera.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Camera.h; path = src/Math/ofxRay/src/Camera.h; sourceTree = SOURCE_ROOT; };
+		3796500E31E49B25DB6CABAF /* fbxdeformer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxdeformer.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxdeformer.h; sourceTree = SOURCE_ROOT; };
+		3862FF69DAE981FCCF60CF88 /* fbxcharacter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcharacter.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/constraint/fbxcharacter.h; sourceTree = SOURCE_ROOT; };
+		388E460374C98880379CD192 /* fbxatomic.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxatomic.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/sync/fbxatomic.h; sourceTree = SOURCE_ROOT; };
+		38B856A7E4080D5540EAC571 /* fbxclonemanager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxclonemanager.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxclonemanager.h; sourceTree = SOURCE_ROOT; };
+		38C05757DCBD1A59E90A0491 /* fbxlayer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxlayer.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxlayer.h; sourceTree = SOURCE_ROOT; };
+		39380BD5970FE92C8FDEC5D2 /* ofxFBXAnimation.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxFBXAnimation.cpp; path = ../../../addons/ofxFBX/src/ofxFBXAnimation.cpp; sourceTree = SOURCE_ROOT; };
+		39DC113633C83CC3597AE35E /* GetPosition.cxx */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = GetPosition.cxx; path = ../../../addons/ofxFBX/src/GetPosition.cxx; sourceTree = SOURCE_ROOT; };
+		3C8F0F7D04AFB83D2FA9AD11 /* Plane_fitToPoints.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Plane_fitToPoints.cpp; path = src/Math/ofxRay/src/Plane_fitToPoints.cpp; sourceTree = SOURCE_ROOT; };
+		3D340E2594233B60512AA7BD /* fbxtexture.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxtexture.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxtexture.h; sourceTree = SOURCE_ROOT; };
+		3D48138FB40AD02867C58300 /* fbxvertexcachedeformer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxvertexcachedeformer.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxvertexcachedeformer.h; sourceTree = SOURCE_ROOT; };
+		3D54FB4A79900E1D7609FE28 /* fbxcolladaelement.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcolladaelement.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/collada/fbxcolladaelement.h; sourceTree = SOURCE_ROOT; };
+		3E22C15B8FE392D99642B4EB /* fbxintrusivelist.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxintrusivelist.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxintrusivelist.h; sourceTree = SOURCE_ROOT; };
+		3EB6ED4BC49F8F8AD7A66A90 /* ofxFBXPose.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFBXPose.h; path = ../../../addons/ofxFBX/src/ofxFBXPose.h; sourceTree = SOURCE_ROOT; };
+		4085F5F1EECF5F4F74419D5A /* fbxentryview.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxentryview.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxentryview.h; sourceTree = SOURCE_ROOT; };
+		4537733E6136904B2614EBD3 /* fbxproceduralgeometry.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxproceduralgeometry.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxproceduralgeometry.h; sourceTree = SOURCE_ROOT; };
+		4574083FDE080B1731592BF8 /* fbxiopluginregistry.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxiopluginregistry.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbxiopluginregistry.h; sourceTree = SOURCE_ROOT; };
+		46A1FC67B4FFFDDB8E6CE854 /* fbxiosettingspath.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxiosettingspath.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbxiosettingspath.h; sourceTree = SOURCE_ROOT; };
+		4700E3A27933E61CECF7CC7B /* EasingEquations.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = EasingEquations.h; path = src/Utils/ofxInterpolator/EasingEquations.h; sourceTree = SOURCE_ROOT; };
+		4A43A680D33CDD5D85D7E386 /* ofxFBXScene.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFBXScene.h; path = ../../../addons/ofxFBX/src/ofxFBXScene.h; sourceTree = SOURCE_ROOT; };
+		4BA4F7EA4F7EA93FBC22ECE9 /* ofEasyCamExt.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofEasyCamExt.h; path = src/Utils/ofEasyCamExt.h; sourceTree = SOURCE_ROOT; };
+		4DD3538A691E43461DC83A19 /* fbxxref.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxxref.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxxref.h; sourceTree = SOURCE_ROOT; };
+		4EA34683AF5A6093676F99C7 /* fbxhik2fbxcharacter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxhik2fbxcharacter.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/constraint/fbxhik2fbxcharacter.h; sourceTree = SOURCE_ROOT; };
+		4EDE5866EC0E88B7B9C001FD /* fbxcachedeffect.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcachedeffect.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxcachedeffect.h; sourceTree = SOURCE_ROOT; };
+		4F15DA277B4AA09B06EB02BA /* fbxsemanticentryview.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxsemanticentryview.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxsemanticentryview.h; sourceTree = SOURCE_ROOT; };
+		4FD7B9DFAB334A4F2B31AB26 /* fbxlibrary.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxlibrary.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxlibrary.h; sourceTree = SOURCE_ROOT; };
+		511A4E54AC373832938A9DD9 /* fbxreaderfbx5.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxreaderfbx5.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbx/fbxreaderfbx5.h; sourceTree = SOURCE_ROOT; };
+		51EDE9E761AE73FF2C24F4CA /* fbxgeometry.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxgeometry.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxgeometry.h; sourceTree = SOURCE_ROOT; };
+		5271090951D735805ADEE585 /* fbxsdk.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxsdk.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk.h; sourceTree = SOURCE_ROOT; };
+		52AFA1F08C420992CAAAE648 /* ofxSlider.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSlider.h; path = ../../../addons/ofxGui/src/ofxSlider.h; sourceTree = SOURCE_ROOT; };
+		53555942562A941D24187D44 /* fbxenvironment.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxenvironment.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxenvironment.h; sourceTree = SOURCE_ROOT; };
+		5386D7FC202EDDBBC569BA6B /* fbxconstraintparent.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxconstraintparent.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/constraint/fbxconstraintparent.h; sourceTree = SOURCE_ROOT; };
+		53DE81455A738A910BC6F1BC /* fbximporter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbximporter.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbximporter.h; sourceTree = SOURCE_ROOT; };
+		560685EA108C5B2CB337FE7E /* fbxcamerastereo.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcamerastereo.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxcamerastereo.h; sourceTree = SOURCE_ROOT; };
+		56BE25CB00E2383872B03F30 /* fbxprocessorxrefuserlib.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxprocessorxrefuserlib.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxprocessorxrefuserlib.h; sourceTree = SOURCE_ROOT; };
+		59ABFC64EFEB8095E6AB91C4 /* fbxreaderfbx7.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxreaderfbx7.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbx/fbxreaderfbx7.h; sourceTree = SOURCE_ROOT; };
+		5A318C5C31586D413F06D085 /* fbxcharacterpose.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcharacterpose.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/constraint/fbxcharacterpose.h; sourceTree = SOURCE_ROOT; };
+		5A797F5F92CDFC375C0AE99F /* AnimationUtility.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = AnimationUtility.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/Common/AnimationUtility.h; sourceTree = SOURCE_ROOT; };
+		5AEEEA6E5FBF5F63DCE90314 /* fbxaxissystem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxaxissystem.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxaxissystem.h; sourceTree = SOURCE_ROOT; };
+		5B3F049E55F4009A56C0E671 /* GeometryUtility.cxx */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = GeometryUtility.cxx; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/Common/GeometryUtility.cxx; sourceTree = SOURCE_ROOT; };
+		5DD623DAB1B59417246F3F22 /* fbxmatrix.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxmatrix.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/math/fbxmatrix.h; sourceTree = SOURCE_ROOT; };
+		5E14E144B5ED7BBFB2F07205 /* ofEasyCamExt.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofEasyCamExt.cpp; path = src/Utils/ofEasyCamExt.cpp; sourceTree = SOURCE_ROOT; };
+		5E78B021E21CE237B43A6610 /* fbxreader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxreader.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbxreader.h; sourceTree = SOURCE_ROOT; };
+		5EB381F8A63C068BA1688905 /* fbxvideo.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxvideo.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxvideo.h; sourceTree = SOURCE_ROOT; };
+		6128FABE85EE22D19384A77B /* ofVecExt.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofVecExt.h; path = src/Math/ofVecExt.h; sourceTree = SOURCE_ROOT; };
+		613F3ECB4685DDB4D60B05FD /* fbxglobalcamerasettings.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxglobalcamerasettings.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbxglobalcamerasettings.h; sourceTree = SOURCE_ROOT; };
+		619B22292FC98B18A72CCE6F /* fbxanimevalclassic.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxanimevalclassic.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/animation/fbxanimevalclassic.h; sourceTree = SOURCE_ROOT; };
+		63E3FD1CB9CF7635EE12EF57 /* fbxnodeattribute.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxnodeattribute.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxnodeattribute.h; sourceTree = SOURCE_ROOT; };
+		6474FABCB567ECB7DE573F8B /* fbxnurbscurve.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxnurbscurve.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxnurbscurve.h; sourceTree = SOURCE_ROOT; };
+		6496D35A6F97559CFDCCFB59 /* fbxbindingtablebase.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxbindingtablebase.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxbindingtablebase.h; sourceTree = SOURCE_ROOT; };
+		66C59F615C9C9BCA3DACEDE3 /* fbxrenamingstrategyfbx5.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxrenamingstrategyfbx5.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxrenamingstrategyfbx5.h; sourceTree = SOURCE_ROOT; };
+		67C61EAC33FBFC8EB4363F19 /* fbxmarker.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxmarker.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxmarker.h; sourceTree = SOURCE_ROOT; };
+		67D12274FB1F9F0DCFCC3FBC /* fbxstatisticsfbx.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxstatisticsfbx.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbxstatisticsfbx.h; sourceTree = SOURCE_ROOT; };
+		6A2AEA1583634930308D50AB /* DrawingHelpers.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = DrawingHelpers.h; path = src/Utils/DrawingHelpers.h; sourceTree = SOURCE_ROOT; };
+		6AB0E809303E3FB6CA1A93C7 /* fbxarray.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxarray.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxarray.h; sourceTree = SOURCE_ROOT; };
+		6AF87C1AEC84E54F6009F3C2 /* ofxFBXMesh.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFBXMesh.h; path = ../../../addons/ofxFBX/src/ofxFBXMesh.h; sourceTree = SOURCE_ROOT; };
+		6B2715991BF3729E26032CD7 /* fbxanimutilities.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxanimutilities.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/animation/fbxanimutilities.h; sourceTree = SOURCE_ROOT; };
+		6B2D3D174AF520658E66601C /* fbxsystemunit.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxsystemunit.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxsystemunit.h; sourceTree = SOURCE_ROOT; };
+		6B73A264818719A0F722DB5D /* fbxalloc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxalloc.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/arch/fbxalloc.h; sourceTree = SOURCE_ROOT; };
+		6C6A01CD8BF083C2B415844B /* fbxopticalreference.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxopticalreference.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxopticalreference.h; sourceTree = SOURCE_ROOT; };
+		6FFAF5456D7983DD1197E330 /* Camera.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Camera.cpp; path = src/Math/ofxRay/src/Camera.cpp; sourceTree = SOURCE_ROOT; };
+		702982C670C2F93CB5CCE507 /* ofTrueTypeFontExt.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofTrueTypeFontExt.h; path = src/Utils/ofTrueTypeFontExt.h; sourceTree = SOURCE_ROOT; };
+		7082CD051314C7CD93747CE0 /* fbxnew.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxnew.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/arch/fbxnew.h; sourceTree = SOURCE_ROOT; };
+		70C269D0F711F8ACB72502CB /* fbxusernotification.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxusernotification.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxusernotification.h; sourceTree = SOURCE_ROOT; };
+		71872FEB78A8C0C539B30236 /* fbxconstraintutils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxconstraintutils.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/constraint/fbxconstraintutils.h; sourceTree = SOURCE_ROOT; };
+		7205E44ECAFC168DD800F9DF /* fbxcontainerallocators.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcontainerallocators.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxcontainerallocators.h; sourceTree = SOURCE_ROOT; };
+		739F9AEB1BED5171866A4D3C /* fbxmanipulators.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxmanipulators.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxmanipulators.h; sourceTree = SOURCE_ROOT; };
+		73F812B14141F2122AA8CB1B /* fbxrootnodeutility.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxrootnodeutility.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxrootnodeutility.h; sourceTree = SOURCE_ROOT; };
+		740DE9439D7C3C744028780E /* fbxprocessorshaderdependency.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxprocessorshaderdependency.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxprocessorshaderdependency.h; sourceTree = SOURCE_ROOT; };
+		74BCCBF986C5C566E4C5307A /* fbxnurbs.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxnurbs.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxnurbs.h; sourceTree = SOURCE_ROOT; };
+		755A71BD8CAA052FB98E2B42 /* fbxplugin.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxplugin.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxplugin.h; sourceTree = SOURCE_ROOT; };
+		75F4EA77A4C6A5903DFFF61B /* fbxconstraintrotation.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxconstraintrotation.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/constraint/fbxconstraintrotation.h; sourceTree = SOURCE_ROOT; };
+		75F5425C3A451C1D2F6D2921 /* fbxanimstack.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxanimstack.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/animation/fbxanimstack.h; sourceTree = SOURCE_ROOT; };
+		76049A4CD9F8ECBBDB0AEF06 /* fbxbindingoperator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxbindingoperator.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxbindingoperator.h; sourceTree = SOURCE_ROOT; };
+		768BEA5593522EA918A6F7E6 /* fbxconstraintposition.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxconstraintposition.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/constraint/fbxconstraintposition.h; sourceTree = SOURCE_ROOT; };
+		77873919AACEB673AB73F61B /* fbxcharacternodename.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcharacternodename.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/constraint/fbxcharacternodename.h; sourceTree = SOURCE_ROOT; };
+		77CE231CB4E18D76BD6263E9 /* fbxsymbol.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxsymbol.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxsymbol.h; sourceTree = SOURCE_ROOT; };
+		78D67A00EB899FAC09430597 /* ofxLabel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxLabel.cpp; path = ../../../addons/ofxGui/src/ofxLabel.cpp; sourceTree = SOURCE_ROOT; };
+		79329BDC8D83E60895682718 /* fbxgloballightsettings.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxgloballightsettings.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbxgloballightsettings.h; sourceTree = SOURCE_ROOT; };
+		79C24B9ACF66193D27271BE4 /* fbxrenamingstrategybase.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxrenamingstrategybase.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxrenamingstrategybase.h; sourceTree = SOURCE_ROOT; };
+		7A455108E6F315006C580F4D /* fbxcolladatokens.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcolladatokens.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/collada/fbxcolladatokens.h; sourceTree = SOURCE_ROOT; };
+		7CA57EEE0024A034819A2667 /* fbxcolladaanimationelement.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcolladaanimationelement.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/collada/fbxcolladaanimationelement.h; sourceTree = SOURCE_ROOT; };
+		7E43F5FD5CB7F1965F1A06E7 /* ofxFBXSkeleton.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxFBXSkeleton.cpp; path = ../../../addons/ofxFBX/src/ofxFBXSkeleton.cpp; sourceTree = SOURCE_ROOT; };
+		802251BAF1B35B1D67B32FD0 /* ofxSliderGroup.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSliderGroup.cpp; path = ../../../addons/ofxGui/src/ofxSliderGroup.cpp; sourceTree = SOURCE_ROOT; };
+		8037C6748386104EE12E5A38 /* fbxscopedloadingfilename.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxscopedloadingfilename.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxscopedloadingfilename.h; sourceTree = SOURCE_ROOT; };
+		806591F974876ED99123E1E5 /* fbxscene.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxscene.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxscene.h; sourceTree = SOURCE_ROOT; };
+		815A42399125DDD8A4CC909D /* fbxsdk_def.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxsdk_def.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fbxsdk_def.h; sourceTree = SOURCE_ROOT; };
+		81B2C94F62A21B9035358796 /* PlacementUtils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = PlacementUtils.h; path = src/Utils/PlacementUtils.h; sourceTree = SOURCE_ROOT; };
+		82A76CC3BC6B75F5853BE815 /* fbxnode.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxnode.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxnode.h; sourceTree = SOURCE_ROOT; };
+		8561E75B2678529F0F023106 /* ofxFBXAnimation.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFBXAnimation.h; path = ../../../addons/ofxFBX/src/ofxFBXAnimation.h; sourceTree = SOURCE_ROOT; };
+		863E244AAE3AE82180328535 /* fbxmath.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxmath.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/math/fbxmath.h; sourceTree = SOURCE_ROOT; };
+		87F26B4B24CBD428AD9EEBAA /* ofxBaseGui.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxBaseGui.h; path = ../../../addons/ofxGui/src/ofxBaseGui.h; sourceTree = SOURCE_ROOT; };
+		89449E3044D456F7DE7BEA14 /* ofxPanel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxPanel.h; path = ../../../addons/ofxGui/src/ofxPanel.h; sourceTree = SOURCE_ROOT; };
+		896C5DA029A0F896FE84F16E /* FileUtils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = FileUtils.h; path = src/Utils/FileUtils.h; sourceTree = SOURCE_ROOT; };
+		8979009CAF43A9015419E1AF /* fbxcontainer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcontainer.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxcontainer.h; sourceTree = SOURCE_ROOT; };
+		8A2BD861C3009EE47481C1E9 /* fbxbase64coder.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxbase64coder.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbxbase64coder.h; sourceTree = SOURCE_ROOT; };
+		8A9050E7DB6E7A7D1740EE39 /* fbxsurfacephong.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxsurfacephong.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxsurfacephong.h; sourceTree = SOURCE_ROOT; };
+		8B42B74B39EDECEF115E440B /* fbxpatch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxpatch.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxpatch.h; sourceTree = SOURCE_ROOT; };
+		8C00ADA3967E03DF5B373CAF /* fbxcolladanamespace.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcolladanamespace.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/collada/fbxcolladanamespace.h; sourceTree = SOURCE_ROOT; };
+		8D10EFCDAABDE2D0D7F2E8C7 /* fbxlight.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxlight.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxlight.h; sourceTree = SOURCE_ROOT; };
+		8F9B5A8520E871B683F5B209 /* fbxtime.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxtime.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxtime.h; sourceTree = SOURCE_ROOT; };
+		907C5B5E104864A2D3A25745 /* ofxToggle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxToggle.cpp; path = ../../../addons/ofxGui/src/ofxToggle.cpp; sourceTree = SOURCE_ROOT; };
+		91687E50B2FDAECE326ED511 /* Projector.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Projector.cpp; path = src/Math/ofxRay/src/Projector.cpp; sourceTree = SOURCE_ROOT; };
+		92202694DDBD60C5C8CE2BB9 /* fbxcameraswitcher.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcameraswitcher.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxcameraswitcher.h; sourceTree = SOURCE_ROOT; };
+		9233072B406293EF1FB893AB /* Base.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Base.cpp; path = src/Math/ofxRay/src/Base.cpp; sourceTree = SOURCE_ROOT; };
+		926D12444F34A19733B94742 /* fbxdynamicarray.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxdynamicarray.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxdynamicarray.h; sourceTree = SOURCE_ROOT; };
+		92B39A92012CF829933E280F /* fbxprocessorxref.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxprocessorxref.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxprocessorxref.h; sourceTree = SOURCE_ROOT; };
+		92D1C5A2A8B10209751893F5 /* fbxpose.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxpose.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxpose.h; sourceTree = SOURCE_ROOT; };
+		9518DFB2ECB1FEE1B0AE1444 /* fbxlimitsutilities.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxlimitsutilities.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxlimitsutilities.h; sourceTree = SOURCE_ROOT; };
+		9522FCDC8D8DFC77AE018A73 /* fbxcontainertemplate.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcontainertemplate.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxcontainertemplate.h; sourceTree = SOURCE_ROOT; };
+		95EB7C733541F64E2C4F7115 /* ofxFBXScene.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxFBXScene.cpp; path = ../../../addons/ofxFBX/src/ofxFBXScene.cpp; sourceTree = SOURCE_ROOT; };
+		9604B925D32EE39065747725 /* ofxBaseGui.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxBaseGui.cpp; path = ../../../addons/ofxGui/src/ofxBaseGui.cpp; sourceTree = SOURCE_ROOT; };
+		962491643FC64A7E9CB46F04 /* fbxrenamingstrategyutilities.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxrenamingstrategyutilities.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxrenamingstrategyutilities.h; sourceTree = SOURCE_ROOT; };
+		96A3136A57452E002F02E6C1 /* fbxperipheral.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxperipheral.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxperipheral.h; sourceTree = SOURCE_ROOT; };
+		9A4CCCB454F0770032C2E3C7 /* fbxevent.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxevent.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxevent.h; sourceTree = SOURCE_ROOT; };
+		9ACC32795AF3AA319EA8B0C2 /* ofxFBXNode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxFBXNode.cpp; path = ../../../addons/ofxFBX/src/ofxFBXNode.cpp; sourceTree = SOURCE_ROOT; };
+		9BC8057E36A99B56307C496F /* fbxmemorypool.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxmemorypool.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxmemorypool.h; sourceTree = SOURCE_ROOT; };
+		9CF67D32F5AF90224359582E /* fbxprogress.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxprogress.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbxprogress.h; sourceTree = SOURCE_ROOT; };
+		9D3BAD72337450986D9AD452 /* fbxstdcompliant.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxstdcompliant.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/arch/fbxstdcompliant.h; sourceTree = SOURCE_ROOT; };
+		9E9DFF72FD33112C6FF87704 /* fbxcharptrset.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcharptrset.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxcharptrset.h; sourceTree = SOURCE_ROOT; };
+		9EEC7B45FB558D3A54DB26EF /* fbxdebug.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxdebug.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/arch/fbxdebug.h; sourceTree = SOURCE_ROOT; };
+		9F10C87B85778AB069C486C0 /* fbxfolder.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxfolder.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxfolder.h; sourceTree = SOURCE_ROOT; };
+		A09EA18F60C121DF0044104C /* fbxstream.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxstream.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxstream.h; sourceTree = SOURCE_ROOT; };
+		A2DB87FB6CA14519C9FB9A72 /* ofxFBXSkeleton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFBXSkeleton.h; path = ../../../addons/ofxFBX/src/ofxFBXSkeleton.h; sourceTree = SOURCE_ROOT; };
+		A580423CF8EC14A71B21629D /* fbxgeometryweightedmap.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxgeometryweightedmap.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxgeometryweightedmap.h; sourceTree = SOURCE_ROOT; };
+		A9D80196A894A801BD9D02C2 /* fbxanimcurvebase.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxanimcurvebase.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/animation/fbxanimcurvebase.h; sourceTree = SOURCE_ROOT; };
+		A9EB4A9E7B72267C4BEE61EC /* fbxiosettings.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxiosettings.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbxiosettings.h; sourceTree = SOURCE_ROOT; };
+		ABF16293ACA156861E2B147C /* fbxconstraintaim.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxconstraintaim.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/constraint/fbxconstraintaim.h; sourceTree = SOURCE_ROOT; };
+		AE9BCE2EE396658492C3272E /* fbxgeometrybase.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxgeometrybase.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxgeometrybase.h; sourceTree = SOURCE_ROOT; };
+		AEC3DA887C2544FD554EBF31 /* fbxskeleton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxskeleton.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxskeleton.h; sourceTree = SOURCE_ROOT; };
+		B0B7DADF0A3A841EBF61E700 /* SizeLimitedDeque.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = SizeLimitedDeque.h; path = src/Utils/SizeLimitedDeque.h; sourceTree = SOURCE_ROOT; };
+		B12A8F0647703A2DFA3B7C22 /* fbxiobase.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxiobase.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbxiobase.h; sourceTree = SOURCE_ROOT; };
+		B1644EA3D35AAD9797BB93C9 /* fbxstatistics.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxstatistics.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbxstatistics.h; sourceTree = SOURCE_ROOT; };
+		B1FF9DB8F285A8B4A75C8932 /* fbxset.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxset.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxset.h; sourceTree = SOURCE_ROOT; };
+		B22AB8BB5829892592A1749C /* fbxsync.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxsync.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/sync/fbxsync.h; sourceTree = SOURCE_ROOT; };
+		B23D69BDAD892455CD432521 /* Ray.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Ray.cpp; path = src/Math/ofxRay/src/Ray.cpp; sourceTree = SOURCE_ROOT; };
+		B38D9E56F35229381A6F9C94 /* fbxblendshapechannel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxblendshapechannel.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxblendshapechannel.h; sourceTree = SOURCE_ROOT; };
+		B3CA177294A2FEF9ABB16BD0 /* fbxpropertypage.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxpropertypage.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxpropertypage.h; sourceTree = SOURCE_ROOT; };
+		B6F590C2EAC4D346B225997A /* fbxwritercollada14.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxwritercollada14.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/collada/fbxwritercollada14.h; sourceTree = SOURCE_ROOT; };
+		B7DE9E98F2E281C8F75129CD /* FboPingPong.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = FboPingPong.h; path = src/Utils/FboPingPong.h; sourceTree = SOURCE_ROOT; };
+		B863857462A70414AE7BAFDE /* Projector.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Projector.h; path = src/Math/ofxRay/src/Projector.h; sourceTree = SOURCE_ROOT; };
+		B86C2263B074C57689AE30BB /* fbxsurfacelambert.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxsurfacelambert.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxsurfacelambert.h; sourceTree = SOURCE_ROOT; };
+		B87C60311EC1FE841C1ECD89 /* ofxLabel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxLabel.h; path = ../../../addons/ofxGui/src/ofxLabel.h; sourceTree = SOURCE_ROOT; };
+		B8C5A5AF2B37C4458B822D80 /* fbxlistener.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxlistener.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxlistener.h; sourceTree = SOURCE_ROOT; };
+		B907B0A3B8E1804C5297F55E /* ofxFBXPose.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxFBXPose.cpp; path = ../../../addons/ofxFBX/src/ofxFBXPose.cpp; sourceTree = SOURCE_ROOT; };
+		BB03CF2CA32F5F6D9DABF1E7 /* fbxmap.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxmap.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxmap.h; sourceTree = SOURCE_ROOT; };
+		BB34642868CBA303F57E8028 /* fbxwriterfbx7.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxwriterfbx7.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbx/fbxwriterfbx7.h; sourceTree = SOURCE_ROOT; };
+		BB4A796907F83B25268336AD /* fbximplementationfilter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbximplementationfilter.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbximplementationfilter.h; sourceTree = SOURCE_ROOT; };
+		BB4B53BEA290F336B640FA7F /* fbxsdk_nsend.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxsdk_nsend.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fbxsdk_nsend.h; sourceTree = SOURCE_ROOT; };
+		BBA5B9FA1CD17CE11D891272 /* DancerMesh.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = DancerMesh.h; path = src/DancerMesh/DancerMesh.h; sourceTree = SOURCE_ROOT; };
+		BC9944E11A66A0E29AE02475 /* fbxprocessor.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxprocessor.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxprocessor.h; sourceTree = SOURCE_ROOT; };
+		BDC7A868BF7E65B22BFA57F2 /* fbxselectionset.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxselectionset.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxselectionset.h; sourceTree = SOURCE_ROOT; };
+		BE34E369975F2C14609BD3AD /* fbxfiletexture.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxfiletexture.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxfiletexture.h; sourceTree = SOURCE_ROOT; };
+		BE64ABFF9205418415A12B90 /* Plane.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Plane.cpp; path = src/Math/ofxRay/src/Plane.cpp; sourceTree = SOURCE_ROOT; };
+		BE845C058B27DE4453390743 /* fbxshadingconventions.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxshadingconventions.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxshadingconventions.h; sourceTree = SOURCE_ROOT; };
+		C22C396CF3D9CB2B53636D95 /* fbxanimevaluator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxanimevaluator.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/animation/fbxanimevaluator.h; sourceTree = SOURCE_ROOT; };
+		C2832A2705DB7A41B3137FF4 /* fbxaffinematrix.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxaffinematrix.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/math/fbxaffinematrix.h; sourceTree = SOURCE_ROOT; };
+		C34796EB8DFFFF96792A3EA4 /* fbxdocument.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxdocument.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxdocument.h; sourceTree = SOURCE_ROOT; };
+		C42189C502933640E442D73F /* fbxtakeinfo.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxtakeinfo.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxtakeinfo.h; sourceTree = SOURCE_ROOT; };
+		C43296AF200F2F0CA98E2087 /* fbxanimcurvenode.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxanimcurvenode.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/animation/fbxanimcurvenode.h; sourceTree = SOURCE_ROOT; };
+		C44DC805C2CEE793D567DB74 /* fbxsubdiv.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxsubdiv.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxsubdiv.h; sourceTree = SOURCE_ROOT; };
+		C5E4A8831A84DA8B78A2833C /* FboPingPong.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = FboPingPong.cpp; path = src/Utils/FboPingPong.cpp; sourceTree = SOURCE_ROOT; };
+		C6278E2956902E11A3B63EBC /* fbxanimevalstate.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxanimevalstate.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/animation/fbxanimevalstate.h; sourceTree = SOURCE_ROOT; };
+		C660509109AE1A56355EC975 /* fbxcolladautils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcolladautils.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/collada/fbxcolladautils.h; sourceTree = SOURCE_ROOT; };
+		C70D8946940288799E82131E /* ofxSliderGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSliderGroup.h; path = ../../../addons/ofxGui/src/ofxSliderGroup.h; sourceTree = SOURCE_ROOT; };
+		C772DBC30AD976241B35A65F /* EasingEquations.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = EasingEquations.cpp; path = src/Utils/ofxInterpolator/EasingEquations.cpp; sourceTree = SOURCE_ROOT; };
+		C83DC34534FB39BE508E4DDC /* ofxFBX.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFBX.h; path = ../../../addons/ofxFBX/src/ofxFBX.h; sourceTree = SOURCE_ROOT; };
+		C85674DAA37FA44AD6C84295 /* fbxglobalsettings.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxglobalsettings.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbxglobalsettings.h; sourceTree = SOURCE_ROOT; };
+		C88333E71C9457E441C33474 /* ofxButton.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxButton.cpp; path = ../../../addons/ofxGui/src/ofxButton.cpp; sourceTree = SOURCE_ROOT; };
+		C8DBCCB77C3E925F7E637FF1 /* fbxplugincontainer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxplugincontainer.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxplugincontainer.h; sourceTree = SOURCE_ROOT; };
+		C935A6D2B8963B0C68182BA2 /* fbxconstraint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxconstraint.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/constraint/fbxconstraint.h; sourceTree = SOURCE_ROOT; };
+		C97F811C71008A14334CB675 /* fbxclassid.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxclassid.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxclassid.h; sourceTree = SOURCE_ROOT; };
+		C9ADC23F6E271BF81458D750 /* fbxsurfacematerial.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxsurfacematerial.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxsurfacematerial.h; sourceTree = SOURCE_ROOT; };
+		C9F552CC9456EFB4A254DC55 /* fbxlayeredtexture.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxlayeredtexture.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxlayeredtexture.h; sourceTree = SOURCE_ROOT; };
+		CB2F47871CA3EFE400D5ACFD /* ofLightExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofLightExt.h; sourceTree = "<group>"; };
+		CB2F47881CA3EFE400D5ACFD /* ofMaterialExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofMaterialExt.h; sourceTree = "<group>"; };
+		CB5E9D6B1CA999EC00BC42AA /* MeshPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeshPoint.h; path = DancerMesh/MeshPoint.h; sourceTree = "<group>"; };
+		CB9A7D191CAFC0190035A2F6 /* Lathe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Lathe.h; path = Utils/Lathe.h; sourceTree = "<group>"; };
+		CBCADDB1F71E9F29A64A4B69 /* fbxwriter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxwriter.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbxwriter.h; sourceTree = SOURCE_ROOT; };
+		CC8AB3B80118D58B6E007009 /* GeometryUtility.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = GeometryUtility.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/Common/GeometryUtility.h; sourceTree = SOURCE_ROOT; };
+		CD02437CEEFBB2C104688E2E /* fbxcollection.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcollection.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxcollection.h; sourceTree = SOURCE_ROOT; };
+		CD371EE3C691214F41F65B08 /* fbxvector2.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxvector2.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/math/fbxvector2.h; sourceTree = SOURCE_ROOT; };
+		CF9A9D1E3346B02B3ED5AB4C /* fbxmodule.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxmodule.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxmodule.h; sourceTree = SOURCE_ROOT; };
+		CFDC17959ABC4373F5005D55 /* fbxcontrolset.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcontrolset.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/constraint/fbxcontrolset.h; sourceTree = SOURCE_ROOT; };
+		D058BE38AE0AF940002A4D3D /* fbxcamera.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcamera.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxcamera.h; sourceTree = SOURCE_ROOT; };
+		D2195C763B855EDE0D58AEB8 /* GetPosition.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = GetPosition.h; path = ../../../addons/ofxFBX/src/GetPosition.h; sourceTree = SOURCE_ROOT; };
+		D27BC36170A3E90EFC1A7957 /* fbxthread.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxthread.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/sync/fbxthread.h; sourceTree = SOURCE_ROOT; };
+		D2E22490B3A8DB3D5323A7F8 /* fbxstatus.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxstatus.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxstatus.h; sourceTree = SOURCE_ROOT; };
+		D41541D30704DCC3371EFA36 /* fbxclock.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxclock.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/sync/fbxclock.h; sourceTree = SOURCE_ROOT; };
+		D46826DF1212FA356A39E3FF /* fbxline.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxline.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxline.h; sourceTree = SOURCE_ROOT; };
+		D4C256A13B13C0DBAEB9A634 /* ofxFBXNode.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFBXNode.h; path = ../../../addons/ofxFBX/src/ofxFBXNode.h; sourceTree = SOURCE_ROOT; };
+		D5366B6639B19B0C85FFD89B /* fbxdatatypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxdatatypes.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxdatatypes.h; sourceTree = SOURCE_ROOT; };
+		D684801BE713AB1CEB8786BE /* fbxskin.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxskin.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxskin.h; sourceTree = SOURCE_ROOT; };
+		D6A5424F139ACDBC28CA4D7C /* fbxcollectionexclusive.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcollectionexclusive.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxcollectionexclusive.h; sourceTree = SOURCE_ROOT; };
+		D6A9ABFD84937FB70E322835 /* fbxconnectionpoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxconnectionpoint.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxconnectionpoint.h; sourceTree = SOURCE_ROOT; };
+		D791B370660BD971440FD360 /* fbxblendshape.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxblendshape.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxblendshape.h; sourceTree = SOURCE_ROOT; };
+		DB97320AAC3809F85A57DF66 /* fbxbindingtable.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxbindingtable.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxbindingtable.h; sourceTree = SOURCE_ROOT; };
+		DB9CED61559986DC740D7EEB /* fbxreaderfbx6.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxreaderfbx6.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbx/fbxreaderfbx6.h; sourceTree = SOURCE_ROOT; };
+		DC1E849AA2E2D0C1C30CD28C /* fbxbindingtableentry.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxbindingtableentry.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxbindingtableentry.h; sourceTree = SOURCE_ROOT; };
+		DC2E2B12F347DE7E209A4526 /* fbxlodgroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxlodgroup.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxlodgroup.h; sourceTree = SOURCE_ROOT; };
+		DC3F53C13186B005F254D6A5 /* fbxstringlist.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxstringlist.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxstringlist.h; sourceTree = SOURCE_ROOT; };
+		DD63232ED93177A46854FE27 /* fbxdeformationsevaluator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxdeformationsevaluator.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxdeformationsevaluator.h; sourceTree = SOURCE_ROOT; };
+		DE2ECE6575BAAB9AF3B8694F /* fbxlayerentryview.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxlayerentryview.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxlayerentryview.h; sourceTree = SOURCE_ROOT; };
+		DEF49BDD6034E5F416E2DC9C /* ofxFBXManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxFBXManager.cpp; path = ../../../addons/ofxFBX/src/ofxFBXManager.cpp; sourceTree = SOURCE_ROOT; };
+		DF97F4AD6C94686058408360 /* Base.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Base.h; path = src/Math/ofxRay/src/Base.h; sourceTree = SOURCE_ROOT; };
+		DFA02B524B547CBB4F6CF878 /* DancerMeshFBX.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = DancerMeshFBX.h; path = src/DancerMesh/DancerMeshFBX.h; sourceTree = SOURCE_ROOT; };
+		DFE3614F2E94934C91AC1810 /* fbxmultimap.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxmultimap.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxmultimap.h; sourceTree = SOURCE_ROOT; };
+		E112B3AEBEA2C091BF2B40AE /* ofxPanel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxPanel.cpp; path = ../../../addons/ofxGui/src/ofxPanel.cpp; sourceTree = SOURCE_ROOT; };
+		E1F0CB5CD5D57425D4643023 /* ofxFBXBone.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFBXBone.h; path = ../../../addons/ofxFBX/src/ofxFBXBone.h; sourceTree = SOURCE_ROOT; };
+		E21FBC20766FBA176D8A49C4 /* fbxselectionnode.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxselectionnode.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxselectionnode.h; sourceTree = SOURCE_ROOT; };
+		E220F6F8953DEEEA4A5C24FC /* fbxtransforms.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxtransforms.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/math/fbxtransforms.h; sourceTree = SOURCE_ROOT; };
+		E24AAD53089EDB5FEF474E73 /* fbxobjectfilter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxobjectfilter.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxobjectfilter.h; sourceTree = SOURCE_ROOT; };
+		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
+		E4B69B5B0A3A1756003C02F2 /* StickyPointsDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StickyPointsDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
+		E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofApp.cpp; path = src/ofApp.cpp; sourceTree = SOURCE_ROOT; };
+		E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ofApp.h; path = src/ofApp.h; sourceTree = SOURCE_ROOT; };
+		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
+		E4D95AA7DC1E145978175C7A /* fbxweightedmapping.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxweightedmapping.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxweightedmapping.h; sourceTree = SOURCE_ROOT; };
+		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
+		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E575CF0D6867B5F09CBB2065 /* fbxeventhandler.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxeventhandler.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxeventhandler.h; sourceTree = SOURCE_ROOT; };
+		E80751B1525838F6D217B364 /* fbxreadercollada14.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxreadercollada14.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/collada/fbxreadercollada14.h; sourceTree = SOURCE_ROOT; };
+		E85BEC397ADCAEE5DF1F06A1 /* fbxsdk_version.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxsdk_version.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fbxsdk_version.h; sourceTree = SOURCE_ROOT; };
+		EAB67E719F4161F06640C45F /* fbxwriterfbx6.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxwriterfbx6.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbx/fbxwriterfbx6.h; sourceTree = SOURCE_ROOT; };
+		ECF8674C7975F1063C5E30CA /* ofxGuiGroup.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxGuiGroup.cpp; path = ../../../addons/ofxGui/src/ofxGuiGroup.cpp; sourceTree = SOURCE_ROOT; };
+		ED1A110503DDDFD7D4BE8CEF /* ofxRay.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxRay.h; path = src/Math/ofxRay/src/ofxRay.h; sourceTree = SOURCE_ROOT; };
+		EF72E11E9E2C7BFC3C625FED /* fbxsubdeformer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxsubdeformer.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxsubdeformer.h; sourceTree = SOURCE_ROOT; };
+		F1640CDBA4ACAFA6E99CB509 /* fbximplementationutils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbximplementationutils.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbximplementationutils.h; sourceTree = SOURCE_ROOT; };
+		F1B84501BA3C5F716200D98D /* fbxrenamingstrategy.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxrenamingstrategy.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxrenamingstrategy.h; sourceTree = SOURCE_ROOT; };
+		F2396A328D2BBF34C87C48B6 /* fbxgenericnode.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxgenericnode.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxgenericnode.h; sourceTree = SOURCE_ROOT; };
+		F3405F2FD06A9E93E066DE67 /* fbxpropertytypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxpropertytypes.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxpropertytypes.h; sourceTree = SOURCE_ROOT; };
+		F350BFDA80E2A610F07B6C24 /* fbxrenamingstrategyfbx7.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxrenamingstrategyfbx7.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils/fbxrenamingstrategyfbx7.h; sourceTree = SOURCE_ROOT; };
+		F428ECF441DE3F2CEB74BC50 /* fbxhashmap.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxhashmap.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base/fbxhashmap.h; sourceTree = SOURCE_ROOT; };
+		F45EB81BF0E816003FD648FD /* fbxfiletokens.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxfiletokens.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbxfiletokens.h; sourceTree = SOURCE_ROOT; };
+		F4D043B132D6CF07CE3DA2C3 /* fbxwriterfbx5.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxwriterfbx5.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbx/fbxwriterfbx5.h; sourceTree = SOURCE_ROOT; };
+		F678656AECB44B7A6920C8F4 /* fbxthumbnail.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxthumbnail.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxthumbnail.h; sourceTree = SOURCE_ROOT; };
+		F6B043969DBE1126ADAB8D11 /* fbxsdk_nsbegin.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxsdk_nsbegin.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fbxsdk_nsbegin.h; sourceTree = SOURCE_ROOT; };
+		F700F1741D155A13B184CFBE /* fbxexternaldocreflistener.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxexternaldocreflistener.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbxexternaldocreflistener.h; sourceTree = SOURCE_ROOT; };
+		F7214189779B5C6247342FAE /* fbxquaternion.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxquaternion.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/math/fbxquaternion.h; sourceTree = SOURCE_ROOT; };
+		F738543CCBA53F3A472CB398 /* fbxio.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxio.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbx/fbxio.h; sourceTree = SOURCE_ROOT; };
+		F7557A1ABA07ACC05C98D15C /* fbxdisplaylayer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxdisplaylayer.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxdisplaylayer.h; sourceTree = SOURCE_ROOT; };
+		F7D8B61640A0D1ACE9830413 /* fbxpropertyentryview.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxpropertyentryview.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxpropertyentryview.h; sourceTree = SOURCE_ROOT; };
+		F7F38BB731B084FE9BC731AD /* fbxexporter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxexporter.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbxexporter.h; sourceTree = SOURCE_ROOT; };
+		F861EE5285F5D00667E3C728 /* fbximplementation.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbximplementation.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbximplementation.h; sourceTree = SOURCE_ROOT; };
+		F974CED35D2D786D237B0A54 /* AnimationUtility.cxx */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = AnimationUtility.cxx; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/Common/AnimationUtility.cxx; sourceTree = SOURCE_ROOT; };
+		F98644E81064AE3B230D73E8 /* fbxscopedloadingdirectory.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxscopedloadingdirectory.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxscopedloadingdirectory.h; sourceTree = SOURCE_ROOT; };
+		F9CA8B0541B8B828518642F7 /* fbxreference.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxreference.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/fbxreference.h; sourceTree = SOURCE_ROOT; };
+		FB49D92EE727EA2099DE3F15 /* fbxcolladaiostream.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxcolladaiostream.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/collada/fbxcolladaiostream.h; sourceTree = SOURCE_ROOT; };
+		FBDA72A456BF63584BD85275 /* ofxFBXCluster.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxFBXCluster.cpp; path = ../../../addons/ofxFBX/src/ofxFBXCluster.cpp; sourceTree = SOURCE_ROOT; };
+		FC4DADB0805714EAA4CC61E9 /* fbxshape.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxshape.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry/fbxshape.h; sourceTree = SOURCE_ROOT; };
+		FD8BFB3140A9F574A699A751 /* ofxFBXCluster.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFBXCluster.h; path = ../../../addons/ofxFBX/src/ofxFBXCluster.h; sourceTree = SOURCE_ROOT; };
+		FD9574CCF282155F1394949C /* fbxdualquaternion.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxdualquaternion.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/math/fbxdualquaternion.h; sourceTree = SOURCE_ROOT; };
+		FE3A680E0EF962C7C96492C2 /* fbxquery.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxquery.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/fbxquery.h; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E4B69B590A3A1756003C02F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1E8DEF798A1C2CDC6DF712D7 /* ofxInterpolator */ = {
+			isa = PBXGroup;
+			children = (
+				C772DBC30AD976241B35A65F /* EasingEquations.cpp */,
+				4700E3A27933E61CECF7CC7B /* EasingEquations.h */,
+				07EA53EA76ABCDF9AB93804B /* ofxInterpolator.h */,
+			);
+			name = ofxInterpolator;
+			sourceTree = "<group>";
+		};
+		22371182F600AC5CA96A557B /* core */ = {
+			isa = PBXGroup;
+			children = (
+				3E9BB0B4D94F642EE8ADB049 /* arch */,
+				9B66F6838B9E78CA0C49EB59 /* base */,
+				C97F811C71008A14334CB675 /* fbxclassid.h */,
+				D6A9ABFD84937FB70E322835 /* fbxconnectionpoint.h */,
+				D5366B6639B19B0C85FFD89B /* fbxdatatypes.h */,
+				20923D060CA411018B2F2FE5 /* fbxemitter.h */,
+				9A4CCCB454F0770032C2E3C7 /* fbxevent.h */,
+				E575CF0D6867B5F09CBB2065 /* fbxeventhandler.h */,
+				B8C5A5AF2B37C4458B822D80 /* fbxlistener.h */,
+				2C9833166493C5F75D051E17 /* fbxloadingstrategy.h */,
+				2D7ADBC701449C89F8AACEE9 /* fbxmanager.h */,
+				CF9A9D1E3346B02B3ED5AB4C /* fbxmodule.h */,
+				2E97E34B68A351EEAAB1ED48 /* fbxobject.h */,
+				96A3136A57452E002F02E6C1 /* fbxperipheral.h */,
+				755A71BD8CAA052FB98E2B42 /* fbxplugin.h */,
+				C8DBCCB77C3E925F7E637FF1 /* fbxplugincontainer.h */,
+				0817EEA994B0268E0B031D13 /* fbxproperty.h */,
+				272B8A5E4B1A1614D077839C /* fbxpropertydef.h */,
+				260511FA6A5A5A0D0DAA38EE /* fbxpropertyhandle.h */,
+				B3CA177294A2FEF9ABB16BD0 /* fbxpropertypage.h */,
+				F3405F2FD06A9E93E066DE67 /* fbxpropertytypes.h */,
+				FE3A680E0EF962C7C96492C2 /* fbxquery.h */,
+				06274A3A519F4DF9FF93FF8A /* fbxqueryevent.h */,
+				F98644E81064AE3B230D73E8 /* fbxscopedloadingdirectory.h */,
+				8037C6748386104EE12E5A38 /* fbxscopedloadingfilename.h */,
+				A09EA18F60C121DF0044104C /* fbxstream.h */,
+				77CE231CB4E18D76BD6263E9 /* fbxsymbol.h */,
+				6B2D3D174AF520658E66601C /* fbxsystemunit.h */,
+				4DD3538A691E43461DC83A19 /* fbxxref.h */,
+				98F6A01A7AD9ACAA176C22ED /* math */,
+				93AFD349B391BE90608F14CF /* sync */,
+			);
+			name = core;
+			sourceTree = "<group>";
+		};
+		2D12C982AA39380A53B7E4F1 /* constraint */ = {
+			isa = PBXGroup;
+			children = (
+				3862FF69DAE981FCCF60CF88 /* fbxcharacter.h */,
+				77873919AACEB673AB73F61B /* fbxcharacternodename.h */,
+				5A318C5C31586D413F06D085 /* fbxcharacterpose.h */,
+				C935A6D2B8963B0C68182BA2 /* fbxconstraint.h */,
+				ABF16293ACA156861E2B147C /* fbxconstraintaim.h */,
+				2E19B2FF6208DB7E4F613C0E /* fbxconstraintcustom.h */,
+				5386D7FC202EDDBBC569BA6B /* fbxconstraintparent.h */,
+				768BEA5593522EA918A6F7E6 /* fbxconstraintposition.h */,
+				75F4EA77A4C6A5903DFFF61B /* fbxconstraintrotation.h */,
+				119E91D3FCB3E62DB8BE3036 /* fbxconstraintscale.h */,
+				25934E62B8A9ACB569667003 /* fbxconstraintsinglechainik.h */,
+				71872FEB78A8C0C539B30236 /* fbxconstraintutils.h */,
+				CFDC17959ABC4373F5005D55 /* fbxcontrolset.h */,
+				4EA34683AF5A6093676F99C7 /* fbxhik2fbxcharacter.h */,
+			);
+			name = constraint;
+			sourceTree = "<group>";
+		};
+		3E9BB0B4D94F642EE8ADB049 /* arch */ = {
+			isa = PBXGroup;
+			children = (
+				6B73A264818719A0F722DB5D /* fbxalloc.h */,
+				15D30B2076AADAC089713CD2 /* fbxarch.h */,
+				9EEC7B45FB558D3A54DB26EF /* fbxdebug.h */,
+				7082CD051314C7CD93747CE0 /* fbxnew.h */,
+				9D3BAD72337450986D9AD452 /* fbxstdcompliant.h */,
+				06E41DD00B25018B612ED6E8 /* fbxtypes.h */,
+			);
+			name = arch;
+			sourceTree = "<group>";
+		};
+		480A780D8D0308AE4A368801 /* ofxGui */ = {
+			isa = PBXGroup;
+			children = (
+				A763ED608B35AE3310251DEE /* src */,
+			);
+			name = ofxGui;
+			sourceTree = "<group>";
+		};
+		4BE4E75DD322E6B25AC2CA11 /* ofxRay */ = {
+			isa = PBXGroup;
+			children = (
+				BA8C58D95315C15A48518B29 /* src */,
+			);
+			name = ofxRay;
+			sourceTree = "<group>";
+		};
+		5207F2820E86C50E112D2282 /* fileio */ = {
+			isa = PBXGroup;
+			children = (
+				FE15CD9A4E0523DB8F4A131E /* collada */,
+				C0A5A22813CDD754C6DE54ED /* fbx */,
+				8A2BD861C3009EE47481C1E9 /* fbxbase64coder.h */,
+				F7F38BB731B084FE9BC731AD /* fbxexporter.h */,
+				F700F1741D155A13B184CFBE /* fbxexternaldocreflistener.h */,
+				F45EB81BF0E816003FD648FD /* fbxfiletokens.h */,
+				613F3ECB4685DDB4D60B05FD /* fbxglobalcamerasettings.h */,
+				79329BDC8D83E60895682718 /* fbxgloballightsettings.h */,
+				C85674DAA37FA44AD6C84295 /* fbxglobalsettings.h */,
+				287A44686AC3B4A73F0D5536 /* fbxgobo.h */,
+				53DE81455A738A910BC6F1BC /* fbximporter.h */,
+				B12A8F0647703A2DFA3B7C22 /* fbxiobase.h */,
+				4574083FDE080B1731592BF8 /* fbxiopluginregistry.h */,
+				A9EB4A9E7B72267C4BEE61EC /* fbxiosettings.h */,
+				46A1FC67B4FFFDDB8E6CE854 /* fbxiosettingspath.h */,
+				9CF67D32F5AF90224359582E /* fbxprogress.h */,
+				5E78B021E21CE237B43A6610 /* fbxreader.h */,
+				B1644EA3D35AAD9797BB93C9 /* fbxstatistics.h */,
+				67D12274FB1F9F0DCFCC3FBC /* fbxstatisticsfbx.h */,
+				CBCADDB1F71E9F29A64A4B69 /* fbxwriter.h */,
+			);
+			name = fileio;
+			sourceTree = "<group>";
+		};
+		6391988CAB0A1D550A020A08 /* animation */ = {
+			isa = PBXGroup;
+			children = (
+				02EF452624824477DFFC8B43 /* fbxanimcurve.h */,
+				A9D80196A894A801BD9D02C2 /* fbxanimcurvebase.h */,
+				136F97856F8309BC48738DCC /* fbxanimcurvefilters.h */,
+				C43296AF200F2F0CA98E2087 /* fbxanimcurvenode.h */,
+				619B22292FC98B18A72CCE6F /* fbxanimevalclassic.h */,
+				C6278E2956902E11A3B63EBC /* fbxanimevalstate.h */,
+				C22C396CF3D9CB2B53636D95 /* fbxanimevaluator.h */,
+				169E15BBAB785B634906C150 /* fbxanimlayer.h */,
+				75F5425C3A451C1D2F6D2921 /* fbxanimstack.h */,
+				6B2715991BF3729E26032CD7 /* fbxanimutilities.h */,
+			);
+			name = animation;
+			sourceTree = "<group>";
+		};
+		6948EE371B920CB800B5AC1A /* local_addons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = local_addons;
+			sourceTree = "<group>";
+		};
+		8080F83A90039F991C07E312 /* shading */ = {
+			isa = PBXGroup;
+			children = (
+				76049A4CD9F8ECBBDB0AEF06 /* fbxbindingoperator.h */,
+				280FE3CADDA48C87068EF090 /* fbxbindingsentryview.h */,
+				DB97320AAC3809F85A57DF66 /* fbxbindingtable.h */,
+				6496D35A6F97559CFDCCFB59 /* fbxbindingtablebase.h */,
+				DC1E849AA2E2D0C1C30CD28C /* fbxbindingtableentry.h */,
+				0812389566DCCE6EB6860444 /* fbxconstantentryview.h */,
+				4085F5F1EECF5F4F74419D5A /* fbxentryview.h */,
+				BE34E369975F2C14609BD3AD /* fbxfiletexture.h */,
+				F861EE5285F5D00667E3C728 /* fbximplementation.h */,
+				BB4A796907F83B25268336AD /* fbximplementationfilter.h */,
+				F1640CDBA4ACAFA6E99CB509 /* fbximplementationutils.h */,
+				C9F552CC9456EFB4A254DC55 /* fbxlayeredtexture.h */,
+				DE2ECE6575BAAB9AF3B8694F /* fbxlayerentryview.h */,
+				039082802B1576E27B849422 /* fbxoperatorentryview.h */,
+				0BCF68CFC95A98F4FBDB64FE /* fbxproceduraltexture.h */,
+				F7D8B61640A0D1ACE9830413 /* fbxpropertyentryview.h */,
+				4F15DA277B4AA09B06EB02BA /* fbxsemanticentryview.h */,
+				BE845C058B27DE4453390743 /* fbxshadingconventions.h */,
+				B86C2263B074C57689AE30BB /* fbxsurfacelambert.h */,
+				C9ADC23F6E271BF81458D750 /* fbxsurfacematerial.h */,
+				8A9050E7DB6E7A7D1740EE39 /* fbxsurfacephong.h */,
+				3D340E2594233B60512AA7BD /* fbxtexture.h */,
+			);
+			name = shading;
+			sourceTree = "<group>";
+		};
+		85C7093CD15404193A7664FD /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CB9A7D191CAFC0190035A2F6 /* Lathe.h */,
+				6A2AEA1583634930308D50AB /* DrawingHelpers.h */,
+				C5E4A8831A84DA8B78A2833C /* FboPingPong.cpp */,
+				B7DE9E98F2E281C8F75129CD /* FboPingPong.h */,
+				896C5DA029A0F896FE84F16E /* FileUtils.h */,
+				5E14E144B5ED7BBFB2F07205 /* ofEasyCamExt.cpp */,
+				4BA4F7EA4F7EA93FBC22ECE9 /* ofEasyCamExt.h */,
+				702982C670C2F93CB5CCE507 /* ofTrueTypeFontExt.h */,
+				1E8DEF798A1C2CDC6DF712D7 /* ofxInterpolator */,
+				81B2C94F62A21B9035358796 /* PlacementUtils.h */,
+				B0B7DADF0A3A841EBF61E700 /* SizeLimitedDeque.h */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		89101928FC52AC79C4AC9BA2 /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				198ACAE10444C839DCDB4286 /* MathUtils.h */,
+				6128FABE85EE22D19384A77B /* ofVecExt.h */,
+				4BE4E75DD322E6B25AC2CA11 /* ofxRay */,
+			);
+			name = Math;
+			sourceTree = "<group>";
+		};
+		8C90F41C5CF1C4422FE6916F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F974CED35D2D786D237B0A54 /* AnimationUtility.cxx */,
+				5A797F5F92CDFC375C0AE99F /* AnimationUtility.h */,
+				2DE7FCC6E043A7CB7ED51B2D /* Common.h */,
+				5B3F049E55F4009A56C0E671 /* GeometryUtility.cxx */,
+				CC8AB3B80118D58B6E007009 /* GeometryUtility.h */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		93AFD349B391BE90608F14CF /* sync */ = {
+			isa = PBXGroup;
+			children = (
+				388E460374C98880379CD192 /* fbxatomic.h */,
+				D41541D30704DCC3371EFA36 /* fbxclock.h */,
+				B22AB8BB5829892592A1749C /* fbxsync.h */,
+				D27BC36170A3E90EFC1A7957 /* fbxthread.h */,
+			);
+			name = sync;
+			sourceTree = "<group>";
+		};
+		98A796570806C433B1468574 /* scene */ = {
+			isa = PBXGroup;
+			children = (
+				6391988CAB0A1D550A020A08 /* animation */,
+				2D12C982AA39380A53B7E4F1 /* constraint */,
+				5AEEEA6E5FBF5F63DCE90314 /* fbxaxissystem.h */,
+				CD02437CEEFBB2C104688E2E /* fbxcollection.h */,
+				D6A5424F139ACDBC28CA4D7C /* fbxcollectionexclusive.h */,
+				8979009CAF43A9015419E1AF /* fbxcontainer.h */,
+				9522FCDC8D8DFC77AE018A73 /* fbxcontainertemplate.h */,
+				F7557A1ABA07ACC05C98D15C /* fbxdisplaylayer.h */,
+				C34796EB8DFFFF96792A3EA4 /* fbxdocument.h */,
+				25AE65ACDF27608DDECD2642 /* fbxdocumentinfo.h */,
+				53555942562A941D24187D44 /* fbxenvironment.h */,
+				27F47698BD8E6B000EB662AD /* fbxgroupname.h */,
+				4FD7B9DFAB334A4F2B31AB26 /* fbxlibrary.h */,
+				E24AAD53089EDB5FEF474E73 /* fbxobjectfilter.h */,
+				2D893C20B26B92A11BFCE418 /* fbxobjectmetadata.h */,
+				03A62C7D237F368C62B1C1CC /* fbxobjectscontainer.h */,
+				92D1C5A2A8B10209751893F5 /* fbxpose.h */,
+				F9CA8B0541B8B828518642F7 /* fbxreference.h */,
+				806591F974876ED99123E1E5 /* fbxscene.h */,
+				E21FBC20766FBA176D8A49C4 /* fbxselectionnode.h */,
+				BDC7A868BF7E65B22BFA57F2 /* fbxselectionset.h */,
+				C42189C502933640E442D73F /* fbxtakeinfo.h */,
+				F678656AECB44B7A6920C8F4 /* fbxthumbnail.h */,
+				5EB381F8A63C068BA1688905 /* fbxvideo.h */,
+				B81326A9EDB76F649079AC5E /* geometry */,
+				8080F83A90039F991C07E312 /* shading */,
+			);
+			name = scene;
+			sourceTree = "<group>";
+		};
+		98F6A01A7AD9ACAA176C22ED /* math */ = {
+			isa = PBXGroup;
+			children = (
+				C2832A2705DB7A41B3137FF4 /* fbxaffinematrix.h */,
+				FD9574CCF282155F1394949C /* fbxdualquaternion.h */,
+				863E244AAE3AE82180328535 /* fbxmath.h */,
+				5DD623DAB1B59417246F3F22 /* fbxmatrix.h */,
+				F7214189779B5C6247342FAE /* fbxquaternion.h */,
+				E220F6F8953DEEEA4A5C24FC /* fbxtransforms.h */,
+				CD371EE3C691214F41F65B08 /* fbxvector2.h */,
+				0A4270FF6906DAD501938C2E /* fbxvector4.h */,
+			);
+			name = math;
+			sourceTree = "<group>";
+		};
+		9B66F6838B9E78CA0C49EB59 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				6AB0E809303E3FB6CA1A93C7 /* fbxarray.h */,
+				192B2F70E41189CCB5A164F6 /* fbxbitset.h */,
+				9E9DFF72FD33112C6FF87704 /* fbxcharptrset.h */,
+				7205E44ECAFC168DD800F9DF /* fbxcontainerallocators.h */,
+				926D12444F34A19733B94742 /* fbxdynamicarray.h */,
+				18A1BDA2D31C530A67155363 /* fbxfile.h */,
+				9F10C87B85778AB069C486C0 /* fbxfolder.h */,
+				F428ECF441DE3F2CEB74BC50 /* fbxhashmap.h */,
+				3E22C15B8FE392D99642B4EB /* fbxintrusivelist.h */,
+				BB03CF2CA32F5F6D9DABF1E7 /* fbxmap.h */,
+				9BC8057E36A99B56307C496F /* fbxmemorypool.h */,
+				DFE3614F2E94934C91AC1810 /* fbxmultimap.h */,
+				31967FF85F35CAF3BCEEAA50 /* fbxpair.h */,
+				14A0DEC0FD5BCDCA5789E196 /* fbxredblacktree.h */,
+				B1FF9DB8F285A8B4A75C8932 /* fbxset.h */,
+				D2E22490B3A8DB3D5323A7F8 /* fbxstatus.h */,
+				105F0095563ABB06A435AAA0 /* fbxstring.h */,
+				DC3F53C13186B005F254D6A5 /* fbxstringlist.h */,
+				8F9B5A8520E871B683F5B209 /* fbxtime.h */,
+				23BDE498B8F8ECC4F997D259 /* fbxtimecode.h */,
+				1F990454C4809D12450971C2 /* fbxutils.h */,
+			);
+			name = base;
+			sourceTree = "<group>";
+		};
+		A763ED608B35AE3310251DEE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				9604B925D32EE39065747725 /* ofxBaseGui.cpp */,
+				87F26B4B24CBD428AD9EEBAA /* ofxBaseGui.h */,
+				C88333E71C9457E441C33474 /* ofxButton.cpp */,
+				2834D88A62CD23F3DE2C47D1 /* ofxButton.h */,
+				17E65988300FBD9AAA2CD0CA /* ofxGui.h */,
+				ECF8674C7975F1063C5E30CA /* ofxGuiGroup.cpp */,
+				1C0DA2561397A7DE0246858B /* ofxGuiGroup.h */,
+				78D67A00EB899FAC09430597 /* ofxLabel.cpp */,
+				B87C60311EC1FE841C1ECD89 /* ofxLabel.h */,
+				E112B3AEBEA2C091BF2B40AE /* ofxPanel.cpp */,
+				89449E3044D456F7DE7BEA14 /* ofxPanel.h */,
+				15F2C6477A769C03A56D1401 /* ofxSlider.cpp */,
+				52AFA1F08C420992CAAAE648 /* ofxSlider.h */,
+				802251BAF1B35B1D67B32FD0 /* ofxSliderGroup.cpp */,
+				C70D8946940288799E82131E /* ofxSliderGroup.h */,
+				907C5B5E104864A2D3A25745 /* ofxToggle.cpp */,
+				0A1DAC09F322AE313A40706D /* ofxToggle.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		B1BF25ED046890C6CC197F23 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				39DC113633C83CC3597AE35E /* GetPosition.cxx */,
+				D2195C763B855EDE0D58AEB8 /* GetPosition.h */,
+				C83DC34534FB39BE508E4DDC /* ofxFBX.h */,
+				39380BD5970FE92C8FDEC5D2 /* ofxFBXAnimation.cpp */,
+				8561E75B2678529F0F023106 /* ofxFBXAnimation.h */,
+				22CDCA220E183DD55BC133AD /* ofxFBXBone.cpp */,
+				E1F0CB5CD5D57425D4643023 /* ofxFBXBone.h */,
+				FBDA72A456BF63584BD85275 /* ofxFBXCluster.cpp */,
+				FD8BFB3140A9F574A699A751 /* ofxFBXCluster.h */,
+				DEF49BDD6034E5F416E2DC9C /* ofxFBXManager.cpp */,
+				340012355BB4AE82E3CC19B5 /* ofxFBXManager.h */,
+				0170CD9A77207D4D9D94F05A /* ofxFBXMesh.cpp */,
+				6AF87C1AEC84E54F6009F3C2 /* ofxFBXMesh.h */,
+				13D73946A1538106D9BE5877 /* ofxFBXMeshMaterial.cpp */,
+				17E01B30EB739E71734D16FA /* ofxFBXMeshMaterial.h */,
+				9ACC32795AF3AA319EA8B0C2 /* ofxFBXNode.cpp */,
+				D4C256A13B13C0DBAEB9A634 /* ofxFBXNode.h */,
+				B907B0A3B8E1804C5297F55E /* ofxFBXPose.cpp */,
+				3EB6ED4BC49F8F8AD7A66A90 /* ofxFBXPose.h */,
+				95EB7C733541F64E2C4F7115 /* ofxFBXScene.cpp */,
+				4A43A680D33CDD5D85D7E386 /* ofxFBXScene.h */,
+				7E43F5FD5CB7F1965F1A06E7 /* ofxFBXSkeleton.cpp */,
+				A2DB87FB6CA14519C9FB9A72 /* ofxFBXSkeleton.h */,
+				1D467FFF3894D6268E7590DA /* ofxFBXUtils.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		B62A42A6B0D283B60788D4CE /* fbxsdk */ = {
+			isa = PBXGroup;
+			children = (
+				22371182F600AC5CA96A557B /* core */,
+				815A42399125DDD8A4CC909D /* fbxsdk_def.h */,
+				F6B043969DBE1126ADAB8D11 /* fbxsdk_nsbegin.h */,
+				BB4B53BEA290F336B640FA7F /* fbxsdk_nsend.h */,
+				E85BEC397ADCAEE5DF1F06A1 /* fbxsdk_version.h */,
+				5207F2820E86C50E112D2282 /* fileio */,
+				98A796570806C433B1468574 /* scene */,
+				F5976C5BF0EA6F155AAECEB5 /* utils */,
+			);
+			name = fbxsdk;
+			sourceTree = "<group>";
+		};
+		B81326A9EDB76F649079AC5E /* geometry */ = {
+			isa = PBXGroup;
+			children = (
+				D791B370660BD971440FD360 /* fbxblendshape.h */,
+				B38D9E56F35229381A6F9C94 /* fbxblendshapechannel.h */,
+				15FCC10CDDEB7180934610C7 /* fbxcache.h */,
+				4EDE5866EC0E88B7B9C001FD /* fbxcachedeffect.h */,
+				D058BE38AE0AF940002A4D3D /* fbxcamera.h */,
+				560685EA108C5B2CB337FE7E /* fbxcamerastereo.h */,
+				92202694DDBD60C5C8CE2BB9 /* fbxcameraswitcher.h */,
+				03BF07E9870149605B47D31E /* fbxcluster.h */,
+				3796500E31E49B25DB6CABAF /* fbxdeformer.h */,
+				F2396A328D2BBF34C87C48B6 /* fbxgenericnode.h */,
+				51EDE9E761AE73FF2C24F4CA /* fbxgeometry.h */,
+				AE9BCE2EE396658492C3272E /* fbxgeometrybase.h */,
+				A580423CF8EC14A71B21629D /* fbxgeometryweightedmap.h */,
+				38C05757DCBD1A59E90A0491 /* fbxlayer.h */,
+				06A711CCB2BE3D064DB718D0 /* fbxlayercontainer.h */,
+				8D10EFCDAABDE2D0D7F2E8C7 /* fbxlight.h */,
+				9518DFB2ECB1FEE1B0AE1444 /* fbxlimitsutilities.h */,
+				D46826DF1212FA356A39E3FF /* fbxline.h */,
+				DC2E2B12F347DE7E209A4526 /* fbxlodgroup.h */,
+				67C61EAC33FBFC8EB4363F19 /* fbxmarker.h */,
+				22C8E3863F770AF0590BE61D /* fbxmesh.h */,
+				82A76CC3BC6B75F5853BE815 /* fbxnode.h */,
+				63E3FD1CB9CF7635EE12EF57 /* fbxnodeattribute.h */,
+				2DA7332B4D8B46D1BCF453DD /* fbxnull.h */,
+				74BCCBF986C5C566E4C5307A /* fbxnurbs.h */,
+				6474FABCB567ECB7DE573F8B /* fbxnurbscurve.h */,
+				2D8A279D42FC9395D402F615 /* fbxnurbssurface.h */,
+				6C6A01CD8BF083C2B415844B /* fbxopticalreference.h */,
+				8B42B74B39EDECEF115E440B /* fbxpatch.h */,
+				4537733E6136904B2614EBD3 /* fbxproceduralgeometry.h */,
+				FC4DADB0805714EAA4CC61E9 /* fbxshape.h */,
+				AEC3DA887C2544FD554EBF31 /* fbxskeleton.h */,
+				D684801BE713AB1CEB8786BE /* fbxskin.h */,
+				EF72E11E9E2C7BFC3C625FED /* fbxsubdeformer.h */,
+				C44DC805C2CEE793D567DB74 /* fbxsubdiv.h */,
+				32FDD27A20DA19628C2B2552 /* fbxtrimnurbssurface.h */,
+				3D48138FB40AD02867C58300 /* fbxvertexcachedeformer.h */,
+				E4D95AA7DC1E145978175C7A /* fbxweightedmapping.h */,
+			);
+			name = geometry;
+			sourceTree = "<group>";
+		};
+		BA1EA5576F654E2EFFF70C7F /* DancerMesh */ = {
+			isa = PBXGroup;
+			children = (
+				CB5E9D6B1CA999EC00BC42AA /* MeshPoint.h */,
+				1FA4987BAAF93697C673F2F2 /* DancerMesh.cpp */,
+				BBA5B9FA1CD17CE11D891272 /* DancerMesh.h */,
+				DFA02B524B547CBB4F6CF878 /* DancerMeshFBX.h */,
+			);
+			name = DancerMesh;
+			sourceTree = "<group>";
+		};
+		BA8C58D95315C15A48518B29 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				9233072B406293EF1FB893AB /* Base.cpp */,
+				DF97F4AD6C94686058408360 /* Base.h */,
+				6FFAF5456D7983DD1197E330 /* Camera.cpp */,
+				3525F38E65F16D53A53223DF /* Camera.h */,
+				ED1A110503DDDFD7D4BE8CEF /* ofxRay.h */,
+				BE64ABFF9205418415A12B90 /* Plane.cpp */,
+				2FD2C41450C0AFAEA2069A6E /* Plane.h */,
+				3C8F0F7D04AFB83D2FA9AD11 /* Plane_fitToPoints.cpp */,
+				91687E50B2FDAECE326ED511 /* Projector.cpp */,
+				B863857462A70414AE7BAFDE /* Projector.h */,
+				B23D69BDAD892455CD432521 /* Ray.cpp */,
+				320EB30ED1AA7C0422AACC70 /* Ray.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		BB4B014C10F69532006C3DED /* addons */ = {
+			isa = PBXGroup;
+			children = (
+				C81ABE44DD437480BAFB978E /* ofxFBX */,
+				480A780D8D0308AE4A368801 /* ofxGui */,
+			);
+			name = addons;
+			sourceTree = "<group>";
+		};
+		C0A5A22813CDD754C6DE54ED /* fbx */ = {
+			isa = PBXGroup;
+			children = (
+				F738543CCBA53F3A472CB398 /* fbxio.h */,
+				511A4E54AC373832938A9DD9 /* fbxreaderfbx5.h */,
+				DB9CED61559986DC740D7EEB /* fbxreaderfbx6.h */,
+				59ABFC64EFEB8095E6AB91C4 /* fbxreaderfbx7.h */,
+				F4D043B132D6CF07CE3DA2C3 /* fbxwriterfbx5.h */,
+				EAB67E719F4161F06640C45F /* fbxwriterfbx6.h */,
+				BB34642868CBA303F57E8028 /* fbxwriterfbx7.h */,
+			);
+			name = fbx;
+			sourceTree = "<group>";
+		};
+		C81ABE44DD437480BAFB978E /* ofxFBX */ = {
+			isa = PBXGroup;
+			children = (
+				B1BF25ED046890C6CC197F23 /* src */,
+				DA1D5F1177A8CEA81A925031 /* libs */,
+			);
+			name = ofxFBX;
+			sourceTree = "<group>";
+		};
+		D215B8D03AAAC1EF77FDEDF5 /* fbxsdk_2016.1 */ = {
+			isa = PBXGroup;
+			children = (
+				FF43C33FC89C9CA0BAF95CEE /* include */,
+			);
+			name = fbxsdk_2016.1;
+			sourceTree = "<group>";
+		};
+		DA1D5F1177A8CEA81A925031 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				D215B8D03AAAC1EF77FDEDF5 /* fbxsdk_2016.1 */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		E4328144138ABC890047C5CB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E4328148138ABC890047C5CB /* openFrameworksDebug.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E4B69B4A0A3A1720003C02F2 = {
+			isa = PBXGroup;
+			children = (
+				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
+				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
+				E4B69E1C0A3A1BDC003C02F2 /* src */,
+				E4EEC9E9138DF44700A80321 /* openFrameworks */,
+				BB4B014C10F69532006C3DED /* addons */,
+				6948EE371B920CB800B5AC1A /* local_addons */,
+				E4B69B5B0A3A1756003C02F2 /* StickyPointsDebug.app */,
+			);
+			sourceTree = "<group>";
+		};
+		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				CB2F47871CA3EFE400D5ACFD /* ofLightExt.h */,
+				CB2F47881CA3EFE400D5ACFD /* ofMaterialExt.h */,
+				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
+				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
+				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
+				BA1EA5576F654E2EFFF70C7F /* DancerMesh */,
+				89101928FC52AC79C4AC9BA2 /* Math */,
+				85C7093CD15404193A7664FD /* Utils */,
+			);
+			path = src;
+			sourceTree = SOURCE_ROOT;
+		};
+		E4EEC9E9138DF44700A80321 /* openFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */,
+				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
+			);
+			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+		F5976C5BF0EA6F155AAECEB5 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				38B856A7E4080D5540EAC571 /* fbxclonemanager.h */,
+				DD63232ED93177A46854FE27 /* fbxdeformationsevaluator.h */,
+				0DC70B0E0C1DC58996AB2BE5 /* fbxembeddedfilesaccumulator.h */,
+				15C9D59193BE78D6C9381039 /* fbxgeometryconverter.h */,
+				739F9AEB1BED5171866A4D3C /* fbxmanipulators.h */,
+				32A124CD91A4815B854DC93D /* fbxmaterialconverter.h */,
+				11C9A03E862B21D49EF60687 /* fbxnamehandler.h */,
+				BC9944E11A66A0E29AE02475 /* fbxprocessor.h */,
+				740DE9439D7C3C744028780E /* fbxprocessorshaderdependency.h */,
+				92B39A92012CF829933E280F /* fbxprocessorxref.h */,
+				56BE25CB00E2383872B03F30 /* fbxprocessorxrefuserlib.h */,
+				F1B84501BA3C5F716200D98D /* fbxrenamingstrategy.h */,
+				79C24B9ACF66193D27271BE4 /* fbxrenamingstrategybase.h */,
+				66C59F615C9C9BCA3DACEDE3 /* fbxrenamingstrategyfbx5.h */,
+				0918A48FB78CA6EE47ABF9B7 /* fbxrenamingstrategyfbx6.h */,
+				F350BFDA80E2A610F07B6C24 /* fbxrenamingstrategyfbx7.h */,
+				962491643FC64A7E9CB46F04 /* fbxrenamingstrategyutilities.h */,
+				73F812B14141F2122AA8CB1B /* fbxrootnodeutility.h */,
+				70C269D0F711F8ACB72502CB /* fbxusernotification.h */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		FE15CD9A4E0523DB8F4A131E /* collada */ = {
+			isa = PBXGroup;
+			children = (
+				7CA57EEE0024A034819A2667 /* fbxcolladaanimationelement.h */,
+				3D54FB4A79900E1D7609FE28 /* fbxcolladaelement.h */,
+				FB49D92EE727EA2099DE3F15 /* fbxcolladaiostream.h */,
+				8C00ADA3967E03DF5B373CAF /* fbxcolladanamespace.h */,
+				7A455108E6F315006C580F4D /* fbxcolladatokens.h */,
+				C660509109AE1A56355EC975 /* fbxcolladautils.h */,
+				E80751B1525838F6D217B364 /* fbxreadercollada14.h */,
+				B6F590C2EAC4D346B225997A /* fbxwritercollada14.h */,
+			);
+			name = collada;
+			sourceTree = "<group>";
+		};
+		FF43C33FC89C9CA0BAF95CEE /* include */ = {
+			isa = PBXGroup;
+			children = (
+				8C90F41C5CF1C4422FE6916F /* Common */,
+				B62A42A6B0D283B60788D4CE /* fbxsdk */,
+				5271090951D735805ADEE585 /* fbxsdk.h */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E4B69B5A0A3A1756003C02F2 /* StickyPoints */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "StickyPoints" */;
+			buildPhases = (
+				E4B69B580A3A1756003C02F2 /* Sources */,
+				E4B69B590A3A1756003C02F2 /* Frameworks */,
+				E4B6FFFD0C3F9AB9008CF71C /* ShellScript */,
+				E4C2427710CC5ABF004149E2 /* CopyFiles */,
+				8466F1851C04CA0E00918B1C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
+			);
+			name = StickyPoints;
+			productName = myOFApp;
+			productReference = E4B69B5B0A3A1756003C02F2 /* StickyPointsDebug.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+			};
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "StickyPoints" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = E4B69B4A0A3A1720003C02F2;
+			productRefGroup = E4B69B4A0A3A1720003C02F2;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E4328144138ABC890047C5CB /* Products */;
+					ProjectRef = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				E4B69B5A0A3A1756003C02F2 /* StickyPoints */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E4328148138ABC890047C5CB /* openFrameworksDebug.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = openFrameworksDebug.a;
+			remoteRef = E4328147138ABC890047C5CB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8466F1851C04CA0E00918B1C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# ---- Code Sign App Package ----\n \n# WARNING: You may have to run Clean in Xcode after changing CODE_SIGN_IDENTITY!\n\n# Verify that $CODE_SIGN_IDENTITY is set\nif [ -z \"${CODE_SIGN_IDENTITY}\" ] ; then\necho \"CODE_SIGN_IDENTITY needs to be set for framework code-signing\"\nexit 0\nfi\n\nif [ -z \"${CODE_SIGN_ENTITLEMENTS}\" ] ; then\necho \"CODE_SIGN_ENTITLEMENTS needs to be set for framework code-signing!\"\n\nif [ \"${CONFIGURATION}\" = \"Release\" ] ; then\nexit 1\nelse\n# Code-signing is optional for non-release builds.\nexit 0\nfi\nfi\n\nITEMS=\"\"\n\nFRAMEWORKS_DIR=\"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\necho \"$FRAMEWORKS_DIR\"\nif [ -d \"$FRAMEWORKS_DIR\" ] ; then\nFRAMEWORKS=$(find \"${FRAMEWORKS_DIR}\" -depth -type d -name \"*.framework\" -or -name \"*.dylib\" -or -name \"*.bundle\" | sed -e \"s/\\(.*framework\\)/\\1\\/Versions\\/A\\//\")\nRESULT=$?\nif [[ $RESULT != 0 ]] ; then\nexit 1\nfi\n\nITEMS=\"${FRAMEWORKS}\"\nfi\n\nLOGINITEMS_DIR=\"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Library/LoginItems/\"\nif [ -d \"$LOGINITEMS_DIR\" ] ; then\nLOGINITEMS=$(find \"${LOGINITEMS_DIR}\" -depth -type d -name \"*.app\")\nRESULT=$?\nif [[ $RESULT != 0 ]] ; then\nexit 1\nfi\n\nITEMS=\"${ITEMS}\"$'\\n'\"${LOGINITEMS}\"\nfi\n\n# Prefer the expanded name, if available.\nCODE_SIGN_IDENTITY_FOR_ITEMS=\"${EXPANDED_CODE_SIGN_IDENTITY_NAME}\"\nif [ \"${CODE_SIGN_IDENTITY_FOR_ITEMS}\" = \"\" ] ; then\n# Fall back to old behavior.\nCODE_SIGN_IDENTITY_FOR_ITEMS=\"${CODE_SIGN_IDENTITY}\"\nfi\n\necho \"Identity:\"\necho \"${CODE_SIGN_IDENTITY_FOR_ITEMS}\"\n\necho \"Entitlements:\"\necho \"${CODE_SIGN_ENTITLEMENTS}\"\n\necho \"Found:\"\necho \"${ITEMS}\"\n\n# Change the Internal Field Separator (IFS) so that spaces in paths will not cause problems below.\nSAVED_IFS=$IFS\nIFS=$(echo -en \"\\n\\b\")\n\n# Loop through all items.\nfor ITEM in $ITEMS;\ndo\necho \"Signing '${ITEM}'\"\ncodesign --force --verbose --sign \"${CODE_SIGN_IDENTITY_FOR_ITEMS}\" --entitlements \"${CODE_SIGN_ENTITLEMENTS}\" \"${ITEM}\"\nRESULT=$?\nif [[ $RESULT != 0 ]] ; then\necho \"Failed to sign '${ITEM}'.\"\nIFS=$SAVED_IFS\nexit 1\nfi\ndone\n\n# Restore $IFS.\nIFS=$SAVED_IFS\n";
+		};
+		E4B6FFFD0C3F9AB9008CF71C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "mkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n# Copy default icon file into App/Resources\nrsync -aved \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n# Copy bin/data into App/Resources\nrsync -avz --exclude='.DS_Store' \"${SRCROOT}/bin/data/\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/data/\"\n# Copy libfmod and change install directory for fmod to run\nrsync -aved ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Frameworks/\";\ninstall_name_tool -change @executable_path/libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\n# Copy GLUT framework (must remove for AppStore submissions)\nrsync -aved ../../../libs/glut/lib/osx/GLUT.framework \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Frameworks/\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E4B69B580A3A1756003C02F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				7BDDF68BE87865AB3CBDA43A /* DancerMesh.cpp in Sources */,
+				8DF9F2D080D5A7F3F5B6AC1C /* Base.cpp in Sources */,
+				ABF64A542ED7F53E05D88B36 /* Camera.cpp in Sources */,
+				5A92C4A66173EC0F0095E0AF /* Plane.cpp in Sources */,
+				F3F9A7E558A0C88C88A8291A /* Plane_fitToPoints.cpp in Sources */,
+				3AE5742C2657FC46ABF744B3 /* Projector.cpp in Sources */,
+				315FB5B8D7DAEAD4824CBA28 /* Ray.cpp in Sources */,
+				44807B91E3486E1AD3EDD36E /* FboPingPong.cpp in Sources */,
+				B40BD814627F0AA32FFE6247 /* ofEasyCamExt.cpp in Sources */,
+				1DA45EA5BB643049B1931024 /* EasingEquations.cpp in Sources */,
+				BC66EC6C15B019AAA2FB08B7 /* GetPosition.cxx in Sources */,
+				65CF1066220B6EAF92170D24 /* ofxFBXAnimation.cpp in Sources */,
+				76932F2BDEBF5975C7B78E8F /* ofxFBXBone.cpp in Sources */,
+				A2A7A70CD07257390F024C45 /* ofxFBXCluster.cpp in Sources */,
+				C9F2D96F8DE3B1F1603ACC2C /* ofxFBXManager.cpp in Sources */,
+				955F5DACFFF26CD0C0B868C9 /* ofxFBXMesh.cpp in Sources */,
+				D3B67B1855C441DAEFF34461 /* ofxFBXMeshMaterial.cpp in Sources */,
+				9B5EAD6903CBD88ED1D4627A /* ofxFBXNode.cpp in Sources */,
+				AAE7D54A50810641535459E5 /* ofxFBXPose.cpp in Sources */,
+				1BEE448D5236FF7A3D1136A0 /* ofxFBXScene.cpp in Sources */,
+				22FAD71C4C85BA2A59638F67 /* ofxFBXSkeleton.cpp in Sources */,
+				914AF1870F96A0A63B4E36D8 /* AnimationUtility.cxx in Sources */,
+				7D001F1365B7FA85A22C5A60 /* GeometryUtility.cxx in Sources */,
+				856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */,
+				5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */,
+				B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */,
+				483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */,
+				F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */,
+				837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */,
+				B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */,
+				1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E4EEB9AC138B136A00A80321 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = openFrameworks;
+			targetProxy = E4EEB9AB138B136A00A80321 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E4B69B4E0A3A1720003C02F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					src/DancerMesh,
+					src/Math,
+					src/Math/ofxRay/src,
+					src/Utils,
+					src/Utils/ofxInterpolator,
+					../../../addons/ofxFBX/libs,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/Common,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/arch,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/math,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/sync,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/collada,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbx,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/animation,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/constraint,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/lib,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/lib/osx,
+					../../../addons/ofxFBX/src,
+					../../../addons/ofxGui/src,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-mtune=native",
+				);
+				OTHER_LDFLAGS = (
+					"$(OF_CORE_FRAMEWORKS)",
+					"$(OF_CORE_LIBS)",
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/lib/osx/libfbxsdk.a,
+				);
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E4B69B4F0A3A1720003C02F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					src/DancerMesh,
+					src/Math,
+					src/Math/ofxRay/src,
+					src/Utils,
+					src/Utils/ofxInterpolator,
+					../../../addons/ofxFBX/libs,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/Common,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/arch,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/math,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/sync,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/collada,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbx,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/animation,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/constraint,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/lib,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/lib/osx,
+					../../../addons/ofxFBX/src,
+					../../../addons/ofxGui/src,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-mtune=native",
+				);
+				OTHER_LDFLAGS = (
+					"$(OF_CORE_FRAMEWORKS)",
+					"$(OF_CORE_LIBS)",
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/lib/osx/libfbxsdk.a,
+				);
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E4B69B600A3A1757003C02F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = NONE;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					src/DancerMesh,
+					src/Math,
+					src/Math/ofxRay/src,
+					src/Utils,
+					src/Utils/ofxInterpolator,
+					../../../addons/ofxFBX/libs,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/Common,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/arch,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/math,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/sync,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/collada,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbx,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/animation,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/constraint,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/lib,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/lib/osx,
+					../../../addons/ofxFBX/src,
+					../../../addons/ofxGui/src,
+				);
+				ICON = "$(ICON_NAME_DEBUG)";
+				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
+				INSTALL_PATH = /Applications;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(OF_CORE_FRAMEWORKS)",
+					"$(OF_CORE_LIBS)",
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/lib/osx/libfbxsdk.a,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E4B69B610A3A1757003C02F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = NONE;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					src/DancerMesh,
+					src/Math,
+					src/Math/ofxRay/src,
+					src/Utils,
+					src/Utils/ofxInterpolator,
+					../../../addons/ofxFBX/libs,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/Common,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/arch,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/base,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/math,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/core/sync,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/collada,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbx,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/animation,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/constraint,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/geometry,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/utils,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/lib,
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/lib/osx,
+					../../../addons/ofxFBX/src,
+					../../../addons/ofxGui/src,
+				);
+				ICON = "$(ICON_NAME_RELEASE)";
+				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
+				INSTALL_PATH = /Applications;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(OF_CORE_FRAMEWORKS)",
+					"$(OF_CORE_LIBS)",
+					../../../addons/ofxFBX/libs/fbxsdk_2016.1/lib/osx/libfbxsdk.a,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "StickyPoints" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4B69B4E0A3A1720003C02F2 /* Debug */,
+				E4B69B4F0A3A1720003C02F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "StickyPoints" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4B69B600A3A1757003C02F2 /* Debug */,
+				E4B69B610A3A1757003C02F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E4B69B4C0A3A1720003C02F2 /* Project object */;
+}
