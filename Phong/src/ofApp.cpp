@@ -122,8 +122,6 @@ void ofApp::drawScene( float _time, ofShader* _shader, ofMatrix4x4 _modelView )
 		ofLightExt::setParams( _shader, lights, _modelView );
 		material.setParams( _shader, false );
 
-		
-		_shader->setUniform1f("useVertexColors", 0 );
 	
 		ofMesh mesh;
 		ofMesh sphereMesh = ofSpherePrimitive(0.6, 30).getMesh();
