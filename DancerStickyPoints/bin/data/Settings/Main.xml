@@ -34,9 +34,9 @@
 		<Shininess>10</Shininess>
 	</Floor_Material>
 	<Dancer_Material>
-		<Diffuse>255, 0, 255, 255</Diffuse>
+		<Diffuse>255, 255, 255, 255</Diffuse>
 		<Specular>255, 255, 255, 255</Specular>
-		<Emissive>0, 0, 0, 255</Emissive>
+		<Emissive>91, 85, 89, 255</Emissive>
 		<Shininess>69.9796</Shininess>
 	</Dancer_Material>
 <Light_2>
@@ -46,4 +46,10 @@
 		<Specular>255, 255, 255, 255</Specular>
 		<Radius>1.53061</Radius>
 	</Light_2>
+<Streamer_Material>
+		<Diffuse>50, 255, 255, 255</Diffuse>
+		<Specular>255, 255, 255, 255</Specular>
+		<Emissive>0, 0, 0, 255</Emissive>
+		<Shininess>10</Shininess>
+	</Streamer_Material>
 </Main>

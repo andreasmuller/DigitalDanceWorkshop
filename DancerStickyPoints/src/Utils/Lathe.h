@@ -117,7 +117,7 @@ class Lathe
 		}
 	
 		// ------------------------------------------
-		static void getTransforms( vector<ofMatrix4x4>& _transforms, vector<ofVec3f>& _controlPoints, int _targetAmount, ofVec3f _firstUp = ofVec3f(0,1,0) )
+		static void getTransforms( vector<ofMatrix4x4>& _transforms, vector<ofVec3f>& _controlPoints, int _targetAmount, ofVec3f _firstUp = ofVec3f(0,1,0), bool _forceUp = false )
 		{
 			_transforms.clear();
 			
@@ -143,6 +143,7 @@ class Lathe
 				{
 					zAxis = (p1 - p0).getNormalized(); // forward
 					xAxis = yAxis.getCrossed( zAxis ); // guess side based on previous segment's Y
+					if( _forceUp ) xAxis = _firstUp.getCrossed( zAxis );
 					yAxis = zAxis.getCrossed( xAxis ); // recalculate Y now that we have forward and sideways
 				}
 				

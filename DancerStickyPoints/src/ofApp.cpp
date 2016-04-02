@@ -58,7 +58,6 @@ void ofApp::setup()
 	time = 0;
 	drawGui = false;
 	
-
 	// Init sticky points
 	
 	// These correspond to UVs that sit on the characters hand
@@ -73,8 +72,8 @@ void ofApp::setup()
 	lathedMeshes.resize(stickyPoints.size() );
 	for (int i = 0; i < lathedMeshes.size(); i++)
 	{
-		lathedMeshes[i].circumferencePoints = Lathe::getCirclePoints( 20, ofVec2f(0.05, 0.05) );
-		lathedMeshes[i].heightPoints		= Lathe::getCircularInOutHeightPoints( 200, 5, 1, 	0, 0.01, 0.99, 1.0 );
+		lathedMeshes[i].circumferencePoints = Lathe::getCirclePoints( 20, ofVec2f(0.01, 0.01) );  // a small circle for our circumference
+		lathedMeshes[i].heightPoints		= Lathe::getCircularInOutHeightPoints( 200, 5, 1, 	0, 0.01, 0.99, 1.0 ); // tube shape for our length points
 	}
 }
 
@@ -90,20 +89,20 @@ void ofApp::update()
 		dancerMesh.update(time);
 		dancerMesh.updateStickyPoints(stickyPoints); // Also update the sticky points
 	
-		int latheResolution = 200;
+		int latheResolution = 400;
 		int maxHistoryLength = latheResolution / 3;
-		float minDistance = 0.1;
+		float minDistance = 0.03;
 		
 		for (int i = 0; i < stickyPointHistory.size(); i++) { stickyPointHistory.at(i).setMaxLength( maxHistoryLength); }
 		
 		for (int i = 0; i < stickyPoints.size(); i++)
 		{
 			PositionAndNormalHistory& history = stickyPointHistory.at(i);
-			history.add( stickyPoints.at(i).pos, stickyPoints.at(i).normal, minDistance );
 			
-			if (history.getPositions().size() > 3)
+			history.add( stickyPoints.at(i).pos, stickyPoints.at(i).normal, minDistance );
+			if (history.getPositions().size() > 4)
 			{
-				lathedMeshes.at(i).updateMesh( history.getPositions(), latheResolution, stickyPoints.at(i).normal );
+				lathedMeshes.at(i).updateMesh( history.getPositions(), latheResolution, /*history.getNormals()[0]*/ ofVec3f(0,1,0) );
 			}
 		}
 	}
@@ -112,8 +111,6 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-	//ofBackgroundGradient(ofColor(40), ofColor(0), OF_GRADIENT_CIRCULAR);
-
 	ofEnableDepthTest();
 
     camera.begin();
@@ -132,27 +129,12 @@ void ofApp::draw()
 	
 			for ( int i = 0; i < lathedMeshes.size(); i++ )
 			{
-				streamerMaterial.setDiffuseColor( ofFloatColor::fromHsb( ofMap( i, 0, lathedMeshes.size(), 0, 1), 1.0, 1.0 ) );
+				streamerMaterial.setDiffuseColor( ofFloatColor::fromHsb( ofMap( i, 0, lathedMeshes.size(), 0, 1), 0.8, 1.0 ) );
 				streamerMaterial.setParams( &lightingShader );
 				lathedMeshes[i].mesh.draw();
 			}
 
 		lightingShader.end();
-
-		for (int stickyPointIndex = 0; stickyPointIndex < stickyPoints.size(); stickyPointIndex++)
-		{
-			PositionAndNormalHistory& history = stickyPointHistory.at(stickyPointIndex);
-			vector<ofVec3f> tmpPostions = history.getPositionsAsVector();
-			vector<ofMatrix4x4> tmpTransforms = Lathe::getTransforms( tmpPostions, tmpPostions.size() );
-			
-			for( int i = 0; i < tmpTransforms.size(); i++ )
-			{
-				ofPushMatrix();
-					ofMultMatrix( tmpTransforms.at(i) );
-					ofDrawAxis( 0.1 );
-				ofPopMatrix();
-			}
-		}
 
 		if( drawGui )
 		{

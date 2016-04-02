@@ -57,10 +57,10 @@ class PositionAndNormalHistory
 		// --------------------------------------------
 		void add( ofVec3f _p, ofVec3f _n = ofVec3f(0,1,0), float _minDistance = 0.0f )
 		{
-			ofVec3f lastPointPos(9999); // If we dont have any points, set the one we compare to far away so the new point gets added
-			if (positions.size() > 0) lastPointPos = positions.back();
+			ofVec3f newestHistoryPoint(9999); // If we dont have any points, set the one we compare to far away so the new point gets added
+			if (positions.size() > 0) newestHistoryPoint = positions.front();
 			
-			if(_p.distance(lastPointPos) > _minDistance )
+			if( _p.distance(newestHistoryPoint) > _minDistance )
 			{
 				positions.push_front( _p );
 				normals.push_front( _n );
