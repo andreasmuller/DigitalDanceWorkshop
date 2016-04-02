@@ -8,8 +8,8 @@
 	<Noise_Magnitude>0.007</Noise_Magnitude>
 	<Noise_Time_Freq>0.075</Noise_Time_Freq>
 	<Noise_Persistence>0.29</Noise_Persistence>
-<Copies>100</Copies>
-	<Time_between_Copies>0.06</Time_between_Copies>
+<Copies>37</Copies>
+	<Time_between_Copies>0.9</Time_between_Copies>
 <Start_Color>255, 0, 255, 255</Start_Color>
 	<End_Color>0, 255, 255, 255</End_Color>
 <Global_Ambient>0, 0, 0, 255</Global_Ambient>

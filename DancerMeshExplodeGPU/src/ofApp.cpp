@@ -16,8 +16,8 @@ void ofApp::setup()
 	string mainSettingsPath = "Settings/Main.xml";
 	gui.setup("Main", mainSettingsPath);
 
-	gui.add( maxCopies.set("Copies", 10, 1, 100));
-	gui.add( timeBetweenCopies.set("Time between Copies", 1, 0, 2));
+	gui.add( maxCopies.set("Copies", 10, 1, 150));
+	gui.add( timeBetweenCopies.set("Time between Copies", 0.1, 0, 1));
 	
 	gui.add( maxRotation.set("Max Rotation", 3, 0, 20));
 	gui.add( triangleNormalVel.set("Triangle Normal Vel", 0.001, 0, 0.1));
@@ -61,6 +61,7 @@ void ofApp::setup()
 	camera.setNearClip(0.01f);
 	camera.setPosition(0, tmpHeight, 3);
 	camera.lookAt(ofVec3f(0, tmpHeight*0.8, 0));
+	//camera.setDefaultTrasform();
 
 	floor.set(200, 200, 2, 2);
 	floor.rotate(-90, ofVec3f(1, 0, 0));
