@@ -89,9 +89,9 @@ void ofApp::update()
 		dancerMesh.update(time);
 		dancerMesh.updateStickyPoints(stickyPoints); // Also update the sticky points
 	
-		int latheResolution = 400;
-		int maxHistoryLength = latheResolution / 3;
-		float minDistance = 0.03;
+		int latheResolution = 600;					// The number of slices we'll compute for our tube
+		int maxHistoryLength = latheResolution / 4; // how many control points will we keep
+		float minDistance = 0.001;					// Don't add a point if it's closer than this
 		
 		for (int i = 0; i < stickyPointHistory.size(); i++) { stickyPointHistory.at(i).setMaxLength( maxHistoryLength); }
 		
