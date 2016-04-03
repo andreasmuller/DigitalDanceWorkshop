@@ -13,10 +13,10 @@ layout(location = 3) in vec2  texcoord;
 out VertexAttrib {
 	vec3 normal;
 	vec2 texcoord;
+	vec4 color;	
 	vec3 viewDir;
 	vec3 lightDir[MAX_LIGHTS];
 } vertex;
-
 
 uniform mat4 projectionMatrix;
 uniform mat4 modelViewMatrix;
@@ -35,12 +35,18 @@ uniform vec3  lightPositionCamera[MAX_LIGHTS];
 uniform vec3  lightPositionWorldDebug;
 uniform vec3  lightPositionCameraDebug;
 
+uniform vec4  materialDiffuse;
+
+uniform float useVertexColors = 0.0;
+
 void main()
 {
 	vertex.normal = (transpose(inverse(modelViewMatrix)) * vec4(normal,0.0)).xyz; // has to be done like this for now as the normalMatrix is not updated when we transform an object to draw from OF
 	//vertex.normal = (normalMatrix * vec4(normal,0.0)).xyz;
 	
 	vertex.texcoord = texcoord;
+
+	vertex.color = mix( materialDiffuse, color, useVertexColors );
 	
 	vec4 vertexCameraPos = modelViewMatrix * position;
 	vertex.viewDir = -vertexCameraPos.xyz;

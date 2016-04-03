@@ -8,19 +8,20 @@ precision highp float;
 in VertexAttrib {
 	vec3 normal;
 	vec2 texcoord;
+	vec4 color;	
 	vec3 viewDir;
 	vec3 lightDir[MAX_LIGHTS];
 } vertex;
 
 out vec4 fragColor;
 
-
 uniform mat4 projectionMatrix;
 uniform mat4 modelViewMatrix;
 uniform mat4 modelViewProjectionMatrix;
 uniform mat4 normalMatrix;
 
-uniform int	numActiveLights;
+uniform int	numActiveLights = 0;
+uniform float frontFraceNormalSign = -1.0;
 
 uniform vec4  lightSceneAmbient;
 uniform vec4  lightDiffuse[MAX_LIGHTS];
@@ -67,6 +68,15 @@ vec4 computeLighting()
 	
 	vec3 n = normalize(vertex.normal);
 	vec3 v = normalize(vertex.viewDir);
+
+	if( gl_FrontFacing ) 
+	{
+		n = n *  frontFraceNormalSign;
+	}
+	else
+	{
+		n = n * -frontFraceNormalSign;
+	}
 	
 	for ( int i = 0; i < numActiveLights; i++ )
 	{
@@ -75,7 +85,7 @@ vec4 computeLighting()
 		float atten = max(0.0, 1.0 - dot(l, l));
 		l = normalize(l);
 		
-		vec3 diffuse  = diffuseLighting(  n, l, materialDiffuse.xyz, lightDiffuse[i].xyz );
+		vec3 diffuse  = diffuseLighting(  n, l, vertex.color.xyz, lightDiffuse[i].xyz );
 		vec3 specular = specularLighting( n, l, v, materialShininess, materialSpecular.xyz, lightSpecular[i].xyz );
 		
 		diffuse *= atten;
@@ -84,7 +94,7 @@ vec4 computeLighting()
 		finalColor += (diffuse + specular);
 	}
 	
-	return vec4(finalColor.xyz, materialDiffuse.a);
+	return vec4(finalColor.xyz, vertex.color.a);
 	
 }
 
