@@ -113,8 +113,9 @@ void ofApp::draw()
 				for( int i = 0; i < numMeshesToDraw; i++ )
 				{
 					int meshIndex = ofMap( i, 0, numMeshesToDraw-1, 0, meshes.size()-1 );
+					float colorFrac = ofMap(i, 0, numMeshesToDraw - 1, 0, 1);
 				
-					dancerMaterial.setDiffuseColor( startColor.get().getLerped( endColor.get(), ofNormalize( meshIndex, 0,  numMeshesToDraw-1) ) );
+					dancerMaterial.setDiffuseColor( startColor.get().getLerped( endColor.get(), colorFrac) );
 					dancerMaterial.setParams( &phongShader, false );
 				
 					ofPushMatrix();
