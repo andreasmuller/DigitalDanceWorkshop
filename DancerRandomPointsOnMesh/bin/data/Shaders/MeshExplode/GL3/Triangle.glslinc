@@ -1,0 +1,36 @@
+
+// We're using stuff from ShaderHelpers.glslinc so make sure that is included before this file
+
+struct TriangleData
+{
+  vec3 pos;
+  vec3 normal;  
+  vec3 v0World;
+  vec3 v1World;
+  vec3 v2World;
+};
+
+// ----------------------------------------------
+TriangleData getTriangleData( vec3 _worldPos, 
+              	 						  vec3 _v0Model, vec3 _v1Model, vec3 _v2Model,
+              	 						  vec4 _angles )
+{
+	mat4 rotMat = rotationMatrix(vec3(0,0,1), _angles.x ) * 
+				        rotationMatrix(vec3(0,1,0), _angles.y );
+
+	vec3 v0 = _worldPos + (rotMat * vec4(_v0Model,1)).xyz;
+	vec3 v1 = _worldPos + (rotMat * vec4(_v1Model,1)).xyz;
+	vec3 v2 = _worldPos + (rotMat * vec4(_v2Model,1)).xyz;
+
+	vec3 triangleNormal	= -getTriangleNormal( v0, v1, v2 );
+
+	TriangleData dat;
+
+  	dat.pos 	= _worldPos;
+  	dat.normal 	= triangleNormal;  
+  	dat.v0World = v0;
+  	dat.v1World = v1;
+  	dat.v2World = v2;	
+
+  	return dat;
+}
