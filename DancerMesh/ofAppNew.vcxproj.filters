@@ -263,6 +263,12 @@
     <ClInclude Include="src\DancerMesh\StickyPoint.h">
       <Filter>src\DancerMesh</Filter>
     </ClInclude>
+    <ClInclude Include="src\ofLightExt.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofMaterialExt.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

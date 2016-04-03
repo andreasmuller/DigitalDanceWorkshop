@@ -10,6 +10,13 @@
 
 // ------------------------------------------------------------------------------------
 //
+FboPingPong::FboPingPong()
+{
+	allocated = false;
+}
+
+// ------------------------------------------------------------------------------------
+//
 void FboPingPong::allocate( int _w, int _h, int _internalformat, ofColor _clearColor )
 {
 	ofFbo::Settings settings = ofFbo::Settings();
@@ -35,6 +42,8 @@ void FboPingPong::allocate( ofFbo::Settings _settings, ofColor _clearColor )
 	
 	clearSource();
 	clearDest();
+
+	allocated = true;
 }
 
 // ------------------------------------------------------------------------------------
@@ -51,7 +60,7 @@ void FboPingPong::allocateAsData( int _w, int _h, int _internalformat, int _numC
 	fboSettings.numColorbuffers = _numColorBuffers;
 	
 	fboSettings.useDepth = false;
-	fboSettings.internalformat = GL_RGBA32F;	// Gotta store the data as floats, they won't be clamped to 0..1
+	fboSettings.internalformat = _internalformat;	// Gotta store the data as floats, they won't be clamped to 0..1
 	fboSettings.textureTarget = GL_TEXTURE_2D;
 	fboSettings.wrapModeHorizontal = GL_CLAMP_TO_EDGE;
 	fboSettings.wrapModeVertical = GL_CLAMP_TO_EDGE;
@@ -59,6 +68,8 @@ void FboPingPong::allocateAsData( int _w, int _h, int _internalformat, int _numC
 	fboSettings.maxFilter = GL_NEAREST;
 	
 	allocate( fboSettings );
+
+	allocated = true;
 }
 
 // ------------------------------------------------------------------------------------

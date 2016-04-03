@@ -32,6 +32,29 @@ class MathUtils
 		}
 
 		// ------------------------------------------------------------
+		static float circularStep( float _edge0, float _edge1, float _t  )
+		{
+			// Scale, and clamp x to 0..1 range
+			float t = ofClamp( (_t - _edge0)/(_edge1 - _edge0), 0.0f, 1.0f);
+			t = t - 1;
+			return sqrtf( 1 - t * t );
+		}
+		
+		
+		// ------------------------------------------------------------
+		static float circularStepOut( float _edge0, float _edge1, float _t  )
+		{
+			// Scale, and clamp x to 0..1 range
+			float t = ofClamp( (_t - _edge0)/(_edge1 - _edge0), 0.0f, 1.0f);
+			return -1 * (sqrtf( 1 - t * t ) - 1);
+		}
+		
+		// ------------------------------------------------------------
+		static float circularStepInOut( float _low0, float _high0, float _high1, float _low1, float _t )
+		{
+			return circularStep( _low0, _high0, _t ) * (1.0f - circularStepOut( _high1, _low1, _t ));
+		}
+		// ------------------------------------------------------------
 		static float smoothStep(float edge0, float edge1, float x)
 		{
 			// Scale, and clamp x to 0..1 range
