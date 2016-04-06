@@ -10,6 +10,13 @@
 
 // ------------------------------------------------------------------------------------
 //
+FboPingPong::FboPingPong()
+{
+	allocated = false;
+}
+
+// ------------------------------------------------------------------------------------
+//
 void FboPingPong::allocate( int _w, int _h, int _internalformat, ofColor _clearColor )
 {
 	ofFbo::Settings settings = ofFbo::Settings();
@@ -35,6 +42,34 @@ void FboPingPong::allocate( ofFbo::Settings _settings, ofColor _clearColor )
 	
 	clearSource();
 	clearDest();
+
+	allocated = true;
+}
+
+// ------------------------------------------------------------------------------------
+//
+void FboPingPong::allocateAsData( int _w, int _h, int _internalformat, int _numColorBuffers )
+{
+	// Allocate buffers
+	ofFbo::Settings fboSettings;
+	fboSettings.width  = _w;
+	fboSettings.height = _h;
+	
+	// We can create several color buffers for one FBO if we want to store velocity for instance,
+	// then draw to them simultaneously from a shader using gl_FragData[0], gl_FragData[1], etc.
+	fboSettings.numColorbuffers = _numColorBuffers;
+	
+	fboSettings.useDepth = false;
+	fboSettings.internalformat = _internalformat;	// Gotta store the data as floats, they won't be clamped to 0..1
+	fboSettings.textureTarget = GL_TEXTURE_2D;
+	fboSettings.wrapModeHorizontal = GL_CLAMP_TO_EDGE;
+	fboSettings.wrapModeVertical = GL_CLAMP_TO_EDGE;
+	fboSettings.minFilter = GL_NEAREST; // No interpolation, that would mess up data reads later!
+	fboSettings.maxFilter = GL_NEAREST;
+	
+	allocate( fboSettings );
+
+	allocated = true;
 }
 
 // ------------------------------------------------------------------------------------

@@ -44,6 +44,8 @@ public:
 		
 		_panel->add( lightParamGroup );
 		_panel->minimizeAll();
+		
+		enable(); // If we added it to a UI the least we can do is enable it by default
 	}
 #endif //LIGHT_EXT_SUPPORT_GUI
 	

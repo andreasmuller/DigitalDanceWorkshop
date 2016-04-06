@@ -14,8 +14,12 @@ class FboPingPong
 {
 	public:
 
+		FboPingPong();
+
 		void allocate( int _w, int _h, int internalformat = GL_RGB, ofColor _clearColor = ofColor(255,255,255) );
 		void allocate( ofFbo::Settings _settings, ofColor _clearColor = ofColor(255,255,255) );
+	
+		void allocateAsData( int _w, int _h, int _internalformat = GL_RGBA32F, int _numColorBuffers = 1 );
 	
 		ofFbo* source() { return sourceBuffer;	}
 		ofFbo* dest()	{ return destBuffer;	}
@@ -35,6 +39,8 @@ class FboPingPong
 	
 		void swap();
 		
+		bool isAllocated() { return allocated; }
+
 	private:
 	
 		ofFbo* sourceBuffer;
@@ -44,4 +50,6 @@ class FboPingPong
 		ofFbo fbo2;
 		
 		ofColor clearColor;
+
+		bool allocated;
 };

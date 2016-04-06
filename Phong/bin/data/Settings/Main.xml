@@ -1,113 +1,49 @@
 <Main>
-	<Scene_Ambient>0, 0, 0, 255</Scene_Ambient>
-	<Light_1_Diffuse>255, 244, 233, 255</Light_1_Diffuse>
-	<Light_1_Radius>29.6667</Light_1_Radius>
-<Light_2_Diffuse>146, 91, 82, 255</Light_2_Diffuse>
-	<Light_2_Radius>27.6667</Light_2_Radius>
-<Light_1_Position>10.4082, 14.2857, 0</Light_1_Position>
-	<Light_1_Look_At>2.85714, 0, 0</Light_1_Look_At>
-	<Light_1_Specular>255, 255, 255, 255</Light_1_Specular>
-	<Light_1_Fov>70.81</Light_1_Fov>
-	<Light_1_Near>3.33425</Light_1_Near>
-	<Light_1_Far>25.3337</Light_1_Far>
-	<Light_1_Blur_Factor>4</Light_1_Blur_Factor>
-	<Light_1_Blur_Num_Passes>2</Light_1_Blur_Num_Passes>
-	<Light_1_Shadow_Coeffecient>1</Light_1_Shadow_Coeffecient>
-	<Light_1_Shadows_Enabled>1</Light_1_Shadows_Enabled>
-	<Light_2_Position>13.6735, 4.28571, -10</Light_2_Position>
-	<Light_2_Look_At>0, 0, 0</Light_2_Look_At>
-	<Light_2_Specular>255, 255, 255, 255</Light_2_Specular>
-	<Light_2_Fov>88.71</Light_2_Fov>
-	<Light_2_Near>3.80081</Light_2_Near>
-	<Light_2_Far>30.0002</Light_2_Far>
-	<Light_2_Blur_Factor>4</Light_2_Blur_Factor>
-	<Light_2_Blur_Num_Passes>2</Light_2_Blur_Num_Passes>
-	<Light_2_Shadow_Coeffecient>1</Light_2_Shadow_Coeffecient>
-	<Light_2_Shadows_Enabled>0</Light_2_Shadows_Enabled>
-	<World_Material_Diffuse>255, 255, 255, 255</World_Material_Diffuse>
-	<World_Material_Specular>26, 26, 26, 255</World_Material_Specular>
-	<World_Material_Emissive>0, 0, 0, 255</World_Material_Emissive>
-	<World_Material_Shininess>41.91</World_Material_Shininess>
-	<Light_3_Position>-11.4286, 2.65306, 0.001</Light_3_Position>
-	<Light_3_Look_At>0, 0, 0</Light_3_Look_At>
-	<Light_3_Diffuse>225, 235, 85, 255</Light_3_Diffuse>
-	<Light_3_Specular>255, 255, 255, 255</Light_3_Specular>
-	<Light_3_Radius>11.5</Light_3_Radius>
-	<Light_3_Fov>60</Light_3_Fov>
-	<Light_3_Near>0.1</Light_3_Near>
-	<Light_3_Far>10</Light_3_Far>
-	<Light_3_Blur_Factor>4</Light_3_Blur_Factor>
-	<Light_3_Blur_Num_Passes>2</Light_3_Blur_Num_Passes>
-	<Light_3_Shadow_Coeffecient>1</Light_3_Shadow_Coeffecient>
-	<Light_3_Shadows_Enabled>0</Light_3_Shadows_Enabled>
+	<Max_Rotation>6.6</Max_Rotation>
+	<Triangle_Normal_Vel>0.005</Triangle_Normal_Vel>
+	<Triangle_Normal_Drag>0.94</Triangle_Normal_Drag>
+	<Wind>0, 0.00306122, 0.0142857</Wind>
 <Main/>
-<Light_1>
-		<Light_1_Position>-3.94419, 16.4765, 0.001</Light_1_Position>
-		<Light_1_Look_At>-0.820492, 0, 0</Light_1_Look_At>
-		<Light_1_Diffuse>123, 212, 241, 255</Light_1_Diffuse>
-		<Light_1_Specular>255, 255, 255, 255</Light_1_Specular>
-		<Light_1_Radius>17.517</Light_1_Radius>
-	<Position>-1.02874, 10.2166, -5.81841</Position>
+<Noise_Pos_Freq>0.16</Noise_Pos_Freq>
+	<Noise_Magnitude>0.007</Noise_Magnitude>
+	<Noise_Time_Freq>0.075</Noise_Time_Freq>
+	<Noise_Persistence>0.29</Noise_Persistence>
+<Copies>100</Copies>
+	<Time_between_Copies>0.06</Time_between_Copies>
+<Start_Color>255, 0, 255, 255</Start_Color>
+	<End_Color>0, 255, 255, 255</End_Color>
+<Global_Ambient>0, 0, 0, 255</Global_Ambient>
+	<Light_0>
+		<Position>0.637236, 5.63515, 4.69805</Position>
 		<Look_At>0, 0, 0</Look_At>
-		<Diffuse>255, 239, 229, 255</Diffuse>
+		<Diffuse>255, 231, 223, 255</Diffuse>
 		<Specular>255, 255, 255, 255</Specular>
-		<Radius>33.5034</Radius>
+		<Radius>12.8571</Radius>
+	</Light_0>
+	<Light_1>
+		<Position>-4.67305, 3.1362, -5.29779</Position>
+		<Look_At>0, 0, 0</Look_At>
+		<Diffuse>255, 236, 220, 255</Diffuse>
+		<Specular>255, 255, 255, 255</Specular>
+		<Radius>11.9388</Radius>
 	</Light_1>
-	<Light_1_Shadow>
-		<Light_1_Fov>60</Light_1_Fov>
-		<Light_1_Near>8.30011</Light_1_Near>
-		<Light_1_Far>28.5717</Light_1_Far>
-		<Light_1_Blur_Factor>5.84694</Light_1_Blur_Factor>
-		<Light_1_Blur_Num_Passes>6</Light_1_Blur_Num_Passes>
-		<Light_1_Shadow_Coeffecient>1.77782</Light_1_Shadow_Coeffecient>
-		<Light_1_Shadows_Enabled>1</Light_1_Shadows_Enabled>
-	</Light_1_Shadow>
-	<Light_2>
-		<Light_2_Position>-4.56893, 6.48063, -9.98334</Light_2_Position>
-		<Light_2_Look_At>0, 0, 0</Light_2_Look_At>
-		<Light_2_Diffuse>0, 0, 228, 255</Light_2_Diffuse>
-		<Light_2_Specular>255, 255, 255, 255</Light_2_Specular>
-		<Light_2_Radius>25.5102</Light_2_Radius>
-	<Position>9.59184, 6.67638, 0.001</Position>
-		<Look_At>0, 0, 0</Look_At>
-		<Diffuse>57, 0, 0, 255</Diffuse>
-		<Specular>99, 99, 98, 255</Specular>
-		<Radius>50</Radius>
-	</Light_2>
-	<Light_2_Shadow>
-		<Light_2_Fov>60</Light_2_Fov>
-		<Light_2_Near>0.1</Light_2_Near>
-		<Light_2_Far>10</Light_2_Far>
-		<Light_2_Blur_Factor>4</Light_2_Blur_Factor>
-		<Light_2_Blur_Num_Passes>2</Light_2_Blur_Num_Passes>
-		<Light_2_Shadow_Coeffecient>1</Light_2_Shadow_Coeffecient>
-		<Light_2_Shadows_Enabled>0</Light_2_Shadows_Enabled>
-	</Light_2_Shadow>
-	<Light_3>
-		<Light_3_Position>11.0496, 6.27239, 0.001</Light_3_Position>
-		<Light_3_Look_At>0, 0, 0</Light_3_Look_At>
-		<Light_3_Diffuse>232, 39, 27, 255</Light_3_Diffuse>
-		<Light_3_Specular>255, 255, 255, 255</Light_3_Specular>
-		<Light_3_Radius>20.2381</Light_3_Radius>
-	<Position>-12.8988, 2.09496, 0.428989</Position>
-		<Look_At>0, 0, 0</Look_At>
-		<Diffuse>0, 0, 66, 255</Diffuse>
-		<Specular>65, 66, 64, 255</Specular>
-		<Radius>28.5714</Radius>
-	</Light_3>
-	<Light_3_Shadow>
-		<Light_3_Fov>60</Light_3_Fov>
-		<Light_3_Near>0.1</Light_3_Near>
-		<Light_3_Far>10</Light_3_Far>
-		<Light_3_Blur_Factor>4</Light_3_Blur_Factor>
-		<Light_3_Blur_Num_Passes>2</Light_3_Blur_Num_Passes>
-		<Light_3_Shadow_Coeffecient>1</Light_3_Shadow_Coeffecient>
-		<Light_3_Shadows_Enabled>0</Light_3_Shadows_Enabled>
-	</Light_3_Shadow>
-<World_Material>
-		<Diffuse>255, 255, 255, 255</Diffuse>
-		<Specular>61, 62, 63, 255</Specular>
+	<Floor_Material>
+		<Diffuse>111, 130, 146, 255</Diffuse>
+		<Specular>98, 98, 99, 255</Specular>
 		<Emissive>0, 0, 0, 255</Emissive>
-		<Shininess>54.8605</Shininess>
-	</World_Material>
+		<Shininess>10</Shininess>
+	</Floor_Material>
+	<Dancer_Material>
+		<Diffuse>255, 0, 70, 255</Diffuse>
+		<Specular>255, 255, 255, 255</Specular>
+		<Emissive>0, 0, 0, 255</Emissive>
+		<Shininess>69.9796</Shininess>
+	</Dancer_Material>
+<Light_2>
+		<Position>0.001, -2.17409, 0.001</Position>
+		<Look_At>0, 0, 0</Look_At>
+		<Diffuse>82, 82, 79, 255</Diffuse>
+		<Specular>255, 255, 255, 255</Specular>
+		<Radius>8.57143</Radius>
+	</Light_2>
 </Main>
