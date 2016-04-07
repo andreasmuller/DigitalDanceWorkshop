@@ -31,7 +31,7 @@ void ofApp::setup()
 
 	particles.init( 32 );
 	
-	string filename = "Models/TallWomanLowPoly_Aachan.fbx";
+	string filename = "Models/DanceStep3.fbx";
 	ofMatrix4x4 meshBaseTransform = ofMatrix4x4::newScaleMatrix(0.01, 0.01, 0.01);
 	meshBaseTransform.translate(0, 0.1, 0);
 	dancerMesh.load( filename );
