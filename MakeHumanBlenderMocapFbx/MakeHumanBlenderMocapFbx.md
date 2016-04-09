@@ -69,7 +69,7 @@ Steps
 
 ![](Images/Step012.png)
 
-### 12. Export settings from Nick Hardeman’s ofxFBX page
+### 12. Export settings from Nick Hardeman’s [ofxFBX](https://github.com/NickHardeman/ofxFBX) page 
 
 ![](Images/Step013.png)
 
