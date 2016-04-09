@@ -37,8 +37,6 @@ class ofApp : public ofBaseApp
 		ofMaterialExt floorMaterial;
 		ofMaterialExt dancerMaterial;
 
-		float lastTimeCopied;
-
 		ofParameter<ofColor> globalAmbient;
 		vector<ofLightExt*> lights;
 

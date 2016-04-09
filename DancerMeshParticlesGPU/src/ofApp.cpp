@@ -9,7 +9,7 @@ void ofApp::setup()
 
 	lights.push_back( new ofLightExt() );
 	lights.push_back( new ofLightExt() );
-	lights.push_back(new ofLightExt());
+	lights.push_back( new ofLightExt() );
 	for( int i = 0; i < lights.size(); i++ ) { lights.at(i)->enable(); }
 	
 	ofBackground(ofColor::black);
@@ -28,17 +28,16 @@ void ofApp::setup()
 	
 	gui.loadFromFile(mainSettingsPath);
 	gui.minimizeAll();
-	//gui.setPosition( ofGetWidth() - gui.getWidth() - 10, 10 );
 
 	particles.init( 32 );
 
-	//string filename = "Models/ManLowPoly_DanceStep5.fbx";
-	//string filename = "Models/ManLowPoly_DanceStep6.fbx";
-	string filename = "Models/WomanLowPoly_DanceStep4.fbx";
+	//string filename = "Models/ManLowPoly_DanceStep3.fbx";
+	string filename = "Models/WomanLowPoly_DanceStep3.fbx";
 	ofMatrix4x4 meshBaseTransform = ofMatrix4x4::newScaleMatrix(0.01, 0.01, 0.01);
-	meshBaseTransform.translate(0, 0.21, 0);
+	meshBaseTransform.translate(0, 0.21, 0); // move it up a bit
 	dancerMesh.load( filename );
 	dancerMesh.setBaseTransform( meshBaseTransform );
+
 	// Mask out areas to emit particles by loading something in here, needs to match the UVs of your model
 	emissionMask.load( "EmissionMasks/EmissionMaskBackAndArms.png");
 	
@@ -47,15 +46,12 @@ void ofApp::setup()
 	float tmpHeight = 1.93;
 	camera.setAutoDistance(false);
 	camera.setNearClip(0.01f);
-	camera.setPosition(0, tmpHeight, 3);
-	camera.lookAt(ofVec3f(0, tmpHeight*0.8, 0));
+	camera.setPosition(0, tmpHeight, -1.0);
+	camera.lookAt(ofVec3f(0, tmpHeight*0.8, 1));
 
 	floor.set(200, 200, 2, 2);
 	floor.rotate(-90, ofVec3f(1, 0, 0));
 	floor.move(ofVec3f(0, 0, 0));
-
-
-	lastTimeCopied = 0;
 
 	drawGui = false;
 }
