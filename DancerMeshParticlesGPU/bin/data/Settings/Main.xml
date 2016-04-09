@@ -49,4 +49,11 @@
 		<Emissive>0, 0, 0, 255</Emissive>
 		<Shininess>44.0612</Shininess>
 	</Dancer_Material>
+<Light_2>
+		<Position>0.001, 5.01041, 17.5052</Position>
+		<Look_At>0, 0, 0</Look_At>
+		<Diffuse>255, 236, 231, 255</Diffuse>
+		<Specular>255, 255, 255, 255</Specular>
+		<Radius>60</Radius>
+	</Light_2>
 </Main>

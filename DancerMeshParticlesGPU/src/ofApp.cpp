@@ -9,6 +9,7 @@ void ofApp::setup()
 
 	lights.push_back( new ofLightExt() );
 	lights.push_back( new ofLightExt() );
+	lights.push_back(new ofLightExt());
 	for( int i = 0; i < lights.size(); i++ ) { lights.at(i)->enable(); }
 	
 	ofBackground(ofColor::black);
@@ -30,10 +31,12 @@ void ofApp::setup()
 	//gui.setPosition( ofGetWidth() - gui.getWidth() - 10, 10 );
 
 	particles.init( 32 );
-	
-	string filename = "Models/DanceStep3.fbx";
+
+	//string filename = "Models/ManLowPoly_DanceStep5.fbx";
+	//string filename = "Models/ManLowPoly_DanceStep6.fbx";
+	string filename = "Models/WomanLowPoly_DanceStep4.fbx";
 	ofMatrix4x4 meshBaseTransform = ofMatrix4x4::newScaleMatrix(0.01, 0.01, 0.01);
-	meshBaseTransform.translate(0, 0.1, 0);
+	meshBaseTransform.translate(0, 0.21, 0);
 	dancerMesh.load( filename );
 	dancerMesh.setBaseTransform( meshBaseTransform );
 	// Mask out areas to emit particles by loading something in here, needs to match the UVs of your model

@@ -6,7 +6,7 @@
 #endif
 
 // Lights
-#define MAX_LIGHTS 2
+#define MAX_LIGHTS 3
 
 uniform highp int	numActiveLights; // highp int is range -65535, +65535
 
