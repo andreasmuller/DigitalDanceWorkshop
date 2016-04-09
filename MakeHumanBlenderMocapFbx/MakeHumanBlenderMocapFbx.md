@@ -25,7 +25,7 @@ Steps
 
 ### 1. Make yourself a body mesh you like.
 
-<img src="Images/Step001.png" width="1000">
+![](Images/Step001.png)
 
 ### 2. Go to Pose / Animate and give it the HumanIK skeleton
 
