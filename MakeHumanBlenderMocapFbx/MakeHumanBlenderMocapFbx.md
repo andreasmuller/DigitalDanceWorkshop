@@ -63,12 +63,14 @@ Steps
 
 ![](Images/Step010.png)
 
+![](Images/Step011.png)
+
 ### 11. Scale the mesh down to 0.1 (Or you can do it later in your oF project) and export to FBX
 
-![](Images/Step011.png)
+![](Images/Step012.png)
 
 ### 12. Export settings from Nick Hardeman’s ofxFBX page
 
-![](Images/Step012.png)
+![](Images/Step013.png)
 
 
