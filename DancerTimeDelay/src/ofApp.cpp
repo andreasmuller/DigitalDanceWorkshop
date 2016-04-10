@@ -61,7 +61,7 @@ void ofApp::setup()
 	camera.lookAt(ofVec3f(0, tmpHeight*0.8, 1));
 
 	// Set up a floor mesh
-	floor.set(20, 20, 2, 2);
+	floor.set(200, 200, 2, 2);
 	floor.rotate(-90, ofVec3f(1, 0, 0));
 	floor.move(ofVec3f(0, 0, 0));
 
@@ -99,7 +99,7 @@ void ofApp::draw()
 	float mx = ofNormalize( ofGetMouseX(), 0, ofGetWidth() );
 	float my = ofNormalize( ofGetMouseY(), 0, ofGetHeight() );
 	
-	ofBackgroundGradient(ofColor(40), ofColor(0), OF_GRADIENT_CIRCULAR);
+	//ofBackgroundGradient(ofColor(40), ofColor(0), OF_GRADIENT_CIRCULAR);
 
 	ofEnableDepthTest();
 
