@@ -146,4 +146,61 @@ class DrawingHelpers
 				_targetMesh.append( tmpMesh );
 			}
 		}
+	
+	
+	//-----------------------------------------------------------------------------------------
+	//
+	static void drawSpheres( vector<ofVec3f>& _positions,
+							float _radius = 0.5f,
+							int _resolution = 10,
+							bool _randomColor = false )
+	{
+		ofMesh tmpMesh;
+		makeSpheresMesh( tmpMesh, _positions, _radius, _resolution, _randomColor );
+		tmpMesh.draw();
+	}
+	
+	//-----------------------------------------------------------------------------------------
+	//
+	static void makeSpheresMesh( ofMesh& _targetMesh,
+								vector<ofVec3f>& _positions,
+								float _radius = 0.5f,
+								int _resolution = 10,
+								bool _randomColor = false )
+	{
+		ofSpherePrimitive sphere( _radius, _resolution, OF_PRIMITIVE_TRIANGLES );
+		
+		ofMesh tmpSphereMesh;
+		
+		_targetMesh.clear();
+		_targetMesh.setMode( OF_PRIMITIVE_TRIANGLES );
+		
+		for( int positionIndex = 0; positionIndex < _positions.size(); positionIndex++ )
+		{
+			ofVec3f pos = _positions.at(positionIndex);
+			tmpSphereMesh = sphere.getMesh();
+			
+			for( int i = 0; i < tmpSphereMesh.getNumVertices(); i++ )
+			{
+				tmpSphereMesh.getVertices()[i] += pos;
+			}
+			
+			if( _randomColor )
+			{
+				ofSeedRandom( positionIndex << 16 );
+				ofFloatColor tmpCol = ofFloatColor::fromHsb( ofRandom(1), 1, 1 );
+				
+				tmpSphereMesh.clearColors();
+				for( int i = 0; i < tmpSphereMesh.getNumVertices(); i++ )
+				{
+					tmpSphereMesh.addColor( tmpCol );
+				}
+				
+				ofSeedRandom();
+			}
+			
+			_targetMesh.append( tmpSphereMesh );
+		}
+	}
+
 };
