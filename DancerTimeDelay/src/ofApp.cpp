@@ -46,9 +46,10 @@ void ofApp::setup()
 	phongShader.load("Shaders/BlinnPhongRadius/GL3/BlinnPhongRadius");
 	
 	// Load model
-	string filename = "Models/TallWomanLowPoly_Aachan.fbx";
+	//string filename = "Models/ManLowPoly_DanceStep3.fbx";
+	string filename = "Models/WomanLowPoly_DanceStep3.fbx";
 	ofMatrix4x4 meshBaseTransform = ofMatrix4x4::newScaleMatrix(0.01, 0.01, 0.01);
-	meshBaseTransform.translate(0, 0.1, 0);
+	meshBaseTransform.translate(0, 0.24, -6); // Note that we're shifting the mesh here, in case you change the fbx input
 	dancerMesh.load( filename );
 	dancerMesh.setBaseTransform( meshBaseTransform );
 
@@ -56,8 +57,8 @@ void ofApp::setup()
 	float tmpHeight = 1.93;
 	camera.setAutoDistance(false);
 	camera.setNearClip(0.01f);
-	camera.setPosition(0, tmpHeight, 3);
-	camera.lookAt(ofVec3f(0, tmpHeight*0.8, 0));
+	camera.setPosition(-3, tmpHeight, -4);
+	camera.lookAt(ofVec3f(0, tmpHeight*0.8, 1));
 
 	// Set up a floor mesh
 	floor.set(20, 20, 2, 2);
