@@ -35,7 +35,8 @@ void ofApp::setup()
 	lightingShader.load("Shaders/BlinnPhongRadius/GL3/BlinnPhongRadius");
 	
 	// Load model
-	string filename = "Models/TallWomanLowPoly_Aachan.fbx";
+	string filename = "Models/WomanLowPoly_Aachan.fbx";
+	//string filename = "Models/ManLowPoly_Aachan.fbx";
 	ofMatrix4x4 meshBaseTransform = ofMatrix4x4::newScaleMatrix(0.01, 0.01, 0.01);
 	meshBaseTransform.translate(0, 0.1, 0);
 	dancerMesh.load( filename );
