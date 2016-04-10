@@ -37,9 +37,18 @@ void ofApp::setup()
 	lightingShader.load("Shaders/BlinnPhongRadius/GL3/BlinnPhongRadius");
 	
 	// Load model
-	string filename = "Models/TallWomanLowPoly_Aachan.fbx";
+	string filename = "Models/WomanLowPoly_DanceStep8.fbx";
 	ofMatrix4x4 meshBaseTransform = ofMatrix4x4::newScaleMatrix(0.01, 0.01, 0.01);
-	meshBaseTransform.translate(0, 0.1, 0);
+	meshBaseTransform.translate(0, 0.22, 0);
+	
+	// Here is a bit gotcha!
+	//
+	// For this to work your mesh needs to contain one set of texture unique coordinates.
+	// These meshes have ploygons for the eyes that are meant to use a different texture, so they have thrir own texture coordinates
+	// that work with that texture, we need to make sure these are filtered out when we make our triangle mesh, so we add the name of the
+	// mesh to a skip list, you can later draw that mesh separately if you want
+	dancerMesh.meshSkipList.push_back( "MHX:Low-Poly" ); // This is the name of the eye mesh
+	
 	dancerMesh.load( filename );
 	dancerMesh.setBaseTransform( meshBaseTransform );
 
@@ -89,8 +98,8 @@ void ofApp::update()
 		dancerMesh.update(time);
 		dancerMesh.updateStickyPoints(stickyPoints); // Also update the sticky points
 	
-		int latheResolution = 600;					// The number of slices we'll compute for our tube
-		int maxHistoryLength = latheResolution / 4; // how many control points will we keep
+		int lengthResolution = 600;					// The number of slices we'll compute for our tube
+		int maxHistoryLength = lengthResolution / 4; // how many control points will we keep
 		float minDistance = 0.001;					// Don't add a point if it's closer than this
 		
 		for (int i = 0; i < stickyPointHistory.size(); i++) { stickyPointHistory.at(i).setMaxLength( maxHistoryLength); }
@@ -102,7 +111,7 @@ void ofApp::update()
 			history.add( stickyPoints.at(i).pos, stickyPoints.at(i).normal, minDistance );
 			if (history.getPositions().size() > 4)
 			{
-				lathedMeshes.at(i).updateMesh( history.getPositions(), latheResolution, /*history.getNormals()[0]*/ ofVec3f(0,1,0) );
+				lathedMeshes.at(i).updateMesh( history.getPositions(), lengthResolution, /*history.getNormals()[0]*/ ofVec3f(0,1,0) );
 			}
 		}
 	}
@@ -133,7 +142,7 @@ void ofApp::draw()
 				streamerMaterial.setParams( &lightingShader );
 				lathedMeshes[i].mesh.draw();
 			}
-
+	
 		lightingShader.end();
 
 		if( drawGui )
