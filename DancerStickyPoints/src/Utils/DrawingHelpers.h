@@ -83,4 +83,67 @@ class DrawingHelpers
 			
 			ofPopMatrix();
 		}
+	
+		//-----------------------------------------------------------------------------------------
+		//
+		static void makeCylinderLineMesh( ofMesh& _targetMesh,
+										  vector<ofVec3f>& _points,
+										  vector<ofVec3f>& _velocities,
+										  float _radius,
+										  float _velocityScale = 1.0f,
+										  bool _colorByDirection = false )
+		{
+			if( _points.size() != _velocities.size() )
+			{
+				return;
+			}
+			
+			ofCylinderPrimitive cylinder = ofCylinderPrimitive( 0.5, 1.0f, 8, 2, 1, true, OF_PRIMITIVE_TRIANGLES ); // Make sure it's OF_PRIMITIVE_TRIANGLES
+			
+			ofMesh tmpMesh;
+			
+			_targetMesh.clear();
+			_targetMesh.setMode( OF_PRIMITIVE_TRIANGLES );
+			//_targetMesh.setMode( OF_PRIMITIVE_LINES );
+			
+			for( int i = 0; i < _points.size(); i++ )
+			{
+				ofVec3f startPos = _points.at(i);
+				ofVec3f endPos   = _points.at(i) + (_velocities.at(i) * _velocityScale);
+				float length = (endPos-startPos).length();
+				
+				ofMatrix4x4 transform = ofMatrix4x4::newLookAtMatrix( startPos, endPos, ofVec3f(0,1,0) );
+				transform.glRotate(90, 1, 0, 0);
+				transform.glTranslate( 0,length * 0.5,0 );
+				transform.glScale(_radius,length,_radius);
+				
+//				_targetMesh.addVertex( ofVec3f(0,-0.5,0) * transform);
+//				_targetMesh.addVertex( ofVec3f(0, 0.5,0) * transform);
+
+//				_targetMesh.addVertex( startPos );
+//				_targetMesh.addVertex( endPos );
+				
+				tmpMesh = cylinder.getMesh();
+				for( int i = 0; i < tmpMesh.getNumVertices(); i++ )
+				{
+					tmpMesh.getVertices()[i] = tmpMesh.getVertices()[i] * transform;
+					tmpMesh.getNormals()[i] = ofMatrix4x4::transform3x3( tmpMesh.getNormals()[i], transform );
+				}
+				
+				if( _colorByDirection )
+				{
+					tmpMesh.clearColors();
+					
+					ofVec3f tmpDirection = _velocities.at(i).getNormalized();
+					tmpDirection = (tmpDirection + ofVec3f(1)) * 0.5;
+					ofFloatColor tmpCol( tmpDirection.x, tmpDirection.y, tmpDirection.z );
+					for( int i = 0; i < tmpMesh.getNumVertices(); i++ )
+					{
+						tmpMesh.addColor(tmpCol);
+					}
+				}
+				
+				_targetMesh.append( tmpMesh );
+			}
+		}
 };

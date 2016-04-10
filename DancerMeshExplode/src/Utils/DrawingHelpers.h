@@ -89,6 +89,7 @@ class DrawingHelpers
 		static void makeCylinderLineMesh( ofMesh& _targetMesh,
 										  vector<ofVec3f>& _points,
 										  vector<ofVec3f>& _velocities,
+										  float _radius,
 										  float _velocityScale = 1.0f,
 										  bool _colorByDirection = false )
 		{
@@ -114,7 +115,7 @@ class DrawingHelpers
 				ofMatrix4x4 transform = ofMatrix4x4::newLookAtMatrix( startPos, endPos, ofVec3f(0,1,0) );
 				transform.glRotate(90, 1, 0, 0);
 				transform.glTranslate( 0,length * 0.5,0 );
-				transform.glScale(0.01,length,0.01);
+				transform.glScale(_radius,length,_radius);
 				
 //				_targetMesh.addVertex( ofVec3f(0,-0.5,0) * transform);
 //				_targetMesh.addVertex( ofVec3f(0, 0.5,0) * transform);

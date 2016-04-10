@@ -36,9 +36,10 @@ void ofApp::setup()
 	lightingShader.load("Shaders/BlinnPhongRadius/GL3/BlinnPhongRadius");
 	
 	// Load model
-	string filename = "Models/TallWomanLowPoly_Aachan.fbx";
+	string filename = "Models/ManLowPoly_DanceStep4.fbx";
+	//string filename = "Models/WomanLowPoly_DanceStep4.fbx";
 	ofMatrix4x4 meshBaseTransform = ofMatrix4x4::newScaleMatrix(0.01, 0.01, 0.01);
-	meshBaseTransform.translate(0, 0.1, 0);
+	meshBaseTransform.translate(0, 0.22, 0);
 	dancerMesh.load( filename );
 	dancerMesh.setBaseTransform( meshBaseTransform );
 
@@ -46,8 +47,8 @@ void ofApp::setup()
 	float tmpHeight = 1.93;
 	camera.setAutoDistance(false);
 	camera.setNearClip(0.01f);
-	camera.setPosition(0, tmpHeight, 3);
-	camera.lookAt(ofVec3f(0, tmpHeight*0.8, 0));
+	camera.setPosition(0, tmpHeight, -1);
+	camera.lookAt(ofVec3f(0, tmpHeight*0.8, 1));
 
 	// Set up floor
 	floor.set(200, 200, 2, 2);
@@ -82,7 +83,8 @@ void ofApp::update()
 		DrawingHelpers::makeCylinderLineMesh( velocityLinesMesh,
 											  positions,
 											  velocities,
-											  2.0f,
+											  0.015,
+											  -3.0f,
 											  true );
 		
 	}
