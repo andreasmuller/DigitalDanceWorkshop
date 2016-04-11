@@ -74,8 +74,6 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-	//ofBackgroundGradient(ofColor(40), ofColor(0), OF_GRADIENT_CIRCULAR);
-
 	ofEnableDepthTest();
 
     camera.begin();
