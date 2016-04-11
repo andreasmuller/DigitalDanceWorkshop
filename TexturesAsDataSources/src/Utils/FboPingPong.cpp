@@ -63,7 +63,7 @@ void FboPingPong::allocateAsData( int _w, int _h, int _internalformat, int _numC
 	fboSettings.internalformat = _internalformat;	// Gotta store the data as floats, they won't be clamped to 0..1
 	fboSettings.textureTarget = GL_TEXTURE_2D;
 	fboSettings.wrapModeHorizontal = GL_CLAMP_TO_EDGE;
-	fboSettings.wrapModeVertical   = GL_CLAMP_TO_EDGE;
+	fboSettings.wrapModeVertical = GL_CLAMP_TO_EDGE;
 	fboSettings.minFilter = GL_NEAREST; // No interpolation, that would mess up data reads later!
 	fboSettings.maxFilter = GL_NEAREST;
 	

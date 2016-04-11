@@ -5,15 +5,14 @@
 #include "ofxFBX.h"
 
 #include "Math/MathUtils.h"
-
-#include "Utils/FboPingPong.h"
 #include "Utils/ofTrueTypeFontExt.h"
-#include "Utils/DrawingHelpers.h"
 
 #include "DancerMesh/DancerMeshFBX.h"
+#include "ParticleSystemInstancedGeometryGPU.h"
 
 #include "ofLightExt.h"
 #include "ofMaterialExt.h"
+#include "MeshShaderData.h"
 
 class ofApp : public ofBaseApp 
 {
@@ -25,36 +24,20 @@ class ofApp : public ofBaseApp
 
 		void keyPressed(int key);
 	
-		float time;
-	
-		int texSize;
-		int numSpheres;
-		float radius;
-		ofTexture spawnPositionsTex;
-		FboPingPong sphereData;
-		ofShader updateSpheresShader;
-		ofShader drawSpheresInstancedShader;
-		vector<ofVec4f> spawnPositionsBuffer;
-		float maxAge;
-		ofVboMesh sphereMesh;
-	
 		ofEasyCam camera;
 
 		DancerMeshFBX dancerMesh;
-		vector<MeshPoint> randomPoints;
-		ofMesh spheresMesh;
-		ofImage randomMask;
-	
+		vector<MeshPoint> uniqueSpawnPoints;
+		ofImage emissionMask;
+		ParticleSystemInstancedGeometryGPU particles;
+		ofShader lightingShader;
+
 		ofPlanePrimitive floor;
 
 		ofMaterialExt floorMaterial;
 		ofMaterialExt dancerMaterial;
-		ofMaterialExt randomPointsMaterial;
-	
-		ofShader lightingShader;
 
 		ofParameter<ofColor> globalAmbient;
-
 		vector<ofLightExt*> lights;
 
 		ofxPanel gui;

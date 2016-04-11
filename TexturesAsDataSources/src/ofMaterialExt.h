@@ -44,7 +44,7 @@ class ofMaterialExt : public ofMaterial
 			if( _bindShader ) _shader->begin();
 
 				_shader->setUniform4fv("materialEmissive", getEmissiveColor().v );
-				_shader->setUniform4fv("materialAmbient", getAmbientColor().v );
+				//_shader->setUniform4fv("materialAmbient", getAmbientColor().v );
 				_shader->setUniform4fv("materialDiffuse", getDiffuseColor().v );
 				_shader->setUniform4fv("materialSpecular", getSpecularColor().v );
 				_shader->setUniform1f("materialShininess", getShininess() );
