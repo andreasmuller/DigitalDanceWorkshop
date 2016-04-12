@@ -6,21 +6,15 @@
 #endif
 
 #pragma include "../../Common/ShaderHelpers.glslinc"
-#pragma include "../../Common/SimplexNoiseDerivatives4D.glslinc"
-//#pragma include "../../Common/Noise4D.glslinc"
 
 uniform sampler2D particlePosAndAgeTexture;
-uniform sampler2D particleOldPosAndAgeTexture;
 uniform sampler2D particleVelTexture;
 uniform sampler2D spawnPositionTexture;
 uniform sampler2D spawnVelocityTexture;
 
-uniform float time;
-uniform float timeStep;
-
-uniform float particleMaxAge;
-
-uniform vec3 wind = vec3( 0.0 );
+uniform float maxAge = 1.5;
+uniform vec3 wind = vec3( 0.0, 0.0, -0.00001 );
+uniform vec3 gravity = vec3( 0.0, -0.002, 0.0 );
 
 in vec4 colorVarying;
 in vec2 texCoordVarying;
@@ -34,7 +28,7 @@ void main (void)
 	vec2 texCoord = texCoordVarying;
 	
 	vec4 posAndAge = texture( particlePosAndAgeTexture, texCoord );
-	vec3 vel = texture( particleVelTexture, texCoord ).xyz;	
+	vec3 vel 	   = texture( particleVelTexture, 		texCoord ).xyz;	
 
 	vec4 spawnPosition = texture( spawnPositionTexture, texCoord );	
 	vec4 spawnVelocity = texture( spawnVelocityTexture, texCoord );		
@@ -44,27 +38,30 @@ void main (void)
 
 	vec3 newVel = vel;
 
-	age += timeStep;
+	age += 1.0 / 60.0;
 	
-	if( age > particleMaxAge )
+	if( age > maxAge )
 	{
-		age -= particleMaxAge;
+		age -= maxAge;
 		pos = spawnPosition.xyz; 
+
 		newVel = spawnVelocity.xyz * 0.3;
 	}
 
-	vec3 totalVelocity = wind;
+	vec3 frameVel = vec3(0.0);
+	frameVel += wind;
+	frameVel += gravity;	
 
-	newVel += totalVelocity;
+	newVel += frameVel;	// We're going to just accumulate velocity, you would do something smarter usually 
 	vec3 newPos = pos + newVel;
 
 	if( newPos.y < 0.0 )
 	{
 		newPos.y = 0.0;
 		newVel.y *= -1.0;
-		newVel *= 0.99;
+		newVel *= 0.97;
 	}
 
 	fragOutPosAndAge = vec4( newPos, age );
-	fragOutVel = vec4( newVel, 1.0 );
+	fragOutVel 		 = vec4( newVel, 1.0 );
 }

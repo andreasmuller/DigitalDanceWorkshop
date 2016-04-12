@@ -114,7 +114,6 @@ void ofApp::draw()
 	if (drawGui)
 	{
 		gui.draw();
-		particles.drawGui();
 		fontSmall.drawStringShadowed(ofToString(ofGetFrameRate(), 1), ofGetWidth() - 30, ofGetHeight() - 15);
 	}
 }

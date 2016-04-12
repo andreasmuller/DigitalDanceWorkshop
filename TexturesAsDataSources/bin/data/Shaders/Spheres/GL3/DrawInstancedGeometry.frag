@@ -23,7 +23,7 @@ uniform vec4  materialAmbient;
 uniform vec4  materialSpecular;
 uniform float materialShininess;
 
-uniform float frontFraceNormalSign;
+uniform float frontFraceNormalSign = 1;
 
 // Varying ins
 in vec3 v_normal;
@@ -107,13 +107,4 @@ void main ()
 {
 	vec4 color = computeLighting();
 	fragOut = color;
-	
-	//fragOut = v_color;	
-	//fragOut = vec4( (v_normal.xyz + vec3(1.0)) * 0.5, 1.0 );
-
-	//fragOut = vec4( vec3(lightRadius[0]), 1.0 );
-	
-	//vec4 tmpCol = lightDiffuse[0];
-	//tmpCol.w = 1.0;
-	//fragOut = tmpCol;	
 }

@@ -13,43 +13,47 @@
 void ParticleSystemInstancedGeometryGPU::init( int _texSize, string _settingsPath )
 {
 	string xmlSettingsPath = _settingsPath; //"Settings/Particles.xml";
-
-	ofLogLevel prevLogLevel = ofGetLogLevel();
-	ofSetLogLevel( OF_LOG_VERBOSE );
 	
-	frontFraceNormalSign = 1.0;
-	
-	#ifdef TARGET_OPENGLES
-		gui.setDefaultHeight( 30 );
-	#endif
-	
-	gui.setup( "Particles", xmlSettingsPath );
-	gui.add( particleDensity.set("Particle Density", 3, 2, 256) );
-	gui.add( particleMaxAge.set("Particle Max Age", 1.0f, 0.0f, 5.0f) );
-	gui.add( wind.set("Wind", ofVec3f(0), ofVec3f(-0.01), ofVec3f(0.01)) );
-	gui.loadFromFile( xmlSettingsPath );
-	gui.minimizeAll();
-	gui.setPosition( ofGetWidth() - gui.getWidth() - 10, 10 );
-
-	particleDensity.addListener( this, &ParticleSystemInstancedGeometryGPU::particleDensityChanged );
-	particleMaxAge.addListener(   this, &ParticleSystemInstancedGeometryGPU::particleMaxAgeChanged );
-
-	ofSetLogLevel( prevLogLevel );
+	textureSize = 128;
+	maxAge = 0.5;
 	
 	// Load shaders
 	ofSetLogLevel( OF_LOG_VERBOSE );
-	particleDraw.load("Shaders/Particles/GL3/DrawInstancedGeometry");
-	particleUpdate.load("Shaders/Particles/GL3/Update");
+	particleDraw.load("Shaders/Spheres/GL3/DrawInstancedGeometry");
+	particleUpdate.load("Shaders/Spheres/GL3/Update");
 	
 	float radius = 0.01;
 	singleParticleMesh = ofSpherePrimitive( radius, 6, OF_PRIMITIVE_TRIANGLES ).getMesh();
-	frontFraceNormalSign = -1;
 	
-	int tmp = 0;
-	particleDensityChanged( tmp );
+	particleDataFbo.allocateAsData(textureSize, textureSize, GL_RGBA32F, 2);
 	
-	lastUpdateTime = 0;
-	timeStep = 1.0 / 60.0;
+	// Initialise the starting and static data
+	vector<ofVec4f> startPositionsAndAge;
+	
+	for( int x = 0; x < textureSize*textureSize; x++ )
+	{
+		ofVec3f pos = ofVec3f(0,1000,0); // move them way off to start with
+		float startAge = ofRandom( maxAge ); // position is not very important, but age is, by setting the lifetime randomly somewhere in the middle we can get a steady stream emitting
+		startPositionsAndAge.push_back( ofVec4f(pos.x, pos.y, pos.z, startAge) );
+	}
+	
+	
+	// Upload it to the source texture
+	particleDataFbo.source()->getTexture(0).loadData( (float*)&startPositionsAndAge[0].x,	 textureSize, textureSize, GL_RGBA );
+	
+	ofDisableTextureEdgeHack();
+	
+	ofDisableArbTex();
+	spawnPosTexture.allocate( textureSize, textureSize, GL_RGBA32F, GL_RGBA, GL_FLOAT );
+	spawnVelTexture.allocate( textureSize, textureSize, GL_RGBA32F, GL_RGBA, GL_FLOAT );
+	
+	ofEnableTextureEdgeHack();
+	
+	// If we do any interpolaton we can't use these as data arrays
+	spawnPosTexture.setTextureMinMagFilter( GL_NEAREST, GL_NEAREST );
+	spawnVelTexture.setTextureMinMagFilter( GL_NEAREST, GL_NEAREST );
+	
+	
 }
 
 //-----------------------------------------------------------------------------------------
@@ -71,18 +75,9 @@ void ParticleSystemInstancedGeometryGPU::update( float _time, float _timeStep, v
 	spawnPosTexture.loadData( (float*)&spawnPosScratch[0].x,	 textureSize, textureSize, GL_RGBA );
 	spawnVelTexture.loadData( (float*)&spawnVelScratch[0].x,	 textureSize, textureSize, GL_RGBA );
 	
-	lastUpdateTime = _time;
-	timeStep = _timeStep;
 	updateParticles( _time, _timeStep );
 }
 
-
-//-----------------------------------------------------------------------------------------
-//
-void ParticleSystemInstancedGeometryGPU::uploadDataRGBA( ofTexture& _tex, vector<ofVec4f>& _data )
-{
-
-}
 
 //-----------------------------------------------------------------------------------------
 //
@@ -91,90 +86,6 @@ void ParticleSystemInstancedGeometryGPU::draw( vector<ofLightExt*>& _lights )
 	drawParticles( _lights );
 }
 
-//-----------------------------------------------------------------------------------------
-//
-void ParticleSystemInstancedGeometryGPU::reAllocate( int _textureSize )
-{
-	ofLogLevel prevLogLevel = ofGetLogLevel();
-	ofSetLogLevel( OF_LOG_NOTICE );
-	
-	textureSize = _textureSize;
-	numParticles = textureSize * textureSize;
-	
-	ofDisableTextureEdgeHack();
-	particleDataFbo.allocateAsData(textureSize, textureSize, GL_RGBA32F, 2);
-	ofEnableTextureEdgeHack();
-
-	ofDisableTextureEdgeHack();
-#ifdef TARGET_OPENGLES
-	spawnPosTexture.allocate( textureSize, textureSize, GL_RGBA32F, false, GL_RGBA, GL_FLOAT );
-	spawnVelTexture.allocate( textureSize, textureSize, GL_RGBA32F, false, GL_RGBA, GL_FLOAT );
-#else
-	ofDisableArbTex();
-	spawnPosTexture.allocate( textureSize, textureSize, GL_RGBA32F, GL_RGBA, GL_FLOAT );
-	spawnVelTexture.allocate( textureSize, textureSize, GL_RGBA32F, GL_RGBA, GL_FLOAT );
-#endif
-	ofEnableTextureEdgeHack();
-
-	// If we do any interpolaton we can't use these as data arrays
-	spawnPosTexture.setTextureMinMagFilter( GL_NEAREST, GL_NEAREST );
-	spawnVelTexture.setTextureMinMagFilter( GL_NEAREST, GL_NEAREST );
-	
-	ofSetLogLevel( prevLogLevel );
-}
-
-//-----------------------------------------------------------------------------------------
-//
-void ParticleSystemInstancedGeometryGPU::resetParticles()
-{
-	cout << "ParticleSystemInstancedGeometryGPU::resetParticles   particleMaxAge: " << particleMaxAge << endl;
-	
-	// Initialise the starting and static data
-	vector<ofVec4f> startPositionsAndAge;
-	
-	for( int y = 0; y < textureSize; y++ )
-	{
-		for( int x = 0; x < textureSize; x++ )
-		{
-			ofVec3f pos = (MathUtils::randomPointOnSphere() * 0.5) + ofVec3f(0,1000,0); // move them way off to start with
-			float startAge = ofRandom( particleMaxAge ); // position is not very important, but age is, by setting the lifetime randomly somewhere in the middle we can get a steady stream emitting
-			startPositionsAndAge.push_back( ofVec4f(pos.x, pos.y, pos.z, startAge) );
-		}
-	}
-	
-	// Upload it to the source texture
-	particleDataFbo.source()->getTexture(0).loadData( (float*)&startPositionsAndAge[0].x,	 textureSize, textureSize, GL_RGBA );
-}
-
-//-----------------------------------------------------------------------------------------
-//
-void ParticleSystemInstancedGeometryGPU::drawGui()
-{
-	gui.draw();
-
-	ofRectangle dataDrawRect( gui.getPosition() + ofVec2f(0,gui.getHeight() + 10), particleDataFbo.source()->getWidth(), particleDataFbo.source()->getHeight() );
-	
-	particleDataFbo.source()->getTexture(0).draw( dataDrawRect ); // Pos and Age
-	ofNoFill(); ofDrawRectangle( dataDrawRect ); ofFill();
-	
-	// vel
-	if( particleDataFbo.source()->getNumTextures() > 1 )
-	{
-		ofRectangle dataDrawRectVel = dataDrawRect;
-		dataDrawRectVel.x += dataDrawRect.width + 10;
-		
-		particleDataFbo.source()->getTexture(1).draw( dataDrawRectVel ); // vel
-		ofNoFill(); ofDrawRectangle( dataDrawRectVel ); ofFill();
-	}
-	
-	dataDrawRect.y += dataDrawRect.height + 10;
-	spawnPosTexture.draw( dataDrawRect );
-	ofNoFill(); ofDrawRectangle( dataDrawRect ); ofFill();
-
-	dataDrawRect.y += dataDrawRect.height + 10;
-	spawnVelTexture.draw( dataDrawRect );
-	ofNoFill(); ofDrawRectangle( dataDrawRect ); ofFill();
-}
 
 //-----------------------------------------------------------------------------------------
 //
@@ -198,13 +109,8 @@ void ParticleSystemInstancedGeometryGPU::updateParticles( float _time, float _ti
 			particleUpdate.setUniformTexture( "spawnPositionTexture", spawnPosTexture, 3 );
 			particleUpdate.setUniformTexture( "spawnVelocityTexture", spawnVelTexture, 4 );
 	
-			particleUpdate.setUniform1f("time", _time );
-			particleUpdate.setUniform1f("timeStep", _timeStep );
-			
-			particleUpdate.setUniform1f("particleMaxAge", particleMaxAge );
-
-			particleUpdate.setUniform3fv("wind", wind.get().getPtr() );
-			
+			particleUpdate.setUniform1f( "maxAge", maxAge );
+	
 			particleDataFbo.source()->draw(0,0);
 		
 		particleUpdate.end();
@@ -246,50 +152,24 @@ void ParticleSystemInstancedGeometryGPU::drawParticles( ofShader* _shader,
 		_shader->setUniformTexture( "spawnVelocityTexture", spawnVelTexture,									5 );
 	
 		_shader->setUniform2f("resolution", particleDataFbo.source()->getWidth(), particleDataFbo.source()->getHeight() );
-		_shader->setUniform1f("time", lastUpdateTime );
-		_shader->setUniform1f("timeStep", timeStep );
 	
-		_shader->setUniformMatrix4f("modelViewMatrix", _modelView );
-		_shader->setUniformMatrix4f("projectionMatrix", _projection );
-		_shader->setUniformMatrix4f("modelViewProjectionMatrix", modelViewProjection );
+		_shader->setUniform1f( "maxAge", maxAge );
+	
+		//_shader->setUniformMatrix4f("modelViewMatrix", _modelView );
+		//_shader->setUniformMatrix4f("projectionMatrix", _projection );
+		//_shader->setUniformMatrix4f("modelViewProjectionMatrix", modelViewProjection );
 
 		_shader->setUniformMatrix4f("normalMatrix", _normalMatrix );
 	
-		_shader->setUniform1f("frontFraceNormalSign", frontFraceNormalSign );
-	
-		_shader->setUniform1f("particleMaxAge", particleMaxAge );
 	
 		// Calling begin() on the material sets the OpenGL state that we then read in the shader
 		//particleMaterial.begin(); // this binds a shader under the programmable renderer
 	
-			singleParticleMesh.drawInstanced( OF_MESH_FILL, numParticles );
+			singleParticleMesh.drawInstanced( OF_MESH_FILL, textureSize*textureSize );
 
 		//particleMaterial.end();
 	
 	_shader->end();
 }
 
-//-----------------------------------------------------------------------------------------
-//
-int ParticleSystemInstancedGeometryGPU::getNumUniqueSpawnPositionsWanted()
-{
-	return numParticles / 8;
-}
 
-//-----------------------------------------------------------------------------------------
-//
-void ParticleSystemInstancedGeometryGPU::particleDensityChanged( int& _density )
-{
-	int texSize = particleDensity;
-	cout << "ParticleSystemInstancedGeometryGPU::particleDensityChanged allocating " << texSize << endl;
-	
-	reAllocate( texSize );
-	resetParticles();
-}
-
-//-----------------------------------------------------------------------------------------
-//
-void ParticleSystemInstancedGeometryGPU::particleMaxAgeChanged( float& _type)
-{
-	resetParticles();
-}

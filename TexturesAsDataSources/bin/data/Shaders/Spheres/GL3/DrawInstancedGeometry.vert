@@ -15,13 +15,9 @@ uniform mat4 normalMatrix;
 uniform vec2 resolution;
 
 uniform float time;
-uniform float timeStep;
 
 uniform sampler2D particlePosAndAgeTexture;
 uniform sampler2D particleVelTexture; 
-uniform sampler2D spawnPositionTexture;
-
-uniform float particleMaxAge;
 
 // Lights
 #define MAX_LIGHTS 3
@@ -66,20 +62,18 @@ void main ()
 	
 	// Grab our data
 	vec4 particlePosAndAgeData = texture( particlePosAndAgeTexture, texCoord );
-	vec4 particleVelData = texture( particleVelTexture, texCoord );		
-	vec4 spawnPosition = texture( spawnPositionTexture, texCoord );	
+	vec4 particleVelData 	   = texture( particleVelTexture, texCoord );		
 
 	vec3 particlePos = particlePosAndAgeData.xyz;
 	float particleAge = particlePosAndAgeData.w; 
 
-	vec3 particleVel = particleVelData.xyz; //particlePos - particlePosOld;
+	vec3 particleVel = particleVelData.xyz; 
 
-	float ageFrac = particleAge / particleMaxAge;
 	vec4 vertexPos = position;
 	vec3 vertexNormal = normal.xyz;
 
 	// Pass the particle color along to the fragment shader
-	v_color = materialDiffuse; //mix(particleStartColor, particleEndColor, ageFrac );
+	v_color = materialDiffuse; 
 		
 	// We add the rotated model space vertex pos to the particle pos to get the final position in space
 	vec3 newVertexPos = particlePos + vertexPos.xyz;
