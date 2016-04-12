@@ -56,4 +56,10 @@
 		<Specular>255, 255, 255, 255</Specular>
 		<Radius>60</Radius>
 	</Light_2>
+<Spheres_Material>
+		<Diffuse>131, 183, 236, 255</Diffuse>
+		<Specular>255, 255, 255, 255</Specular>
+		<Emissive>0, 0, 0, 255</Emissive>
+		<Shininess>83.5867</Shininess>
+	</Spheres_Material>
 </Main>

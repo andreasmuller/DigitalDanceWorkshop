@@ -8,7 +8,6 @@
 #include "Utils/ofTrueTypeFontExt.h"
 
 #include "DancerMesh/DancerMeshFBX.h"
-#include "ParticleSystemInstancedGeometryGPU.h"
 
 #include "ofLightExt.h"
 #include "ofMaterialExt.h"
@@ -29,20 +28,37 @@ class ofApp : public ofBaseApp
 		DancerMeshFBX dancerMesh;
 		vector<MeshPoint> uniqueSpawnPoints;
 		ofImage emissionMask;
-		ParticleSystemInstancedGeometryGPU particles;
-		ofShader lightingShader;
+		ofShader 			lightingShader;
 
-		ofPlanePrimitive floor;
+	
+		int						textureSize;
+		
+		FboPingPong				particleDataFbo;
+		ofVboMesh				singleParticleMesh;
+		ofTexture				spawnPosTexture;
+		ofTexture				spawnVelTexture;
+		
+		float					maxAge;
+		
+		ofMaterial				particleMaterial;
+		
+		ofShader				particleUpdate;
+		ofShader				particleDraw;
+	
+		ofPlanePrimitive 		floor;
 
 		ofMaterialExt floorMaterial;
 		ofMaterialExt dancerMaterial;
-
+		ofMaterialExt spheresMaterial;
+	
 		ofParameter<ofColor> globalAmbient;
 		vector<ofLightExt*> lights;
 
 		ofxPanel gui;
 		bool drawGui;
-
+	
 		ofTrueTypeFontExt fontSmall;
-    
+	
+		vector<ofVec4f>			spawnVelScratch;
+		vector<ofVec4f>			spawnPosScratch;
 };

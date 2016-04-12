@@ -13,8 +13,8 @@ uniform sampler2D spawnPositionTexture;
 uniform sampler2D spawnVelocityTexture;
 
 uniform float maxAge = 1.5;
-uniform vec3 wind = vec3( 0.0, 0.0, -0.00001 );
-uniform vec3 gravity = vec3( 0.0, -0.002, 0.0 );
+uniform vec3 wind = vec3( 0.0, 0.0, 0.0001 );
+uniform vec3 gravity = vec3( 0.0, -0.001, 0.0 );
 
 in vec4 colorVarying;
 in vec2 texCoordVarying;
@@ -36,7 +36,7 @@ void main (void)
 	vec3 pos = posAndAge.xyz;
 	float age = posAndAge.w;
 
-	vec3 newVel = vel;
+	vec3 newVel = vec3(0.0);
 
 	age += 1.0 / 60.0;
 	
@@ -46,13 +46,13 @@ void main (void)
 		pos = spawnPosition.xyz; 
 
 		newVel = spawnVelocity.xyz * 0.3;
+		vel = vec3(0.0); // zero out old vel or we'll have something random there
 	}
 
-	vec3 frameVel = vec3(0.0);
-	frameVel += wind;
-	frameVel += gravity;	
+	newVel += wind;
+	newVel += gravity;	
+	newVel += vel * 0.99;
 
-	newVel += frameVel;	// We're going to just accumulate velocity, you would do something smarter usually 
 	vec3 newPos = pos + newVel;
 
 	if( newPos.y < 0.0 )
