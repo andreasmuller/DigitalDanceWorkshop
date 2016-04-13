@@ -200,7 +200,6 @@
     <ClCompile Include="src\Math\ofxRay\src\Projector.cpp" />
     <ClCompile Include="src\Math\ofxRay\src\Ray.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
-    <ClCompile Include="src\ParticleSystemInstancedGeometryGPU.cpp" />
     <ClCompile Include="src\Utils\FboPingPong.cpp" />
     <ClCompile Include="src\Utils\ofEasyCamExt.cpp" />
     <ClCompile Include="src\Utils\ofxInterpolator\EasingEquations.cpp" />
@@ -239,11 +238,9 @@
     <ClInclude Include="src\Math\ofxRay\src\Plane.h" />
     <ClInclude Include="src\Math\ofxRay\src\Projector.h" />
     <ClInclude Include="src\Math\ofxRay\src\Ray.h" />
-    <ClInclude Include="src\MeshShaderData.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\ofLightExt.h" />
     <ClInclude Include="src\ofMaterialExt.h" />
-    <ClInclude Include="src\ParticleSystemInstancedGeometryGPU.h" />
     <ClInclude Include="src\Utils\DrawingHelpers.h" />
     <ClInclude Include="src\Utils\FboPingPong.h" />
     <ClInclude Include="src\Utils\FileUtils.h" />
