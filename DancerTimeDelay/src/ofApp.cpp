@@ -9,7 +9,7 @@ void ofApp::setup()
 
 	ofBackground(ofColor::black);
 
-	for( int i = 0; i < 2; i++ )
+	for( int i = 0; i < 3; i++ )
 	{
 		lights.push_back( new ofLightExt() );
 		lights.back()->enable();
@@ -49,7 +49,7 @@ void ofApp::setup()
 	//string filename = "Models/ManLowPoly_DanceStep3.fbx";
 	string filename = "Models/WomanLowPoly_DanceStep3.fbx";
 	ofMatrix4x4 meshBaseTransform = ofMatrix4x4::newScaleMatrix(0.01, 0.01, 0.01);
-	meshBaseTransform.translate(0, 0.24, -6); // Note that we're shifting the mesh here, in case you change the fbx input
+	meshBaseTransform.translate(0, 0.24, -8); // Note that we're shifting the mesh here, in case you change the fbx input
 	dancerMesh.load( filename );
 	dancerMesh.setBaseTransform( meshBaseTransform );
 
