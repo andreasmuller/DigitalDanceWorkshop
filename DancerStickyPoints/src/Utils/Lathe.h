@@ -64,9 +64,7 @@ class Lathe
 					_mesh.addTriangle( topLeft, botRight, botLeft );
 				}
 			}
-			
-			//cout << _mesh.getNumVertices() << "	" << _mesh.getIndex(_mesh.getNumIndices()-2) << endl;
-			
+		
 			computeVertexNormalsFromTriangleIndices( _mesh, _faceNormalsBuffer );
 		}
 
@@ -314,7 +312,7 @@ class Lathe
 	template< typename T>
 	static void offsetPoints(vector<T>& _points, vector<T>& _offsetPoints)
 	{
-		if (_points.size() != _offsetPoints.size())
+		if( _points.size() != _offsetPoints.size() )
 		{
 			return;
 		}
@@ -349,8 +347,9 @@ class LatheMesh
 		// ------------------------------------------
 		void updateMesh(vector<ofVec2f>& _heightPoints, vector<ofVec2f>& _radiusPoints, deque<ofVec3f>& _spineControlPoints, int _lengthRes, ofVec3f _firstUp = ofVec3f(0,1,0) )
 		{
-			vector<ofVec3f> tmpSpineControlPoints;
+			tmpSpineControlPoints.clear();
 			for (int i = 0; i < _spineControlPoints.size(); i++) { tmpSpineControlPoints.push_back(_spineControlPoints.at(i) ); }
+			
 			updateMesh(_heightPoints, _radiusPoints, tmpSpineControlPoints, _lengthRes, _firstUp );
 		}
 
@@ -372,5 +371,7 @@ class LatheMesh
 
 		vector<ofMatrix4x4> spineTransforms;
 		vector<ofVec3f> faceNormals;
+	
+		vector<ofVec3f> tmpSpineControlPoints;
 };
 

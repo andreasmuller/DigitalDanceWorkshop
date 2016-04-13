@@ -98,20 +98,23 @@ void ofApp::update()
 		dancerMesh.update(time);
 		dancerMesh.updateStickyPoints(stickyPoints); // Also update the sticky points
 	
-		int lengthResolution = 600;					// The number of slices we'll compute for our tube
-		int maxHistoryLength = lengthResolution / 4; // how many control points will we keep
-		float minDistance = 0.001;					// Don't add a point if it's closer than this
+		int lengthResolution = 800;					// The number of slices we'll compute for our tube
+		int maxHistoryLength = lengthResolution / 8; // how many control points will we keep
+		float minDistance = 0.005;					// Don't add a point if it's closer than this
 		
+		// Update the max amount of points the PositionAndNormalHistory will keep
 		for (int i = 0; i < stickyPointHistory.size(); i++) { stickyPointHistory.at(i).setMaxLength( maxHistoryLength); }
+
+	//MIN( lengthResolution, history.getPositions().size()*8)
 		
 		for (int i = 0; i < stickyPoints.size(); i++)
 		{
 			PositionAndNormalHistory& history = stickyPointHistory.at(i);
-			
 			history.add( stickyPoints.at(i).pos, stickyPoints.at(i).normal, minDistance );
+			
 			if (history.getPositions().size() > 4)
 			{
-				lathedMeshes.at(i).updateMesh( history.getPositions(), lengthResolution, /*history.getNormals()[0]*/ ofVec3f(0,1,0) );
+				lathedMeshes.at(i).updateMesh( history.getPositions(), lengthResolution,  ofVec3f(0,1,0) ); // history.getNormals()[0]
 			}
 		}
 	}
