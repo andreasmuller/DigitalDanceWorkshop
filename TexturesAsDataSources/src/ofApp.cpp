@@ -39,7 +39,7 @@ void ofApp::setup()
 	dancerMesh.setBaseTransform( meshBaseTransform );
 
 	// Mask out areas to emit particles by loading something in here, needs to match the UVs of your model
-	emissionMask.load( "EmissionMasks/EmissionMaskBackAndArms.png");
+	//emissionMask.load( "EmissionMasks/EmissionMaskBackAndArms.png");
 	
 	lightingShader.load( "Shaders/BlinnPhongRadius/GL3/BlinnPhongRadius" );
 	
@@ -49,43 +49,44 @@ void ofApp::setup()
 	camera.setPosition(0, tmpHeight, -1.0);
 	camera.lookAt(ofVec3f(0, tmpHeight*0.8, 1));
 
-	floor.set(200, 200, 2, 2);
-	floor.rotate(-90, ofVec3f(1, 0, 0));
-	floor.move(ofVec3f(0, 0, 0));
+	floorPrim.set(200, 200, 2, 2);
+	floorPrim.rotate(-90, ofVec3f(1, 0, 0));
+	floorPrim.move(ofVec3f(0, 0, 0));
 
 	textureSize = 128;
 	maxAge = 1.1;
 	
 	// Load shaders
 	ofSetLogLevel( OF_LOG_VERBOSE );
-	particleDraw.load("Shaders/Spheres/GL3/DrawInstancedGeometry");
-	particleUpdate.load("Shaders/Spheres/GL3/Update");
+	spheresDraw.load("Shaders/Spheres/GL3/DrawInstancedGeometry");
+	spheresUpdate.load("Shaders/Spheres/GL3/Update");
 	
+	// Make a single sphere mesh we will draw instances of later
 	float radius = 0.01;
-	singleParticleMesh = ofSpherePrimitive( radius, 6, OF_PRIMITIVE_TRIANGLES ).getMesh();
+	singleSphereMesh = ofSpherePrimitive( radius, 6, OF_PRIMITIVE_TRIANGLES ).getMesh();
 	
-	particleDataFbo.allocateAsData(textureSize, textureSize, GL_RGBA32F, 2);
+	// Allocate data FBO, this is the data we will write from the shader
+	spheresDataFbo.allocateAsData(textureSize, textureSize, GL_RGBA32F, 2);
 	
 	// Initialise the starting and static data
 	vector<ofVec4f> startPositionsAndAge;
 	
 	for( int x = 0; x < textureSize*textureSize; x++ )
 	{
-		ofVec3f pos = ofVec3f(0,1000,0); // move them way off to start with
+		ofVec3f pos = ofVec3f(0,1000,0);	 // move them way off to start with
 		float startAge = ofRandom( maxAge ); // position is not very important, but age is, by setting the lifetime randomly somewhere in the middle we can get a steady stream emitting
 		startPositionsAndAge.push_back( ofVec4f(pos.x, pos.y, pos.z, startAge) );
 	}
 	
-	
 	// Upload it to the source texture
-	particleDataFbo.source()->getTexture(0).loadData( (float*)&startPositionsAndAge[0].x,	 textureSize, textureSize, GL_RGBA );
+	spheresDataFbo.source()->getTexture(0).loadData( (float*)&startPositionsAndAge[0].x,	 textureSize, textureSize, GL_RGBA );
 	
 	ofDisableTextureEdgeHack();
 	ofDisableArbTex();
 	spawnPosTexture.allocate( textureSize, textureSize, GL_RGBA32F, GL_RGBA, GL_FLOAT );
 	spawnVelTexture.allocate( textureSize, textureSize, GL_RGBA32F, GL_RGBA, GL_FLOAT );
 	
-	// If we do any interpolaton we can't use these as data arrays
+	// Turn off interpolation as we will use these for data
 	spawnPosTexture.setTextureMinMagFilter( GL_NEAREST, GL_NEAREST );
 	spawnVelTexture.setTextureMinMagFilter( GL_NEAREST, GL_NEAREST );
 	
@@ -98,10 +99,11 @@ void ofApp::update()
 	float t = ofGetElapsedTimef();
 
 	ofSetGlobalAmbientColor( globalAmbient.get() );
-	dancerMesh.update( ofGetElapsedTimef() );
+	dancerMesh.update( t );
 	
-	int numUniquePoints = dancerMesh.triangleMesh.getNumVertices() / 10;
-	dancerMesh.updateRandomPoints( numUniquePoints, uniqueSpawnPoints );
+	// Grab a couple of random points. We don't need as many as we have particles, as all particles won't spawn at the same time
+	int numUniquePoints = dancerMesh.triangleMesh.getNumVertices() / 20;
+	dancerMesh.updateRandomPoints( numUniquePoints, uniqueSpawnPoints, emissionMask );
 
 	// Randomly grab from the unique spawn points to make data for every particle, even if it doesn't use it this frame
 	spawnVelScratch.clear();
@@ -123,87 +125,81 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
+	// I tend to do these shader update passes in draw(), this way I can be sure all the graphics stuff is properly set up,
+	// this will not be an issue 99.9% of the time, but who knows how oF is running on a new exotic device.
 	
 	ofDisableTextureEdgeHack(); // Important on devices that don't support NPOT textures!
 	
 	ofEnableBlendMode( OF_BLENDMODE_DISABLED ); // Important! We just want to write the data as is to the target fbo
 	ofSetColor( ofColor::white );
 	
-	particleDataFbo.dest()->begin();
+	spheresDataFbo.dest()->begin();
 	
-	particleDataFbo.dest()->activateAllDrawBuffers(); // if we have multiple color buffers in our FBO we need this to activate all of them
+		spheresDataFbo.dest()->activateAllDrawBuffers(); // if we have multiple color buffers in our FBO we need this to activate all of them
+		
+		spheresUpdate.begin();
+		
+			spheresUpdate.setUniformTexture( "spheresPosAndAgeTexture",	spheresDataFbo.source()->getTexture(0), 1 );
+			spheresUpdate.setUniformTexture( "spheresVelTexture",			spheresDataFbo.source()->getTexture(1), 2 );
+			
+			spheresUpdate.setUniformTexture( "spawnPositionTexture", spawnPosTexture, 3 );
+			spheresUpdate.setUniformTexture( "spawnVelocityTexture", spawnVelTexture, 4 );
+			
+			spheresUpdate.setUniform1f( "maxAge", maxAge );
+			
+			spheresDataFbo.source()->draw(0,0);
+			
+		spheresUpdate.end();
 	
-	particleUpdate.begin();
+	spheresDataFbo.dest()->end();
 	
-	particleUpdate.setUniformTexture( "particlePosAndAgeTexture",	particleDataFbo.source()->getTexture(0), 1 );
-	//particleUpdate.setUniformTexture( "particleOldPosAndAgeTexture", particleDataFbo.dest()->getTexture(0), 2 );
-	particleUpdate.setUniformTexture( "particleVelTexture", particleDataFbo.source()->getTexture(1), 2 );
-	
-	particleUpdate.setUniformTexture( "spawnPositionTexture", spawnPosTexture, 3 );
-	particleUpdate.setUniformTexture( "spawnVelocityTexture", spawnVelTexture, 4 );
-	
-	particleUpdate.setUniform1f( "maxAge", maxAge );
-	
-	particleDataFbo.source()->draw(0,0);
-	
-	particleUpdate.end();
-	
-	particleDataFbo.dest()->end();
-	
-	particleDataFbo.swap();
-	
+	spheresDataFbo.swap(); // the latest data is now in ->source()
 	
 	
+	// Now draw the scene
 	ofEnableDepthTest();
 
     camera.begin();
-
 
 		lightingShader.begin();
 
 			ofLightExt::setParams( &lightingShader, lights, ofGetCurrentMatrix(OF_MATRIX_MODELVIEW), false );
 	
 			floorMaterial.setParams( &lightingShader, false );
-			floor.draw();
+			floorPrim.draw();
 
-			dancerMaterial.setParams( &lightingShader, false );
+			//dancerMaterial.setParams( &lightingShader, false );
 			//dancerMesh.triangleMesh.draw();
 
 		lightingShader.end();
 
-		//DancerMesh::drawVelocities( uniqueSpawnPoints, 1.0 );
-
+		// Use our instanced drawing shader for the spheres
 		ofSetColor( ofColor::white );
 		ofEnableBlendMode( OF_BLENDMODE_ALPHA );
 		
-		particleDraw.begin();
+		spheresDraw.begin();
 		
-		ofLightExt::setParams( &particleDraw, lights, ofGetCurrentMatrix(OF_MATRIX_MODELVIEW), false );
-		
-		particleDraw.setUniformTexture("particlePosAndAgeTexture", particleDataFbo.source()->getTexture(0),			1 );
-		particleDraw.setUniformTexture("particleVelTexture", particleDataFbo.source()->getTexture(1),				2 );
-		
-		particleDraw.setUniformTexture( "spawnPositionTexture", spawnPosTexture,									4 );
-		particleDraw.setUniformTexture( "spawnVelocityTexture", spawnVelTexture,									5 );
-		
-		particleDraw.setUniform2f("resolution", particleDataFbo.source()->getWidth(), particleDataFbo.source()->getHeight() );
-		particleDraw.setUniform1f( "maxAge", maxAge );
-		particleDraw.setUniformMatrix4f("normalMatrix", ofGetCurrentNormalMatrix() );
+			ofLightExt::setParams( &spheresDraw, lights, ofGetCurrentMatrix(OF_MATRIX_MODELVIEW), false );
+			
+			spheresDraw.setUniformTexture("spheresPosAndAgeTexture", spheresDataFbo.source()->getTexture(0),			1 );
+			spheresDraw.setUniformTexture("spheresVelTexture",		 spheresDataFbo.source()->getTexture(1),				2 );
+			
+			spheresDraw.setUniformTexture( "spawnPositionTexture", spawnPosTexture,									4 );
+			spheresDraw.setUniformTexture( "spawnVelocityTexture", spawnVelTexture,									5 );
+			
+			spheresDraw.setUniform2f("resolution", spheresDataFbo.source()->getWidth(), spheresDataFbo.source()->getHeight() );
+			spheresDraw.setUniform1f( "maxAge", maxAge );
+			spheresDraw.setUniformMatrix4f("normalMatrix", ofGetCurrentNormalMatrix() );
 
-		spheresMaterial.setParams( &particleDraw, false );
-	
-		singleParticleMesh.drawInstanced( OF_MESH_FILL, textureSize*textureSize );
+			spheresMaterial.setParams( &spheresDraw, false );
 		
-		particleDraw.end();
+			singleSphereMesh.drawInstanced( OF_MESH_FILL, textureSize*textureSize );
+	
+		spheresDraw.end();
 
-	
-	
 		if( drawGui )
 		{
-			for( unsigned int i = 0; i < lights.size(); i++ )
-			{
-				lights.at(i)->draw( 0.2 );
-			}
+			for( unsigned int i = 0; i < lights.size(); i++ ) { lights.at(i)->draw( 0.2 ); }
 		}
 	
     camera.end();

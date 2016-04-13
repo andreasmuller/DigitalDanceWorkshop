@@ -311,7 +311,6 @@
 		C9F552CC9456EFB4A254DC55 /* fbxlayeredtexture.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxlayeredtexture.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/scene/shading/fbxlayeredtexture.h; sourceTree = SOURCE_ROOT; };
 		CB2F47871CA3EFE400D5ACFD /* ofLightExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofLightExt.h; sourceTree = "<group>"; };
 		CB2F47881CA3EFE400D5ACFD /* ofMaterialExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofMaterialExt.h; sourceTree = "<group>"; };
-		CB2F47891CA3FBE000D5ACFD /* MeshShaderData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshShaderData.h; sourceTree = "<group>"; };
 		CB2F478E1CA59B5600D5ACFD /* MeshPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeshPoint.h; path = DancerMesh/MeshPoint.h; sourceTree = "<group>"; };
 		CBCADDB1F71E9F29A64A4B69 /* fbxwriter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fbxwriter.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/fbxsdk/fileio/fbxwriter.h; sourceTree = SOURCE_ROOT; };
 		CC8AB3B80118D58B6E007009 /* GeometryUtility.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = GeometryUtility.h; path = ../../../addons/ofxFBX/libs/fbxsdk_2016.1/include/Common/GeometryUtility.h; sourceTree = SOURCE_ROOT; };
@@ -924,7 +923,6 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				CB2F47891CA3FBE000D5ACFD /* MeshShaderData.h */,
 				CB2F47871CA3EFE400D5ACFD /* ofLightExt.h */,
 				CB2F47881CA3EFE400D5ACFD /* ofMaterialExt.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,

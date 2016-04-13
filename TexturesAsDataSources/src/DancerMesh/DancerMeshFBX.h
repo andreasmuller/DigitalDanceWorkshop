@@ -60,10 +60,6 @@ class DancerMeshFBX : public DancerMesh
 			initTexture(_texture);
 
 			ofDisableArbTex();
-			//eyeTexture.load("Textures/Dancer/blue_eye_small.png");
-
-			ofLogNotice() << "DancerMeshFBX speeds up the animation on update as a hack";
-
 			return loaded;
 		}
 

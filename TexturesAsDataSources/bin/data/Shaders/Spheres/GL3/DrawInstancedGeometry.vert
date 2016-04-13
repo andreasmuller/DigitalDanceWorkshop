@@ -16,8 +16,8 @@ uniform vec2 resolution;
 
 uniform float time;
 
-uniform sampler2D particlePosAndAgeTexture;
-uniform sampler2D particleVelTexture; 
+uniform sampler2D spheresPosAndAgeTexture;
+uniform sampler2D spheresVelTexture; 
 
 // Lights
 #define MAX_LIGHTS 3
@@ -61,8 +61,8 @@ void main ()
 	texCoord.y = floor(instanceIDf / resolution.x) / resolution.y;
 	
 	// Grab our data
-	vec4 particlePosAndAgeData = texture( particlePosAndAgeTexture, texCoord );
-	vec4 particleVelData 	   = texture( particleVelTexture, texCoord );		
+	vec4 particlePosAndAgeData = texture( spheresPosAndAgeTexture, texCoord );
+	vec4 particleVelData 	   = texture( spheresVelTexture, texCoord );		
 
 	vec3 particlePos = particlePosAndAgeData.xyz;
 	float particleAge = particlePosAndAgeData.w; 
