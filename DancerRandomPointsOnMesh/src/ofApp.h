@@ -48,5 +48,4 @@ class ofApp : public ofBaseApp
 		bool drawGui;
 
 		ofTrueTypeFontExt fontSmall;
-    
 };

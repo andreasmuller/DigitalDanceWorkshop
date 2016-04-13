@@ -53,7 +53,6 @@ void ofApp::setup()
 	// Set up floor
 	floor.set(200, 200, 2, 2);
 	floor.rotate(-90, ofVec3f(1, 0, 0));
-	floor.move(ofVec3f(0, 0, 0));
 
 	time = 0;
 	drawGui = false;
@@ -105,7 +104,7 @@ void ofApp::draw()
 			// Draw some spheres to show our random points
 			randomPointsMaterial.setParams( &lightingShader );
 			//lightingShader.setUniform1f("useVertexColors", 1.0f ); // When enabled we will use the vertex colors in sphereMesh
-			vector<ofVec3f> tmpRandomPoints = MeshPoint::getPositions( randomPoints );
+			vector<ofVec3f> tmpRandomPoints = MeshPoint::getPositions( randomPoints ); // A helper to grab a vector<ofVec3f> from a vector<MeshPoint>
 			DrawingHelpers::makeSpheresMesh( spheresMesh, tmpRandomPoints, 0.02f, 6, true );
 			spheresMesh.draw();
 

@@ -23,7 +23,7 @@ void ofApp::setup()
 	gui.add( numMeshesToDraw.set("Num Meshes To Draw", 40, 2, 200) );
 	gui.add( offset.set("Offset", ofVec3f(0,0,10), ofVec3f(-20), ofVec3f(20)) );
 	//gui.add( timeBetweenCopies.set("Time Between Copies", 1 / 30.0, 0.00001, 1) );
-	timeBetweenCopies = 0;
+	timeBetweenCopies = 0; // We'll be grabbing a mesh every frame
 	
 	gui.add( startColor.set("Dancer Start Color", ofColor::black, ofColor(0,0,0,0), ofColor(255)) );
 	gui.add( endColor.set("Dancer End Color", ofColor::black, ofColor(0,0,0,0), ofColor(255)) );
