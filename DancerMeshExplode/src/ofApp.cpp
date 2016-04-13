@@ -12,7 +12,7 @@ void ofApp::setup()
 	// Initialise some lights
 	lights.push_back( new ofLightExt() );
 	lights.push_back( new ofLightExt() );
-	lights.push_back(new ofLightExt());
+	lights.push_back( new ofLightExt() );
 	
 	// Init gui
 	string mainSettingsPath = "Settings/Main.xml";
@@ -88,12 +88,11 @@ void ofApp::update()
 			ofSeedRandom(meshIndex * 16777216); // seed the rng with the mesh index, made into a much bigger number
 			
 			ofMesh& mesh = meshes.at(meshIndex);
-			//cout << mesh.getNumVertices() << "	" << mesh.getNumNormals() << "	" << mesh.getNumIndices() << endl;
 			float meshTime = fmodf(t, timeBetweenCopies) + (meshIndex * timeBetweenCopies);
 			float ageFrac = (meshTime / meshMaxAge);
 			
 			float forcesStrength = MathUtils::linearStep(meshMaxAge * 0.25, meshMaxAge * 0.6, meshTime );
-			float triangleScale = (1.0f - MathUtils::linearStep(meshMaxAge * 0.6, meshMaxAge, meshTime)); //(1.0f - MathUtils::linearStep(_high1, _low1, _t)
+			float triangleScale = (1.0f - MathUtils::linearStep(meshMaxAge * 0.6, meshMaxAge, meshTime));
 			triangleScale = ofMap(triangleScale, 0, 1, 0.95, 1.0);
 			
 			// We are just going to assume we're dealing with triangles
@@ -107,28 +106,33 @@ void ofApp::update()
 				ofVec3f p0 = mesh.getVertex(i0);
 				ofVec3f p1 = mesh.getVertex(i1);
 				ofVec3f p2 = mesh.getVertex(i2);
-				
-				ofVec3f normal = -MathUtils::getTriangleNormal(p0, p1, p2);
+
+				// Triangle middle
 				ofVec3f pos = (p0 + p1 + p2) / 3.0;
 				
+				// Local space ertices
 				ofVec3f v0 = (p0 - pos) * triangleScale;
 				ofVec3f v1 = (p1 - pos) * triangleScale;
 				ofVec3f v2 = (p2 - pos) * triangleScale;
-				
-				pos += normal * ofRandom(0.01, 0.02) * forcesStrength; // move in the direction of the triangle normal
-				pos += ofVec3f(0, 0, 0.02); // Wind
-				
+		
 				ofMatrix4x4 transform;
 				transform.glRotate(ofRandom(-15, 15) * forcesStrength, 0, 1, 0);
 				transform.glRotate(ofRandom(-15, 15) * forcesStrength, 0, 0, 1);
 				
-				p0 = pos + (v0 * transform);
-				p1 = pos + (v1 * transform);
-				p2 = pos + (v2 * transform);
+				// rotate the points
+				v0 = (v0 * transform);
+				v1 = (v1 * transform);
+				v2 = (v2 * transform);
 				
-				mesh.getVerticesPointer()[i0] = p0;
-				mesh.getVerticesPointer()[i1] = p1;
-				mesh.getVerticesPointer()[i2] = p2;
+				ofVec3f normal = -MathUtils::getTriangleNormal(v0, v1, v2);
+		
+				// Add some forces
+				pos += normal * ofRandom(0.01, 0.02) * forcesStrength; // move in the direction of the triangle normal
+				pos += ofVec3f(0, 0, 0.02); // Wind
+				
+				mesh.getVerticesPointer()[i0] = pos + v0;
+				mesh.getVerticesPointer()[i1] = pos + v1;
+				mesh.getVerticesPointer()[i2] = pos + v2;
 				
 				mesh.getNormalsPointer()[i0] = normal;
 				mesh.getNormalsPointer()[i1] = normal;
@@ -157,6 +161,7 @@ void ofApp::draw()
 			dancerMaterial.setParams( &lightingShader );
 			dancerMesh.triangleMesh.draw();
 	
+			// Draw meshes
 			for (auto &mesh : meshes)
 			{
 				mesh.draw();
