@@ -8,10 +8,10 @@
 	<Noise_Magnitude>0.007</Noise_Magnitude>
 	<Noise_Time_Freq>0.075</Noise_Time_Freq>
 	<Noise_Persistence>0.29</Noise_Persistence>
-<Copies>37</Copies>
-	<Time_between_Copies>0.9</Time_between_Copies>
-<Start_Color>255, 0, 255, 255</Start_Color>
-	<End_Color>0, 255, 255, 255</End_Color>
+<Copies>40</Copies>
+	<Time_between_Copies>1.1</Time_between_Copies>
+<Start_Color>236, 0, 180, 255</Start_Color>
+	<End_Color>0, 204, 227, 255</End_Color>
 <Global_Ambient>0, 0, 0, 255</Global_Ambient>
 	<Light_0>
 		<Position>0.637236, 5.63515, 4.69805</Position>
@@ -34,7 +34,7 @@
 		<Shininess>10</Shininess>
 	</Floor_Material>
 	<Dancer_Material>
-		<Diffuse>255, 0, 255, 255</Diffuse>
+		<Diffuse>237, 0, 181, 255</Diffuse>
 		<Specular>255, 255, 255, 255</Specular>
 		<Emissive>0, 0, 0, 255</Emissive>
 		<Shininess>69.9796</Shininess>

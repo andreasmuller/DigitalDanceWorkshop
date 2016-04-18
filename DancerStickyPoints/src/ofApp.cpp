@@ -12,7 +12,7 @@ void ofApp::setup()
 	// Initialise some lights
 	lights.push_back( new ofLightExt() );
 	lights.push_back( new ofLightExt() );
-	lights.push_back(new ofLightExt());
+	lights.push_back( new ofLightExt() );
 	
 	// Init gui
 	string mainSettingsPath = "Settings/Main.xml";
@@ -41,10 +41,10 @@ void ofApp::setup()
 	ofMatrix4x4 meshBaseTransform = ofMatrix4x4::newScaleMatrix(0.01, 0.01, 0.01);
 	meshBaseTransform.translate(0, 0.22, 0);
 	
-	// Here is a bit gotcha!
+	// Here is a bit of a gotcha!
 	//
 	// For this to work your mesh needs to contain one set of texture unique coordinates.
-	// These meshes have ploygons for the eyes that are meant to use a different texture, so they have thrir own texture coordinates
+	// These meshes have ploygons for the eyes that are meant to use a different texture, so they have their own texture coordinates
 	// that work with that texture, we need to make sure these are filtered out when we make our triangle mesh, so we add the name of the
 	// mesh to a skip list, you can later draw that mesh separately if you want
 	dancerMesh.meshSkipList.push_back( "MHX:Low-Poly" ); // This is the name of the eye mesh

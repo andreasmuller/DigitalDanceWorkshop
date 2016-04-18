@@ -40,7 +40,7 @@
 		<Shininess>9.07143</Shininess>
 	</Floor_Material>
 	<Dancer_Material>
-		<Diffuse>255, 0, 0, 255</Diffuse>
+		<Diffuse>214, 3, 39, 255</Diffuse>
 		<Specular>255, 255, 255, 255</Specular>
 		<Emissive>0, 0, 0, 255</Emissive>
 		<Shininess>90.0663</Shininess>
@@ -49,10 +49,10 @@
 	<Time_Between_Copies>0.0333333</Time_Between_Copies>
 	<Start_Color>255, 0, 0, 255</Start_Color>
 	<End_Color>0, 255, 0, 255</End_Color>
-	<Offset>0, 0, 11.0204</Offset>
+	<Offset>0, 0, 10</Offset>
 <Num_Meshes_To_Draw>48</Num_Meshes_To_Draw>
-<Dancer_Start_Color>255, 0, 0, 255</Dancer_Start_Color>
-	<Dancer_End_Color>255, 0, 0, 255</Dancer_End_Color>
+<Dancer_Start_Color>215, 0, 39, 255</Dancer_Start_Color>
+	<Dancer_End_Color>214, 3, 39, 255</Dancer_End_Color>
 <Light_2>
 		<Position>0.001, -2.17409, 0.001</Position>
 		<Look_At>0, 0, 0</Look_At>

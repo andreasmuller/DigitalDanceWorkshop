@@ -17,7 +17,7 @@ void ofApp::setup()
 	gui.setup("Main", mainSettingsPath);
 
 	gui.add( maxCopies.set("Copies", 10, 1, 150));
-	gui.add( timeBetweenCopies.set("Time between Copies", 0.1, 0, 1));
+	gui.add( timeBetweenCopies.set("Time between Copies", 0.1, 0, 2));
 	
 	gui.add( maxRotation.set("Max Rotation", 3, 0, 20));
 	gui.add( triangleNormalVel.set("Triangle Normal Vel", 0.001, 0, 0.1));
@@ -183,7 +183,7 @@ void ofApp::draw()
 	if (drawGui)
 	{
 		gui.draw();
-		fontSmall.drawStringShadowed(ofToString(ofGetFrameRate(), 1), ofGetWidth() - 30, ofGetHeight() - 15);
+		fontSmall.drawStringShadowed(ofToString(ofGetFrameRate(), 1), ofGetWidth() - 30, ofGetHeight() - 5);
 	}
 }
 
@@ -199,7 +199,3 @@ void ofApp::keyPressed(int key)
 		ofToggleFullscreen();
 	}
 }
-
-
-
-

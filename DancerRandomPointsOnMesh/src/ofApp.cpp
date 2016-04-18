@@ -58,7 +58,7 @@ void ofApp::setup()
 	drawGui = false;
 	
 	// Load a mask we will use later when grabbing random points on the mesh
-	randomMask.load("Masks/EmissionMaskBackAndArms.png");
+	//randomMask.load("Masks/EmissionMaskBackAndArms.png");
 }
 
 //--------------------------------------------------------------
@@ -76,8 +76,8 @@ void ofApp::update()
 		int seed = 12345; //ofGetFrameNum();
 		int maxAmount = 3500;
 		int amount = ofMap( sinf(time), -1, 0.8, 1, maxAmount, true );
-		dancerMesh.updateRandomPoints( amount, randomPoints, seed );
-		//dancerMesh.updateRandomPoints( amount, randomPoints, randomMask, seed );
+		//dancerMesh.updateRandomPoints( amount, randomPoints, seed );
+		dancerMesh.updateRandomPoints( amount, randomPoints, randomMask, seed );
 	}
 }
 

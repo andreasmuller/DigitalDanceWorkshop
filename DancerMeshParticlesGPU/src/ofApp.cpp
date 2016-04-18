@@ -34,9 +34,13 @@ void ofApp::setup()
 	//string filename = "Models/ManLowPoly_DanceStep3.fbx";
 	string filename = "Models/WomanLowPoly_DanceStep3.fbx";
 	ofMatrix4x4 meshBaseTransform = ofMatrix4x4::newScaleMatrix(0.01, 0.01, 0.01);
-	meshBaseTransform.translate(0, 0.22, 0); // move it up a bit
+	meshBaseTransform.translate(0, 0.24, -1); // move it up a bit
 	dancerMesh.load( filename );
 	dancerMesh.setBaseTransform( meshBaseTransform );
+	
+	// Skip the eye mesh as this has a duplicate set of texture coords, meaning we would emit from the eyes
+	// even though we are trying to use a mask even though we are masking the particle emission points
+	dancerMesh.meshSkipList.push_back( "MHX:Low-Poly" );
 
 	// Mask out areas to emit particles by loading something in here, needs to match the UVs of your model
 	emissionMask.load( "EmissionMasks/EmissionMaskBackAndArms.png");
@@ -67,8 +71,6 @@ void ofApp::update()
 	int numUniquePoints = dancerMesh.triangleMesh.getNumVertices() / 10;
 	dancerMesh.updateRandomPoints( numUniquePoints, uniqueSpawnPoints, emissionMask );
 	particles.update( t, 1.0/60.0, uniqueSpawnPoints );
-	
-	ofSetWindowTitle(ofToString(ofGetFrameRate(), 1));
 }
 
 //--------------------------------------------------------------

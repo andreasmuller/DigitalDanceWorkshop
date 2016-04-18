@@ -39,7 +39,7 @@ void ofApp::setup()
 	string filename = "Models/ManLowPoly_DanceStep4.fbx";
 	//string filename = "Models/WomanLowPoly_DanceStep4.fbx";
 	ofMatrix4x4 meshBaseTransform = ofMatrix4x4::newScaleMatrix(0.01, 0.01, 0.01);
-	meshBaseTransform.translate(0, 0.22, 0);
+	meshBaseTransform.translate(0, 0.24, 0);
 	dancerMesh.load( filename );
 	dancerMesh.setBaseTransform( meshBaseTransform );
 
